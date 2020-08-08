@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorNotWhite"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/ly_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tab_main"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"
+            android:drawableTop="@drawable/tab_menu_main"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/tab_main"
+            android:textColor="@drawable/tab_menu_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tab_flag"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"
+            android:drawableTop="@drawable/tab_menu_normal"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/tab_flag"
+            android:textColor="@drawable/tab_menu_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tab_location"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"
+            android:drawableTop="@drawable/tab_menu_shopping"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/tab_shoppingMall"
+            android:textColor="@drawable/tab_menu_text"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tab_my"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"
+            android:drawableTop="@drawable/tab_menu_my"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/tab_my"
+            android:textColor="@drawable/tab_menu_text"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/div_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@id/ly_tab_bar"
+        android:background="@color/colorGray" />
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/div_tab_bar">
+
+    </androidx.viewpager.widget.ViewPager>
+
+</RelativeLayout>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorNotWhite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_login"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@drawable/bg_user"
+            android:elevation="8dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/user_image" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/user_image"
+                android:text="@string/login"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/txt_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_top_radius"
+                android:drawableLeft="@drawable/order"
+                android:drawableRight="@drawable/arrow"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="10dp"
+                android:text="订单管理"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/txt_tobePaid"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/tobepaid"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:text="待付款"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txt_paid"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/paid"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:text="已付款"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txt_finished"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/finished"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:text="已完成"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray" />
+
+            <TextView
+                android:id="@+id/txt_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:drawableLeft="@drawable/address"
+                android:drawableRight="@drawable/arrow"
+                android:drawablePadding="8dp"
+                android:foreground="?selectableItemBackground"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="10dp"
+                android:text="收货信息"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray" />
+
+            <TextView
+                android:id="@+id/txt_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:drawableLeft="@drawable/collection"
+                android:drawableRight="@drawable/arrow"
+                android:drawablePadding="8dp"
+                android:foreground="?selectableItemBackground"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="10dp"
+                android:text="收藏"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray" />
+
+            <TextView
+                android:id="@+id/txt_myPost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:drawableLeft="@drawable/post"
+                android:drawableRight="@drawable/arrow"
+                android:drawablePadding="8dp"
+                android:foreground="?selectableItemBackground"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="10dp"
+                android:text="我的发布"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray" />
+
+            <TextView
+                android:id="@+id/txt_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:drawableLeft="@drawable/setting"
+                android:drawableRight="@drawable/arrow"
+                android:drawablePadding="8dp"
+                android:foreground="?selectableItemBackground"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="10dp"
+                android:text="设置"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorGray" />
+
+            <TextView
+                android:id="@+id/txt_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_bottom_radius"
+                android:drawableLeft="@drawable/about"
+                android:drawableRight="@drawable/arrow"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="10dp"
+                android:text="关于我们"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

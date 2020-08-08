@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- IndicatorTabBar's Default Value -->
+    <dimen name="tab_text_size">14sp</dimen>
+    <color name="bg_color">#FAFAFA</color>
+    <color name="tab_text_color">#333</color>
+    <color name="tab_text_selected_color">#17C780</color>
+    <color name="tab_underline_color">#17C780</color>
+
+    <dimen name="tab_underline_height">4px</dimen>
+
+    <integer name="tab_max_column">3</integer>
+
+</resources>

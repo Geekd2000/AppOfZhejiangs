@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_radius"
+    android:orientation="vertical"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="10dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/grid_image"
+        android:layout_width="180dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/picturezhejiang"
+        app:riv_corner_radius_top_left="10dp"
+        app:riv_corner_radius_top_right="10dp" />
+
+    <TextView
+        android:id="@+id/txt_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:text="标题"
+        android:maxLines="2"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txt_gridAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="xx人浏览"
+        android:textColor="@color/colorGray"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circle_user"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/userimage" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/grid_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="昵称"
+                android:textColor="@color/colorGray"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/grid_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="时间"
+                android:textColor="@color/colorGray"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
