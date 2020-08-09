@@ -3,19 +3,14 @@ package com.example.appofzhejiang.fragment3;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 import com.example.appofzhejiang.R;
-import com.example.appofzhejiang.fragment3.hotel.Hotel;
-
-import java.util.List;
-import java.util.UUID;
 
 public class TicketDetailActivity extends AppCompatActivity {
 
@@ -89,6 +84,18 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailContent2.setText(R.string.songchengqianguqing);
                 image1.setImageResource(R.drawable.songcity);
                 image2.setImageResource(R.drawable.songcheng);
+                detailBuy1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                detailBuy2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case 1:
                 title = null;
@@ -112,6 +119,18 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("150");
                 detailContent1.setText(R.string.hotel);
                 image1.setImageResource(R.drawable.hotel_image);
+                detailBuy1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                detailBuy2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case 2:
                 title = null;
@@ -135,6 +154,18 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("498");
                 detailContent1.setText(R.string.taxi);
                 image1.setImageResource(R.drawable.taxi_image);
+                detailBuy1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                detailBuy2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case 3:
                 title = null;
@@ -158,6 +189,18 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("300");
                 detailContent1.setText("给导游一点关爱，导游还你一片美景，多点关心多点爱。");
                 image1.setImageResource(R.drawable.guider_image);
+                detailBuy1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                detailBuy2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case 4:
                 title = null;
@@ -181,6 +224,18 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("598");
                 detailContent1.setText(R.string.farmhouse);
                 image1.setImageResource(R.drawable.farmhouse);
+                detailBuy1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                detailBuy2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case 5:
                 title = null;
@@ -205,6 +260,18 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailContent1.setText(R.string.longjingxiaren);
                 image1.setImageResource(R.drawable.longjingxiaren);
                 image2.setImageResource(R.drawable.westlakelongjing);
+                detailBuy1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                detailBuy2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case 6:
                 title = null;
@@ -228,6 +295,18 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("358");
                 detailContent1.setText(R.string.longjing);
                 image1.setImageResource(R.drawable.westlakelongjing);
+                detailBuy1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                detailBuy2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case 7:
                 title = null;
@@ -251,6 +330,18 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("98");
                 detailContent1.setText("西湖的水，我的泪");
                 image1.setImageResource(R.drawable.westlake);
+                detailBuy1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                detailBuy2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
         }
     }

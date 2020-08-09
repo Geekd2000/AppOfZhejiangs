@@ -18,7 +18,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         myFragment1 = new MyFragment1("杭州市");
         myFragment2 = new MyFragment2("第二个");
-        myFragment3 = new MyFragment3("地图");
+        myFragment3 = new MyFragment3("第三个");
         myFragment4 = new MyFragment4("第四个");
     }
 

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorNotWhite"
-    android:orientation="vertical">
+    android:background="@color/colorNotWhite">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_map"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorLightGreen"
-        app:navigationIcon="@drawable/ic_back_white">
+        app:navigationIcon="@drawable/ic_back_white"
+        android:layout_alignParentTop="true">
 
         <TextView
             android:id="@+id/txt_mapTitle"
@@ -28,6 +28,7 @@
         android:id="@+id/map_baidu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true" />
+        android:clickable="true"
+        android:layout_below="@+id/toolbar_map"/>
 
-</LinearLayout>
+</RelativeLayout>

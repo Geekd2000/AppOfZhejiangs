@@ -63,35 +63,47 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/linear_layout2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/txt_company"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/company"
                 android:drawablePadding="5dp"
+                android:layout_centerVertical="true"
                 android:gravity="center_vertical"
                 android:text="超级无敌大公司"
                 android:textColor="@color/colorGray"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/txt_sale"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:text="销量:999"
+                android:layout_centerVertical="true"
+                android:text="销量:"
+                android:padding="5dp"
+                android:layout_toLeftOf="@id/txt_sale"
                 android:textColor="@color/colorGray"
                 android:textSize="12sp" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/txt_sale"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:text="999"
+                android:textColor="@color/colorGray"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
