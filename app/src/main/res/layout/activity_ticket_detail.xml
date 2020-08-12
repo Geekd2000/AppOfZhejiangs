@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment3.TicketDetailActivity">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -34,17 +33,22 @@
             android:layout_below="@+id/toolbar_goods"
             android:orientation="vertical">
 
-            <ImageView
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+
+<!--            <ImageView
                 android:id="@+id/image_ticketDetail"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/westlake" />
+                android:src="@drawable/westlake" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="-8dp"
                 android:background="@drawable/bg_top_radius"
                 android:orientation="vertical"
                 android:paddingLeft="15dp"

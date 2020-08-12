@@ -22,15 +22,15 @@ public class FragmentAdapter1 extends RecyclerView.Adapter<FragmentAdapter1.Line
 
     @NonNull
     @Override
-    public FragmentAdapter1.LinearViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LinearViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new LinearViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FragmentAdapter1.LinearViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull LinearViewHolder holder, final int position) {
         holder.title.setText("诗画浙江");
         holder.time.setText("2020-7-27 22:18");
-        holder.amount.setText("浏览量：777");
+        holder.amount.setText("777");
     }
 
     @Override

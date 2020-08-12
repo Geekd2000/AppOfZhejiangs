@@ -1,5 +1,6 @@
 package com.example.appofzhejiang;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -13,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //UI Object
     private TextView tab_main;
     private TextView tab_flag;
-    private TextView tab_location;
+    private TextView tab_shopping;
     private TextView tab_my;
     private ViewPager viewPager;
 
@@ -32,11 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*****隐藏系统顶部栏****
+        /*****隐藏系统顶部栏*****/
          ActionBar actionbar = getSupportActionBar();
          if (actionbar != null) {
          actionbar.hide();
-         }*************/
+         }
 
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         bindViews();
@@ -47,12 +48,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void bindViews() {
         tab_main = findViewById(R.id.tab_main);
         tab_flag = findViewById(R.id.tab_flag);
-        tab_location = findViewById(R.id.tab_location);
+        tab_shopping = findViewById(R.id.tab_shopping);
         tab_my = findViewById(R.id.tab_my);
 
         tab_main.setOnClickListener(this);
         tab_flag.setOnClickListener(this);
-        tab_location.setOnClickListener(this);
+        tab_shopping.setOnClickListener(this);
         tab_my.setOnClickListener(this);
 
         viewPager = findViewById(R.id.vPager);
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void setSelected() {
         tab_main.setSelected(false);
         tab_flag.setSelected(false);
-        tab_location.setSelected(false);
+        tab_shopping.setSelected(false);
         tab_my.setSelected(false);
     }
 
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tab_flag:
                 viewPager.setCurrentItem(PAGE_TWO);
                 break;
-            case R.id.tab_location:
+            case R.id.tab_shopping:
                 viewPager.setCurrentItem(PAGE_THREE);
                 break;
             case R.id.tab_my:
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case PAGE_THREE:
                     setSelected();
-                    tab_location.setSelected(true);
+                    tab_shopping.setSelected(true);
                     break;
                 case PAGE_FOUR:
                     setSelected();

@@ -1,21 +1,18 @@
 package com.example.appofzhejiang.fragment3.hotel;
 
 import android.content.Context;
-import android.content.Intent;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.R;
-import com.example.appofzhejiang.fragment3.TicketDetailActivity;
-
 import java.util.List;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> {
@@ -51,7 +48,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
     }
 
     //设置item的监听事件的接口
-
     public interface OnItemClickListener {
         /*  *
          * 接口中的点击每一项的实现方法，参数自己定义

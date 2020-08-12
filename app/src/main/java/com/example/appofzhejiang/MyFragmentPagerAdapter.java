@@ -16,10 +16,10 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     public MyFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
-        myFragment1 = new MyFragment1("杭州市");
-        myFragment2 = new MyFragment2("第二个");
-        myFragment3 = new MyFragment3("第三个");
-        myFragment4 = new MyFragment4("第四个");
+        myFragment1 = new MyFragment1("浙江","杭州");
+        myFragment2 = new MyFragment2("杭州");
+        myFragment3 = new MyFragment3("杭州");
+        myFragment4 = new MyFragment4("杭州");
     }
 
 
@@ -58,5 +58,4 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
         }
         return fragment;
     }
-
 }

@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,16 +24,17 @@ public class MyFragment2 extends Fragment {
     private RecyclerView recyclerView;
     private FragmentAdapter2 fragmentAdapter2;
     private String content;
-    private TextView txtCity,txtMore;
+    private TextView txtCity, txtMore, txtSearch;
+    private EditText editSearch;
 
-    public MyFragment2(String content){
-        this.content=content;
+    public MyFragment2(String content) {
+        this.content = content;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view=inflater.inflate(R.layout.fragment_my2,container,false);
+        view = inflater.inflate(R.layout.fragment_my2, container, false);
         txtCity = view.findViewById(R.id.txt_city);
         txtCity.setText(content);
         txtCity.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +59,15 @@ public class MyFragment2 extends Fragment {
 
             }
         });
+        txtSearch = view.findViewById(R.id.txt_search);
+        editSearch = view.findViewById(R.id.main_search);
+        txtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String s = editSearch.getText().toString();
+                Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
         initRecyclerView();
         return view;
     }
@@ -71,7 +83,7 @@ public class MyFragment2 extends Fragment {
         //给RecyclerView设置Adapter
         recyclerView.setAdapter(fragmentAdapter2);
         //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         //设置item的分割线
         //recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
     }

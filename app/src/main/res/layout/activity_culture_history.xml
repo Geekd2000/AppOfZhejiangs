@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/tourism_publicity_title" />
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:layout_gravity="top"
+                android:layout_marginTop="-10dp"
+                android:src="@drawable/culture_history" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="12dp"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/tourismstrategy_img" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="-5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="全域旅游攻略组"
+                            android:textColor="#000"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2020-08-10"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="初识杭州 | 历史沿革"
+                    android:textColor="#000"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="杭州乌龟洞遗址古人类化石的发现证实五万年前就有古人类在杭州这片土地上生活，萧山跨湖桥遗址的发掘证实了早在8000年前就有现代人类在此繁衍生息，距今5000年前的余杭良渚文化被誉为“文明的曙光”。杭州夏商周属“扬州之域”。传说在夏禹治水时，全国分为九州，长江以南的广阔地域均泛称扬州。公元前21世纪，夏禹南巡，大会诸侯于会稽（今绍兴），曾乘舟航行经过这里，并舍其杭（“杭”是方舟）于此，故名“余杭”。一说，禹至此造舟以渡，越人称此地为“禹杭”，其后，口语相传，讹“禹”为“余”，乃名“余杭”。春秋时，吴国、越国两国争霸，杭州先属越国，后属吴国，越灭吴后，复属越。战国时，楚国灭越国，杭州又归入楚。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="秦统一六国后，在灵隐山麓设县治，称钱唐，属会稽郡。《史记·秦始皇本纪》中记载：“三十七年十月癸丑，始皇出游……过丹阳，至钱唐，临浙江，水波恶……”这是史籍最早记载“钱唐”之名。当时还是随江潮出没的海滩，西湖尚未形成。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="西汉承秦制，杭州仍称钱唐。新莽时一度改钱唐为泉亭县；到了东汉，复置钱唐县，属吴郡。这时杭州农田水利兴修初具规模，并从宝石山至万松岭修筑了第一条海塘，西湖开始与海隔断，成为内湖。汉书地理志记载:钱唐,西部都尉治。武林山，武林水所出，东入海，行八百三十里，莽曰泉亭。... "
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="三国、两晋、杭州属吴郡，归古扬州。东晋咸和元年（326年），印度佛教徒慧理在飞来峰下建了灵隐寺，是西湖最古的丛林建筑。梁太清三年（549年），侯景升钱唐县为临江郡。陈祯明元年（587年），又置钱唐郡，辖钱唐、于潜、富阳、新城、桐庐，属吴州。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="隋王朝建立后，于开皇九年（589年）废郡为州，“杭州”之名第一次出现。并桐庐入钱唐县，下辖钱唐、余杭、富阳、盐官、于潜、武康六县。州治初在余杭，次年迁钱唐。开皇十一年，在凤凰山依山筑城，“周三十六里九十步”，这是最早的杭州城。大业三年（607年），改置为余杭郡。六年，杨素凿通江南运河，从江苏镇江起，经苏州、嘉兴等地而达杭州，全长400多千米，自此，拱宸桥成为大运河的起讫点。杭州一跃而“咽喉吴越，势雄江海”，确立起了它在整个钱塘江下游地区的交通枢纽地位。“水牵卉服，陆控山夷”。这一重要的地理位置，促进了杭州经济文化的迅速发展。这时的余杭郡有户15380，杭州户口统计由此开始。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="唐代，置杭州郡，旋改余杭郡，治所在钱唐。因避国号讳，于武德四年（621年）改“钱唐”为“钱塘”。太宗时属江南道，天宝元年（742年）复名余杭郡，属江南东道。乾元元年（758年）又改为杭州，归浙江西道节度，州治一度在钱塘，辖钱塘、盐官、富阳、新城、余杭、临安、于潜、唐山八县。 到了唐代后期，杭州已是一副“骈樯二十里，开肆三万室”的兴旺景象。每年朝廷从杭州所收商税高达50万缗，几乎占全国财政收入的4%。在元和八年（812年）中央政府任命卢元辅为杭州刺史的制文中已经出现了“江南列郡，余杭为大”的赞誉。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="五代十国时期，吴越国偏安东南，建都于杭州。当时的杭州，治在钱塘，辖钱塘、钱江、盐官、余杭、富春、桐庐、于潜、新登、横山、武康十县。在吴越三代、五帝共85年的统治下，经过劳动人民的辛勤开拓建设，杭州发展成为全国经济繁荣和文化荟萃之地。欧阳修在《有美堂记》里有这样的描述：“钱塘自五代时，不烦干戈，其人民幸福富庶安乐。十余万家，环以湖山，左右映带，而闽海商贾，风帆浪泊，出入于烟涛杳霭之间，可谓盛矣！”吴越王钱镠在杭州凤凰山筑了“子城”，内建宫殿，作为国治，又在外围筑了“罗城”，周围70里，作为防御。据《吴越备史》记载，这个都城，西起秦望山，沿钱塘江至江干，濒钱塘湖（西湖）到宝石山，东北面到艮山门。以形似腰鼓，故又有“腰鼓城”之称。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="吴越王重视兴修水利，引西湖水输入城内运河；在钱塘江沿岸，采用“石囤木桩法”修筑百余里的护岸海塘；还在钱塘江沿岸兴建龙山、浙江二闸，阻止咸水倒灌，减轻潮患，扩大平陆。动用民工凿平江中的石滩，使航道畅通，促进了与沿海各地的水上交通。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="北宋时，杭州为两浙路路治。淳化五年（994年），改军号为宁海军节度。大观元年（1107年）升为帅府，辖钱塘、仁和、余杭、临安、于潜、昌化、富阳、新登、盐官九县。当时人口已达20余万户，为江南人口最多的州郡之一。经济繁荣，纺织、印刷、酿酒、造纸业都较发达，对外贸易进一步开展，是全国四大商港之一。杭州历任地方官，十分重视对西湖的整治。元祐四年（1089年），著名诗人苏东坡任杭州知州，再度疏浚西湖，用所挖取的葑泥，堆成横跨南北的长堤（苏堤），上有六桥，堤边植桃、柳、芙蓉，使西湖更加美化。又开通茅山、盐桥两河，再疏六井，使卤不入市，民饮称便。据《宋史》卷88《地理志》载，北宋崇宁年间（1101—1106）户口数字与元丰年间大致相等，户数达203574，口数达296615。宋仁宗有诗句赐梅挚知杭州中赞美杭州为东南第一州。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="由此可见，在南宋定都之前，杭州是江南人口数量最多的州城。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="经过北宋150多年的发展，到了南宋时，开始了杭州的鼎盛时期。南宋建炎三年（1129年）升为临安府，治所在钱塘。辖钱塘、仁和、临安、余杭、于潜、昌化、富阳、新城、盐宫九县，地域与唐代大致相当。绍兴八年（1138年）定都在于此，杭州城垣因而大事扩展，当时分为内城和外城。内城，即皇城，方圆九里，环绕着凤凰山，北起凤山门，南达江干，西至万松岭，东抵候潮门，在皇城之内，兴建殿、堂、楼、阁，还有多处行宫及御花园。外城南跨吴山，北截武林门，右连西湖，左靠钱塘江，气势宏伟。设城门13座，城外有护城河。由于北方许多人随朝廷南迁，使临安府人口激增。到咸淳年间（1265~1274年），居民增至124万余人（包括所属县）。就杭州府城所在的钱塘、仁和两县而言，人口也达43万余人。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="元至元十三年(1276)，设两浙大都督府，又改设安抚司，十五年(1278)升杭州路，为江浙行省省会。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="明代改杭州路为杭州府，为浙江承宣布政使司治所。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="清世祖顺治2年(1645年)，置浙江巡抚，驻杭州，圣祖康熙元年(1662年)，浙江承宣布政使司改为浙江行省，杭州为省会。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="清初，在杭州城西沿西湖一带建造“旗营”，俗称“满城”。城墙周围十里，南至今开元路，北靠法院路，东临中山中路附近，西面包括湖滨公园，并辟有六座城门，总占地1436亩，成为杭州的“城中城”（民国初年拆除）。雍正二年（1724）、嘉庆五年（1800），浙江总督李卫、巡抚阮元先后再次疏浚西湖，挖起大量葑泥，使湖水加深数尺。杭州人口有续增加。光绪九年（1883），杭州城内有62万余人。光绪二十一年，清政府在中日战争中失败，被迫签订《马关条约》，杭州开为日本通商商埠，拱宸桥辟为日本租界。随着资本主义势力的入侵和洋务运动的兴起，杭州的近代工业也逐渐发展起来。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="中华民国元年（1912年），废杭州府，合并钱塘、仁和两县为杭县，仍为省会所在地。民国3年（1914）设道制，置钱塘道，道尹驻杭县。原杭州府所辖各县归钱塘道管辖。民国16年（1927）废道制，析出杭县城区设杭州市，直属浙江省；,郊区仍为杭县，旧属诸县直属于省。从此，杭州确立为市的建制，市区分为八个区。这时杭州已有少数近代工业，如在1897年创办的通益公纱厂（杭州第一棉纺织厂前身），规模较大；其后又陆继兴办起火柴厂、造纸厂等，传统的手工丝织行业也逐步采用机械传动。1909-1914年，沪杭、杭甬铁路相继建成；全长1453米的钱塘江大桥于1937年竣工。1945年抗日战争胜利后，无条件收回拱宸桥日租界。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="从鸦片战争后的百余年间，国力不振，民生凋敝，杭州城市年久失修，工商业也困难重重，西湖的不少景点，大多残破不堪，有的已经废圮。1949年5月3日，杭州市才获得新生。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="50年代以后，杭州的区域范围经历了不断变化。先是将原有的八区改名为上城区、中城区、下城区、江干区、西湖区、艮山区、拱墅区、笕桥区；其后，艮山区并入下城区，笕桥区并入江干区，中城区大部分并入上城区，小部分并入下城区。1958年4月杭县撤销作为杭州市郊区，1960年1月建立钱塘联社，1961年3月余杭县并入杭州钱塘联社，成立新的余杭县。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="1990年初，半山区又与拱墅区合并，成立新的拱墅区。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="1994年，杭州升格为副省级城市。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="1996年12月12日，杭州市新设立滨江区。属县则有萧山、桐庐、余杭、临安、建德、富阳、淳安七个县（市）。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="2001年3月12日，杭州市政府正式宣布，经国务院和浙江省人民政府批准，撤销萧山市和余杭市，同时设立萧山区和余杭区，与杭州市原6个区一起构成一个新杭州，调整后的杭州新市区由原来的6个区增加到8个区。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="2014年12月13日，经国务院批准，撤销富阳市，设立杭州市富阳区。富阳区成为杭州市第九个市辖区。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="2016年10月1日，经国务院批准和浙江省人民政府批复同意，杭州市人民政府驻地由拱墅区环城北路318号迁至江干区解放东路18号。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="2017年8月10日， 浙江省人民政府正式签发《浙江省人民政府关于调整杭州市部分行政区划的通知》，根据《国务院关于同意浙江省调整杭州市部分行政区划的批复》（国函〔2017〕102号）精神，撤销县级临安市，设立杭州市临安区，以原临安市的行政区域为临安区的行政区域，临安区人民政府驻锦城街道衣锦街398号。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="2019年12月，荣登年度中国城市品牌前10强。"
+                    android:textSize="16dp" />
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

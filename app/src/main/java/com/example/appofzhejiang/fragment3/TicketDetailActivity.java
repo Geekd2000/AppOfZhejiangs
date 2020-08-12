@@ -11,6 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appofzhejiang.R;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
+import com.youth.banner.listener.OnBannerListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TicketDetailActivity extends AppCompatActivity {
 
@@ -20,6 +27,8 @@ public class TicketDetailActivity extends AppCompatActivity {
     private ImageView mainImage, image1, image2, image3, image4;
     private TextView detailTitle, detailPrice, detailCompany, detailSales, detailGoods1, detailGoods2, detailPrice1, detailPrice2,
             detailBuy1, detailBuy2, detailContent1, detailContent2, detailContent3, detailContent4;
+    private Banner banner;
+    private List images;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +41,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
-        mainImage = findViewById(R.id.image_ticketDetail);
+        //mainImage = findViewById(R.id.image_ticketDetail);
         image1 = findViewById(R.id.detail_image1);
         image2 = findViewById(R.id.detail_image2);
         image3 = findViewById(R.id.detail_image3);
@@ -51,6 +60,9 @@ public class TicketDetailActivity extends AppCompatActivity {
         detailContent2 = findViewById(R.id.detail_content2);
         detailContent3 = findViewById(R.id.detail_content3);
         detailContent4 = findViewById(R.id.detail_content4);
+        banner = findViewById(R.id.banner);
+
+        //初始化两个集合，图片资源可以是本地，也可以是网络的url
 
         //取得从上一个Activity当中传递过来的Intent对象
         Intent intent = getIntent();
@@ -71,7 +83,16 @@ public class TicketDetailActivity extends AppCompatActivity {
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
                 }
-                mainImage.setImageResource(R.drawable.songcity);
+                images = new ArrayList<>();
+                images.add(R.drawable.songcity);
+                images.add(R.drawable.songcheng);
+                banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
+                banner.setImages(images);//设置图片源
+                banner.setDelayTime(3000);//设置轮播事件，单位毫秒
+                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
+                banner.start();//开始轮播，一定要调用此方法。
+                //mainImage.setImageResource(R.drawable.songcity);
                 detailTitle.setText(title);
                 detailPrice.setText(price);
                 detailCompany.setText(company);
@@ -108,7 +129,16 @@ public class TicketDetailActivity extends AppCompatActivity {
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
                 }
-                mainImage.setImageResource(R.drawable.hotel_image);
+                images = new ArrayList<>();
+                images.add(R.drawable.hotel_image);
+                images.add(R.drawable.hotel_image);
+                banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
+                banner.setImages(images);//设置图片源
+                banner.setDelayTime(3000);//设置轮播事件，单位毫秒
+                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
+                banner.start();//开始轮播，一定要调用此方法。
+//                mainImage.setImageResource(R.drawable.hotel_image);
                 detailTitle.setText(title);
                 detailPrice.setText(price);
                 detailCompany.setText(company);
@@ -143,7 +173,16 @@ public class TicketDetailActivity extends AppCompatActivity {
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
                 }
-                mainImage.setImageResource(R.drawable.taxi_image);
+                images = new ArrayList<>();
+                images.add(R.drawable.taxi_image);
+                images.add(R.drawable.taxi_image2);
+                banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
+                banner.setImages(images);//设置图片源
+                banner.setDelayTime(3000);//设置轮播事件，单位毫秒
+                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
+                banner.start();//开始轮播，一定要调用此方法。
+//                mainImage.setImageResource(R.drawable.taxi_image);
                 detailTitle.setText(title);
                 detailPrice.setText(price);
                 detailCompany.setText(company);
@@ -178,7 +217,16 @@ public class TicketDetailActivity extends AppCompatActivity {
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
                 }
-                mainImage.setImageResource(R.drawable.guider_image);
+                images = new ArrayList<>();
+                images.add(R.drawable.guider_image);
+                images.add(R.drawable.guider_image);
+                banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
+                banner.setImages(images);//设置图片源
+                banner.setDelayTime(3000);//设置轮播事件，单位毫秒
+                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
+                banner.start();//开始轮播，一定要调用此方法。
+//                mainImage.setImageResource(R.drawable.guider_image);
                 detailTitle.setText(title);
                 detailPrice.setText(price);
                 detailCompany.setText(company);
@@ -213,7 +261,16 @@ public class TicketDetailActivity extends AppCompatActivity {
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
                 }
-                mainImage.setImageResource(R.drawable.farmhouse);
+                images = new ArrayList<>();
+                images.add(R.drawable.farmhouse);
+                images.add(R.drawable.farmhouse);
+                banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
+                banner.setImages(images);//设置图片源
+                banner.setDelayTime(3000);//设置轮播事件，单位毫秒
+                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
+                banner.start();//开始轮播，一定要调用此方法。
+//                mainImage.setImageResource(R.drawable.farmhouse);
                 detailTitle.setText(title);
                 detailPrice.setText(price);
                 detailCompany.setText(company);
@@ -248,7 +305,16 @@ public class TicketDetailActivity extends AppCompatActivity {
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
                 }
-                mainImage.setImageResource(R.drawable.longjingxiaren);
+                images = new ArrayList<>();
+                images.add(R.drawable.longjingxiaren);
+                images.add(R.drawable.longjingxiaren);
+                banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
+                banner.setImages(images);//设置图片源
+                banner.setDelayTime(3000);//设置轮播事件，单位毫秒
+                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
+                banner.start();//开始轮播，一定要调用此方法。
+//                mainImage.setImageResource(R.drawable.longjingxiaren);
                 detailTitle.setText(title);
                 detailPrice.setText(price);
                 detailCompany.setText(company);
@@ -284,7 +350,16 @@ public class TicketDetailActivity extends AppCompatActivity {
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
                 }
-                mainImage.setImageResource(R.drawable.westlakelongjing);
+                images = new ArrayList<>();
+                images.add(R.drawable.westlakelongjing);
+                images.add(R.drawable.westlakelongjing);
+                banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
+                banner.setImages(images);//设置图片源
+                banner.setDelayTime(3000);//设置轮播事件，单位毫秒
+                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
+                banner.start();//开始轮播，一定要调用此方法。
+//                mainImage.setImageResource(R.drawable.westlakelongjing);
                 detailTitle.setText(title);
                 detailPrice.setText(price);
                 detailCompany.setText(company);
@@ -319,7 +394,16 @@ public class TicketDetailActivity extends AppCompatActivity {
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
                 }
-                mainImage.setImageResource(R.drawable.westlake);
+                images = new ArrayList<>();
+                images.add(R.drawable.westlake);
+                images.add(R.drawable.westlake2);
+                banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
+                banner.setImages(images);//设置图片源
+                banner.setDelayTime(3000);//设置轮播事件，单位毫秒
+                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
+                banner.start();//开始轮播，一定要调用此方法。
+//                mainImage.setImageResource(R.drawable.westlake);
                 detailTitle.setText(title);
                 detailPrice.setText(price);
                 detailCompany.setText(company);

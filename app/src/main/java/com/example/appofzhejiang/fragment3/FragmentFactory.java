@@ -2,6 +2,7 @@ package com.example.appofzhejiang.fragment3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.fragment3.hotel.Hotel;
@@ -28,6 +30,7 @@ public class FragmentFactory extends Fragment {
     private List<Hotel> hotelList;
     private LinearLayout linearLayout;
     private HotelAdapter adapter;
+    private SwipeRefreshLayout refreshLayout;
 
     private final String mText_key = "FragmentFactory";
 
@@ -49,6 +52,23 @@ public class FragmentFactory extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final int index = this.index;
         View v = inflater.inflate(R.layout.recyclerview, container, false);
+        refreshLayout=v.findViewById(R.id.refreshLayout);
+        refreshLayout.setColorSchemeResources(R.color.colorLightGreen);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                /*if (refreshLayout.isRefreshing()) {
+                    refreshLayout.setRefreshing(false);
+                }*/
+                //模拟网络请求需要3000毫秒，请求完成，设置setRefreshing 为false
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        refreshLayout.setRefreshing(false);
+                    }
+                }, 3000);
+            }
+        });
         if (index == 0) {
             initTickets();
             RecyclerView recyclerView = v.findViewById(R.id.recycler_view);

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/tourism_publicity_title" />
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_gravity="top"
+                android:layout_marginTop="-10dp"
+                android:src="@drawable/culture_folk" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="12dp"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/tourismstrategy_img" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="-5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="全域旅游攻略组"
+                            android:textColor="#000"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2020-08-10"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="初识杭州 | 民俗文化"
+                    android:textColor="#000"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="杭州滩簧"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="杭州滩簧简称杭滩，为江浙滩簧一支，是浙江杭州的传统戏曲剧种之一。用杭州方言演唱。据传，杭滩起源于宋室南渡，康王建都杭州，患病在床，杭人为迎逢康王，创造这种坐唱曲艺形式，故又有“安康”之称。杭滩以坐唱形式，五、七人为堂，也有多至九及十一人的。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="角色分生、旦、净、丑四种；生又分小生、老生，旦又分彩旦、小旦、老旦。艺人自操乐器，边拉边唱。乐器有胡琴、琵琶、三弦、筝、笙、箫、笛、鼓板，有时也用洋琴。曲调包括滩簧、弋腔、昆曲和小调等，曲牌有“西江月”、“点绛唇”、“醉花荫”、“满江红”等二十多种。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="簧，清代以来流行于江苏、浙江一带的代言体坐唱曲艺。民国初年经过化妆演出，逐渐发展为当地的戏曲声腔。滩簧兴起于清乾隆年间。乾隆六十年(1795)成书的《霓裳续谱》已有“南词弹黄调”、“滩黄调”之称。钱泳《履园丛话》等书又称做“滩王”。乾隆年间沈起凤的传奇《文星榜》第4出道士云：“唱滩王是我起首”，又云：“《卖橄榄》粗话直喷，《打斋饭》嚼蛆一泡。”这两出都是滩簧中出名的以诨笑取胜的曲目。嘉庆九年(1804)成书的《白雪遗音》收有《占花魁》的《醉归》、《独占》两段。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="杭州铜雕工艺"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="杭州铜雕的起源可追溯至远古的青铜器时代。从夏朝开始，中国人便创造了青铜文明。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="在浙江文化史上，春秋时期越王青铜剑、西汉会稽青铜镜都是青铜文化的代表，12世纪初，宋室南迁，定都临安（今杭州），杭州遂成为当时全国的政治、经济、文化中心，四方移民云集，大批铜匠也涌入此地，以鼓楼附近的打铜巷为中心，每年要制造大量的兵甲、提刀、手弓、弩箭等兵器及日用铜器具。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="清同治年间，铜器成为人们日常生活的必需品。铜艺产品在款式、工艺等方面发生了显著变化，于1876年出现了朱府铜铺，从此有了生产铜制品的专业工场，继承了青铜技艺，产品从构图布局、造型装饰到技法处理都是传统的，与青铜技艺相通，血脉融合。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="杭州织锦技艺"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="杭州织锦技艺是浙江杭州的传统技艺。杭州素有丝绸之府之称。杭州织锦历史可追溯至五代十国，吴越国王钱缪在杭州设立了官营丝绸作坊“织室”。明清“杭州织造局”是三大官办织造机构之一，产品专供宫廷使用。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="优质的蚕丝，精湛的技艺，使杭州织锦成为中国著名的丝织品种，在中国织锦发展史上占有重要的地位。杭州织锦有58道传统手工织锦工序，五彩锦绣织锦的织纹穿吊装造法、以及盘梭（纬）法、换道（纬）法、抛梭（纬）法、通经回纬挖花法等织锦工艺技法均为杭州织锦特色。杭州织锦工艺分为装饰织锦和日用织锦两类，主要包括丝织风景、人物和台毯、窗帘、床罩、坐垫等。杭州织锦将写生画和装饰艺术有机地融为一体，使织锦艺术更为精美。"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

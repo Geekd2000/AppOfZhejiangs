@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,7 +41,8 @@ public class MyFragment3 extends Fragment {
     private RecyclerView recyclerView;
     private FragmentAdapter3 fragmentAdapter3;
     private String content;
-    private TextView txtCity, txtTicket, txtMap, txtHotel, txtTaxi, txtGuider, txtNongjiale, txtFood, txtCommodity;
+    private TextView txtCity, txtTicket, txtHotel, txtTaxi, txtGuider, txtNongjiale, txtFood, txtCommodity,txtSearch;
+    private EditText editSearch;
     private List<Ticket> ticketList;
 
     public MyFragment3(String content) {
@@ -136,12 +139,13 @@ public class MyFragment3 extends Fragment {
                 startActivity(intent);
             }
         });
-        txtMap = view.findViewById(R.id.txt_mapmapmap);
-        txtMap.setOnClickListener(new View.OnClickListener() {
+        txtSearch = view.findViewById(R.id.txt_search);
+        editSearch = view.findViewById(R.id.main_search);
+        txtSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), BaiduMapActivity.class);
-                startActivity(intent);
+                String s=editSearch.getText().toString();
+                Toast.makeText(getActivity(),s,Toast.LENGTH_SHORT).show();
             }
         });
         initRecyclerView();
