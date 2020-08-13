@@ -35,6 +35,7 @@ public class TicketDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_detail);
         toolbar = findViewById(R.id.toolbar_goods);
+        //标题栏返回按钮点击事件，点击后返回上一页
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

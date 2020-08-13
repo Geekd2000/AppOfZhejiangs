@@ -68,7 +68,6 @@ import okhttp3.Response;
 
 public class MyFragment1 extends Fragment {
     public LocationClient mLocationClient;
-
     private View view; // 定义view用来设置fragment的layout
     public RecyclerView recyclerView; // 定义RecyclerView
     private FragmentAdapter1 fragmentAdapter1;  // 自定义RecyclerView的适配器

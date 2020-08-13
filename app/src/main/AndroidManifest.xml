@@ -19,6 +19,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!--读取权限-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:ignore="ProtectedPermissions" />
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -66,7 +71,7 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="G8xi1YFTUNIDP1B6KtbP4Z0zGltZ37A4" />
+            android:value="WXNAQ1ipzflk2TtRKfIRd8ZtoFNbnp7q" />
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
