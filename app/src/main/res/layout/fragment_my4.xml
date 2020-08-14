@@ -147,52 +147,6 @@
                 android:background="@color/colorGray" />
 
             <TextView
-                android:id="@+id/txt_collection"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
-                android:drawableLeft="@drawable/collection"
-                android:drawableRight="@drawable/arrow"
-                android:drawablePadding="8dp"
-                android:foreground="?selectableItemBackground"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:paddingTop="10dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="10dp"
-                android:text="收藏"
-                android:textColor="@color/colorLightBlack"
-                android:textSize="14sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/colorGray" />
-
-            <TextView
-                android:id="@+id/txt_myPost"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
-                android:drawableLeft="@drawable/post"
-                android:drawableRight="@drawable/arrow"
-                android:drawablePadding="8dp"
-                android:foreground="?selectableItemBackground"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:paddingTop="10dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="10dp"
-                android:text="我的发布"
-                android:textColor="@color/colorLightBlack"
-                android:textSize="14sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/colorGray" />
-
-            <TextView
                 android:id="@+id/txt_setting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

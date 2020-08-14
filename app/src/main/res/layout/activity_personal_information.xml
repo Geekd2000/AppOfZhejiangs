@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".Setting.PersonalInformationActivity"
+              android:orientation="vertical">
+    <RelativeLayout
+            android:id="@+id/setting"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffff">
+        <Button
+                android:id="@+id/order_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_back"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_centerVertical="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:text="设置"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"/>
+        <TextView
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:text="保存"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="25dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/user_image"
+                android:layout_alignParentRight="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="头像"
+                android:textSize="16sp"
+                android:textColor="@color/colorLightBlack"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:elevation="8dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:layout_marginTop="5dp">
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="金禹宏"
+                android:textSize="16sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置昵称"
+                android:textSize="16sp"
+                android:textColor="@color/colorLightBlack"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/sex"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:elevation="8dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:layout_marginTop="5dp">
+
+        <TextView
+                android:id="@+id/sex_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="男"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="性别"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="16sp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:elevation="8dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:layout_marginTop="5dp">
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1111111@qq.com"
+                android:textSize="16sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置邮箱"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="16sp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -109,13 +109,21 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                        intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                        intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 break;
@@ -153,13 +161,21 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                        intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                        intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 break;
@@ -197,13 +213,21 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                        intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                        intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 break;
@@ -241,13 +265,21 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                        intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                        intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 break;
@@ -285,13 +317,21 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                        intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                        intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 break;
@@ -330,13 +370,21 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                        intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                        intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 break;
@@ -374,13 +422,21 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                        intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                        intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 break;
@@ -418,13 +474,21 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy1", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                        intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(TicketDetailActivity.this, "You clicked buy2", Toast.LENGTH_SHORT).show();
+                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                        intentBuy.putExtra("goodsName", detailTitle.getText());
+                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                        intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        startActivity(intentBuy);
                     }
                 });
                 break;

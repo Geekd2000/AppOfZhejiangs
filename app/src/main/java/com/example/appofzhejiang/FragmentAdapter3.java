@@ -26,8 +26,8 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.Line
     private Context context;
     private List<Ticket> ticketList;
 
-    public FragmentAdapter3(List<Ticket> ticketList,Context context) {
-        this.ticketList=ticketList;
+    public FragmentAdapter3(List<Ticket> ticketList, Context context) {
+        this.ticketList = ticketList;
         this.context = context;
     }
 
@@ -41,11 +41,11 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.Line
         linearViewHolder.getTicketView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int position = linearViewHolder .getAdapterPosition();
+                int position = linearViewHolder.getAdapterPosition();
                 Ticket ticket = ticketList.get(position);
                 //Toast.makeText(view.getContext(), "You clicked view：" + ticket.getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, TicketDetailActivity.class);
-                intent.putExtra("index","7");
+                intent.putExtra("index", "7");
                 intent.putExtra("title", ticket.getName());
                 intent.putExtra("price", ticket.getPrice());
                 intent.putExtra("company", ticket.getLocation());
@@ -75,10 +75,10 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.Line
     /*//设置item的监听事件的接口
     public interface OnItemClickListener {
         *//*  *
-         * 接口中的点击每一项的实现方法，参数自己定义
-         *
-         * @param view 点击的item的视图
-         * @param data 点击的item的数据*//*
+     * 接口中的点击每一项的实现方法，参数自己定义
+     *
+     * @param view 点击的item的视图
+     * @param data 点击的item的数据*//*
 
         public void OnItemClick(View view,Ticket ticket);
     }
@@ -89,7 +89,7 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.Line
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }*/
-    
+
     public class LinearViewHolder extends RecyclerView.ViewHolder {
 
         private View ticketView; // 用来做点击事件的
@@ -119,6 +119,7 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.Line
                 }
             });*/
         }
+
         public View getTicketView() {
             return ticketView;
         }
