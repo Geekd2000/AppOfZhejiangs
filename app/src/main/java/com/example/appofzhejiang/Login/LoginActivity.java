@@ -1,6 +1,7 @@
 package com.example.appofzhejiang.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,10 +20,11 @@ import com.example.appofzhejiang.R;
 public class LoginActivity extends AppCompatActivity {
 
     private TextView tv_main_title;//标题
-    private TextView tv_back,tv_register,tv_find_psw;//返回键,显示的注册，找回密码
+    private TextView tv_register,tv_find_psw;//返回键,显示的注册，找回密码
     private Button btn_login;//登录按钮
     private String userName,psw,spPsw;//获取的用户名，密码，加密密码
     private EditText et_user_name,et_psw;//编辑框
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         //从main_title_bar中获取的id
         tv_main_title=findViewById(R.id.tv_main_title);
         tv_main_title.setText("登录");
-        tv_back=findViewById(R.id.tv_back);
+        toolbar=findViewById(R.id.bar_toolbar);
         //从activity_login.xml中获取的
         tv_register=findViewById(R.id.tv_register);
         tv_find_psw=findViewById(R.id.tv_find_psw);
@@ -45,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         et_user_name=findViewById(R.id.et_user_name);
         et_psw=findViewById(R.id.et_psw);
         //返回键的点击事件
-        tv_back.setOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //登录界面销毁

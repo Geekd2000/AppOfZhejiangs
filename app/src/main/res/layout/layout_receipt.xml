@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite">
+
+    <TextView
+        android:id="@+id/receipt_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="姓名"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/receipt_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="180dp"
+        android:text="18357421729"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/receipt_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/receipt_username"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/tv_bg"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="默认"
+        android:textColor="#17C780"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/receipt_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/receipt_phone"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@id/receipt_default"
+        android:text="浙江省杭州市江干区 17栋302"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/receipt_address"
+        android:layout_marginTop="20dp"
+        android:background="#000000" />
+
+    <Button
+        android:id="@+id/receipt_delete"
+        android:layout_width="20dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/lajitong" />
+</RelativeLayout>

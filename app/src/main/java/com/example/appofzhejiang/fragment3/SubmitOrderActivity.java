@@ -172,6 +172,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
                     }
                 }).setCancelText("取消")
                 .setSubmitText("确认")
+                .setTitleText("选择时间")
                 .setType(new boolean[]{true, true, true, false, false, false})
                 .isDialog(true) //默认设置false ，内部实现将DecorView 作为它的父控件。
                 .build();

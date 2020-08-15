@@ -8,6 +8,7 @@ import com.example.appofzhejiang.MainActivity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ public class TourismCultureFolkActivity extends AppCompatActivity {
     private TextView tourismPublicityTitle;
     private String currentCity;
     private String location;
-    private Button backButton;
+    private Toolbar backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,26 +37,20 @@ public class TourismCultureFolkActivity extends AppCompatActivity {
         this.tourismPublicityTitle = (TextView) findViewById(R.id.tourism_publicity_title);
         setTourismPublicityTitle();
         // 设置标题栏返回按钮点击事件
-        backButton = findViewById(R.id.back_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        backButton = findViewById(R.id.back_toolbar);
+        backButton.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(TourismCultureFolkActivity.this, MainActivity.class);
-//                startActivity(intent);
                 finish();
-
             }
         });
-
     }
 
     /**
      * 设置标题
-     *
      */
     private void setTourismPublicityTitle() {
-            this.tourismPublicityTitle.setText("初识杭州 | 民俗文化");
-            this.tourismPublicityTitle.setTextColor(Color.BLACK);
-
+        this.tourismPublicityTitle.setText("初识杭州 | 民俗文化");
+        this.tourismPublicityTitle.setTextColor(Color.BLACK);
     }
 }

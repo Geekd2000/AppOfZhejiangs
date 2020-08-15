@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorWhite"
+        android:elevation="5dp"
         app:navigationIcon="@drawable/ic_back">
 
         <TextView
@@ -76,8 +77,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/div_tab_bar"
-        android:background="@drawable/bg_jianbian"
-        android:layout_below="@+id/toolbar_order">
+        android:layout_below="@+id/toolbar_order"
+        android:background="@drawable/bg_jianbian">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -148,9 +149,9 @@
                     android:id="@+id/order_telephone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="40dp"
                     android:layout_toRightOf="@id/order_name"
-                    android:text="电话号码"
+                    android:text="17788994455"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="16sp" />
 
@@ -159,9 +160,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/order_telephone"
-                    android:layout_marginLeft="52dp"
+                    android:layout_marginLeft="45dp"
                     android:maxLines="2"
-                    android:text="地址"
+                    android:text="浙江省杭州市江干区白杨街道"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="16sp" />
 

@@ -2,6 +2,7 @@ package com.example.appofzhejiang.Setting;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,7 +16,7 @@ import com.example.appofzhejiang.R;
 public class PersonalInformationActivity extends AppCompatActivity {
 
     public TextView sexChange, mBtnSave;
-    private Button back;
+    private Toolbar mBack;
     private String[] sexArry = new String[]{"女", "男"};// 性别选择
 
     @Override
@@ -24,11 +25,11 @@ public class PersonalInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal_information);
         mBtnSave = findViewById(R.id.save);
         sexChange = findViewById(R.id.sex_change);
-        back = findViewById(R.id.order_back);
+        mBack = findViewById(R.id.personal_toolbar);
         OnClick onClick = new OnClick();
         sexChange.setOnClickListener(onClick);
         mBtnSave.setOnClickListener(onClick);
-        back.setOnClickListener(onClick);
+        mBack.setOnClickListener(onClick);
     }
 
     class OnClick implements View.OnClickListener {
@@ -50,7 +51,7 @@ public class PersonalInformationActivity extends AppCompatActivity {
                     });
                     builder3.show();// 让弹出框显示
                     break;
-                case R.id.order_back:
+                case R.id.personal_toolbar:
                     finish();
                     break;
                 case R.id.save:

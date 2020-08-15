@@ -4,9 +4,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
@@ -19,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ViewPager viewPager;
 
     private MyFragmentPagerAdapter mAdapter;
-
 
     //几个代表页面的常量
     public static final int PAGE_ONE = 0;
@@ -34,10 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         /*****隐藏系统顶部栏*****/
-         ActionBar actionbar = getSupportActionBar();
-         if (actionbar != null) {
-         actionbar.hide();
-         }
+        ActionBar actionbar = getSupportActionBar();
+        if (actionbar != null) {
+            actionbar.hide();
+        }
 
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         bindViews();
@@ -122,4 +125,72 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
+    //双击手机返回键退出 start
+    private long firstTime = 0;//第一次返回按钮计时
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                long secondTime = System.currentTimeMillis();
+                if (secondTime - firstTime > 2000) {
+                    showShortToast("再按一次退出");
+                    firstTime = secondTime;
+                } else {//完全退出
+                    moveTaskToBack(false);//应用退到后台
+                    System.exit(0);
+                }
+                return true;
+        }
+
+        return super.onKeyUp(keyCode, event);
+    }
+
+    /**
+     * 快捷显示short toast方法
+     *
+     * @param string
+     */
+    public void showShortToast(String string) {
+        showShortToast(string, false);
+    }
+
+    /**
+     * 快捷显示short toast方法
+     *
+     * @param string
+     * @param isForceDismissProgressDialog
+     */
+    public void showShortToast(final String string, final boolean isForceDismissProgressDialog) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (isForceDismissProgressDialog) {
+                    dismissProgressDialog();
+                }
+                Toast.makeText(MainActivity.this, "" + string, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    /**
+     * 隐藏加载进度
+     */
+    public void dismissProgressDialog() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                //把判断写在runOnUiThread外面导致有时dismiss无效，可能不同线程判断progressDialog.isShowing()结果不一致
+                ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+                if (progressDialog == null || progressDialog.isShowing() == false) {
+                    Log.w("MainActivity", "dismissProgressDialog  progressDialog == null" +
+                            " || progressDialog.isShowing() == false >> return;");
+                    return;
+                }
+                progressDialog.dismiss();
+            }
+        });
+    }
+    //双击手机返回键退出 end
 }

@@ -1,6 +1,7 @@
 package com.example.appofzhejiang.Setting;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +13,9 @@ import com.example.appofzhejiang.R;
 
 public class SettingActivity extends AppCompatActivity {
 
-    private Button mBtnRollOut,back;
+    private Button mBtnRollOut;
     private RelativeLayout user;
+    private Toolbar back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +24,9 @@ public class SettingActivity extends AppCompatActivity {
 
         mBtnRollOut = findViewById(R.id.roll_out);
         user = findViewById(R.id.user);
-        back = findViewById(R.id.order_back);
+        back = findViewById(R.id.setting_toolbar);
 
-        back.setOnClickListener(new View.OnClickListener() {
+        back.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

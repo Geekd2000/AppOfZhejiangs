@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/title_bar"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:background="@android:color/transparent">
     <!--一个是显示返回键，一个是显示标题框-->
     <!--通过TextView来显示，id ： tv_back , tv_main_title -->
-    <TextView
-        android:id="@+id/tv_back"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
-        android:background="@drawable/ic_back" />
-    <TextView
-        android:id="@+id/tv_main_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="20dp"
-        android:textSize="20sp"/>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/bar_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:elevation="5dp"
+        app:navigationIcon="@drawable/ic_back">
+
+        <TextView
+            android:id="@+id/tv_main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="18sp" />
+
+    </androidx.appcompat.widget.Toolbar>
     <!--其中android:background="@drawable/go_back_selector"为点击回退键时，会变化效果，其实就是一个点击更换个图片而已。-->
     <!--我们先用这种老方法，接下来以后的文章才做代码优化效果-->
 </RelativeLayout>

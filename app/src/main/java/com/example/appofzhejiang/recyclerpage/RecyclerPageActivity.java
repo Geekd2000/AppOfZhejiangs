@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class RecyclerPageActivity extends AppCompatActivity {
     private List<RecyclerBean> recyclerBeanList;
-    private Button backButton;
+    private Toolbar backButton;
     private String currentCity;
     private String type;
     private TextView tourismPublicityTitle;
@@ -41,11 +42,11 @@ public class RecyclerPageActivity extends AppCompatActivity {
         }
 
         // 设置标题
-        this.tourismPublicityTitle = (TextView)findViewById(R.id.tourism_publicity_title);
+        this.tourismPublicityTitle = (TextView) findViewById(R.id.tourism_publicity_title);
         setRecyclerPageTitle(this.type);
 
         // 初始化
-        recyclerBeanList = new RecyclerBeanListUtil(currentCity,type).getRecyclerBeanList();
+        recyclerBeanList = new RecyclerBeanListUtil(currentCity, type).getRecyclerBeanList();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         RecyclerPageAdapter adapter = new RecyclerPageAdapter(recyclerBeanList);
@@ -53,18 +54,15 @@ public class RecyclerPageActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         // 设置标题栏返回按钮点击事件
-        backButton = findViewById(R.id.back_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        backButton = findViewById(R.id.back_toolbar);
+        backButton.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(RecyclerPageActivity.this, MainActivity.class);
-//                startActivity(intent);
                 finish();
-
             }
         });
 
-         // 判断recyclerView是否已经滑到底部了
+        // 判断recyclerView是否已经滑到底部了
         recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             //用来标记是否正在向最后一个滑动
             boolean isSlidingToLast = false;
@@ -108,16 +106,17 @@ public class RecyclerPageActivity extends AppCompatActivity {
 
     /**
      * 设置标题
+     *
      * @param location
      */
     private void setRecyclerPageTitle(String location) {
-        if(location == null) {
+        if (location == null) {
             this.tourismPublicityTitle.setText("详情信息");
             return;
         }
-        if(RecyclerType.NEWS.equals(location)) {
+        if (RecyclerType.NEWS.equals(location)) {
             this.tourismPublicityTitle.setText("专题新闻");
-        } else if(RecyclerType.STRATEGY.equals(location)) {
+        } else if (RecyclerType.STRATEGY.equals(location)) {
             this.tourismPublicityTitle.setText("攻略详情");
         } else {
             this.tourismPublicityTitle.setText("详情信息");
