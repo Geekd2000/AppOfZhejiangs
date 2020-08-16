@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         viewPager.setAdapter(mAdapter);
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(this);
+        viewPager.setOffscreenPageLimit(2); // 防止频繁的销毁视图
     }
 
     //重置所有文本的选中状态

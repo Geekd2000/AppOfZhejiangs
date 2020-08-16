@@ -1,6 +1,7 @@
 package com.example.appofzhejiang;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -43,6 +44,13 @@ import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
 import com.zaaach.citypicker.model.HotCity;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -68,6 +76,25 @@ public class MyFragment3 extends Fragment {
         removeRedundantWord();
     }
 
+    /**
+     * 此方法会在onCreateView方法前执行，因为fragemnt有缓存机制导致页面切换时城市信息不同步
+     * @param isVisibleToUser
+     */
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser) {
+            // 如果缓存中有城市信息，则从缓存中获取城市
+            String cityInfo = load("data_cityInfo");
+            if (cityInfo != null && !"".equals(cityInfo.trim())) {
+                currentProvince = cityInfo.split("=")[0];
+                currentCity = cityInfo.split("=")[1];
+                txtCity = view.findViewById(R.id.txt_city);
+                txtCity.setText(this.currentCity);
+            }
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -78,8 +105,15 @@ public class MyFragment3 extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         fragmentAdapter3 = new FragmentAdapter3(ticketList, getActivity());
         recyclerView.setAdapter(fragmentAdapter3);
+        // 如果缓存中有城市信息，则从缓存中获取城市
+        String cityInfo = load("data_cityInfo");
+        if (cityInfo != null && !"".equals(cityInfo.trim())) {
+            currentProvince = cityInfo.split("=")[0];
+            currentCity = cityInfo.split("=")[1];
+        }
         txtCity = view.findViewById(R.id.txt_city);
-        txtCity.setText(currentCity);
+        txtCity.setText(this.currentCity);
+
         txtCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -218,9 +252,7 @@ public class MyFragment3 extends Fragment {
                 .setOnPickListener(new OnPickListener() {
                     @Override
                     public void onPick(int position, City data) {
-//                        Toast.makeText(getActivity().getApplicationContext(), data.getName(), Toast.LENGTH_SHORT).show();
-
-                        if(data == null){
+                        if (data == null) {
                             return;
                         }
 
@@ -230,10 +262,13 @@ public class MyFragment3 extends Fragment {
 
                         // 如果获取的城市名字最后面带有市或省份后面带有省，要去除
                         removeRedundantWord();
+
                         // 设置城市
                         txtCity.setText(currentCity);
 
-                        // 把省份和城市信息传给CoolWeatherActivity
+
+                        // 把城市信息缓存到本地
+                        save(currentProvince + "=" + currentCity, "data_cityInfo");
                     }
 
                     @Override
@@ -292,6 +327,9 @@ public class MyFragment3 extends Fragment {
 
             // 设置城市
             txtCity.setText(currentCity);
+
+            // 把城市信息缓存到本地
+            save(currentProvince + "=" + currentCity, "data_cityInfo");
         }
     }
 
@@ -324,4 +362,84 @@ public class MyFragment3 extends Fragment {
             mLocationClient.stop();
         }
     }
+    /**
+     * 功能：判断用户是否同意开启权限
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    requestLocation();
+                } else {
+                    // 如果不同意开启位置服务的话，可以手动选择城市
+                    setCity();
+
+                }
+                break;
+            default:
+        }
+    }
+
+    /**
+     * 把数据存储在本地
+     */
+    private void save(String textStr, String location) {
+        FileOutputStream out = null;
+        BufferedWriter writer = null;
+        try {
+            out = getActivity().openFileOutput(location, Context.MODE_PRIVATE);
+            writer = new BufferedWriter(new OutputStreamWriter(out));
+            writer.write(textStr);
+            writer.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+                if (writer != null) {
+                    writer.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 从本地读取数据
+     */
+    private String load(String location) {
+        FileInputStream in = null;
+        BufferedReader reader = null;
+        StringBuffer sBuffer = new StringBuffer();
+        try {
+            in = getActivity().openFileInput(location);
+            reader = new BufferedReader(new InputStreamReader(in));
+            String line = "";
+            if ((line = reader.readLine()) != null) {
+                sBuffer.append(line);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return sBuffer.toString();
+    }
+
+
+
 }

@@ -93,13 +93,47 @@ public class MyFragment1 extends Fragment {
         removeRedundantWord();
     }
 
+    /**
+     * 此方法会在onCreateView方法前执行，因为fragemnt有缓存机制导致页面切换时城市信息不同步
+     * @param isVisibleToUser
+     */
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser) {
+            // 如果缓存中有城市信息，则从缓存中获取城市
+            String cityInfo = load("data_cityInfo");
+            if (cityInfo != null && !"".equals(cityInfo.trim())) {
+                currentProvince = cityInfo.split("=")[0];
+                currentCity = cityInfo.split("=")[1];
+                txtCity = view.findViewById(R.id.txt_city);
+                txtCity.setText(this.currentCity);
+                // 设置天气
+                setWeather(currentProvince, currentCity);
+                // 设置城市给攻略
+                txtPoem.setText("攻略 · " + currentCity);
+                // 初始化首页的RecyclerView
+                initRecyclerView();
+
+            }
+        }
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my1, container, false);
-        initRecyclerView();
+
 
         // 设置城市定位 start
+
+        // 如果缓存中有城市信息，则从缓存中获取城市
+        String cityInfo = load("data_cityInfo");
+        if (cityInfo != null && !"".equals(cityInfo.trim())) {
+            currentProvince = cityInfo.split("=")[0];
+            currentCity = cityInfo.split("=")[1];
+        }
         txtCity = view.findViewById(R.id.txt_city);
         txtCity.setText(this.currentCity);
 
@@ -137,6 +171,10 @@ public class MyFragment1 extends Fragment {
                 Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
             }
         });
+
+        // 初始化首页的RecyclerView，没有缓存信息时使用
+        initRecyclerView();
+
 
         // 设置天气
         txtWeather = view.findViewById(R.id.txt_weather);
@@ -285,21 +323,20 @@ public class MyFragment1 extends Fragment {
             }
         }).start();
     }
-
     /**
      * 获取degree
      */
     public String requestDegree(final String weatherId) {
         String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId + "&key=8fb20072276e48aa83d1200cce3653e0";
         final Weather[] weather = new Weather[1];
-        save("false");
+        save("false", "data_weather");
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
                 final String responseText = response.body().string();
                 weather[0] = Utility.handleWeatherResponse(responseText);
-                save("true");
+                save("true", "data_weather");
             }
 
             @Override
@@ -309,7 +346,7 @@ public class MyFragment1 extends Fragment {
                     @Override
                     public void run() {
                         Toast.makeText(getActivity(), "获取天气信息失败", Toast.LENGTH_SHORT).show();
-                        save("true");
+                        save("true", "data_weather");
                     }
                 });
             }
@@ -317,7 +354,7 @@ public class MyFragment1 extends Fragment {
 
         // 等待okHttp返回数据
         while (true) {
-            String flag = load();
+            String flag = load("data_weather");
             if ("true".equalsIgnoreCase(flag)) {
                 break;
             }
@@ -414,7 +451,6 @@ public class MyFragment1 extends Fragment {
                 .setOnPickListener(new OnPickListener() {
                     @Override
                     public void onPick(int position, City data) {
-//                        Toast.makeText(getActivity().getApplicationContext(), data.getName(), Toast.LENGTH_SHORT).show();
 
                         if(data == null){
                             return;
@@ -436,8 +472,15 @@ public class MyFragment1 extends Fragment {
                         // 设置城市给攻略
                         txtPoem.setText("攻略 · " + currentCity);
 
+                        // 初始化首页的RecyclerView
+                        initRecyclerView();
 
-                        // 把省份和城市信息传给CoolWeatherActivity
+                        // 把城市信息缓存到本地
+                        save(currentProvince + "=" + currentCity, "data_cityInfo");
+
+
+
+
                     }
 
                     @Override
@@ -477,6 +520,14 @@ public class MyFragment1 extends Fragment {
 
             // 设置城市给攻略
             txtPoem.setText("攻略 · " + currentCity);
+
+            // 初始化首页的RecyclerView
+            initRecyclerView();
+
+            // 把城市信息缓存到本地
+            save(currentProvince + "=" + currentCity, "data_cityInfo");
+
+
 
 
         }
@@ -551,11 +602,11 @@ public class MyFragment1 extends Fragment {
     /**
      * 把数据存储在本地
      */
-    private void save(String textStr) {
+    private void save(String textStr, String location) {
         FileOutputStream out = null;
         BufferedWriter writer = null;
         try {
-            out = getActivity().openFileOutput("data", Context.MODE_PRIVATE);
+            out = getActivity().openFileOutput(location, Context.MODE_PRIVATE);
             writer = new BufferedWriter(new OutputStreamWriter(out));
             writer.write(textStr);
             writer.flush();
@@ -578,12 +629,12 @@ public class MyFragment1 extends Fragment {
     /**
      * 从本地读取数据
      */
-    private String load() {
+    private String load(String location) {
         FileInputStream in = null;
         BufferedReader reader = null;
         StringBuffer sBuffer = new StringBuffer();
         try {
-            in = getActivity().openFileInput("data");
+            in = getActivity().openFileInput(location);
             reader = new BufferedReader(new InputStreamReader(in));
             String line = "";
             if ((line = reader.readLine()) != null) {
@@ -606,5 +657,7 @@ public class MyFragment1 extends Fragment {
         }
         return sBuffer.toString();
     }
+
+
 
 }

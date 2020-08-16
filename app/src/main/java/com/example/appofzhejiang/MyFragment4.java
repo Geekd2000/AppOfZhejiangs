@@ -20,14 +20,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MyFragment4 extends Fragment {
 
-    private String content;
     private View view;
     private TextView txtAddress, txtOrder, txtSetting, txtAbout, txtUsername,
             txtTobePaid,txtPaid,txtFinish;
     private CircleImageView imageUser;
 
-    public MyFragment4(String content) {
-        this.content = content;
+    public MyFragment4() {
     }
 
     @Nullable
