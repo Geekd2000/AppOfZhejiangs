@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/order_toolbar"
+        android:id="@+id/order_toolbar_back"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorWhite"
@@ -265,7 +265,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="15dp">
 
             <TextView
                 android:id="@+id/username"
@@ -296,7 +296,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
             android:background="#22000000" />
 

@@ -22,7 +22,9 @@ import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.OnTimeSelectChangeListener;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
+import com.example.appofzhejiang.Business.ReceiptActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.pay.OrderActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -77,7 +79,9 @@ public class SubmitOrderActivity extends AppCompatActivity {
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SubmitOrderActivity.this, "你点击了", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SubmitOrderActivity.this, "你点击了", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SubmitOrderActivity.this, ReceiptActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -135,11 +139,13 @@ public class SubmitOrderActivity extends AppCompatActivity {
             }
         });
 
-        //添加订单
+        //添加订单，跳转至订单详情页面
         addOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(SubmitOrderActivity.this, "订单添加成功", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SubmitOrderActivity.this, OrderActivity.class);
+                startActivity(intent);
             }
         });
 

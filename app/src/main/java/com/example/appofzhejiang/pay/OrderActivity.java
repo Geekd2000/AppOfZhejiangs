@@ -22,8 +22,8 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 //        order.findViewById(R.id.order_buy1);
-        mBtnBack.findViewById(R.id.order_toolbar);
-        mBtnReturn.findViewById(R.id.order_buy1);
+        mBtnBack = findViewById(R.id.order_toolbar_back);
+        mBtnReturn = findViewById(R.id.order_buy1);
 
         mBtnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
