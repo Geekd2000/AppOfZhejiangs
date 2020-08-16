@@ -30,6 +30,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".xihu.Jingqu_daohang"/>
+        <activity android:name=".xihu.Jingqu_around" />
+        <activity android:name=".xihu.Jingqu" />
         <activity android:name=".Business.AddressActivity" />
         <activity android:name=".Business.ReceiptActivity" />
         <activity android:name=".pay.PayActivity" />

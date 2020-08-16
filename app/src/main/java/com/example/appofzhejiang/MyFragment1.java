@@ -416,6 +416,10 @@ public class MyFragment1 extends Fragment {
                     public void onPick(int position, City data) {
 //                        Toast.makeText(getActivity().getApplicationContext(), data.getName(), Toast.LENGTH_SHORT).show();
 
+                        if(data == null){
+                            return;
+                        }
+
                         // 获取选择的省份和城市
                         currentCity = data.getName();
                         currentProvince = data.getProvince();

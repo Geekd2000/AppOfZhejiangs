@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical" android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorWhite">
+
+    <TextView
+            android:id="@+id/cityName"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="景区信息"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorLightGreen"/>
+
+    <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="开放时间"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="18sp"
+    />
+
+    <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="全天"
+            android:textSize="14sp"
+
+    />
+
+
+    <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="门票价格"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="18sp"
+    />
+
+    <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="免费"
+            android:textSize="14sp"
+    />
+
+    <Button android:layout_height="wrap_content"
+            android:id="@+id/know"
+            android:text="知道了"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="16sp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:background="@drawable/button_circle_shape"
+            android:layout_width="match_parent"/>
+</LinearLayout>
