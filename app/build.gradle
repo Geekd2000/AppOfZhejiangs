@@ -66,4 +66,5 @@ dependencies {
     implementation 'com.contrarywind:Android-PickerView:4.1.9'
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:23.0.1'
+    implementation 'com.github.clans:fab:1.6.4' //悬浮按钮
 }

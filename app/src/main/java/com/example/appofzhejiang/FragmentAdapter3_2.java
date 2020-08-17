@@ -6,27 +6,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.fragment3.Ticket;
 import com.example.appofzhejiang.fragment3.TicketDetailActivity;
-import com.example.appofzhejiang.fragment3.hotel.Hotel;
-import com.example.appofzhejiang.fragment3.hotel.HotelAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.LinearViewHolder> {
+public class FragmentAdapter3_2 extends RecyclerView.Adapter<FragmentAdapter3_2.LinearViewHolder> {
 
     private Context context;
     private List<Ticket> ticketList;
 
-    public FragmentAdapter3(List<Ticket> ticketList, Context context) {
+    public FragmentAdapter3_2(List<Ticket> ticketList, Context context) {
         this.ticketList = ticketList;
         this.context = context;
     }
@@ -34,8 +29,8 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.Line
 
     @NonNull
     @Override
-    public FragmentAdapter3.LinearViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter3, parent, false);
+    public FragmentAdapter3_2.LinearViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter3_2, parent, false);
         final LinearViewHolder linearViewHolder = new LinearViewHolder(view);
         // 注册点击事件 start
         linearViewHolder.getTicketView().setOnClickListener(new View.OnClickListener() {

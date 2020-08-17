@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f0f0f0"
+    android:background="@color/colorNotWhite"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -25,8 +26,10 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
+        android:id="@+id/lin1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/order_toolbar_back"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:orientation="vertical">
@@ -136,8 +139,10 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/lin2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/lin1"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:orientation="vertical">
@@ -162,9 +167,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:text="西湖游船外事船舶成人票"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
         </RelativeLayout>
 
         <View
@@ -238,8 +244,10 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/lin3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/lin2"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:orientation="vertical">
@@ -339,4 +347,47 @@
                 android:textColor="#ffffff" />
         </RelativeLayout>
     </LinearLayout>
-</LinearLayout>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/floatingActionMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        app:menu_fab_size="mini"
+        fab:menu_colorNormal="@color/colorLightGreen"
+        fab:menu_colorPressed="#1AD68A"
+        fab:menu_icon="@drawable/menu">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floatingActionButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shouye"
+            app:fab_colorNormal="@color/colorLightGreen"
+            app:fab_colorPressed="#1AD68A"
+            app:fab_label="首页"
+            fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/jingdian"
+            app:fab_colorNormal="@color/colorLightGreen"
+            app:fab_colorPressed="#1AD68A"
+            app:fab_label="景点"
+            fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floatingActionButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wode"
+            app:fab_colorNormal="@color/colorLightGreen"
+            app:fab_colorPressed="#1AD68A"
+            app:fab_label="我的"
+            fab:fab_size="mini" />
+    </com.github.clans.fab.FloatingActionMenu>
+</RelativeLayout>
