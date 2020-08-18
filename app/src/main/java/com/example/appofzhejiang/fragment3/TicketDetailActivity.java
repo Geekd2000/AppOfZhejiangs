@@ -67,7 +67,8 @@ public class TicketDetailActivity extends AppCompatActivity {
         detailContent4 = findViewById(R.id.detail_content4);
         banner = findViewById(R.id.banner);
 
-        //初始化两个集合，图片资源可以是本地，也可以是网络的url
+        //初始化悬浮按钮
+        initFloatActionButton();
 
         //取得从上一个Activity当中传递过来的Intent对象
         Intent intent = getIntent();

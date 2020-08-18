@@ -49,6 +49,9 @@ public class SubmitOrderActivity extends AppCompatActivity {
     private TextView stock;//库存
     private TextView endCount;//最终数量
     private TextView time;//出行时间
+    private TextView username;//收货人姓名
+    private TextView telephone;//手机号
+    private TextView address;//地址
     private RelativeLayout relativeLayout;//选择地址
     //悬浮按钮
     private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
@@ -57,20 +60,9 @@ public class SubmitOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_order);
-        toolbar = findViewById(R.id.toolbar_order);
-        goodsName = findViewById(R.id.order_goods_name);
-        goodsType = findViewById(R.id.order_goods_type);
-        goodsUnitPrice = findViewById(R.id.order_danjia);
-        add = findViewById(R.id.order_add);
-        reduce = findViewById(R.id.order_reduce);
-        buyCount = findViewById(R.id.order_buyCount);
-        totalPrice = findViewById(R.id.order_heji);
-        payment = findViewById(R.id.order_shifu);
-        addOrder = findViewById(R.id.add_order);
-        stock = findViewById(R.id.order_kucun);
-        endCount = findViewById(R.id.order_shuliang);
-        time = findViewById(R.id.order_playTime);
-        relativeLayout = findViewById(R.id.name_address_telephone);
+
+        //初始化控件
+        init();
 
         //初始化悬浮按钮
         initFloatActionButton();
@@ -100,9 +92,9 @@ public class SubmitOrderActivity extends AppCompatActivity {
         String unitPrice = intent.getStringExtra("goodsPrice");
 
         //将传递过来的参设设置进去
-        goodsName.setText(name);
-        goodsType.setText(type);
-        goodsUnitPrice.setText(unitPrice);
+        goodsName.setText(name);//商品名称
+        goodsType.setText(type);//商品种类
+        goodsUnitPrice.setText(unitPrice);//商品单价
 
         //合计、实付
         tot = Integer.toString(Integer.parseInt(buyCount.getText().toString()) * Integer.parseInt(goodsUnitPrice.getText().toString()));
@@ -153,6 +145,14 @@ public class SubmitOrderActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(SubmitOrderActivity.this, "订单添加成功", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SubmitOrderActivity.this, OrderActivity.class);
+                intent.putExtra("goodsName",goodsName.getText().toString());
+                intent.putExtra("goodsType",goodsType.getText().toString());
+                intent.putExtra("goodsUnitPrice",goodsUnitPrice.getText().toString());
+                intent.putExtra("goodsAmount",endCount.getText().toString());
+                intent.putExtra("goodsPay",payment.getText().toString());
+                intent.putExtra("username",username.getText().toString());
+                intent.putExtra("telephone",telephone.getText().toString());
+                intent.putExtra("address",address.getText().toString());
                 startActivity(intent);
             }
         });
@@ -167,6 +167,27 @@ public class SubmitOrderActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    //初始化控件
+    public void init(){
+        toolbar = findViewById(R.id.toolbar_order);
+        goodsName = findViewById(R.id.order_goods_name);
+        goodsType = findViewById(R.id.order_goods_type);
+        goodsUnitPrice = findViewById(R.id.order_danjia);
+        add = findViewById(R.id.order_add);
+        reduce = findViewById(R.id.order_reduce);
+        buyCount = findViewById(R.id.order_buyCount);
+        totalPrice = findViewById(R.id.order_heji);
+        payment = findViewById(R.id.order_shifu);
+        addOrder = findViewById(R.id.add_order);
+        stock = findViewById(R.id.order_kucun);
+        endCount = findViewById(R.id.order_shuliang);
+        time = findViewById(R.id.order_playTime);
+        relativeLayout = findViewById(R.id.name_address_telephone);
+        username=findViewById(R.id.order_name);
+        telephone=findViewById(R.id.order_telephone);
+        address=findViewById(R.id.order_address);
     }
 
     //悬浮按钮配置

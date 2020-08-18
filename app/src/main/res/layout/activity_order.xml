@@ -32,6 +32,7 @@
         android:layout_below="@+id/order_toolbar_back"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
+        android:elevation="5dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -53,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="下单时间:"
+                android:text="下单时间"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -76,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="下单时间:"
+                android:text="订单编号"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -106,13 +107,23 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/order"
+                android:id="@+id/qian1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@id/shifu"
-                android:text="￥70"
+                android:text="￥"
+                android:textColor="#17C780"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/pay1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/qian1"
+                android:text="70"
                 android:textColor="#17C780"
                 android:textSize="20sp" />
 
@@ -145,6 +156,7 @@
         android:layout_below="@+id/lin1"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
+        android:elevation="5dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -164,6 +176,7 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/goods_name1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -203,7 +216,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/iv_message"
+                        android:id="@+id/goods_name2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
@@ -215,28 +228,47 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="20dp"
-                        android:text="x2"
+                        android:layout_toLeftOf="@+id/order_amount"
+                        android:text="x"
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/iv_message_1"
+                        android:id="@+id/order_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/iv_message"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:text="2"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/goods_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/goods_name2"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:text="小船"
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/qian"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/iv_message_1"
+                        android:layout_below="@id/goods_type"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="15dp"
-                        android:text="￥35"
+                        android:text="￥"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/order_goods_unitPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/goods_type"
+                        android:layout_toRightOf="@+id/qian"
+                        android:layout_marginTop="15dp"
+                        android:text="35"
                         android:textSize="16sp" />
                 </RelativeLayout>
             </LinearLayout>
@@ -250,6 +282,7 @@
         android:layout_below="@+id/lin2"
         android:layout_marginTop="5dp"
         android:background="#ffffff"
+        android:elevation="5dp"
         android:orientation="vertical">
 
         <TextView
@@ -284,6 +317,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/telephone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -292,6 +326,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/username"
@@ -326,18 +361,28 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/order1"
+                android:id="@+id/qian2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@id/shifu1"
-                android:text="￥70"
+                android:text="￥"
+                android:textColor="#17C780"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/pay2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/qian2"
+                android:text="70"
                 android:textColor="#17C780"
                 android:textSize="20sp" />
 
             <Button
-                android:id="@+id/order_buy1"
+                android:id="@+id/order_return"
                 android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"

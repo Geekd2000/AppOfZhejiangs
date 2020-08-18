@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
@@ -19,6 +20,14 @@ public class OrderActivity extends AppCompatActivity {
 
     private Button mBtnReturn;
     private Toolbar mBtnBack;
+    private TextView mPay1,mPay2;//两个实付
+    private TextView mGoodsName1,mGoodsName2;//两盒商品名称
+    private TextView mGoodsType;//商品种类
+    private TextView mAmount;//商品数量
+    private TextView mGoodsUnitPrice;//商品单价
+    private TextView mUsername;//收货姓名
+    private TextView mTelephone;//收货电话
+    private TextView mAddress;//收货地址
     //悬浮按钮
     private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
 
@@ -26,35 +35,47 @@ public class OrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
-//        order.findViewById(R.id.order_buy1);
-        mBtnBack = findViewById(R.id.order_toolbar_back);
-        mBtnReturn = findViewById(R.id.order_buy1);
+        //初始化控件
+        init();
 
         mBtnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
-        });
-
-//        order.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(OrderActivity.this, MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
+        });//返回我的按钮
         mBtnBack.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
-        });
+        });//标题栏返回按钮
 
         //初始化悬浮按钮
         initFloatActionButton();
+
+        //获得传递过来的参数
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("goodsName");
+        String type = intent.getStringExtra("goodsType");
+        String unitPrice = intent.getStringExtra("goodsUnitPrice");
+        String amount = intent.getStringExtra("goodsAmount");
+        String pay = intent.getStringExtra("goodsPay");
+        String username = intent.getStringExtra("username");
+        String telephone = intent.getStringExtra("telephone");
+        String address = intent.getStringExtra("address");
+        mGoodsName1.setText(name);
+        mGoodsName2.setText(name);
+        mPay1.setText(pay);
+        mPay2.setText(pay);
+        mGoodsType.setText(type);
+        mAmount.setText(amount);
+        mGoodsUnitPrice.setText(unitPrice);
+        mUsername.setText(username);
+        mTelephone.setText(telephone);
+        mAddress.setText(address);
     }
+
     //悬浮按钮配置
     public void initFloatActionButton() {
         floatingActionButton1 = findViewById(R.id.floatingActionButton1);
@@ -95,5 +116,21 @@ public class OrderActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    //初始化控件 找到控件
+    public void init() {
+        mBtnBack = findViewById(R.id.order_toolbar_back);
+        mBtnReturn = findViewById(R.id.order_return);
+        mGoodsName1=findViewById(R.id.goods_name1);
+        mGoodsName2=findViewById(R.id.goods_name2);
+        mPay1=findViewById(R.id.pay1);
+        mPay2=findViewById(R.id.pay2);
+        mGoodsType=findViewById(R.id.goods_type);
+        mAmount=findViewById(R.id.order_amount);
+        mGoodsUnitPrice=findViewById(R.id.order_goods_unitPrice);
+        mUsername=findViewById(R.id.username);
+        mTelephone=findViewById(R.id.telephone);
+        mAddress=findViewById(R.id.address);
     }
 }
