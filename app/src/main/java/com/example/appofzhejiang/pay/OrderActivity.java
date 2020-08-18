@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.appofzhejiang.MainActivity;
@@ -28,6 +29,7 @@ public class OrderActivity extends AppCompatActivity {
     private TextView mUsername;//收货姓名
     private TextView mTelephone;//收货电话
     private TextView mAddress;//收货地址
+    private ImageView imageGoods;//商品图片
     //悬浮按钮
     private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
 
@@ -64,6 +66,7 @@ public class OrderActivity extends AppCompatActivity {
         String username = intent.getStringExtra("username");
         String telephone = intent.getStringExtra("telephone");
         String address = intent.getStringExtra("address");
+        String image =intent.getStringExtra("goodsImage");
         mGoodsName1.setText(name);
         mGoodsName2.setText(name);
         mPay1.setText(pay);
@@ -74,6 +77,7 @@ public class OrderActivity extends AppCompatActivity {
         mUsername.setText(username);
         mTelephone.setText(telephone);
         mAddress.setText(address);
+        imageGoods.setImageResource(Integer.parseInt(image));
     }
 
     //悬浮按钮配置
@@ -132,5 +136,6 @@ public class OrderActivity extends AppCompatActivity {
         mUsername=findViewById(R.id.username);
         mTelephone=findViewById(R.id.telephone);
         mAddress=findViewById(R.id.address);
+        imageGoods=findViewById(R.id.imageGoods);
     }
 }

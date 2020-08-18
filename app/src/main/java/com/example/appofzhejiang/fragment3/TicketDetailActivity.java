@@ -26,7 +26,7 @@ public class TicketDetailActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private String value;
     private int index;
-    private ImageView mainImage, image1, image2, image3, image4;
+    private ImageView image1, image2, image3, image4, goodsImage;
     private TextView detailTitle, detailPrice, detailCompany, detailSales, detailGoods1, detailGoods2, detailPrice1, detailPrice2,
             detailBuy1, detailBuy2, detailContent1, detailContent2, detailContent3, detailContent4;
     private Banner banner;
@@ -65,6 +65,7 @@ public class TicketDetailActivity extends AppCompatActivity {
         detailContent2 = findViewById(R.id.detail_content2);
         detailContent3 = findViewById(R.id.detail_content3);
         detailContent4 = findViewById(R.id.detail_content4);
+        goodsImage = findViewById(R.id.goods_image);
         banner = findViewById(R.id.banner);
 
         //初始化悬浮按钮
@@ -73,22 +74,26 @@ public class TicketDetailActivity extends AppCompatActivity {
         //取得从上一个Activity当中传递过来的Intent对象
         Intent intent = getIntent();
         //从Intent当中根据key取得value
-        if (intent != null) {
-            value = intent.getStringExtra("index");
-            index = Integer.parseInt(value);
-        }
+        value = intent.getStringExtra("index");
+        index = Integer.parseInt(value);
+
         switch (index) {
             case 0:
                 String title = null;
                 String price = null;
                 String company = null;
                 String count = null;
+                String image = null;
+                int imgId = 0;
                 if (intent != null) {
                     title = intent.getStringExtra("title");
                     price = intent.getStringExtra("price");
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
+                    image = intent.getStringExtra("image");
+                    imgId = Integer.parseInt(image);
                 }
+                goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.songcity);
                 images.add(R.drawable.songcheng);
@@ -111,6 +116,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailContent2.setText(R.string.songchengqianguqing);
                 image1.setImageResource(R.drawable.songcity);
                 image2.setImageResource(R.drawable.songcheng);
+                final String finalImage0 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -118,6 +124,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                         intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        intentBuy.putExtra("goodsImage", finalImage0);
                         startActivity(intentBuy);
                     }
                 });
@@ -128,6 +135,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                         intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        intentBuy.putExtra("goodsImage", finalImage0);
                         startActivity(intentBuy);
                     }
                 });
@@ -137,12 +145,17 @@ public class TicketDetailActivity extends AppCompatActivity {
                 price = null;
                 company = null;
                 count = null;
+                image = null;
+                imgId = 0;
                 if (intent != null) {
                     title = intent.getStringExtra("title");
                     price = intent.getStringExtra("price");
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
+                    image = intent.getStringExtra("image");
+                    imgId = Integer.parseInt(image);
                 }
+                goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.hotel_image);
                 images.add(R.drawable.hotel_image);
@@ -163,6 +176,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("150");
                 detailContent1.setText(R.string.hotel);
                 image1.setImageResource(R.drawable.hotel_image);
+                final String finalImage1 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -170,6 +184,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                         intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        intentBuy.putExtra("goodsImage", finalImage1);
                         startActivity(intentBuy);
                     }
                 });
@@ -180,6 +195,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                         intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        intentBuy.putExtra("goodsImage", finalImage1);
                         startActivity(intentBuy);
                     }
                 });
@@ -189,12 +205,17 @@ public class TicketDetailActivity extends AppCompatActivity {
                 price = null;
                 company = null;
                 count = null;
+                image = null;
+                imgId = 0;
                 if (intent != null) {
                     title = intent.getStringExtra("title");
                     price = intent.getStringExtra("price");
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
+                    image = intent.getStringExtra("image");
+                    imgId = Integer.parseInt(image);
                 }
+                goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.taxi_image);
                 images.add(R.drawable.taxi_image2);
@@ -215,6 +236,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("498");
                 detailContent1.setText(R.string.taxi);
                 image1.setImageResource(R.drawable.taxi_image);
+                final String finalImage2 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -222,6 +244,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                         intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        intentBuy.putExtra("goodsImage", finalImage2);
                         startActivity(intentBuy);
                     }
                 });
@@ -232,6 +255,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                         intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        intentBuy.putExtra("goodsImage", finalImage2);
                         startActivity(intentBuy);
                     }
                 });
@@ -241,12 +265,17 @@ public class TicketDetailActivity extends AppCompatActivity {
                 price = null;
                 company = null;
                 count = null;
+                image = null;
+                imgId = 0;
                 if (intent != null) {
                     title = intent.getStringExtra("title");
                     price = intent.getStringExtra("price");
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
+                    image = intent.getStringExtra("image");
+                    imgId = Integer.parseInt(image);
                 }
+                goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.guider_image);
                 images.add(R.drawable.guider_image);
@@ -267,6 +296,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("300");
                 detailContent1.setText("给导游一点关爱，导游还你一片美景，多点关心多点爱。");
                 image1.setImageResource(R.drawable.guider_image);
+                final String finalImage3 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -274,6 +304,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                         intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        intentBuy.putExtra("goodsImage", finalImage3);
                         startActivity(intentBuy);
                     }
                 });
@@ -284,6 +315,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                         intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        intentBuy.putExtra("goodsImage", finalImage3);
                         startActivity(intentBuy);
                     }
                 });
@@ -293,12 +325,17 @@ public class TicketDetailActivity extends AppCompatActivity {
                 price = null;
                 company = null;
                 count = null;
+                image = null;
+                imgId = 0;
                 if (intent != null) {
                     title = intent.getStringExtra("title");
                     price = intent.getStringExtra("price");
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
+                    image = intent.getStringExtra("image");
+                    imgId = Integer.parseInt(image);
                 }
+                goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.farmhouse);
                 images.add(R.drawable.farmhouse);
@@ -319,6 +356,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("598");
                 detailContent1.setText(R.string.farmhouse);
                 image1.setImageResource(R.drawable.farmhouse);
+                final String finalImage4 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -326,6 +364,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                         intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        intentBuy.putExtra("goodsImage", finalImage4);
                         startActivity(intentBuy);
                     }
                 });
@@ -336,6 +375,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                         intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        intentBuy.putExtra("goodsImage", finalImage4);
                         startActivity(intentBuy);
                     }
                 });
@@ -345,12 +385,17 @@ public class TicketDetailActivity extends AppCompatActivity {
                 price = null;
                 company = null;
                 count = null;
+                image = null;
+                imgId = 0;
                 if (intent != null) {
                     title = intent.getStringExtra("title");
                     price = intent.getStringExtra("price");
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
+                    image = intent.getStringExtra("image");
+                    imgId = Integer.parseInt(image);
                 }
+                goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.longjingxiaren);
                 images.add(R.drawable.longjingxiaren);
@@ -372,6 +417,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailContent1.setText(R.string.longjingxiaren);
                 image1.setImageResource(R.drawable.longjingxiaren);
                 image2.setImageResource(R.drawable.westlakelongjing);
+                final String finalImage5 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -379,6 +425,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                         intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        intentBuy.putExtra("goodsImage", finalImage5);
                         startActivity(intentBuy);
                     }
                 });
@@ -389,6 +436,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                         intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        intentBuy.putExtra("goodsImage", finalImage5);
                         startActivity(intentBuy);
                     }
                 });
@@ -398,12 +446,17 @@ public class TicketDetailActivity extends AppCompatActivity {
                 price = null;
                 company = null;
                 count = null;
+                image = null;
+                imgId = 0;
                 if (intent != null) {
                     title = intent.getStringExtra("title");
                     price = intent.getStringExtra("price");
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
+                    image = intent.getStringExtra("image");
+                    imgId = Integer.parseInt(image);
                 }
+                goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.westlakelongjing);
                 images.add(R.drawable.westlakelongjing);
@@ -424,6 +477,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("358");
                 detailContent1.setText(R.string.longjing);
                 image1.setImageResource(R.drawable.westlakelongjing);
+                final String finalImage6 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -431,6 +485,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                         intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        intentBuy.putExtra("goodsImage", finalImage6);
                         startActivity(intentBuy);
                     }
                 });
@@ -441,6 +496,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                         intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        intentBuy.putExtra("goodsImage", finalImage6);
                         startActivity(intentBuy);
                     }
                 });
@@ -450,12 +506,17 @@ public class TicketDetailActivity extends AppCompatActivity {
                 price = null;
                 company = null;
                 count = null;
+                image = null;
+                imgId = 0;
                 if (intent != null) {
                     title = intent.getStringExtra("title");
                     price = intent.getStringExtra("price");
                     company = intent.getStringExtra("company");
                     count = intent.getStringExtra("count");
+                    image = intent.getStringExtra("image");
+                    imgId = Integer.parseInt(image);
                 }
+                goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.westlake);
                 images.add(R.drawable.westlake2);
@@ -476,6 +537,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice2.setText("98");
                 detailContent1.setText("西湖的水，我的泪");
                 image1.setImageResource(R.drawable.westlake);
+                final String finalImage7 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -483,6 +545,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                         intentBuy.putExtra("goodsType", detailGoods1.getText());
+                        intentBuy.putExtra("goodsImage", finalImage7);
                         startActivity(intentBuy);
                     }
                 });
@@ -493,12 +556,14 @@ public class TicketDetailActivity extends AppCompatActivity {
                         intentBuy.putExtra("goodsName", detailTitle.getText());
                         intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                         intentBuy.putExtra("goodsType", detailGoods2.getText());
+                        intentBuy.putExtra("goodsImage", finalImage7);
                         startActivity(intentBuy);
                     }
                 });
                 break;
         }
     }
+
     //悬浮按钮配置
     public void initFloatActionButton() {
         floatingActionButton1 = findViewById(R.id.floatingActionButton1);

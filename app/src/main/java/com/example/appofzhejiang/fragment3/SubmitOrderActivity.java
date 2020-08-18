@@ -37,7 +37,7 @@ import javax.security.auth.PrivateCredentialPermission;
 public class SubmitOrderActivity extends AppCompatActivity {
 
     private TimePickerView pvTime;//时间选择器
-    private String tot;
+    private String tot,image;
     private Toolbar toolbar;//顶部标题栏
     private TextView goodsName;//商品名称
     private TextView goodsType;//商品规格
@@ -52,6 +52,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
     private TextView username;//收货人姓名
     private TextView telephone;//手机号
     private TextView address;//地址
+    private ImageView goodsImage;//商品图片
     private RelativeLayout relativeLayout;//选择地址
     //悬浮按钮
     private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
@@ -90,11 +91,13 @@ public class SubmitOrderActivity extends AppCompatActivity {
         String name = intent.getStringExtra("goodsName");
         String type = intent.getStringExtra("goodsType");
         String unitPrice = intent.getStringExtra("goodsPrice");
+        image = intent.getStringExtra("goodsImage");
 
         //将传递过来的参设设置进去
         goodsName.setText(name);//商品名称
         goodsType.setText(type);//商品种类
         goodsUnitPrice.setText(unitPrice);//商品单价
+        goodsImage.setImageResource(Integer.parseInt(image));//商品图片
 
         //合计、实付
         tot = Integer.toString(Integer.parseInt(buyCount.getText().toString()) * Integer.parseInt(goodsUnitPrice.getText().toString()));
@@ -145,14 +148,15 @@ public class SubmitOrderActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(SubmitOrderActivity.this, "订单添加成功", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SubmitOrderActivity.this, OrderActivity.class);
-                intent.putExtra("goodsName",goodsName.getText().toString());
-                intent.putExtra("goodsType",goodsType.getText().toString());
-                intent.putExtra("goodsUnitPrice",goodsUnitPrice.getText().toString());
-                intent.putExtra("goodsAmount",endCount.getText().toString());
-                intent.putExtra("goodsPay",payment.getText().toString());
-                intent.putExtra("username",username.getText().toString());
-                intent.putExtra("telephone",telephone.getText().toString());
-                intent.putExtra("address",address.getText().toString());
+                intent.putExtra("goodsName", goodsName.getText().toString());
+                intent.putExtra("goodsType", goodsType.getText().toString());
+                intent.putExtra("goodsUnitPrice", goodsUnitPrice.getText().toString());
+                intent.putExtra("goodsAmount", endCount.getText().toString());
+                intent.putExtra("goodsPay", payment.getText().toString());
+                intent.putExtra("username", username.getText().toString());
+                intent.putExtra("telephone", telephone.getText().toString());
+                intent.putExtra("address", address.getText().toString());
+                intent.putExtra("goodsImage", image);
                 startActivity(intent);
             }
         });
@@ -170,7 +174,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
     }
 
     //初始化控件
-    public void init(){
+    public void init() {
         toolbar = findViewById(R.id.toolbar_order);
         goodsName = findViewById(R.id.order_goods_name);
         goodsType = findViewById(R.id.order_goods_type);
@@ -185,9 +189,10 @@ public class SubmitOrderActivity extends AppCompatActivity {
         endCount = findViewById(R.id.order_shuliang);
         time = findViewById(R.id.order_playTime);
         relativeLayout = findViewById(R.id.name_address_telephone);
-        username=findViewById(R.id.order_name);
-        telephone=findViewById(R.id.order_telephone);
-        address=findViewById(R.id.order_address);
+        username = findViewById(R.id.order_name);
+        telephone = findViewById(R.id.order_telephone);
+        address = findViewById(R.id.order_address);
+        goodsImage = findViewById(R.id.goods_image);
     }
 
     //悬浮按钮配置

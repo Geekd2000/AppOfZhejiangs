@@ -38,6 +38,7 @@ public class FragmentAdapter3_2 extends RecyclerView.Adapter<FragmentAdapter3_2.
             public void onClick(View view) {
                 int position = linearViewHolder.getAdapterPosition();
                 Ticket ticket = ticketList.get(position);
+                String img = Integer.toString(ticket.getImageId());
                 //Toast.makeText(view.getContext(), "You clicked view：" + ticket.getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, TicketDetailActivity.class);
                 intent.putExtra("index", "7");
@@ -45,6 +46,7 @@ public class FragmentAdapter3_2 extends RecyclerView.Adapter<FragmentAdapter3_2.
                 intent.putExtra("price", ticket.getPrice());
                 intent.putExtra("company", ticket.getLocation());
                 intent.putExtra("count", ticket.getCount());
+                intent.putExtra("image", img);
                 context.startActivity(intent);
             }
         });

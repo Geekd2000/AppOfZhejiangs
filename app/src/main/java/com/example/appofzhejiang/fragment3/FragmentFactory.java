@@ -52,7 +52,7 @@ public class FragmentFactory extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final int index = this.index;
         View v = inflater.inflate(R.layout.recyclerview, container, false);
-        refreshLayout=v.findViewById(R.id.refreshLayout);
+        refreshLayout = v.findViewById(R.id.refreshLayout);
         refreshLayout.setColorSchemeResources(R.color.colorLightGreen);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -83,11 +83,13 @@ public class FragmentFactory extends Fragment {
                     //此处进行监听事件的业务处理
                     Intent intent = new Intent(getActivity(), TicketDetailActivity.class);
                     String s = Integer.toString(index);
+                    String img = Integer.toString(hotel.getImageId());
                     intent.putExtra("index", s);
                     intent.putExtra("title", hotel.getName());
                     intent.putExtra("price", hotel.getPrice());
                     intent.putExtra("company", hotel.getLocation());
                     intent.putExtra("count", hotel.getCount());
+                    intent.putExtra("image", img);
                     startActivity(intent);
                 }
             });
@@ -106,11 +108,13 @@ public class FragmentFactory extends Fragment {
                     //此处进行监听事件的业务处理
                     Intent intent = new Intent(getActivity(), TicketDetailActivity.class);
                     String s = Integer.toString(index);
+                    String img = Integer.toString(hotel.getImageId());
                     intent.putExtra("index", s);
                     intent.putExtra("title", hotel.getName());
                     intent.putExtra("price", hotel.getPrice());
                     intent.putExtra("company", hotel.getLocation());
                     intent.putExtra("count", hotel.getCount());
+                    intent.putExtra("image", img);
                     startActivity(intent);
                 }
             });
@@ -129,11 +133,13 @@ public class FragmentFactory extends Fragment {
                     //此处进行监听事件的业务处理
                     Intent intent = new Intent(getActivity(), TicketDetailActivity.class);
                     String s = Integer.toString(index);
+                    String img = Integer.toString(hotel.getImageId());
                     intent.putExtra("index", s);
                     intent.putExtra("title", hotel.getName());
                     intent.putExtra("price", hotel.getPrice());
                     intent.putExtra("company", hotel.getLocation());
                     intent.putExtra("count", hotel.getCount());
+                    intent.putExtra("image", img);
                     startActivity(intent);
                 }
             });
@@ -152,11 +158,13 @@ public class FragmentFactory extends Fragment {
                     //此处进行监听事件的业务处理
                     Intent intent = new Intent(getActivity(), TicketDetailActivity.class);
                     String s = Integer.toString(index);
+                    String img = Integer.toString(hotel.getImageId());
                     intent.putExtra("index", s);
                     intent.putExtra("title", hotel.getName());
                     intent.putExtra("price", hotel.getPrice());
                     intent.putExtra("company", hotel.getLocation());
                     intent.putExtra("count", hotel.getCount());
+                    intent.putExtra("image", img);
                     startActivity(intent);
                 }
             });
@@ -175,11 +183,13 @@ public class FragmentFactory extends Fragment {
                     //此处进行监听事件的业务处理
                     Intent intent = new Intent(getActivity(), TicketDetailActivity.class);
                     String s = Integer.toString(index);
+                    String img = Integer.toString(hotel.getImageId());
                     intent.putExtra("index", s);
                     intent.putExtra("title", hotel.getName());
                     intent.putExtra("price", hotel.getPrice());
                     intent.putExtra("company", hotel.getLocation());
                     intent.putExtra("count", hotel.getCount());
+                    intent.putExtra("image", img);
                     startActivity(intent);
                 }
             });
@@ -198,11 +208,13 @@ public class FragmentFactory extends Fragment {
                     //此处进行监听事件的业务处理
                     Intent intent = new Intent(getActivity(), TicketDetailActivity.class);
                     String s = Integer.toString(index);
+                    String img = Integer.toString(hotel.getImageId());
                     intent.putExtra("index", s);
                     intent.putExtra("title", hotel.getName());
                     intent.putExtra("price", hotel.getPrice());
                     intent.putExtra("company", hotel.getLocation());
                     intent.putExtra("count", hotel.getCount());
+                    intent.putExtra("image", img);
                     startActivity(intent);
                 }
             });
@@ -221,11 +233,13 @@ public class FragmentFactory extends Fragment {
                     //此处进行监听事件的业务处理
                     Intent intent = new Intent(getActivity(), TicketDetailActivity.class);
                     String s = Integer.toString(index);
+                    String img = Integer.toString(hotel.getImageId());
                     intent.putExtra("index", s);
                     intent.putExtra("title", hotel.getName());
                     intent.putExtra("price", hotel.getPrice());
                     intent.putExtra("company", hotel.getLocation());
                     intent.putExtra("count", hotel.getCount());
+                    intent.putExtra("image", img);
                     startActivity(intent);
                 }
             });
