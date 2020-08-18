@@ -1,6 +1,8 @@
 package com.example.appofzhejiang;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,12 +22,17 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MyFragment4 extends Fragment {
 
+    private String content;
     private View view;
     private TextView txtAddress, txtOrder, txtSetting, txtAbout, txtUsername,
-            txtTobePaid,txtPaid,txtFinish;
+            txtTobePaid, txtPaid, txtFinish;
     private CircleImageView imageUser;
+    private Boolean isLoginStatus;
+    public String username;
 
-    public MyFragment4() {
+
+    public MyFragment4(String content) {
+        this.content = content;
     }
 
     @Nullable
@@ -64,8 +71,8 @@ public class MyFragment4 extends Fragment {
         txtFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), PayActivity.class);
-                intent.putExtra("id",3);    //在这里传递参数
+                Intent intent = new Intent(getActivity(), PayActivity.class);
+                intent.putExtra("id", 3);    //在这里传递参数
                 getActivity().startActivity(intent);
             }
         });
@@ -74,8 +81,8 @@ public class MyFragment4 extends Fragment {
         txtPaid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), PayActivity.class);
-                intent.putExtra("id",2);    //在这里传递参数
+                Intent intent = new Intent(getActivity(), PayActivity.class);
+                intent.putExtra("id", 2);    //在这里传递参数
                 getActivity().startActivity(intent);
             }
         });
@@ -84,12 +91,11 @@ public class MyFragment4 extends Fragment {
         txtTobePaid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), PayActivity.class);
-                intent.putExtra("id",1);    //在这里传递参数
+                Intent intent = new Intent(getActivity(), PayActivity.class);
+                intent.putExtra("id", 1);    //在这里传递参数
                 getActivity().startActivity(intent);
             }
         });
-
         //跳转至设置界面
         txtSetting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +127,22 @@ public class MyFragment4 extends Fragment {
                 startActivity(intent);
             }
         });
+        LoginStatus();
+
         return view;
+    }
+
+    /**
+     * 判断登录状态
+     */
+    public void LoginStatus() {
+        SharedPreferences sp = getActivity().getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+        //获取编辑器
+        SharedPreferences.Editor editor = sp.edit();
+        isLoginStatus = sp.getBoolean("isLogin", false);
+        if (isLoginStatus == true) {
+            txtUsername.setText(sp.getString("loginUserName", null));
+            txtUsername.setEnabled(false);
+        }
     }
 }

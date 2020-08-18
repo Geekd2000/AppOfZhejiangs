@@ -19,7 +19,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
         myFragment1 = new MyFragment1("浙江","杭州");
         myFragment2 = new MyFragment2("浙江","杭州");
         myFragment3 = new MyFragment3("浙江","杭州");
-        myFragment4 = new MyFragment4();
+        myFragment4 = new MyFragment4("杭州");
     }
 
 
