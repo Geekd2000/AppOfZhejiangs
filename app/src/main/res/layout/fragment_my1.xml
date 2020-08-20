@@ -123,9 +123,7 @@
                             android:textStyle="bold"
                             android:typeface="sans" />
 
-
                     </LinearLayout>
-
                 </FrameLayout>
 
                 <FrameLayout
@@ -170,11 +168,8 @@
                             android:textStyle="bold"
                             android:typeface="sans" />
 
-
                     </LinearLayout>
-
                 </FrameLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -226,9 +221,7 @@
                             android:textStyle="bold"
                             android:typeface="sans" />
 
-
                     </LinearLayout>
-
                 </FrameLayout>
 
                 <FrameLayout
@@ -273,9 +266,7 @@
                             android:textStyle="bold"
                             android:typeface="sans" />
 
-
                     </LinearLayout>
-
                 </FrameLayout>
 
                 <FrameLayout
@@ -320,14 +311,9 @@
                             android:textStyle="bold"
                             android:typeface="sans" />
 
-
                     </LinearLayout>
-
                 </FrameLayout>
-
-
             </LinearLayout>
-
         </LinearLayout>
 
         <TextView

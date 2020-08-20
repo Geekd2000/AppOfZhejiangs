@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ public class TicketDetailActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private String value;
     private int index;
-    private ImageView image1, image2, image3, image4, goodsImage;
+    private ImageView image1, image2, goodsImage;
     private TextView detailTitle, detailPrice, detailCompany, detailSales, detailGoods1, detailGoods2, detailPrice1, detailPrice2,
             detailBuy1, detailBuy2, detailContent1, detailContent2, detailContent3, detailContent4;
     private Banner banner;
@@ -49,8 +50,6 @@ public class TicketDetailActivity extends AppCompatActivity {
         //mainImage = findViewById(R.id.image_ticketDetail);
         image1 = findViewById(R.id.detail_image1);
         image2 = findViewById(R.id.detail_image2);
-        image3 = findViewById(R.id.detail_image3);
-        image4 = findViewById(R.id.detail_image4);
         detailTitle = findViewById(R.id.detail_title);
         detailPrice = findViewById(R.id.detail_price);
         detailCompany = findViewById(R.id.detail_company);

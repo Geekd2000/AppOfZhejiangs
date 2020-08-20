@@ -266,7 +266,7 @@ public class FragmentFactory extends Fragment {
     public void initHotels() {
         hotelList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Hotel hotel = new Hotel(R.drawable.hotel_image, "快乐大酒店" + (i + 1), "120", "玛卡巴卡集团", "999");
+            Hotel hotel = new Hotel(R.drawable.hotel_image, "快乐大酒店" + (i + 1), "120", "无敌连锁公司", "999");
             hotelList.add(hotel);
         }
     }
@@ -274,7 +274,7 @@ public class FragmentFactory extends Fragment {
     public void initTaxis() {
         hotelList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Hotel hotel = new Hotel(R.drawable.taxi_image, "悟空租车" + (i + 1), "198", "无敌大公司", "555");
+            Hotel hotel = new Hotel(R.drawable.taxi_image, "大众" + (i + 1), "198", "八戒租车", "555");
             hotelList.add(hotel);
         }
     }
