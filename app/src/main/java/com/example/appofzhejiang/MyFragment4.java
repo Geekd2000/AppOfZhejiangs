@@ -146,6 +146,7 @@ public class MyFragment4 extends Fragment {
         if (isLoginStatus == true) {
             txtUsername.setText(sp.getString("loginUserName", null));
             txtUsername.setEnabled(false);
+            imageUser.setEnabled(false);
         }
     }
 }
