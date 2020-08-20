@@ -31,7 +31,7 @@ public class AboutUsActivity extends AppCompatActivity {
         mBack.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AboutUsActivity.this.finish();
+                finish();
             }
         });
 
