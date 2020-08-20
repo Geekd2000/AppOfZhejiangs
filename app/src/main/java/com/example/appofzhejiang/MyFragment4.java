@@ -17,6 +17,7 @@ import com.example.appofzhejiang.Business.ReceiptActivity;
 import com.example.appofzhejiang.Login.LoginActivity;
 import com.example.appofzhejiang.Setting.SettingActivity;
 import com.example.appofzhejiang.pay.PayActivity;
+import com.example.appofzhejiang.us.AboutUsActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -107,6 +108,8 @@ public class MyFragment4 extends Fragment {
         txtAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AboutUsActivity.class);
+                startActivity(intent);
             }
         });
 

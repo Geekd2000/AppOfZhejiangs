@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class SettingActivity extends AppCompatActivity {
     private RelativeLayout user;
     private Toolbar back;
     private TextView username;
+    private Switch mPush;
 
     public static SettingActivity instance = null;
 
@@ -33,8 +35,19 @@ public class SettingActivity extends AppCompatActivity {
         user = findViewById(R.id.user);
         back = findViewById(R.id.setting_toolbar);
         username = findViewById(R.id.user_name_setting);
+        mPush = findViewById(R.id.push);
 
         username.setText(getName());
+        mPush.setChecked(checked());
+
+        mPush.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Boolean isChecked = mPush.isChecked();
+                check(isChecked);
+                mPush.setChecked(checked());
+            }
+        });
 
         back.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +74,9 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
     }
-    public void Out(Boolean status){
-        SharedPreferences sp = getSharedPreferences("loginInfo",MODE_PRIVATE);
+
+    public void Out(Boolean status) {
+        SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
         //获取编辑器
         SharedPreferences.Editor editor = sp.edit();
         //存入boolean类型的登录状态
@@ -71,9 +85,22 @@ public class SettingActivity extends AppCompatActivity {
         editor.commit();
     }
 
-    public String getName(){
-        SharedPreferences sp = getSharedPreferences("loginInfo",MODE_PRIVATE);
-        String username = sp.getString("loginUserName",null);
+    public String getName() {
+        SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
+        String username = sp.getString("loginUserName", null);
         return username;
+    }
+
+    public void check(Boolean isChecked) {
+        SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("isChecked", isChecked);
+        editor.commit();
+    }
+
+    public Boolean checked() {
+        SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
+        Boolean checked = sp.getBoolean("isChecked", false);
+        return checked;
     }
 }

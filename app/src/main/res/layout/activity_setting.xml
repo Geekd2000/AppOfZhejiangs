@@ -89,6 +89,7 @@
             android:textColor="@color/colorLightBlack"
             android:textSize="16sp" />
         <Switch
+            android:id="@+id/push"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
