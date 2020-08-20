@@ -1,12 +1,13 @@
 package com.example.appofzhejiang.us;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
 
 import com.example.appofzhejiang.Login.LoginActivity;
 import com.example.appofzhejiang.R;
@@ -27,7 +28,7 @@ public class AboutUsActivity extends AppCompatActivity {
         tv3 = findViewById(R.id.txt_setting_3);
         tv4 = findViewById(R.id.txt_setting_4);
 
-        mBack.setOnClickListener(new View.OnClickListener() {
+        mBack.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AboutUsActivity.this.finish();
