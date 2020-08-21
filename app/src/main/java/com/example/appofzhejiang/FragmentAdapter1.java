@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +22,7 @@ public class FragmentAdapter1 extends RecyclerView.Adapter<FragmentAdapter1.Line
     @NonNull
     @Override
     public LinearViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new LinearViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter, parent, false));
+        return new LinearViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter1, parent, false));
     }
 
     @Override

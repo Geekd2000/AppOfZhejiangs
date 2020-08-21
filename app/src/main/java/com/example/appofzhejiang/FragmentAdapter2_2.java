@@ -6,28 +6,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FragmentAdapter2 extends RecyclerView.Adapter<FragmentAdapter2.GridViewHolder> {
+public class FragmentAdapter2_2 extends RecyclerView.Adapter<FragmentAdapter2_2.GridViewHolder> {
 
     private Context context;
 
-    public FragmentAdapter2(Context context) {
+    public FragmentAdapter2_2(Context context) {
         this.context = context;
     }
 
 
     @NonNull
     @Override
-    public FragmentAdapter2.GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FragmentAdapter2_2.GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new GridViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_grid_adapter2, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FragmentAdapter2.GridViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull FragmentAdapter2_2.GridViewHolder holder, final int position) {
         if (position % 2 != 0) {
             holder.txtGrid.setText("西湖一日游");
             holder.txtGridAmount.setText("77人浏览");
