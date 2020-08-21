@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,8 +19,9 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
     private Context mContext;
     private List<AddressList> mData;
 
-    public ReceiptAdapter(Context context ){
+    public ReceiptAdapter(Context context ,List<AddressList> data){
         this.mContext = context;
+        this.mData=data;
     }
 
     @NonNull
@@ -37,12 +39,13 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
 
     @Override
     public int getItemCount() {
-        return 10;
+        return mData.size();
     }
 
     public class LinearViewHolder extends RecyclerView.ViewHolder {
 
         private TextView username,phone,address,toleration;
+        private Button delete;
 
         public LinearViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -50,6 +53,8 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
             phone = itemView.findViewById(R.id.receipt_phone);
             address = itemView.findViewById(R.id.receipt_address);
             toleration = itemView.findViewById(R.id.receipt_default);
+            delete = itemView.findViewById(R.id.receipt_delete);
         }
     }
+
 }

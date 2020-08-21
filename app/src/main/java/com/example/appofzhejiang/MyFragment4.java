@@ -52,6 +52,7 @@ public class MyFragment4 extends Fragment {
         txtFinish = view.findViewById(R.id.txt_finished);
         txtNotes = view.findViewById(R.id.txt_travel_notes);
 
+        //跳转至我的游记页面
         txtNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){

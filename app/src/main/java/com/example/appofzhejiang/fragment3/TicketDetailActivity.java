@@ -157,7 +157,6 @@ public class TicketDetailActivity extends AppCompatActivity {
                 goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.hotel_image);
-                images.add(R.drawable.hotel_image);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
@@ -173,8 +172,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice1.setText("120");
                 detailGoods2.setText("双床房");
                 detailPrice2.setText("150");
-                detailContent1.setText(R.string.hotel);
+                detailContent1.setText(R.string.hotel1);
+                detailContent2.setText(R.string.hotel2);
                 image1.setImageResource(R.drawable.hotel_image);
+                image2.setImageResource(R.drawable.hotel_image);
                 final String finalImage1 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -233,8 +234,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice1.setText("198");
                 detailGoods2.setText("三日短期租");
                 detailPrice2.setText("498");
-                detailContent1.setText(R.string.taxi);
+                detailContent1.setText(R.string.taxi1);
+                detailContent2.setText(R.string.taxi2);
                 image1.setImageResource(R.drawable.taxi_image);
+                image2.setImageResource(R.drawable.taxi_image2);
                 final String finalImage2 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -277,7 +280,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                 goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.guider_image);
-                images.add(R.drawable.guider_image);
+                images.add(R.drawable.guider_image2);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
@@ -293,8 +296,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice1.setText("200");
                 detailGoods2.setText("西湖+雷峰塔+岳王庙");
                 detailPrice2.setText("300");
-                detailContent1.setText("给导游一点关爱，导游还你一片美景，多点关心多点爱。");
+                detailContent1.setText(R.string.guider1);
+                detailContent2.setText(R.string.guider2);
                 image1.setImageResource(R.drawable.guider_image);
+                image2.setImageResource(R.drawable.guider_image2);
                 final String finalImage3 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -337,7 +342,6 @@ public class TicketDetailActivity extends AppCompatActivity {
                 goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.farmhouse);
-                images.add(R.drawable.farmhouse);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
@@ -353,8 +357,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice1.setText("398");
                 detailGoods2.setText("大套间");
                 detailPrice2.setText("598");
-                detailContent1.setText(R.string.farmhouse);
+                detailContent1.setText(R.string.farmhouse1);
+                detailContent2.setText(R.string.farmhouse2);
                 image1.setImageResource(R.drawable.farmhouse);
+                image2.setImageResource(R.drawable.farmhouse);
                 final String finalImage4 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -397,7 +403,6 @@ public class TicketDetailActivity extends AppCompatActivity {
                 goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.longjingxiaren);
-                images.add(R.drawable.longjingxiaren);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
@@ -413,9 +418,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice1.setText("98");
                 detailGoods2.setText("龙井虾仁+龙井茶");
                 detailPrice2.setText("128");
-                detailContent1.setText(R.string.longjingxiaren);
+                detailContent1.setText(R.string.food1);
+                detailContent2.setText(R.string.food2);
                 image1.setImageResource(R.drawable.longjingxiaren);
-                image2.setImageResource(R.drawable.westlakelongjing);
+                image2.setImageResource(R.drawable.longjingxiaren);
                 final String finalImage5 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -458,7 +464,6 @@ public class TicketDetailActivity extends AppCompatActivity {
                 goodsImage.setImageResource(imgId);
                 images = new ArrayList<>();
                 images.add(R.drawable.westlakelongjing);
-                images.add(R.drawable.westlakelongjing);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
@@ -474,8 +479,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailPrice1.setText("198");
                 detailGoods2.setText("手工西湖龙井");
                 detailPrice2.setText("358");
-                detailContent1.setText(R.string.longjing);
+                detailContent1.setText(R.string.techan1);
+                detailContent2.setText(R.string.techan2);
                 image1.setImageResource(R.drawable.westlakelongjing);
+                image2.setImageResource(R.drawable.westlakelongjing);
                 final String finalImage6 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -535,7 +542,9 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailGoods2.setText("西湖三日游");
                 detailPrice2.setText("98");
                 detailContent1.setText("西湖的水，我的泪");
+                detailContent2.setText("西湖的水，我的泪");
                 image1.setImageResource(R.drawable.westlake);
+                image2.setImageResource(R.drawable.westlake);
                 final String finalImage7 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override

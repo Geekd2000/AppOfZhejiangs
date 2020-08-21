@@ -31,7 +31,7 @@ public class ReceiptActivity extends AppCompatActivity {
         mBack = findViewById(R.id.receipt_toolbar);
         mRyAddress = findViewById(R.id.address_message);
         mRyAddress.setLayoutManager(new LinearLayoutManager(ReceiptActivity.this));
-        mRyAddress.setAdapter(new ReceiptAdapter(ReceiptActivity.this));
+        mRyAddress.setAdapter(new ReceiptAdapter(ReceiptActivity.this,date));
 
         mBack.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

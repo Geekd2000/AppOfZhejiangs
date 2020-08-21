@@ -153,10 +153,13 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@drawable/bg_edit_address"
+            android:gravity="top"
             android:hint="请输入详细地址"
             android:maxLines="3"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
             android:textSize="16sp" />
 
         <View
@@ -169,7 +172,7 @@
             android:layout_height="wrap_content">
 
             <RadioButton
-                android:id="@+id/rb_1"
+                android:id="@+id/rb_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

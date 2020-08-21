@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appofzhejiang.R;
 import com.lljjcoder.citypickerview.widget.CityPicker;
@@ -18,8 +20,14 @@ import com.lljjcoder.citypickerview.widget.CityPicker;
 
 public class AddressActivity extends AppCompatActivity {
 
-    private Toolbar mBtnBack;
-    private TextView newAddress;
+    private Toolbar mBtnBack;//返回按钮
+    private TextView newAddress;//区域地址
+    private EditText receiveName;//收货人
+    private EditText telephoneNumber;//手机号
+    private EditText detailAddress;//详细地址
+    private RadioButton mRadioButton;//默认地址单选按钮
+    private Button cancel;
+    private Button save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +35,8 @@ public class AddressActivity extends AppCompatActivity {
         setContentView(R.layout.activity_address);
         //初始化，找到控件
         initView();
+
+        //区域选择
         newAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,6 +50,59 @@ public class AddressActivity extends AppCompatActivity {
                 finish();
             }
         });
+        //默认地址按钮设置选中和取消
+        final GlobalValue globalValue = new GlobalValue();
+        mRadioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isCheck = globalValue.isCheck();
+                if (isCheck) {
+                    if (view == mRadioButton)
+                        mRadioButton.setChecked(false);
+                } else {
+                    if (view == mRadioButton)
+                        mRadioButton.setChecked(true);
+                }
+                globalValue.setCheck(!isCheck);
+            }
+        });
+        //取消按钮,返回上一页
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        //保存按钮,保存添加一条地址信息
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (receiveName.getText().toString() == null) {
+                    Toast.makeText(AddressActivity.this, "请输入收货人姓名", Toast.LENGTH_SHORT).show();
+                } else if (telephoneNumber.getText() == null) {
+                    Toast.makeText(AddressActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
+                } else if (detailAddress.getText() == null) {
+                    Toast.makeText(AddressActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
+                } else if (newAddress.getText() == null) {
+                    Toast.makeText(AddressActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
+                }else {
+
+                }
+            }
+        });
+    }
+
+    //获取单选按钮checked值的类
+    class GlobalValue {
+        public boolean isCheck() {
+            return isCheck;
+        }
+
+        public void setCheck(boolean check) {
+            isCheck = check;
+        }
+
+        private boolean isCheck;
     }
 
     //Texview的点击事件
@@ -94,5 +157,12 @@ public class AddressActivity extends AppCompatActivity {
     protected void initView() {
         newAddress = findViewById(R.id.new_address);
         mBtnBack = findViewById(R.id.address_toolbar);
+        mRadioButton = findViewById(R.id.rb_address);
+        receiveName = findViewById(R.id.new_username);
+        telephoneNumber = findViewById(R.id.new_number);
+        detailAddress = findViewById(R.id.detail_address);
+        cancel = findViewById(R.id.btn_address_cancel);
+        save = findViewById(R.id.btn_address_save);
     }
+
 }
