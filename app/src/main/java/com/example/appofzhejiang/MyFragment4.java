@@ -18,6 +18,7 @@ import com.example.appofzhejiang.Login.LoginActivity;
 import com.example.appofzhejiang.Setting.SettingActivity;
 import com.example.appofzhejiang.pay.PayActivity;
 import com.example.appofzhejiang.us.AboutUsActivity;
+import com.example.appofzhejiang.us.NotesActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -26,7 +27,7 @@ public class MyFragment4 extends Fragment {
     private String content;
     private View view;
     private TextView txtAddress, txtOrder, txtSetting, txtAbout, txtUsername,
-            txtTobePaid, txtPaid, txtFinish;
+            txtTobePaid, txtPaid, txtFinish,txtNotes;
     private CircleImageView imageUser;
     private Boolean isLoginStatus;
     public String username;
@@ -49,6 +50,15 @@ public class MyFragment4 extends Fragment {
         txtTobePaid = view.findViewById(R.id.txt_tobePaid);
         txtPaid = view.findViewById(R.id.txt_paid);
         txtFinish = view.findViewById(R.id.txt_finished);
+        txtNotes = view.findViewById(R.id.txt_travel_notes);
+
+        txtNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), NotesActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //跳转至收货信息界面
         txtAddress.setOnClickListener(new View.OnClickListener() {

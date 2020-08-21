@@ -30,7 +30,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".us.AboutUsActivity"></activity>
+        <activity android:name=".us.NotesActivity"></activity>
+        <activity android:name=".us.AboutUsActivity" />
         <activity android:name=".Setting.PasswordChangeActivity" />
         <activity android:name=".xihu.Jingqu_daohang" />
         <activity android:name=".xihu.Jingqu_around" />
