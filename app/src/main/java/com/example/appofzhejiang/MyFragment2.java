@@ -28,6 +28,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.appofzhejiang.CustomDialog.CustomDialog;
 import com.example.appofzhejiang.xihu.Jingqu;
+import com.example.appofzhejiang.xihu.more;
 import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
@@ -54,6 +55,8 @@ public class MyFragment2 extends Fragment {
     private String currentCity; // 当前城市
     private String currentProvince; // 当前省份
     public LocationClient mLocationClient;//定位
+
+    public MyFragment2(){}
 
     // 传入默认城市名称
     public MyFragment2(String province, String city) {
@@ -120,7 +123,8 @@ public class MyFragment2 extends Fragment {
         txtMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), more.class);
+                startActivity(intent);
             }
         });
         txtSearch = view.findViewById(R.id.txt_search);

@@ -1,25 +1,14 @@
 package com.example.appofzhejiang.xihu;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
@@ -33,6 +22,7 @@ import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.TextOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.PoiInfo;
+import com.baidu.mapapi.search.core.SearchResult;
 import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
 import com.baidu.mapapi.search.poi.PoiDetailResult;
 import com.baidu.mapapi.search.poi.PoiDetailSearchResult;
@@ -42,28 +32,32 @@ import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
 import com.example.appofzhejiang.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static android.content.ContentValues.TAG;
+public class Jingqu_around_park extends AppCompatActivity {
 
-public class Jingqu_Fragment extends Fragment {
-
+    private static int count = 0;
     private MapView mMapView;
-    public BaiduMap mBaidumap = null;
-
+    private BaiduMap mBaidumap;
+    private Toolbar mBack;
     private PoiSearch poiSearch;
     private OnGetPoiSearchResultListener poiListener;
 
-    public LocationClient mLocationClient;
-
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        SDKInitializer.initialize(getApplicationContext());
+        setContentView(R.layout.activity_jingqu_around_park);
+        //返回按钮
+        mBack=findViewById(R.id.toolbar);
+        mBack.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
-        SDKInitializer.initialize(getActivity().getApplicationContext());
-        View view = inflater.inflate(R.layout.jingqu_fragment, container, false);
-
-        mMapView = view.findViewById(R.id.map_baidu);//初始化地图
+        mMapView = findViewById(R.id.map_baidu);//初始化地图
         mBaidumap = mMapView.getMap();
 
         LatLng cenpt = new LatLng(30.22730, 120.12979); //设定中心点坐标
@@ -73,38 +67,30 @@ public class Jingqu_Fragment extends Fragment {
                 .zoom(18)
                 .build();  //定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
         MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
-        mBaidumap.setMapStatus(mMapStatusUpdate);//改变地图状态
-
-
-
-
-
-
-
         nearbyPoiSearch(mBaidumap);
-        return view;
+
+        mBaidumap.setMapStatus(mMapStatusUpdate);//改变地图状态
     }
 
-    public void nearbyPoiSearch(final BaiduMap mBaidumap) {
+    private void nearbyPoiSearch(final BaiduMap mBaidumap) {
         //创建poi检索实例
         poiSearch = PoiSearch.newInstance();
         //创建poi监听者
         poiListener = new OnGetPoiSearchResultListener() {
             @Override
             public void onGetPoiResult(PoiResult result) {
-                //获取POI检索结果
-                List<PoiInfo> point = result.getAllPoi();
-
-                for(PoiInfo poiInfo : point){
-                    if(poiInfo.getName().contains("洗手间") ||
-                            poiInfo.getName().contains("公共厕所") ||
-                            poiInfo.getName().contains("公共卫生间")){
-                        continue;
-                    }else {
+                if (result == null || result.error == SearchResult.ERRORNO.RESULT_NOT_FOUND) {
+                    Log.e(String.valueOf(getClass()), "onGetPoiResult: blank" );
+                    return;
+                }
+                if (result.error == SearchResult.ERRORNO.NO_ERROR) {
+                    List<PoiInfo> point = result.getAllPoi();
+//构建Marker图标
+                    for (PoiInfo poiInfo : point) {
                         LatLng poiLocation = poiInfo.location;
 //构建Marker图标
                         BitmapDescriptor bitmap = BitmapDescriptorFactory
-                                .fromResource(R.drawable.jingqu);
+                                .fromResource(R.drawable.park);
 //构建MarkerOption，用于在地图上添加Marker
                         OverlayOptions option = new MarkerOptions()
                                 .position(poiLocation)
@@ -127,6 +113,7 @@ public class Jingqu_Fragment extends Fragment {
                         mBaidumap.addOverlay(textOption);
                     }
                 }
+                //获取POI检索结果
 
             }
 
@@ -145,18 +132,18 @@ public class Jingqu_Fragment extends Fragment {
 
             }
         };
+
+
         //设置poi监听者该方法要先于检索方法searchNearby(PoiNearbySearchOption)前调用，否则会在某些场景出现拿不到回调结果的情况
         poiSearch.setOnGetPoiSearchResultListener(poiListener);
         //设置请求参数
         PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption()
-                .keyword("风景区")//检索关键字
+                .keyword("停车场")//检索关键字
                 .location(new LatLng(30.22730, 120.12979))//检索位置
                 .radius(1000);//附近检索半径
-
         //发起请求
         poiSearch.searchNearby(nearbySearchOption);
     }
-
 
     @Override
     public void onResume() {
@@ -176,4 +163,13 @@ public class Jingqu_Fragment extends Fragment {
         mMapView.onDestroy();
     }
 
+    public void flush() {
+        if(count == 0){
+            finish();
+            Log.e(String.valueOf(getClass()), "flush: flushed" );
+            count++;
+            Intent intent = new Intent(this, Jingqu_around_park.class);
+            startActivity(intent);
+        }
+    }
 }

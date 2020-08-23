@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
-            android:text="订单编号："
+            android:text="订单编号"
             android:textColor="@color/colorLightBlack"
             android:textSize="16sp" />
 
@@ -35,21 +35,11 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/QR_code"
+            android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:text="二维码"
-            android:textColor="#17C780"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@id/QR_code"
             android:text="已发货"
             android:textColor="#17C780"
             android:textSize="16sp" />

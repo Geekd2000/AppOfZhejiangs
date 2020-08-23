@@ -24,7 +24,7 @@ public class OrderFragment2 extends Fragment {
 
     private View view;
     public RecyclerView recyclerView;
-    private OrderAdapter orderAdapter;
+    private PayAdapter payAdapter;
     private List<FileList> fileLists = new ArrayList<FileList>();
     private String content;
 
@@ -53,8 +53,8 @@ public class OrderFragment2 extends Fragment {
         //获取recyclerview
         recyclerView = view.findViewById(R.id.fragment_order2);
         //创建Adapter
-        orderAdapter = new OrderAdapter(getActivity());
-        recyclerView.setAdapter(orderAdapter);
+        payAdapter = new PayAdapter(getActivity());
+        recyclerView.setAdapter(payAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 }

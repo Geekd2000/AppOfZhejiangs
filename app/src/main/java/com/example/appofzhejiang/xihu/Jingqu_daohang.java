@@ -21,6 +21,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
@@ -29,7 +30,19 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.Overlay;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.PolylineOptions;
+import com.baidu.mapapi.map.TextOptions;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.search.core.PoiInfo;
+import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
+import com.baidu.mapapi.search.poi.PoiDetailResult;
+import com.baidu.mapapi.search.poi.PoiDetailSearchResult;
+import com.baidu.mapapi.search.poi.PoiIndoorResult;
+import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
+import com.baidu.mapapi.search.poi.PoiResult;
+import com.baidu.mapapi.search.poi.PoiSearch;
+import com.baidu.mapapi.search.route.OnGetRoutePlanResultListener;
+import com.baidu.mapapi.search.route.RoutePlanSearch;
+import com.baidu.mapapi.search.route.WalkingRouteResult;
 import com.example.appofzhejiang.R;
 
 import java.util.ArrayList;
@@ -37,9 +50,10 @@ import java.util.List;
 
 public class Jingqu_daohang extends AppCompatActivity {
 
-    public LocationClient mLocationClient;
+    private PoiSearch poiSearch;
+    private OnGetPoiSearchResultListener poiListener;
 
-    private TextView positionText;
+    public LocationClient mLocationClient;
 
     private MapView mapView;
 
@@ -49,6 +63,9 @@ public class Jingqu_daohang extends AppCompatActivity {
 
     private Toolbar toolbar;
 
+    private OverlayOptions mOverlayOptions;
+
+    private Overlay mOverlay = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +86,7 @@ public class Jingqu_daohang extends AppCompatActivity {
         mLocationClient.registerLocationListener(new MyLocationListener());
 
 
-        mapView =  findViewById(R.id.bmapView);
+        mapView = (MapView) findViewById(R.id.bmapView);
         baiduMap = mapView.getMap();
         baiduMap.setMyLocationEnabled(true);
 
@@ -77,12 +94,6 @@ public class Jingqu_daohang extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(Jingqu_daohang.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
         }
-//        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-//            permissionList.add(Manifest.permission.READ_PHONE_STATE);
-//        }
-//        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//        }
         if (!permissionList.isEmpty()) {
             String[] permissions = permissionList.toArray(new String[permissionList.size()]);
             ActivityCompat.requestPermissions(Jingqu_daohang.this, permissions, 1);
@@ -101,7 +112,6 @@ public class Jingqu_daohang extends AppCompatActivity {
                 .icon(bitmap);
 //在地图上添加Marker，并显示
         baiduMap.addOverlay(option);
-
     }
 
     private void requestLocation() {
@@ -174,25 +184,20 @@ public class Jingqu_daohang extends AppCompatActivity {
         MyLocationData locationData = locationBuilder.build();
         baiduMap.setMyLocationData(locationData);
 
+        if(mOverlay != null){
+            mOverlay.remove();
+        }
         List<LatLng> points = new ArrayList<LatLng>();
         points.add(new LatLng(location.getLatitude(),location.getLongitude()));
         points.add(new LatLng(30.22730, 120.12979));
-
-
         List<Integer> colors = new ArrayList<>();
         colors.add(Integer.valueOf(Color.BLACK));
-
-
-//设置折线的属性
-        OverlayOptions mOverlayOptions = new PolylineOptions()
+        mOverlayOptions = new PolylineOptions()
                 .width(5)
                 .color(0xAAFF0000)
                 .points(points)
                 .colorsValues(colors);//设置每段折线的颜色
-
-//在地图上绘制折线
-//mPloyline 折线对象
-        Overlay mPolyline = baiduMap.addOverlay(mOverlayOptions);
+        mOverlay = baiduMap.addOverlay(mOverlayOptions);
 
     }
 

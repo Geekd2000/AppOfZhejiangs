@@ -1,14 +1,19 @@
 package com.example.appofzhejiang;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.appofzhejiang.xihu.Dairy;
+import com.example.appofzhejiang.xihu.Jingqu;
 
 public class FragmentAdapter2_2 extends RecyclerView.Adapter<FragmentAdapter2_2.GridViewHolder> {
 
@@ -42,6 +47,13 @@ public class FragmentAdapter2_2 extends RecyclerView.Adapter<FragmentAdapter2_2.
             holder.gridImage.setImageResource(R.drawable.demo2);
             holder.userImage.setImageResource(R.drawable.userimage2);
         }
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, Dairy.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -52,16 +64,17 @@ public class FragmentAdapter2_2 extends RecyclerView.Adapter<FragmentAdapter2_2.
     public class GridViewHolder extends RecyclerView.ViewHolder {
         private TextView txtGrid, txtGridAmount, txtGridName, txtGridTime;
         private ImageView gridImage, userImage;
+        private LinearLayout linearLayout;
 
         public GridViewHolder(@NonNull View itemView) {
             super(itemView);
-
             txtGrid = itemView.findViewById(R.id.txt_grid);
             txtGridAmount = itemView.findViewById(R.id.txt_gridAmount);
             txtGridName = itemView.findViewById(R.id.grid_name);
             txtGridTime = itemView.findViewById(R.id.grid_time);
             gridImage = itemView.findViewById(R.id.grid_image);
             userImage = itemView.findViewById(R.id.circle_user);
+            linearLayout = itemView.findViewById(R.id.grid_list);
         }
     }
 }

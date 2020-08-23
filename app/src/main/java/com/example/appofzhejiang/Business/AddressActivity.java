@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -36,6 +40,9 @@ public class AddressActivity extends AppCompatActivity {
         //初始化，找到控件
         initView();
 
+        //获取传过来的参数
+        Intent intent = getIntent();
+        final int size = Integer.parseInt(intent.getStringExtra("size"));
         //区域选择
         newAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,16 +84,22 @@ public class AddressActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (receiveName.getText().toString() == null) {
+                if (TextUtils.isEmpty(receiveName.getText().toString().trim())) {
                     Toast.makeText(AddressActivity.this, "请输入收货人姓名", Toast.LENGTH_SHORT).show();
-                } else if (telephoneNumber.getText() == null) {
+                } else if (TextUtils.isEmpty(telephoneNumber.getText().toString().trim())) {
                     Toast.makeText(AddressActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
-                } else if (detailAddress.getText() == null) {
-                    Toast.makeText(AddressActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
-                } else if (newAddress.getText() == null) {
-                    Toast.makeText(AddressActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
-                }else {
-
+                } else if (TextUtils.isEmpty(newAddress.getText().toString().trim())) {
+                    Toast.makeText(AddressActivity.this, "请选择区域", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(detailAddress.getText().toString().trim())) {
+                    Toast.makeText(AddressActivity.this, "请输入详细地址", Toast.LENGTH_SHORT).show();
+                } else {
+                    //saveAddressInfo(receiveName.getText().toString(),telephoneNumber.getText().toString(),newAddress.getText().toString(),detailAddress.getText().toString());
+                    Intent intent = new Intent();
+                    intent.putExtra("name", receiveName.getText().toString());
+                    intent.putExtra("phone", telephoneNumber.getText().toString());
+                    intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
+                    setResult(RESULT_OK, intent);
+                    finish();
                 }
             }
         });
@@ -105,7 +118,7 @@ public class AddressActivity extends AppCompatActivity {
         private boolean isCheck;
     }
 
-    //Texview的点击事件
+    //TexView的点击事件
     public void chooseArea(View view) {
         //判断输入法的隐藏状态
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -113,7 +126,6 @@ public class AddressActivity extends AppCompatActivity {
             imm.hideSoftInputFromWindow(view.getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
             selectAddress();//调用CityPicker选取区域
-
         }
     }
 

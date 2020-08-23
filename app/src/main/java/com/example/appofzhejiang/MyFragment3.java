@@ -57,6 +57,8 @@ public class MyFragment3 extends Fragment {
     private String currentProvince; // 当前省份
     public LocationClient mLocationClient;//定位
 
+    public MyFragment3(){}
+
     // 传入默认城市名称
     public MyFragment3(String province, String city) {
         this.currentProvince = province;

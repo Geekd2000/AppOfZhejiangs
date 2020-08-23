@@ -1,6 +1,5 @@
 package com.example.appofzhejiang.pay;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.example.appofzhejiang.R;
 
@@ -21,7 +19,7 @@ public class OrderFragment1 extends Fragment {
 
     private View view;
     public RecyclerView recyclerView;
-    private OrderAdapter orderAdapter;
+    private PayAdapter payAdapter;
     private List<FileList> fileLists = new ArrayList<FileList>();
     private String content;
 
@@ -51,8 +49,8 @@ public class OrderFragment1 extends Fragment {
         //获取recyclerview
         recyclerView = view.findViewById(R.id.fragment_order1);
         //创建Adapter
-        orderAdapter = new OrderAdapter(getActivity());
-        recyclerView.setAdapter(orderAdapter);
+        payAdapter = new PayAdapter(getActivity());
+        recyclerView.setAdapter(payAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 }

@@ -31,10 +31,10 @@ public class Jingqu extends AppCompatActivity {
     private ArrayList<String> imageTitle;
 
     private Dialog mShareDialog;
-    private TextView txt_open,txt_menpiao,txt_around;
+    private Dialog mShareDialog2;
+    private TextView txt_open,txt_menpiao,txt_around,daohang;
 
     private Toolbar toolbar;
-    private TextView daohang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,16 +62,6 @@ public class Jingqu extends AppCompatActivity {
             }
         });
 
-        //跳转周边
-        txt_around = findViewById(R.id.txt_around);
-        txt_around.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Jingqu.this,Jingqu_around.class);
-                startActivity(intent);
-            }
-        });
-
         //底部弹窗
         txt_open = findViewById(R.id.txt_openTime);
         txt_open.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +79,13 @@ public class Jingqu extends AppCompatActivity {
             }
         });
 
+        txt_around = findViewById(R.id.txt_around);
+        txt_around.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog2();// 单击按钮后 调用显示视图的 showDialog 方法
+            }
+        });
 
         //景区攻略的recelyeView
         RecycleViewAdepter recycleViewAdepter = new RecycleViewAdepter(this);
@@ -138,6 +135,53 @@ public class Jingqu extends AppCompatActivity {
         imageTitle.add("西湖1");
         imageTitle.add("西湖2");
         imageTitle.add("西湖3");
+    }
+
+    private void showDialog2(){
+        if (mShareDialog2 == null) {
+            initShareDialog2();
+        }
+        mShareDialog2.show();
+    }
+
+    private void initShareDialog2() {
+        mShareDialog2 = new Dialog(this, R.style.dialog_bottom_full);
+        mShareDialog2.setCanceledOnTouchOutside(true); //手指触碰到外界取消
+        mShareDialog2.setCancelable(true);             //可取消 为true
+        Window window = mShareDialog2.getWindow();      // 得到dialog的窗体
+        window.setGravity(Gravity.BOTTOM);
+        window.setWindowAnimations(R.style.share_animation);
+
+        View view = View.inflate(this, R.layout.lay_share2, null); //获取布局视图
+        view.findViewById(R.id.know).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mShareDialog2 != null && mShareDialog2.isShowing()) {
+                    mShareDialog2.dismiss();
+                }
+            }
+        });
+        view.findViewById(R.id.txt_park).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Jingqu.this,Jingqu_around_park.class);
+                startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.txt_wc).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        view.findViewById(R.id.txt_restrant).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        window.setContentView(view);
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);//设置横向全屏
     }
 
     private void showDialog() {

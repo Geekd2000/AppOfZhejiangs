@@ -32,7 +32,7 @@ public class MyFragment4 extends Fragment {
     private Boolean isLoginStatus;
     public String username;
 
-
+    public MyFragment4(){}
     public MyFragment4(String content) {
         this.content = content;
     }

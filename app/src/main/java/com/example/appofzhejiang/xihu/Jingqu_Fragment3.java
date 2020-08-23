@@ -42,8 +42,6 @@ public class Jingqu_Fragment3 extends Fragment {
     private PoiSearch poiSearch;
     private  OnGetPoiSearchResultListener poiListener;
 
-    public Jingqu_Fragment3(){}
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
@@ -88,38 +86,31 @@ public class Jingqu_Fragment3 extends Fragment {
                 List<PoiInfo> point = result.getAllPoi();
 //构建Marker图标
                 for(PoiInfo poiInfo : point){
-                    if(poiInfo.getName().contains("洗手间") ||
-                            poiInfo.getName().contains("公共厕所") ||
-                            poiInfo.getName().contains("公共卫生间")){
-                        continue;
-                    }else {
-                        LatLng poiLocation = poiInfo.location;
+                    LatLng poiLocation = poiInfo.location;
 //构建Marker图标
-                        BitmapDescriptor bitmap = BitmapDescriptorFactory
-                                .fromResource(R.drawable.park);
+                    BitmapDescriptor bitmap = BitmapDescriptorFactory
+                            .fromResource(R.drawable.park);
 //构建MarkerOption，用于在地图上添加Marker
-                        OverlayOptions option = new MarkerOptions()
-                                .position(poiLocation)
-                                .icon(bitmap);
+                    OverlayOptions option = new MarkerOptions()
+                            .position(poiLocation)
+                            .icon(bitmap);
 //在地图上添加Marker，并显示
-                        mBaidumap.addOverlay(option);
+                    mBaidumap.addOverlay(option);
 
-                        LatLng llText = poiInfo.location;
-                        String addrStr = poiInfo.getName();
-                        //构建文字Option对象，用于在地图上添加文字
-                        OverlayOptions textOption = new TextOptions()
-                                .bgColor(Color.WHITE)
-                                .fontSize(30)
-                                .fontColor(Color.BLACK)
-                                .text(addrStr)
+                    LatLng llText = poiInfo.location;
+                    String addrStr = poiInfo.getName();
+                    //构建文字Option对象，用于在地图上添加文字
+                    OverlayOptions textOption = new TextOptions()
+                            .bgColor(Color.WHITE)
+                            .fontSize(30)
+                            .fontColor(Color.BLACK)
+                            .text(addrStr)
 //                    .rotate(-30)
-                                .position(llText);
+                            .position(llText);
 //在地图上添加该文字对象并显示
 
-                        mBaidumap.addOverlay(textOption);
-                    }
+                    mBaidumap.addOverlay(textOption);
                 }
-
             }
 
             @Override
@@ -137,16 +128,16 @@ public class Jingqu_Fragment3 extends Fragment {
 
             }
         };
-        //设置poi监听者该方法要先于检索方法searchNearby(PoiNearbySearchOption)前调用，否则会在某些场景出现拿不到回调结果的情况
-        poiSearch.setOnGetPoiSearchResultListener(poiListener);
-        //设置请求参数
-        PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption()
-                .keyword("厕所")//检索关键字
-                .location(new LatLng(30.22730, 120.12979))//检索位置
-                .radius(1000);//附近检索半径
-
-        //发起请求
-        poiSearch.searchNearby(nearbySearchOption);
+//        //设置poi监听者该方法要先于检索方法searchNearby(PoiNearbySearchOption)前调用，否则会在某些场景出现拿不到回调结果的情况
+//        poiSearch.setOnGetPoiSearchResultListener(poiListener);
+//        //设置请求参数
+//        PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption()
+//                .keyword("厕所")//检索关键字
+//                .location(new LatLng(30.22730, 120.12979))//检索位置
+//                .radius(1000);//附近检索半径
+//
+//        //发起请求
+//        poiSearch.searchNearby(nearbySearchOption);
     }
 
 
@@ -170,4 +161,3 @@ public class Jingqu_Fragment3 extends Fragment {
     }
 
 }
-
