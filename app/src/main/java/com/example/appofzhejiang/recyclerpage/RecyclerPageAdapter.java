@@ -1,6 +1,7 @@
 package com.example.appofzhejiang.recyclerpage;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,17 +11,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.appofzhejiang.MainActivity;
+import com.example.appofzhejiang.MyFragment1;
 import com.example.appofzhejiang.R;
 
 import java.util.List;
 
 public class RecyclerPageAdapter extends RecyclerView.Adapter<ViewHolder> {
     private List<RecyclerBean> recyclerBeanList;
+    private Fragment fragment;
+    private Activity activity;
 
-    public RecyclerPageAdapter(List<RecyclerBean> recyclerBeanList) {
+    public RecyclerPageAdapter(List<RecyclerBean> recyclerBeanList,Fragment fragment) {
         this.recyclerBeanList = recyclerBeanList;
+        this.fragment = fragment;
+    }
+    public RecyclerPageAdapter(List<RecyclerBean> recyclerBeanList,Activity activity) {
+        this.recyclerBeanList = recyclerBeanList;
+        this.activity = activity;
     }
 
 
@@ -47,7 +59,14 @@ public class RecyclerPageAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         RecyclerBean hotel = recyclerBeanList.get(position);
-        holder.getLogoImage().setImageBitmap(hotel.getBitmapImg());
+//        holder.getLogoImage().setImageBitmap(hotel.getBitmapImg());
+        if(activity != null) {
+            Glide.with(activity).load(hotel.getPictures()).centerCrop().dontAnimate().into(holder.getLogoImage());
+        }
+        if(fragment != null) {
+            Glide.with(fragment).load(hotel.getPictures()).centerCrop().dontAnimate().into(holder.getLogoImage());
+        }
+
         holder.getNameText().setText(hotel.getTitle());
         holder.getTypeText().setText(hotel.getType());
         holder.getTimeText().setText(hotel.getTime());

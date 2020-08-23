@@ -49,7 +49,7 @@ public class RecyclerPageActivity extends AppCompatActivity {
         recyclerBeanList = new RecyclerBeanListUtil(currentCity, type).getRecyclerBeanList();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        RecyclerPageAdapter adapter = new RecyclerPageAdapter(recyclerBeanList);
+        RecyclerPageAdapter adapter = new RecyclerPageAdapter(recyclerBeanList,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
 

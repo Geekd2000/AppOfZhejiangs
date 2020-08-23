@@ -1,14 +1,21 @@
 package com.example.appofzhejiang.recyclerpage;
 
 
-import android.widget.ImageView;
 
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
+
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -46,13 +53,7 @@ public class RecyclerBeanListUtil {
         } else if (RecyclerType.NEWS.equals(this.type)) {
             sendRequest("http://120.26.172.104:9002/web/findDestinationByType?type=专题新闻");
         } else if (this.type == null) {
-<<<<<<< HEAD
-            // sendRequest("http://120.26.172.104:9002/web/findAllDestination");
-            sendRequest("http://120.26.172.104:9002/web/findDestinationByType?type=旅游攻略");
-=======
              sendRequest("http://120.26.172.104:9002/web/findAllDestination");
->>>>>>> dev
-
         }
     }
 
@@ -88,10 +89,7 @@ public class RecyclerBeanListUtil {
      * @return
      */
     private List<RecyclerBean> parseJSON(String responseData) {
-        Gson gson = new Gson();
-        return gson.fromJson(responseData, new TypeToken<List<RecyclerBean>>() {
-        }.getType());
-
+        return JSON.parseArray(responseData, RecyclerBean.class);
     }
 
 

@@ -67,4 +67,6 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:23.0.1'
     implementation 'com.github.clans:fab:1.6.4' //悬浮按钮
+    implementation 'com.alibaba:fastjson:1.2.73'
+    implementation 'com.alibaba:fastjson:1.1.75.android'
 }

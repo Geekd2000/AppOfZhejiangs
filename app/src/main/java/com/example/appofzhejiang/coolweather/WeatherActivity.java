@@ -294,8 +294,6 @@ public class WeatherActivity extends AppCompatActivity {
     private void getWeatherMap(String weatherId) {
         getNowMap(weatherId);
         getForecastMap(weatherId);
-        // 测试此次刷新和风天气的数据有没有请求到
-        System.out.println("--------------------------------" + nowMap.size() + forecastMap.size());
     }
     private void getNowMap(String weatherId) {
         HeWeather.getWeatherNow(WeatherActivity.this, weatherId, new HeWeather.OnResultWeatherNowListener() {

@@ -93,11 +93,10 @@ public class MyFragment1 extends Fragment {
     private String weatherId; // 当前weatherId;
 
 
-<<<<<<< HEAD
-=======
+
     public MyFragment1(){}
 
->>>>>>> dev
+
     // 传入默认城市名称
     public MyFragment1(String province, String city) {
         this.currentProvince = province;
@@ -279,7 +278,7 @@ public class MyFragment1 extends Fragment {
     private void initRecyclerView() {
 
         recyclerView = view.findViewById(R.id.fg1_recyclerView);
-        RecyclerPageAdapter adapter = new RecyclerPageAdapter(new RecyclerBeanListUtil(currentCity,null).getRecyclerBeanList());
+        RecyclerPageAdapter adapter = new RecyclerPageAdapter(new RecyclerBeanListUtil(currentCity,null).getRecyclerBeanList(),this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
