@@ -40,14 +40,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textColor="#fff"
-                    android:textSize="40sp"
+                    android:textSize="30sp"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="AQI指数"
+                    android:text="相对湿度"
                     android:textColor="#fff"/>
 
             </LinearLayout>
@@ -71,14 +71,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textColor="#fff"
-                    android:textSize="40sp"
+                    android:textSize="30sp"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="PM2.5指数"
+                    android:text="风向风级"
                     android:textColor="#fff"
                     />
 

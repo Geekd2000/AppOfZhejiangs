@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import interfaces.heweather.com.interfacesmodule.view.HeConfig;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
@@ -29,6 +31,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final int PAGE_TWO = 1;
     public static final int PAGE_THREE = 2;
     public static final int PAGE_FOUR = 3;
+    static {
+        HeConfig.init("HE2008052029531704", "8fb20072276e48aa83d1200cce3653e0");
+        //切换至开发版服务
+        HeConfig.switchToDevService();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

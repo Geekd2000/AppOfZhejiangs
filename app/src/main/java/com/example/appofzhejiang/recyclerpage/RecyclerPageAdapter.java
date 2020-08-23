@@ -1,6 +1,7 @@
 package com.example.appofzhejiang.recyclerpage;
 
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class RecyclerPageAdapter extends RecyclerView.Adapter<ViewHolder> {
             public void onClick(View view) {
                 int position = viewHolder.getAdapterPosition();
                 RecyclerBean hotel = recyclerBeanList.get(position);
-                Toast.makeText(view.getContext(), "You clicked view：" + hotel.getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "You clicked view：" + hotel.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
         // 注册点击事件 end
@@ -46,11 +47,11 @@ public class RecyclerPageAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         RecyclerBean hotel = recyclerBeanList.get(position);
-        holder.getLogoImage().setImageResource(hotel.getImageId());
-        holder.getNameText().setText(hotel.getName());
+        holder.getLogoImage().setImageBitmap(hotel.getBitmapImg());
+        holder.getNameText().setText(hotel.getTitle());
         holder.getTypeText().setText(hotel.getType());
-        holder.getCountText().setText(hotel.getCount());
         holder.getTimeText().setText(hotel.getTime());
+        holder.getCountText().setText(hotel.getDread());
     }
 
     @Override
