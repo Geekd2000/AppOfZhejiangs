@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+import com.example.appofzhejiang.coolweather.WeatherActivity;
 import com.example.appofzhejiang.recyclerpage.RecyclerBeanListUtil;
 import com.example.appofzhejiang.recyclerpage.RecyclerType;
 import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,8 +60,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import interfaces.heweather.com.interfacesmodule.bean.base.Code;
+import interfaces.heweather.com.interfacesmodule.bean.weather.WeatherNowBean;
+import interfaces.heweather.com.interfacesmodule.view.HeConfig;
+import interfaces.heweather.com.interfacesmodule.view.HeWeather;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -85,7 +92,10 @@ public class MyFragment1 extends Fragment {
     private String currentProvince; // 当前省份
     private String weatherId; // 当前weatherId;
 
+<<<<<<< HEAD
     public MyFragment1(){}
+=======
+>>>>>>> 437de8f... 优化首页
 
     // 传入默认城市名称
     public MyFragment1(String province, String city) {
@@ -97,12 +107,13 @@ public class MyFragment1 extends Fragment {
 
     /**
      * 此方法会在onCreateView方法前执行，因为fragemnt有缓存机制导致页面切换时城市信息不同步
+     *
      * @param isVisibleToUser
      */
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser) {
+        if (isVisibleToUser) {
             // 如果缓存中有城市信息，则从缓存中获取城市
             String cityInfo = load("data_cityInfo");
             if (cityInfo != null && !"".equals(cityInfo.trim())) {
@@ -202,7 +213,7 @@ public class MyFragment1 extends Fragment {
             }
         });
 
-        // 点击诗画·地点TextView事件
+        // 点击攻略·地点TextView事件
         txtPoem = (TextView) view.findViewById(R.id.txt_poem);
         txtPoem.setText("攻略 · " + currentCity);
         txtPoem.setOnClickListener(new View.OnClickListener() {
@@ -265,8 +276,9 @@ public class MyFragment1 extends Fragment {
      * 对RecycleView进行配置
      */
     private void initRecyclerView() {
+
         recyclerView = view.findViewById(R.id.fg1_recyclerView);
-        RecyclerPageAdapter adapter = new RecyclerPageAdapter(new RecyclerBeanListUtil(currentCity, RecyclerType.STRATEGY).getRecyclerBeanList());
+        RecyclerPageAdapter adapter = new RecyclerPageAdapter(new RecyclerBeanListUtil(currentCity,null).getRecyclerBeanList());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
@@ -325,48 +337,79 @@ public class MyFragment1 extends Fragment {
             }
         }).start();
     }
+
     /**
      * 获取degree
      */
     public String requestDegree(final String weatherId) {
-        String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId + "&key=8fb20072276e48aa83d1200cce3653e0";
-        final Weather[] weather = new Weather[1];
-        save("false", "data_weather");
-        HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
+        final boolean[] flag1 = {false};
+        final String[] tempe = {null};
+        HeWeather.getWeatherNow(getContext(), weatherId, new HeWeather.OnResultWeatherNowListener() {
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-
-                final String responseText = response.body().string();
-                weather[0] = Utility.handleWeatherResponse(responseText);
-                save("true", "data_weather");
+            public void onError(Throwable throwable) {
+                Log.i("min", "getWeather onError: " + throwable);
             }
 
             @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getActivity(), "获取天气信息失败", Toast.LENGTH_SHORT).show();
-                        save("true", "data_weather");
-                    }
-                });
+            public void onSuccess(WeatherNowBean weatherNowBean) {
+                if (Code.OK.getCode().equalsIgnoreCase(weatherNowBean.getCode())) {
+                    String str = new Gson().toJson(weatherNowBean);
+                    // 温度
+                    int feelsLike = str.indexOf("feelsLike");
+                    String temp = str.substring(feelsLike + 12);
+                    int indexTempLast = temp.indexOf("\"");
+                    tempe[0] = temp.substring(0, indexTempLast);
+                    flag1[0] = true;
+                } else {
+                    //在此查看返回数据失败的原因
+                    String status = weatherNowBean.getCode();
+                    Code code = Code.toEnum(status);
+                    Log.i("Min", "failed code: " + code);
+                }
             }
         });
+        if (flag1[0]) {
+            return tempe[0];
+        } else {
+            String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId + "&key=8fb20072276e48aa83d1200cce3653e0";
+            final Weather[] weather = new Weather[1];
+            save("false", "data_weather");
+            HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
 
-        // 等待okHttp返回数据
-        while (true) {
-            String flag = load("data_weather");
-            if ("true".equalsIgnoreCase(flag)) {
-                break;
+                    final String responseText = response.body().string();
+                    weather[0] = Utility.handleWeatherResponse(responseText);
+                    save("true", "data_weather");
+                }
+
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity(), "获取天气信息失败", Toast.LENGTH_SHORT).show();
+                            save("true", "data_weather");
+                        }
+                    });
+                }
+            });
+
+            // 等待okHttp返回数据
+            while (true) {
+                String flag = load("data_weather");
+                if ("true".equalsIgnoreCase(flag)) {
+                    break;
+                }
             }
-        }
 
-        String degree = null;
-        if (weather[0] != null) {
-            degree = weather[0].now.temperature + "℃";
+            String degree = null;
+            if (weather[0] != null) {
+                degree = weather[0].now.temperature + "℃";
+            }
+            return degree;
         }
-        return degree;
 
     }
 
@@ -454,7 +497,7 @@ public class MyFragment1 extends Fragment {
                     @Override
                     public void onPick(int position, City data) {
 
-                        if(data == null){
+                        if (data == null) {
                             return;
                         }
 
@@ -479,8 +522,6 @@ public class MyFragment1 extends Fragment {
 
                         // 把城市信息缓存到本地
                         save(currentProvince + "=" + currentCity, "data_cityInfo");
-
-
 
 
                     }
@@ -528,8 +569,6 @@ public class MyFragment1 extends Fragment {
 
             // 把城市信息缓存到本地
             save(currentProvince + "=" + currentCity, "data_cityInfo");
-
-
 
 
         }
@@ -659,7 +698,6 @@ public class MyFragment1 extends Fragment {
         }
         return sBuffer.toString();
     }
-
 
 
 }
