@@ -46,8 +46,7 @@ public class RecyclerBeanListUtil {
         } else if (RecyclerType.NEWS.equals(this.type)) {
             sendRequest("http://120.26.172.104:9002/web/findDestinationByType?type=专题新闻");
         } else if (this.type == null) {
-            // sendRequest("http://120.26.172.104:9002/web/findAllDestination");
-            sendRequest("http://120.26.172.104:9002/web/findDestinationByType?type=旅游攻略");
+             sendRequest("http://120.26.172.104:9002/web/findAllDestination");
 
         }
     }

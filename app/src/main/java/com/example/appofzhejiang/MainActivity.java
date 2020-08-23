@@ -13,14 +13,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
+
 import com.example.appofzhejiang.fragment3.TicketActivity;
 import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-=======
+
 import interfaces.heweather.com.interfacesmodule.view.HeConfig;
->>>>>>> 437de8f... 优化首页
+
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
