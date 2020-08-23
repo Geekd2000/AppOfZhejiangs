@@ -36,7 +36,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
-        android:id="@+id/user"
+        android:id="@+id/user_image_change"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
@@ -77,18 +77,17 @@
         android:paddingRight="20dp">
 
         <EditText
+            android:id="@+id/ni_cheng"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:gravity="right"
             android:background="@drawable/bg_edit_address"
+            android:gravity="right"
             android:hint="昵称"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
-            android:text="金禹宏"
             android:textSize="16sp" />
 
         <TextView
@@ -124,7 +123,7 @@
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
-            android:text="男"
+            android:text="保密"
             android:textColor="@color/colorBlack"
             android:textSize="16sp" />
 
@@ -143,37 +142,21 @@
         android:layout_height="0.5dp"
         android:background="@color/colorGray" />
 
-    <RelativeLayout
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+    <TextView
+        android:id="@+id/user_password"
         android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:drawableRight="@drawable/arrow"
+        android:foreground="?selectableItemBackground"
+        android:text="修改密码"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="16sp"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/bg_edit_address"
-            android:hint="请输入邮箱"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            android:gravity="right"
-            android:text="1111111@qq.com"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:text="设置邮箱"
-            android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
-    </RelativeLayout>
+        android:paddingRight="25dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
 
 </LinearLayout>

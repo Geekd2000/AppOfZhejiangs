@@ -64,6 +64,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
+    //item的监听事件的接口end
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private View hotelView; // 用来做点击事件的

@@ -18,7 +18,6 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +28,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.appofzhejiang.CustomDialog.CustomDialog;
 import com.example.appofzhejiang.xihu.Jingqu;
+import com.example.appofzhejiang.xihu.more;
 import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
@@ -47,14 +47,16 @@ import java.util.List;
 public class MyFragment2 extends Fragment {
 
     private View view;
-    private LinearLayout list1;
-    private RecyclerView recyclerView;
-    private FragmentAdapter2 fragmentAdapter2;
+    private RecyclerView recyclerView1,recyclerView2;
+    private FragmentAdapter2_1 fragmentAdapter2_1;
+    private FragmentAdapter2_2 fragmentAdapter2_2;
     private TextView txtCity, txtMore, txtSearch;
     private EditText editSearch;
     private String currentCity; // 当前城市
     private String currentProvince; // 当前省份
     public LocationClient mLocationClient;//定位
+
+    public MyFragment2(){}
 
     // 传入默认城市名称
     public MyFragment2(String province, String city) {
@@ -117,21 +119,12 @@ public class MyFragment2 extends Fragment {
             }
         });
 
-        list1 = view.findViewById(R.id.list1);
-        list1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), Jingqu.class);
-                startActivity(intent);
-            }
-        });
-
-
         txtMore = view.findViewById(R.id.txt_more);
         txtMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), more.class);
+                startActivity(intent);
             }
         });
         txtSearch = view.findViewById(R.id.txt_search);
@@ -143,24 +136,39 @@ public class MyFragment2 extends Fragment {
                 Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
             }
         });
-        initRecyclerView();
+
+        //配置RecyclerView
+        initRecyclerView1();
+        initRecyclerView2();
         return view;
     }
 
     /**
-     * 对RecycleView进行配置
+     * 对列表RecycleView进行配置
      */
-    private void initRecyclerView() {
+    private void initRecyclerView1() {
         //获取RecyclerView
-        recyclerView = view.findViewById(R.id.fg2_grid);
+        recyclerView1 = view.findViewById(R.id.fg2_linear);
         //创建Adapter
-        fragmentAdapter2 = new FragmentAdapter2(getActivity());
+        fragmentAdapter2_1 = new FragmentAdapter2_1(getActivity());
         //给RecyclerView设置Adapter
-        recyclerView.setAdapter(fragmentAdapter2);
+        recyclerView1.setAdapter(fragmentAdapter2_1);
         //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        //设置item的分割线
-        //recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    /**
+     * 对网格RecycleView进行配置
+     */
+    private void initRecyclerView2() {
+        //获取RecyclerView
+        recyclerView2 = view.findViewById(R.id.fg2_grid);
+        //创建Adapter
+        fragmentAdapter2_2 = new FragmentAdapter2_2(getActivity());
+        //给RecyclerView设置Adapter
+        recyclerView2.setAdapter(fragmentAdapter2_2);
+        //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
+        recyclerView2.setLayoutManager(new GridLayoutManager(getActivity(), 2));
     }
 
     /**

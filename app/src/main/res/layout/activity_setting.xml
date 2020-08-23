@@ -41,7 +41,7 @@
             android:src="@drawable/user_image" />
 
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/user_name_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -50,6 +50,7 @@
             android:text="用户名"
             android:textColor="@color/colorLightBlack"
             android:textSize="16sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,6 +89,7 @@
             android:textColor="@color/colorLightBlack"
             android:textSize="16sp" />
         <Switch
+            android:id="@+id/push"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

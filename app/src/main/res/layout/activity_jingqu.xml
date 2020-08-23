@@ -1,173 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorNotWhite">
+    android:background="@color/colorNotWhite"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:elevation="5dp"
+        app:navigationIcon="@drawable/ic_back">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorWhite"
-            android:elevation="5dp"
-            app:navigationIcon="@drawable/ic_back">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="西湖"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="18sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="西湖"
-                android:textColor="@color/colorLightBlack"
-                android:textSize="18sp" />
+    </androidx.appcompat.widget.Toolbar>
 
-        </androidx.appcompat.widget.Toolbar>
-
-
-        <com.youth.banner.Banner
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="220dp">
-
-        </com.youth.banner.Banner>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/list1"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@drawable/bg_top_radius"
-            android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-
-            <LinearLayout
-                android:id="@+id/linear_layout1"
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_weight="3"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
+                android:layout_height="220dp">
 
-                <TextView
-                    android:id="@+id/txt_place"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="景区详情"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/txt_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorLightGreen"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="5A景区"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
+            </com.youth.banner.Banner>
 
             <LinearLayout
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
+                android:id="@+id/list1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_top_radius"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp">
 
-                <TextView
-                    android:id="@+id/list2_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/daohang1"
-                    android:gravity="center"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="15dp"
-                    android:paddingBottom="5dp"
-                    android:text="导航" />
 
+                <LinearLayout
+                    android:id="@+id/linear_layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_place"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="景区详情"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/txt_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorLightGreen"
+                        android:gravity="center"
+                        android:padding="2dp"
+                        android:text="5A景区"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/list2_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/daohang1"
+                        android:gravity="center"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="5dp"
+                        android:text="导航" />
+
+                </LinearLayout>
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_openTime"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:drawableLeft="@drawable/timg"
+                android:drawableRight="@drawable/arrow"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="5dp"
+                android:text="开放时间"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txt_menpiao"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/money"
+                android:drawableRight="@drawable/arrow"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="5dp"
+                android:text="门票价格"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txt_around"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/didian"
+                android:drawableRight="@drawable/arrow"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="5dp"
+                android:text="周边信息"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:text="景区攻略"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/jq_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bg_radius"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/txt_openTime"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:drawableLeft="@drawable/timg"
-            android:drawableRight="@drawable/arrow"
-            android:drawablePadding="5dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="5dp"
-            android:text="开放时间"
-            android:textColor="@color/colorLightBlack"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/txt_menpiao"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/money"
-            android:drawableRight="@drawable/arrow"
-            android:drawablePadding="5dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="5dp"
-            android:text="门票价格"
-            android:textColor="@color/colorLightBlack"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/txt_around"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@drawable/didian"
-            android:drawableRight="@drawable/arrow"
-            android:drawablePadding="5dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="5dp"
-            android:text="周边信息"
-            android:textColor="@color/colorLightBlack"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:text="景区攻略"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/jq_recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
-            android:background="@drawable/bg_radius">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

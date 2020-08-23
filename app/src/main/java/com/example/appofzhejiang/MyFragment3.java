@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,24 +20,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.CoordType;
-import com.baidu.mapapi.SDKInitializer;
-import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.MapView;
 import com.example.appofzhejiang.CustomDialog.CustomDialog;
-import com.example.appofzhejiang.R;
-import com.example.appofzhejiang.fragment3.IndicatorTabBar;
 import com.example.appofzhejiang.fragment3.Ticket;
 import com.example.appofzhejiang.fragment3.TicketActivity;
-import com.example.appofzhejiang.fragment3.TicketDetailActivity;
-import com.example.appofzhejiang.fragment3.hotel.Hotel;
-import com.example.appofzhejiang.fragment3.hotel.HotelAdapter;
 import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
@@ -52,14 +41,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MyFragment3 extends Fragment {
 
     private View view;
-    private RecyclerView recyclerView;
-    private FragmentAdapter3 fragmentAdapter3;
+    private RecyclerView recyclerView,horView;
+    private FragmentAdapter3_2 fragmentAdapter3_2;
+    private FragmentAdapter3_1 fragmentAdapter3_1;
     private String content;
     private TextView txtCity, txtTicket, txtHotel, txtTaxi, txtGuider, txtNongjiale, txtFood, txtCommodity, txtSearch;
     private EditText editSearch;//搜索框
@@ -67,6 +56,8 @@ public class MyFragment3 extends Fragment {
     private String currentCity; // 当前城市
     private String currentProvince; // 当前省份
     public LocationClient mLocationClient;//定位
+
+    public MyFragment3(){}
 
     // 传入默认城市名称
     public MyFragment3(String province, String city) {
@@ -100,11 +91,10 @@ public class MyFragment3 extends Fragment {
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my3, container, false);
         init();
-        RecyclerView recyclerView = view.findViewById(R.id.fg3_recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(new MainActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        fragmentAdapter3 = new FragmentAdapter3(ticketList, getActivity());
-        recyclerView.setAdapter(fragmentAdapter3);
+        //设初始化RecyclerView
+        initRecyclerView();
+        initHorRecyclerView();
+
         // 如果缓存中有城市信息，则从缓存中获取城市
         String cityInfo = load("data_cityInfo");
         if (cityInfo != null && !"".equals(cityInfo.trim())) {
@@ -133,69 +123,7 @@ public class MyFragment3 extends Fragment {
                 }).show();
             }
         });
-        txtTicket = view.findViewById(R.id.txt_ticket);
-        txtTicket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TicketActivity.class);
-                intent.putExtra("num", "0");
-                startActivity(intent);
-            }
-        });
-        txtHotel = view.findViewById(R.id.txt_hotel);
-        txtHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TicketActivity.class);
-                intent.putExtra("num", "1");
-                startActivity(intent);
-            }
-        });
-        txtTaxi = view.findViewById(R.id.txt_taxi);
-        txtTaxi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TicketActivity.class);
-                intent.putExtra("num", "2");
-                startActivity(intent);
-            }
-        });
-        txtGuider = view.findViewById(R.id.txt_guider);
-        txtGuider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TicketActivity.class);
-                intent.putExtra("num", "3");
-                startActivity(intent);
-            }
-        });
-        txtNongjiale = view.findViewById(R.id.txt_nongjiale);
-        txtNongjiale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TicketActivity.class);
-                intent.putExtra("num", "4");
-                startActivity(intent);
-            }
-        });
-        txtFood = view.findViewById(R.id.txt_food);
-        txtFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TicketActivity.class);
-                intent.putExtra("num", "5");
-                startActivity(intent);
-            }
-        });
-        txtCommodity = view.findViewById(R.id.txt_commodity);
-        txtCommodity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TicketActivity.class);
-                intent.putExtra("num", "6");
-                startActivity(intent);
-            }
-        });
+
         txtSearch = view.findViewById(R.id.txt_search);
         editSearch = view.findViewById(R.id.main_search);
         txtSearch.setOnClickListener(new View.OnClickListener() {
@@ -210,19 +138,26 @@ public class MyFragment3 extends Fragment {
     }
 
     /**
-     * 对RecycleView进行配置
+     * 对垂直RecycleView进行配置
      */
     private void initRecyclerView() {
-        //获取RecyclerView
         recyclerView = view.findViewById(R.id.fg3_recyclerView);
-        //创建Adapter
-        fragmentAdapter3 = new FragmentAdapter3(ticketList, getActivity());
-        //给RecyclerView设置Adapter
-        recyclerView.setAdapter(fragmentAdapter3);
-        //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //设置item的分割线
-        //recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        fragmentAdapter3_2 = new FragmentAdapter3_2(ticketList, getActivity());
+        recyclerView.setAdapter(fragmentAdapter3_2);
+    }
+
+    /**
+     * 对水平RecycleView进行配置
+     */
+    private void initHorRecyclerView() {
+        horView=view.findViewById(R.id.fg3_recyclerView_zuoyou);
+        LinearLayoutManager horLayoutManager = new LinearLayoutManager(getActivity());
+        horLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        horView.setLayoutManager(horLayoutManager);
+        fragmentAdapter3_1=new FragmentAdapter3_1(getActivity());
+        horView.setAdapter(fragmentAdapter3_1);
     }
 
     public void init() {
@@ -439,7 +374,5 @@ public class MyFragment3 extends Fragment {
         }
         return sBuffer.toString();
     }
-
-
 
 }

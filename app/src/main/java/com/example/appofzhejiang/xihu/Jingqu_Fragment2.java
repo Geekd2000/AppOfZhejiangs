@@ -42,7 +42,7 @@ public class Jingqu_Fragment2 extends Fragment {
     private PoiSearch poiSearch;
     private  OnGetPoiSearchResultListener poiListener;
 
-    public Jingqu_Fragment2(){}
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -64,16 +64,16 @@ public class Jingqu_Fragment2 extends Fragment {
 
 
 
-        nearbyPoiSearch(mBaidumap);
-
-        poiSearch.setOnGetPoiSearchResultListener(poiListener);
-        //设置请求参数
-        PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption()
-                .keyword("厕所")//检索关键字
-                .location(new LatLng(30.22730, 120.12979))//检索位置
-                .radius(1000);//附近检索半径
-        //发起请求
-        poiSearch.searchNearby(nearbySearchOption);
+//        nearbyPoiSearch(mBaidumap);
+//
+//        poiSearch.setOnGetPoiSearchResultListener(poiListener);
+//        //设置请求参数
+//        PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption()
+//                .keyword("厕所")//检索关键字
+//                .location(new LatLng(30.22730, 120.12979))//检索位置
+//                .radius(1000);//附近检索半径
+//        //发起请求
+//        poiSearch.searchNearby(nearbySearchOption);
         return view;
     }
 
@@ -130,16 +130,16 @@ public class Jingqu_Fragment2 extends Fragment {
 
             }
         };
-        //设置poi监听者该方法要先于检索方法searchNearby(PoiNearbySearchOption)前调用，否则会在某些场景出现拿不到回调结果的情况
-        poiSearch.setOnGetPoiSearchResultListener(poiListener);
-        //设置请求参数
-        PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption()
-                .keyword("厕所")//检索关键字
-                .location(new LatLng(30.22730, 120.12979))//检索位置
-                .radius(1000);//附近检索半径
-
-        //发起请求
-        poiSearch.searchNearby(nearbySearchOption);
+//        //设置poi监听者该方法要先于检索方法searchNearby(PoiNearbySearchOption)前调用，否则会在某些场景出现拿不到回调结果的情况
+//        poiSearch.setOnGetPoiSearchResultListener(poiListener);
+//        //设置请求参数
+//        PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption()
+//                .keyword("厕所")//检索关键字
+//                .location(new LatLng(30.22730, 120.12979))//检索位置
+//                .radius(1000);//附近检索半径
+//
+//        //发起请求
+//        poiSearch.searchNearby(nearbySearchOption);
     }
 
 
@@ -159,7 +159,6 @@ public class Jingqu_Fragment2 extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         mMapView.onDestroy();
-        poiSearch.destroy();
     }
 
 }

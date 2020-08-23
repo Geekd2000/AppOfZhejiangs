@@ -24,7 +24,7 @@ public class RecycleViewAdepter extends RecyclerView.Adapter<RecycleViewAdepter.
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter, parent, false));
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter1, parent, false));
     }
 
     @Override

@@ -162,10 +162,7 @@
                     android:text="杭州一年四季都有不同景致，如春天的柳浪闻莺，夏天的曲院风荷，秋天的平湖秋月，冬天的断桥残雪。但作为江南城市，春天可看的景色最多。"
                     android:textSize="16dp" />
 
-
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

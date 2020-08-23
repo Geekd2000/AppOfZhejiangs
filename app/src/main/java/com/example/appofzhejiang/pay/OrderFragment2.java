@@ -17,19 +17,22 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link OrderFragment2#newInstance} factory method to
+ * Use the {@link OrderFragment2#} factory method to
  * create an instance of this fragment.
  */
 public class OrderFragment2 extends Fragment {
 
     private View view;
     public RecyclerView recyclerView;
-    private OrderAdapter orderAdapter;
+    private PayAdapter payAdapter;
     private List<FileList> fileLists = new ArrayList<FileList>();
     private String content;
 
-    public OrderFragment2(String content){
-        this.content = content;
+    public OrderFragment2() {
+    }
+
+    public OrderFragment2(String content) {
+        this.content=content;
     }
 
     @Override
@@ -38,23 +41,31 @@ public class OrderFragment2 extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_order2, container, false);
         initData();
+        initList();
         initRecyclerView();
         return view;
     }
 
-    private void initData(){
+    private void initData() {
 //        for(int i = 0; i<fileLists.size(); i++){
 //            FileList fileList = new FileList();
 //            fileLists.add(fileList);
 //        }
     }
 
-    private void initRecyclerView(){
+    private void initRecyclerView() {
         //获取recyclerview
         recyclerView = view.findViewById(R.id.fragment_order2);
         //创建Adapter
-        orderAdapter = new OrderAdapter(getActivity());
-        recyclerView.setAdapter(orderAdapter);
+        payAdapter = new PayAdapter(getActivity(), fileLists);
+        recyclerView.setAdapter(payAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    public void initList() {
+        for (int i = 0; i < 10; i++) {
+            FileList fileList = new FileList(R.drawable.picturezhejiang, "订单号" + i, "西湖游船外事船舶成人票", "小船", "3", "35", "105", "待付款");
+            fileLists.add(fileList);
+        }
     }
 }

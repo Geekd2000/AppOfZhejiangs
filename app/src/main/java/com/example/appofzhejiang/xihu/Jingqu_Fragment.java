@@ -1,15 +1,25 @@
 package com.example.appofzhejiang.xihu;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
@@ -32,7 +42,10 @@ import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
 import com.example.appofzhejiang.R;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 public class Jingqu_Fragment extends Fragment {
 
@@ -40,16 +53,17 @@ public class Jingqu_Fragment extends Fragment {
     public BaiduMap mBaidumap = null;
 
     private PoiSearch poiSearch;
-    private  OnGetPoiSearchResultListener poiListener;
+    private OnGetPoiSearchResultListener poiListener;
 
-    public Jingqu_Fragment(){}
+    public LocationClient mLocationClient;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         SDKInitializer.initialize(getActivity().getApplicationContext());
         View view = inflater.inflate(R.layout.jingqu_fragment, container, false);
 
-        mMapView =  view.findViewById(R.id.map_baidu);//初始化地图
+        mMapView = view.findViewById(R.id.map_baidu);//初始化地图
         mBaidumap = mMapView.getMap();
 
         LatLng cenpt = new LatLng(30.22730, 120.12979); //设定中心点坐标
@@ -63,16 +77,11 @@ public class Jingqu_Fragment extends Fragment {
 
 
 
-        nearbyPoiSearch(mBaidumap);
 
-        poiSearch.setOnGetPoiSearchResultListener(poiListener);
-        //设置请求参数
-        PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption()
-                .keyword("风景区")//检索关键字
-                .location(new LatLng(30.22730, 120.12979))//检索位置
-                .radius(1000);//附近检索半径
-        //发起请求
-        poiSearch.searchNearby(nearbySearchOption);
+
+
+
+        nearbyPoiSearch(mBaidumap);
         return view;
     }
 
@@ -140,7 +149,7 @@ public class Jingqu_Fragment extends Fragment {
         poiSearch.setOnGetPoiSearchResultListener(poiListener);
         //设置请求参数
         PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption()
-                .keyword("厕所")//检索关键字
+                .keyword("风景区")//检索关键字
                 .location(new LatLng(30.22730, 120.12979))//检索位置
                 .radius(1000);//附近检索半径
 
@@ -165,7 +174,6 @@ public class Jingqu_Fragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         mMapView.onDestroy();
-        poiSearch.destroy();
     }
 
 }

@@ -4,62 +4,51 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class FileList {
-    private String Order, Message, Number, Money, Money1, Status;
-    private String Picture;
+    private String Order, Title, Type, Count, Money1, Money2, Status;
+    private int Picture;
+
+    public FileList(int picture, String order, String title, String type,
+                    String count, String money1, String money2, String status) {
+        this.Picture = picture;
+        this.Order = order;
+        this.Title = title;
+        this.Type = type;
+        this.Count = count;
+        this.Money1 = money1;
+        this.Money2 = money2;
+        this.Status = status;
+    }
+
+    public int getPicture() {
+        return Picture;
+    }
 
     public String getOrder() {
         return Order;
     }
 
-    public void setOrder(String order) {
-        Order = order;
+    public String getTitle() {
+        return Title;
     }
 
-    public String getMessage() {
-        return Message;
+    public String getType() {
+        return Type;
     }
 
-    public void setMessage(String message) {
-        Message = message;
-    }
-
-    public String getNumber() {
-        return Number;
-    }
-
-    public void setNumber(String number) {
-        Number = number;
-    }
-
-    public String getMoney() {
-        return Money;
-    }
-
-    public void setMoney(String money) {
-        Money = money;
+    public String getCount() {
+        return Count;
     }
 
     public String getMoney1() {
         return Money1;
     }
 
-    public void setMoney1(String money1) {
-        Money1 = money1;
+    public String getMoney2() {
+        return Money2;
     }
 
     public String getStatus() {
         return Status;
     }
 
-    public void setStatus(String status) {
-        Status = status;
-    }
-
-    public String getPicture() {
-        return Picture;
-    }
-
-    public void setPicture(String picture) {
-        Picture = picture;
-    }
 }

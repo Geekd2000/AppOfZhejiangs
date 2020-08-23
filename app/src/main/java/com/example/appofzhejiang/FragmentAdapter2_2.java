@@ -1,33 +1,37 @@
 package com.example.appofzhejiang;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FragmentAdapter2 extends RecyclerView.Adapter<FragmentAdapter2.GridViewHolder> {
+import com.example.appofzhejiang.xihu.Dairy;
+import com.example.appofzhejiang.xihu.Jingqu;
+
+public class FragmentAdapter2_2 extends RecyclerView.Adapter<FragmentAdapter2_2.GridViewHolder> {
 
     private Context context;
 
-    public FragmentAdapter2(Context context) {
+    public FragmentAdapter2_2(Context context) {
         this.context = context;
     }
 
 
     @NonNull
     @Override
-    public FragmentAdapter2.GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FragmentAdapter2_2.GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new GridViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_grid_adapter2, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FragmentAdapter2.GridViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull FragmentAdapter2_2.GridViewHolder holder, final int position) {
         if (position % 2 != 0) {
             holder.txtGrid.setText("西湖一日游");
             holder.txtGridAmount.setText("77人浏览");
@@ -43,6 +47,13 @@ public class FragmentAdapter2 extends RecyclerView.Adapter<FragmentAdapter2.Grid
             holder.gridImage.setImageResource(R.drawable.demo2);
             holder.userImage.setImageResource(R.drawable.userimage2);
         }
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, Dairy.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -53,16 +64,17 @@ public class FragmentAdapter2 extends RecyclerView.Adapter<FragmentAdapter2.Grid
     public class GridViewHolder extends RecyclerView.ViewHolder {
         private TextView txtGrid, txtGridAmount, txtGridName, txtGridTime;
         private ImageView gridImage, userImage;
+        private LinearLayout linearLayout;
 
         public GridViewHolder(@NonNull View itemView) {
             super(itemView);
-
             txtGrid = itemView.findViewById(R.id.txt_grid);
             txtGridAmount = itemView.findViewById(R.id.txt_gridAmount);
             txtGridName = itemView.findViewById(R.id.grid_name);
             txtGridTime = itemView.findViewById(R.id.grid_time);
             gridImage = itemView.findViewById(R.id.grid_image);
             userImage = itemView.findViewById(R.id.circle_user);
+            linearLayout = itemView.findViewById(R.id.grid_list);
         }
     }
 }

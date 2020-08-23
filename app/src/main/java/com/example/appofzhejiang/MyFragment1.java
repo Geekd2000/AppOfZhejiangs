@@ -93,6 +93,11 @@ public class MyFragment1 extends Fragment {
     private String weatherId; // 当前weatherId;
 
 
+<<<<<<< HEAD
+=======
+    public MyFragment1(){}
+
+>>>>>>> dev
     // 传入默认城市名称
     public MyFragment1(String province, String city) {
         this.currentProvince = province;

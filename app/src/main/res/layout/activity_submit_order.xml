@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment3.SubmitOrderActivity">
+
+    <ImageView
+        android:id="@+id/goods_image"
+        android:layout_width="120dp"
+        android:layout_height="75dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_order"
@@ -132,6 +140,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/bg_radius"
+                android:elevation="5dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="20dp"
                 android:paddingRight="5dp"
@@ -183,6 +192,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/bg_radius"
+                android:elevation="5dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="5dp"
@@ -225,6 +235,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/bg_radius"
+                android:elevation="5dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="5dp"
@@ -278,6 +289,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/bg_radius"
+                android:elevation="5dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="5dp"
@@ -311,7 +323,9 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_radius"
+                android:elevation="5dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="5dp"
@@ -400,5 +414,48 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/floatingActionMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/div_tab_bar"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        app:menu_fab_size="mini"
+        fab:menu_colorNormal="@color/colorLightGreen"
+        fab:menu_colorPressed="#1AD68A"
+        fab:menu_icon="@drawable/menu">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floatingActionButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shouye"
+            app:fab_colorNormal="@color/colorLightGreen"
+            app:fab_colorPressed="#1AD68A"
+            app:fab_label="首页"
+            fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/jingdian"
+            app:fab_colorNormal="@color/colorLightGreen"
+            app:fab_colorPressed="#1AD68A"
+            app:fab_label="景点"
+            fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floatingActionButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wode"
+            app:fab_colorNormal="@color/colorLightGreen"
+            app:fab_colorPressed="#1AD68A"
+            app:fab_label="我的"
+            fab:fab_size="mini" />
+    </com.github.clans.fab.FloatingActionMenu>
 
 </RelativeLayout>

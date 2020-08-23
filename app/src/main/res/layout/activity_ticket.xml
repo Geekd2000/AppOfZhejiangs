@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:bob="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,16 +12,59 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorWhite"
+        android:elevation="5dp"
         bob:tab_text_color="@color/tab_text_color"
         bob:tab_text_selected_color="@color/tab_text_selected_color"
-        bob:tab_text_size="@dimen/tab_text_size"
-        android:elevation="5dp"/>
+        bob:tab_text_size="@dimen/tab_text_size" />
 
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/indicatorTabBar" />
 
-</LinearLayout>
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/floatingActionMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            app:menu_fab_size="mini"
+            fab:menu_colorNormal="@color/colorLightGreen"
+            fab:menu_colorPressed="#1AD68A"
+            fab:menu_icon="@drawable/menu">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/floatingActionButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/shouye"
+                app:fab_colorNormal="@color/colorLightGreen"
+                app:fab_colorPressed="#1AD68A"
+                app:fab_label="首页"
+                fab:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/floatingActionButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/jingdian"
+                app:fab_colorNormal="@color/colorLightGreen"
+                app:fab_colorPressed="#1AD68A"
+                app:fab_label="景点"
+                fab:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/floatingActionButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/wode"
+                app:fab_colorNormal="@color/colorLightGreen"
+                app:fab_colorPressed="#1AD68A"
+                app:fab_label="我的"
+                fab:fab_size="mini" />
+        </com.github.clans.fab.FloatingActionMenu>
+
+</RelativeLayout>

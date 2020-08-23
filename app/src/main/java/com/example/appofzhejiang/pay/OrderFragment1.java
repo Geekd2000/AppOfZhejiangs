@@ -1,6 +1,5 @@
 package com.example.appofzhejiang.pay;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.fragment3.Ticket;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +20,15 @@ public class OrderFragment1 extends Fragment {
 
     private View view;
     public RecyclerView recyclerView;
-    private OrderAdapter orderAdapter;
+    private PayAdapter payAdapter;
     private List<FileList> fileLists = new ArrayList<FileList>();
     private String content;
 
-    public OrderFragment1(String content){
-        this.content = content;
+    public OrderFragment1() {
+    }
+
+    public OrderFragment1(String content) {
+        this.content=content;
     }
 
     @Override
@@ -35,11 +37,12 @@ public class OrderFragment1 extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_order1, container, false);
         initData();
+        initList();
         initRecyclerView();
         return view;
     }
 
-    private void initData(){
+    private void initData() {
 //        for(int i = 0; i<fileLists.size(); i++){
 //            FileList fileList = new FileList();
 //            fileList.setStatus("");
@@ -47,12 +50,19 @@ public class OrderFragment1 extends Fragment {
 //        }
     }
 
-    private void initRecyclerView(){
+    private void initRecyclerView() {
         //获取recyclerview
         recyclerView = view.findViewById(R.id.fragment_order1);
         //创建Adapter
-        orderAdapter = new OrderAdapter(getActivity());
-        recyclerView.setAdapter(orderAdapter);
+        payAdapter = new PayAdapter(getActivity(), fileLists);
+        recyclerView.setAdapter(payAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    public void initList() {
+        for (int i = 0; i < 10; i++) {
+            FileList fileList = new FileList(R.drawable.picturezhejiang, "订单号" + i, "西湖游船外事船舶成人票", "小船", "3", "35", "105", "已完成");
+            fileLists.add(fileList);
+        }
     }
 }

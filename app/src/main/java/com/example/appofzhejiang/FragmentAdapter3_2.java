@@ -6,27 +6,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.fragment3.Ticket;
 import com.example.appofzhejiang.fragment3.TicketDetailActivity;
-import com.example.appofzhejiang.fragment3.hotel.Hotel;
-import com.example.appofzhejiang.fragment3.hotel.HotelAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.LinearViewHolder> {
+public class FragmentAdapter3_2 extends RecyclerView.Adapter<FragmentAdapter3_2.LinearViewHolder> {
 
     private Context context;
     private List<Ticket> ticketList;
 
-    public FragmentAdapter3(List<Ticket> ticketList, Context context) {
+    public FragmentAdapter3_2(List<Ticket> ticketList, Context context) {
         this.ticketList = ticketList;
         this.context = context;
     }
@@ -34,8 +29,8 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.Line
 
     @NonNull
     @Override
-    public FragmentAdapter3.LinearViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter3, parent, false);
+    public FragmentAdapter3_2.LinearViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter3_2, parent, false);
         final LinearViewHolder linearViewHolder = new LinearViewHolder(view);
         // 注册点击事件 start
         linearViewHolder.getTicketView().setOnClickListener(new View.OnClickListener() {
@@ -43,13 +38,14 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.Line
             public void onClick(View view) {
                 int position = linearViewHolder.getAdapterPosition();
                 Ticket ticket = ticketList.get(position);
-                //Toast.makeText(view.getContext(), "You clicked view：" + ticket.getName(), Toast.LENGTH_SHORT).show();
+                String img = Integer.toString(ticket.getImageId());
                 Intent intent = new Intent(context, TicketDetailActivity.class);
                 intent.putExtra("index", "7");
                 intent.putExtra("title", ticket.getName());
                 intent.putExtra("price", ticket.getPrice());
                 intent.putExtra("company", ticket.getLocation());
                 intent.putExtra("count", ticket.getCount());
+                intent.putExtra("image", img);
                 context.startActivity(intent);
             }
         });
@@ -72,24 +68,6 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.Line
         return ticketList.size();
     }
 
-    /*//设置item的监听事件的接口
-    public interface OnItemClickListener {
-        *//*  *
-     * 接口中的点击每一项的实现方法，参数自己定义
-     *
-     * @param view 点击的item的视图
-     * @param data 点击的item的数据*//*
-
-        public void OnItemClick(View view,Ticket ticket);
-    }
-
-    //需要外部访问，所以需要设置set方法，方便调用
-    private OnItemClickListener onItemClickListener;
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
-    }*/
-
     public class LinearViewHolder extends RecyclerView.ViewHolder {
 
         private View ticketView; // 用来做点击事件的
@@ -107,17 +85,6 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.Line
             setPriceText((TextView) view.findViewById(R.id.txt_price));
             setLocationText((TextView) view.findViewById(R.id.txt_company));
             setCountText((TextView) view.findViewById(R.id.txt_sale));
-            /*view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //可以选择直接在本位置直接写业务处理
-                    //Toast.makeText(context,"点击了xxx",Toast.LENGTH_SHORT).show();
-                    //此处回传点击监听事件
-                    if(onItemClickListener!=null){
-                        onItemClickListener.OnItemClick(v, ticketList.get(getAdapterPosition()));
-                    }
-                }
-            });*/
         }
 
         public View getTicketView() {
