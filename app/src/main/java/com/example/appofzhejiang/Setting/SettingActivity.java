@@ -1,5 +1,6 @@
 package com.example.appofzhejiang.Setting;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.appofzhejiang.Login.LoginActivity;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 
@@ -23,6 +25,7 @@ public class SettingActivity extends AppCompatActivity {
     private Toolbar back;
     private TextView username;
     private Switch mPush;
+    private Boolean isLoginStatus;
 
     public static SettingActivity instance = null;
 
@@ -37,8 +40,7 @@ public class SettingActivity extends AppCompatActivity {
         username = findViewById(R.id.user_name_setting);
         mPush = findViewById(R.id.push);
 
-        username.setText(getName());
-        mPush.setChecked(checked());
+        LoginStatus();
 
         mPush.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,20 +61,46 @@ public class SettingActivity extends AppCompatActivity {
         mBtnRollOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Out(false);
-                Intent intent = new Intent(SettingActivity.this, MainActivity.class);
-                startActivity(intent);
-                Toast.makeText(SettingActivity.this, "退出成功", Toast.LENGTH_SHORT).show();
+                SharedPreferences sp = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                isLoginStatus = sp.getBoolean("isLogin", false);
+                if (isLoginStatus == true) {
+                    Out(false);
+                    Intent intent = new Intent(SettingActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(SettingActivity.this, "退出成功", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SettingActivity.this, "未登录，无法退出请先登录", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(SettingActivity.this, LoginActivity.class));
+                }
             }
         });
 
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SettingActivity.this, PersonalInformationActivity.class);
-                startActivity(intent);
+                SharedPreferences sp = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                isLoginStatus = sp.getBoolean("isLogin", false);
+                if (isLoginStatus == true) {
+                    Intent intent = new Intent(SettingActivity.this, PersonalInformationActivity.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(SettingActivity.this, "未登录，无法修改请先登录", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(SettingActivity.this, LoginActivity.class));
+                }
             }
         });
+    }
+
+    /**
+     * 判断登录状态
+     */
+    public void LoginStatus() {
+        SharedPreferences sp = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+        isLoginStatus = sp.getBoolean("isLogin", false);
+        if (isLoginStatus == true) {
+            username.setText(getName());
+            mPush.setChecked(checked());
+        }
     }
 
     public void Out(Boolean status) {
