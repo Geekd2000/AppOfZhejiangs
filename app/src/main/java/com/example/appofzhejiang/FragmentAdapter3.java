@@ -16,12 +16,12 @@ import com.example.appofzhejiang.fragment3.TicketDetailActivity;
 
 import java.util.List;
 
-public class FragmentAdapter3_2 extends RecyclerView.Adapter<FragmentAdapter3_2.LinearViewHolder> {
+public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.LinearViewHolder> {
 
     private Context context;
     private List<Ticket> ticketList;
 
-    public FragmentAdapter3_2(List<Ticket> ticketList, Context context) {
+    public FragmentAdapter3(List<Ticket> ticketList, Context context) {
         this.ticketList = ticketList;
         this.context = context;
     }
@@ -29,8 +29,8 @@ public class FragmentAdapter3_2 extends RecyclerView.Adapter<FragmentAdapter3_2.
 
     @NonNull
     @Override
-    public FragmentAdapter3_2.LinearViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter3_2, parent, false);
+    public FragmentAdapter3.LinearViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter3, parent, false);
         final LinearViewHolder linearViewHolder = new LinearViewHolder(view);
         // 注册点击事件 start
         linearViewHolder.getTicketView().setOnClickListener(new View.OnClickListener() {

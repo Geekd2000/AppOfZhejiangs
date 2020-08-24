@@ -17,7 +17,6 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,9 +45,8 @@ import java.util.List;
 public class MyFragment3 extends Fragment {
 
     private View view;
-    private RecyclerView recyclerView,horView;
-    private FragmentAdapter3_2 fragmentAdapter3_2;
-    private FragmentAdapter3_1 fragmentAdapter3_1;
+    private RecyclerView recyclerView;
+    private FragmentAdapter3 fragmentAdapter3;
     private String content;
     private TextView txtCity, txtTicket, txtHotel, txtTaxi, txtGuider, txtNongjiale, txtFood, txtCommodity, txtSearch;
     private EditText editSearch;//搜索框
@@ -93,7 +91,6 @@ public class MyFragment3 extends Fragment {
         init();
         //设初始化RecyclerView
         initRecyclerView();
-        initHorRecyclerView();
 
         // 如果缓存中有城市信息，则从缓存中获取城市
         String cityInfo = load("data_cityInfo");
@@ -104,6 +101,7 @@ public class MyFragment3 extends Fragment {
         txtCity = view.findViewById(R.id.txt_city);
         txtCity.setText(this.currentCity);
 
+        //定位弹窗
         txtCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,6 +122,7 @@ public class MyFragment3 extends Fragment {
             }
         });
 
+        //搜索按钮
         txtSearch = view.findViewById(R.id.txt_search);
         editSearch = view.findViewById(R.id.main_search);
         txtSearch.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +132,84 @@ public class MyFragment3 extends Fragment {
                 Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
             }
         });
-        initRecyclerView();
+
+        //门票
+        txtTicket=view.findViewById(R.id.txt_ticket);
+        txtTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TicketActivity.class);
+                intent.putExtra("num", "0");
+                startActivity(intent);
+            }
+        });
+
+        //酒店
+        txtHotel=view.findViewById(R.id.txt_hotel);
+        txtHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TicketActivity.class);
+                intent.putExtra("num", "1");
+                startActivity(intent);
+            }
+        });
+
+        //包租车
+        txtTaxi=view.findViewById(R.id.txt_taxi);
+        txtTaxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TicketActivity.class);
+                intent.putExtra("num", "2");
+                startActivity(intent);
+            }
+        });
+
+        //导游预约
+        txtGuider=view.findViewById(R.id.txt_guider);
+        txtGuider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TicketActivity.class);
+                intent.putExtra("num", "3");
+                startActivity(intent);
+            }
+        });
+
+        //农家乐
+        txtNongjiale=view.findViewById(R.id.txt_nongjiale);
+        txtNongjiale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TicketActivity.class);
+                intent.putExtra("num", "4");
+                startActivity(intent);
+            }
+        });
+
+        //美食
+        txtFood=view.findViewById(R.id.txt_food);
+        txtFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TicketActivity.class);
+                intent.putExtra("num", "5");
+                startActivity(intent);
+            }
+        });
+
+        //特产购买
+        txtCommodity=view.findViewById(R.id.txt_commodity);
+        txtCommodity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TicketActivity.class);
+                intent.putExtra("num", "6");
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -144,20 +220,8 @@ public class MyFragment3 extends Fragment {
         recyclerView = view.findViewById(R.id.fg3_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        fragmentAdapter3_2 = new FragmentAdapter3_2(ticketList, getActivity());
-        recyclerView.setAdapter(fragmentAdapter3_2);
-    }
-
-    /**
-     * 对水平RecycleView进行配置
-     */
-    private void initHorRecyclerView() {
-        horView=view.findViewById(R.id.fg3_recyclerView_zuoyou);
-        LinearLayoutManager horLayoutManager = new LinearLayoutManager(getActivity());
-        horLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        horView.setLayoutManager(horLayoutManager);
-        fragmentAdapter3_1=new FragmentAdapter3_1(getActivity());
-        horView.setAdapter(fragmentAdapter3_1);
+        fragmentAdapter3 = new FragmentAdapter3(ticketList, getActivity());
+        recyclerView.setAdapter(fragmentAdapter3);
     }
 
     public void init() {

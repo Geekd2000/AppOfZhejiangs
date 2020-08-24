@@ -50,7 +50,7 @@
                 android:id="@+id/floatingActionButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/jingdian"
+                android:src="@drawable/ic_back_white"
                 app:fab_colorNormal="@color/colorLightGreen"
                 app:fab_colorPressed="#1AD68A"
                 app:fab_label="景点"

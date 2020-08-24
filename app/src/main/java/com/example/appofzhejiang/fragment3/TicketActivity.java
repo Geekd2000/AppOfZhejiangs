@@ -94,7 +94,7 @@ public class TicketActivity extends FragmentActivity {
         floatingActionButton3 = findViewById(R.id.floatingActionButton3);
 
         floatingActionButton1.setLabelText("首页");
-        floatingActionButton2.setLabelText("景点");
+        floatingActionButton2.setLabelText("返回");
         floatingActionButton3.setLabelText("攻略");
         floatingActionButton1.setImageResource(R.drawable.shouye);
         floatingActionButton2.setImageResource(R.drawable.jingdian);
@@ -109,12 +109,11 @@ public class TicketActivity extends FragmentActivity {
             }
         });
 
-        //跳转至更多热门景点列表页面（暂无跳转 更多景点页面未写）
+        //返回上一页
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, RecyclerPageActivity.class);
-//                startActivity(intent);
+                finish();
             }
         });
 
