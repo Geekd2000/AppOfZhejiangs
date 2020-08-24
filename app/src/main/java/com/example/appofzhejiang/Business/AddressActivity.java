@@ -93,13 +93,24 @@ public class AddressActivity extends AppCompatActivity {
                 } else if (TextUtils.isEmpty(detailAddress.getText().toString().trim())) {
                     Toast.makeText(AddressActivity.this, "请输入详细地址", Toast.LENGTH_SHORT).show();
                 } else {
-                    //saveAddressInfo(receiveName.getText().toString(),telephoneNumber.getText().toString(),newAddress.getText().toString(),detailAddress.getText().toString());
-                    Intent intent = new Intent();
-                    intent.putExtra("name", receiveName.getText().toString());
-                    intent.putExtra("phone", telephoneNumber.getText().toString());
-                    intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    boolean isCheck = globalValue.isCheck();
+                    if(isCheck==false){
+                        Intent intent = new Intent();
+                        intent.putExtra("name", receiveName.getText().toString());
+                        intent.putExtra("phone", telephoneNumber.getText().toString());
+                        intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
+                        intent.putExtra("select", "false");
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }else{
+                        Intent intent = new Intent();
+                        intent.putExtra("name", receiveName.getText().toString());
+                        intent.putExtra("phone", telephoneNumber.getText().toString());
+                        intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
+                        intent.putExtra("select", "true");
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
                 }
             }
         });

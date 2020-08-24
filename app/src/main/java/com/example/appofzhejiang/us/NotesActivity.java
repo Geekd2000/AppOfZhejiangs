@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -41,6 +42,7 @@ public class NotesActivity extends AppCompatActivity {
     private Dialog mShareDialog;
     private ImageButton button;
     private ImageView imageView,imageView2;
+    private Toolbar toolbar;
     private List<ImageView> imageViews;
 
     @Override
@@ -77,6 +79,14 @@ public class NotesActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 showDialog();// 单击按钮后 调用显示视图的 showDialog 方法
                 return true;
+            }
+        });
+
+        toolbar=findViewById(R.id.setting_toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

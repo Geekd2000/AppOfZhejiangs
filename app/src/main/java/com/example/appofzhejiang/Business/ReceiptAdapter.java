@@ -38,8 +38,10 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
 
     @Override
     public void onBindViewHolder(@NonNull LinearViewHolder holder, final int position) {
-        if (position != 0) {
+        if ((data.get(position).getSelect()).equals("false")) {
             holder.toleration.setVisibility(View.INVISIBLE);
+        }else if((data.get(position).getSelect()).equals("true")){
+            holder.toleration.setVisibility(View.VISIBLE);
         }
         holder.username.setText(data.get(position).getUsername());
         holder.phone.setText(data.get(position).getPhone());
