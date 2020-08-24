@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,315 +9,324 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorNotWhite"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
         android:paddingLeft="10dp"
-        android:paddingTop="20dp"
-        android:paddingRight="10dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
-
-            <TextView
-                android:id="@+id/txt_city"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:drawableRight="@drawable/arrow_down"
-                android:gravity="center"
-                android:paddingRight="10dp"
-                android:text="定位"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/main_search"
-                android:layout_width="240dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_edit_search"
-                android:drawableLeft="@drawable/main_search"
-                android:drawablePadding="10dp"
-                android:hint="@string/edit_scenic"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/txt_search"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="搜索"
-                android:textColor="@color/colorDarkGray"
-                android:textSize="16sp" />
-        </LinearLayout>
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
+            android:id="@+id/txt_city"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:drawableRight="@drawable/arrow_down"
+            android:gravity="center"
             android:paddingRight="10dp"
-            android:paddingBottom="5dp"
-            android:text="热门景区"
+            android:text="定位"
             android:textColor="@color/colorBlack"
-            android:textSize="28sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-        <!--<LinearLayout
-            android:id="@+id/list1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_top_radius"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp">
-
-            <ImageView
-                android:id="@+id/list2_image"
-                android:layout_width="120dp"
-                android:layout_height="75dp"
-                android:background="#000"
-                android:scaleType="centerCrop"
-                android:src="@drawable/westlake" />
-
-            <LinearLayout
-                android:id="@+id/linear_layout1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="3"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txt_place"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="西湖"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/txt_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorLightGreen"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="5A景区"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txt_detai1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="详情"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/list2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_top_radius"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp">
-
-            <ImageView
-                android:id="@+id/list2_image2"
-                android:layout_width="120dp"
-                android:layout_height="75dp"
-                android:background="#000"
-                android:scaleType="centerCrop"
-                android:src="@drawable/wetland" />
-
-            <LinearLayout
-                android:id="@+id/linear_layout2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="3"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txt_place2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="西溪国家湿地公园"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/txt_label2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorLightGreen"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="5A景区"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txt_detail2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="详情"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/list3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_top_radius"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp">
-
-            <ImageView
-                android:id="@+id/list2_image3"
-                android:layout_width="120dp"
-                android:layout_height="75dp"
-                android:background="#000"
-                android:scaleType="centerCrop"
-                android:src="@drawable/songcity" />
-
-            <LinearLayout
-                android:id="@+id/linear_layout3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="3"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txt_place3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="杭州宋城景区"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/txt_label3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorLightGreen"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="4A景区"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txt_detail3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="详情"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-        </LinearLayout>-->
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fg2_linear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_top_radius"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/colorDarkGray" />
-
-        <TextView
-            android:id="@+id/txt_more"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ripple_bottom_radius"
-            android:drawableRight="@drawable/dark_arrow"
-            android:elevation="5dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="10dp"
-            android:text="查看更多热门景区"
-            android:textColor="@color/colorLightBlack"
-            android:textSize="18dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="5dp"
-            android:text="游记发布"
+        <EditText
+            android:id="@+id/main_search"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_edit_search"
+            android:drawableLeft="@drawable/main_search"
+            android:drawablePadding="10dp"
+            android:hint="@string/edit_scenic"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:textColor="@color/colorBlack"
-            android:textSize="28sp" />
+            android:textSize="16sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fg2_grid"
+        <TextView
+            android:id="@+id/txt_search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="搜索"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="16sp" />
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorNotWhite"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:text="热门景区"
+                android:textColor="@color/colorBlack"
+                android:textSize="28sp" />
+
+            <!--<LinearLayout
+                android:id="@+id/list1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_top_radius"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/list2_image"
+                    android:layout_width="120dp"
+                    android:layout_height="75dp"
+                    android:background="#000"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/westlake" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_place"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="西湖"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txt_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorLightGreen"
+                        android:gravity="center"
+                        android:padding="2dp"
+                        android:text="5A景区"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txt_detai1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="详情"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/list2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_top_radius"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/list2_image2"
+                    android:layout_width="120dp"
+                    android:layout_height="75dp"
+                    android:background="#000"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/wetland" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_place2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="西溪国家湿地公园"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txt_label2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorLightGreen"
+                        android:gravity="center"
+                        android:padding="2dp"
+                        android:text="5A景区"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txt_detail2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="详情"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/list3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_top_radius"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/list2_image3"
+                    android:layout_width="120dp"
+                    android:layout_height="75dp"
+                    android:background="#000"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/songcity" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_place3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="杭州宋城景区"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txt_label3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorLightGreen"
+                        android:gravity="center"
+                        android:padding="2dp"
+                        android:text="4A景区"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txt_detail3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="详情"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </LinearLayout>-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fg2_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_top_radius" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorDarkGray" />
+
+            <TextView
+                android:id="@+id/txt_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_bottom_radius"
+                android:drawableRight="@drawable/dark_arrow"
+                android:elevation="5dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:text="查看更多热门景区"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:text="游记发布"
+                android:textColor="@color/colorBlack"
+                android:textSize="28sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fg2_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.appofzhejiang.fragment3;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -13,7 +14,9 @@ import android.view.View;
 import com.example.appofzhejiang.Business.ReceiptActivity;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.coolweather.gson.Now;
 import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
+import com.example.appofzhejiang.xihu.more;
 import com.github.clans.fab.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -25,6 +28,7 @@ public class TicketActivity extends FragmentActivity {
     private IndicatorTabBar mIndicatorTabBar;
     private List<String> tableNames = Arrays.asList("门票", "酒店", "包租车", "导游预约", "农家乐", "寻美食", "特产购买");
     private List<Fragment> fragmentList;
+    private Toolbar mBack;
     private String value;
     //悬浮按钮
     private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
@@ -36,6 +40,14 @@ public class TicketActivity extends FragmentActivity {
         setContentView(R.layout.activity_ticket);
         mViewPager = findViewById(R.id.viewpager);
         mIndicatorTabBar = findViewById(R.id.indicatorTabBar);
+        mBack = findViewById(R.id.toolbar);
+        //返回按钮
+        mBack.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         intFragmentList();
 
@@ -94,7 +106,7 @@ public class TicketActivity extends FragmentActivity {
         floatingActionButton3 = findViewById(R.id.floatingActionButton3);
 
         floatingActionButton1.setLabelText("首页");
-        floatingActionButton2.setLabelText("返回");
+        floatingActionButton2.setLabelText("景点");
         floatingActionButton3.setLabelText("攻略");
         floatingActionButton1.setImageResource(R.drawable.shouye);
         floatingActionButton2.setImageResource(R.drawable.jingdian);
@@ -109,11 +121,12 @@ public class TicketActivity extends FragmentActivity {
             }
         });
 
-        //返回上一页
+        //跳转至更多热门景点列表页面（暂无跳转 更多景点页面未写）
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(TicketActivity.this, more.class);
+                startActivity(intent);
             }
         });
 

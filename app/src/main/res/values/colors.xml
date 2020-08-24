@@ -17,6 +17,9 @@
 
     <color name="color_red">#FD2E4A</color>
     <color name="color_green" >#13D1BE</color>
+    <!--半透明-->
+    <color name="colorBanTransparent">#11000000</color>
+    <color name="colortouming">#ffffffff</color>
 
     <attr name="cpCancelTextSize" format="dimension|reference" />
     <attr name="cpCancelTextColor" format="color|reference" />

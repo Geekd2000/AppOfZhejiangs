@@ -76,12 +76,21 @@
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/DefaultCityPickerTheme"
             android:windowSoftInputMode="adjustPan|stateHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <!-- 引导页 -->
+        <activity
+            android:name=".LauncherPage.GuideActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActivityFullscreen" />
+        <!-- 启动页 -->
+        <activity
+        android:name=".LauncherPage.LaunchActivity"
+        android:theme="@style/LunchTheme">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
+    </activity>
 
         <!--<meta-data
             android:name="com.baidu.lbsapi.API_KEY"

@@ -7,12 +7,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.appofzhejiang.fragment3.IndicatorTabBar
-        android:id="@+id/indicatorTabBar"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorWhite"
         android:elevation="5dp"
+        app:navigationIcon="@drawable/ic_back">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="商城"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="18sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.example.appofzhejiang.fragment3.IndicatorTabBar
+        android:id="@+id/indicatorTabBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/colorWhite"
         bob:tab_text_color="@color/tab_text_color"
         bob:tab_text_selected_color="@color/tab_text_selected_color"
         bob:tab_text_size="@dimen/tab_text_size" />
@@ -50,7 +68,7 @@
                 android:id="@+id/floatingActionButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_back_white"
+                android:src="@drawable/jingdian"
                 app:fab_colorNormal="@color/colorLightGreen"
                 app:fab_colorPressed="#1AD68A"
                 app:fab_label="景点"
