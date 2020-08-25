@@ -30,8 +30,6 @@ public class TicketActivity extends FragmentActivity {
     private List<Fragment> fragmentList;
     private Toolbar mBack;
     private String value;
-    //悬浮按钮
-    private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
     private int index=0;
 
     @Override
@@ -50,9 +48,6 @@ public class TicketActivity extends FragmentActivity {
         });
 
         intFragmentList();
-
-        //初始化悬浮按钮
-        initFloatActionButton();
 
         mViewPager.setAdapter(new MyViewPager(getSupportFragmentManager(), fragmentList));
         mIndicatorTabBar.initView(tableNames, mViewPager, 5);
@@ -98,45 +93,5 @@ public class TicketActivity extends FragmentActivity {
         public int getCount() {
             return fragmentList.size();
         }
-    }
-    //悬浮按钮配置
-    public void initFloatActionButton() {
-        floatingActionButton1 = findViewById(R.id.floatingActionButton1);
-        floatingActionButton2 = findViewById(R.id.floatingActionButton2);
-        floatingActionButton3 = findViewById(R.id.floatingActionButton3);
-
-        floatingActionButton1.setLabelText("首页");
-        floatingActionButton2.setLabelText("景点");
-        floatingActionButton3.setLabelText("攻略");
-        floatingActionButton1.setImageResource(R.drawable.shouye);
-        floatingActionButton2.setImageResource(R.drawable.jingdian);
-        floatingActionButton3.setImageResource(R.drawable.gonglue);
-
-        //跳转至首页页面
-        floatingActionButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TicketActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        //跳转至更多热门景点列表页面（暂无跳转 更多景点页面未写）
-        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TicketActivity.this, more.class);
-                startActivity(intent);
-            }
-        });
-
-        //跳转至攻略列表页面
-        floatingActionButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TicketActivity.this, RecyclerPageActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

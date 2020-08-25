@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.fragment3.Ticket;
+
 import java.util.List;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> {
@@ -45,6 +47,21 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return hotelList.size();
+    }
+
+    //下面两个方法提供给页面刷新和加载时调用
+    public void add(List<Hotel> addMessageList) {
+        //增加数据
+        int position = hotelList.size();
+        hotelList.addAll(position, addMessageList);
+        notifyItemInserted(position);
+    }
+
+    public void refresh(List<Hotel> newList) {
+        //刷新数据
+        hotelList.removeAll(hotelList);
+        hotelList.addAll(newList);
+        notifyDataSetChanged();
     }
 
     //设置item的监听事件的接口

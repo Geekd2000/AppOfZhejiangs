@@ -68,6 +68,21 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<FragmentAdapter3.Line
         return ticketList.size();
     }
 
+    //下面两个方法提供给页面刷新和加载时调用
+    public void add(List<Ticket> addMessageList) {
+        //增加数据
+        int position = ticketList.size();
+        ticketList.addAll(position, addMessageList);
+        notifyItemInserted(position);
+    }
+
+    public void refresh(List<Ticket> newList) {
+        //刷新数据
+        ticketList.removeAll(ticketList);
+        ticketList.addAll(newList);
+        notifyDataSetChanged();
+    }
+
     public class LinearViewHolder extends RecyclerView.ViewHolder {
 
         private View ticketView; // 用来做点击事件的

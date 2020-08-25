@@ -27,6 +27,12 @@ import com.baidu.location.LocationClientOption;
 import com.example.appofzhejiang.CustomDialog.CustomDialog;
 import com.example.appofzhejiang.fragment3.Ticket;
 import com.example.appofzhejiang.fragment3.TicketActivity;
+import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.header.ClassicsHeader;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
@@ -54,8 +60,10 @@ public class MyFragment3 extends Fragment {
     private String currentCity; // 当前城市
     private String currentProvince; // 当前省份
     public LocationClient mLocationClient;//定位
+    private SmartRefreshLayout refreshLayout;//刷新
 
-    public MyFragment3(){}
+    public MyFragment3() {
+    }
 
     // 传入默认城市名称
     public MyFragment3(String province, String city) {
@@ -67,12 +75,13 @@ public class MyFragment3 extends Fragment {
 
     /**
      * 此方法会在onCreateView方法前执行，因为fragemnt有缓存机制导致页面切换时城市信息不同步
+     *
      * @param isVisibleToUser
      */
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser) {
+        if (isVisibleToUser) {
             // 如果缓存中有城市信息，则从缓存中获取城市
             String cityInfo = load("data_cityInfo");
             if (cityInfo != null && !"".equals(cityInfo.trim())) {
@@ -134,7 +143,7 @@ public class MyFragment3 extends Fragment {
         });
 
         //门票
-        txtTicket=view.findViewById(R.id.txt_ticket);
+        txtTicket = view.findViewById(R.id.txt_ticket);
         txtTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,7 +154,7 @@ public class MyFragment3 extends Fragment {
         });
 
         //酒店
-        txtHotel=view.findViewById(R.id.txt_hotel);
+        txtHotel = view.findViewById(R.id.txt_hotel);
         txtHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,7 +165,7 @@ public class MyFragment3 extends Fragment {
         });
 
         //包租车
-        txtTaxi=view.findViewById(R.id.txt_taxi);
+        txtTaxi = view.findViewById(R.id.txt_taxi);
         txtTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -167,7 +176,7 @@ public class MyFragment3 extends Fragment {
         });
 
         //导游预约
-        txtGuider=view.findViewById(R.id.txt_guider);
+        txtGuider = view.findViewById(R.id.txt_guider);
         txtGuider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -178,7 +187,7 @@ public class MyFragment3 extends Fragment {
         });
 
         //农家乐
-        txtNongjiale=view.findViewById(R.id.txt_nongjiale);
+        txtNongjiale = view.findViewById(R.id.txt_nongjiale);
         txtNongjiale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -189,7 +198,7 @@ public class MyFragment3 extends Fragment {
         });
 
         //美食
-        txtFood=view.findViewById(R.id.txt_food);
+        txtFood = view.findViewById(R.id.txt_food);
         txtFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -200,7 +209,7 @@ public class MyFragment3 extends Fragment {
         });
 
         //特产购买
-        txtCommodity=view.findViewById(R.id.txt_commodity);
+        txtCommodity = view.findViewById(R.id.txt_commodity);
         txtCommodity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -210,6 +219,40 @@ public class MyFragment3 extends Fragment {
             }
         });
 
+        refreshLayout = view.findViewById(R.id.refreshLayout);//SmartRefreshLayout控件
+        refreshLayout.setRefreshHeader(new ClassicsHeader(getActivity()));//设置Header样式
+        refreshLayout.setRefreshFooter(new ClassicsFooter(getActivity()));//设置Footer样式
+        //下拉刷新
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
+
+                //模拟网络请求到的数据
+                ArrayList<Ticket> newList = new ArrayList<Ticket>();
+                for (int i = 0; i < 10; i++) {
+                    newList.add(new Ticket(R.drawable.westlake, "杭州西湖" + (ticketList.size() + i + 1), "35", "超级无敌大公司", "99"));
+                }
+                fragmentAdapter3.refresh(newList);
+                refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                //不传时间则立即停止刷新
+            }
+        });
+        //上拉加载
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+
+                //模拟网络请求到的数据
+                ArrayList<Ticket> newList = new ArrayList<Ticket>();
+                for (int i = 0; i < 10; i++) {
+                    newList.add(new Ticket(R.drawable.westlake, "杭州西湖" + (ticketList.size() + i + 1), "35", "超级无敌大公司", "99"));
+                }
+                fragmentAdapter3.add(newList);
+                refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
+            }
+        });
         return view;
     }
 
@@ -361,6 +404,7 @@ public class MyFragment3 extends Fragment {
             mLocationClient.stop();
         }
     }
+
     /**
      * 功能：判断用户是否同意开启权限
      */

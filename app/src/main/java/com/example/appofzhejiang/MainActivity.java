@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tab_shopping; //商城按钮
     private TextView tab_my; //我的按钮
     private ViewPager viewPager;
-    //悬浮按钮
-    private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
 
     private MyFragmentPagerAdapter mAdapter;
 
@@ -64,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         bindViews();
         tab_main.setSelected(true);//进去后选择第一项
-        initFloatActionButton();//初始化悬浮按钮
     }
 
     //UI组件初始化与事件绑定
@@ -145,48 +142,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
             }
         }
-    }
-
-    //悬浮按钮配置
-    public void initFloatActionButton() {
-        floatingActionButton1 = findViewById(R.id.floatingActionButton1);
-        floatingActionButton2 = findViewById(R.id.floatingActionButton2);
-        floatingActionButton3 = findViewById(R.id.floatingActionButton3);
-
-        floatingActionButton1.setLabelText("攻略");
-        floatingActionButton2.setLabelText("景点");
-        floatingActionButton3.setLabelText("商城");
-        floatingActionButton1.setImageResource(R.drawable.gonglue);
-        floatingActionButton2.setImageResource(R.drawable.jingdian);
-        floatingActionButton3.setImageResource(R.drawable.shangcheng);
-
-        //跳转至攻略页面
-        floatingActionButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RecyclerPageActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        //跳转至更多热门景点列表页面（暂无跳转 更多景点页面未写）
-        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, RecyclerPageActivity.class);
-//                startActivity(intent);
-            }
-        });
-
-        //跳转至商品列表页面(默认进入商品列表的门票页面)
-        floatingActionButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, TicketActivity.class);
-                intent.putExtra("num", "0");
-                startActivity(intent);
-            }
-        });
     }
 
     //双击手机返回键退出 start

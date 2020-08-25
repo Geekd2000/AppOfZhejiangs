@@ -52,153 +52,159 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorNotWhite"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bg_top_radius"
-                android:paddingLeft="5dp"
-                android:paddingTop="15dp"
-                android:paddingRight="5dp"
-                android:paddingBottom="5dp">
-
-                <TextView
-                    android:id="@+id/txt_ticket"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/ticket"
-                    android:drawablePadding="5dp"
-                    android:gravity="center"
-                    android:text="门票"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/txt_hotel"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/hotel"
-                    android:drawablePadding="5dp"
-                    android:gravity="center"
-                    android:text="酒店"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/txt_taxi"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/taxi_logo"
-                    android:drawablePadding="5dp"
-                    android:gravity="center"
-                    android:text="包租车"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/txt_guider"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/guider_logo"
-                    android:drawablePadding="5dp"
-                    android:gravity="center"
-                    android:text="导游预约"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_bottom_radius"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingRight="5dp"
-                android:paddingBottom="15dp">
-
-                <TextView
-                    android:id="@+id/txt_nongjiale"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/nongjiale"
-                    android:drawablePadding="5dp"
-                    android:gravity="center"
-                    android:text="农家乐"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/txt_food"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/food"
-                    android:drawablePadding="5dp"
-                    android:gravity="center"
-                    android:text="美食"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/txt_commodity"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/commodity"
-                    android:drawablePadding="5dp"
-                    android:gravity="center"
-                    android:text="特产购买"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/txt_hotplace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="5dp"
-                android:text="热门景点"
-                android:textColor="@color/colorBlack"
-                android:textSize="24sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fg3_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_radius"
+                android:background="@color/colorNotWhite"
+                android:orientation="vertical"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp">
+                android:paddingRight="10dp">
 
-            </androidx.recyclerview.widget.RecyclerView>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/bg_top_radius"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/txt_ticket"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@drawable/ticket"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="门票"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txt_hotel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@drawable/hotel"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="酒店"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txt_taxi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@drawable/taxi_logo"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="包租车"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txt_guider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@drawable/guider_logo"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="导游预约"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_bottom_radius"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="15dp">
+
+                    <TextView
+                        android:id="@+id/txt_nongjiale"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@drawable/nongjiale"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="农家乐"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txt_food"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@drawable/food"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="美食"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/txt_commodity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableTop="@drawable/commodity"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="特产购买"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_hotplace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="热门景点"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="24sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fg3_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_radius"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </LinearLayout>
