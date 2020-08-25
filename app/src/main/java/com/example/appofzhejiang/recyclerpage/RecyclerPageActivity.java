@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 
 import java.util.List;
@@ -34,7 +35,9 @@ public class RecyclerPageActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.currentCity = intent.getStringExtra("currentCity");
         this.type = intent.getStringExtra("type");
-
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
         // 隐藏系统标题
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

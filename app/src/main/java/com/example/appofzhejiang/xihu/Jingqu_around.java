@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 public class Jingqu_around extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener{
 
@@ -36,6 +37,9 @@ public class Jingqu_around extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jingqu_around);
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         mAdapter = new Jingqu_FragmentPagerAdapter(getSupportFragmentManager());
         bindViews();

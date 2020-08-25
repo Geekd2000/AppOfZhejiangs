@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.coolweather.WeatherActivity;
 import com.example.appofzhejiang.recyclerpage.RecyclerBeanListUtil;
 import com.example.appofzhejiang.recyclerpage.RecyclerType;
 import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -137,7 +139,6 @@ public class MyFragment1 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my1, container, false);
-
 
         // 设置城市定位 start
 

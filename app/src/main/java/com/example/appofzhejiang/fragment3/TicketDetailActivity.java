@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.appofzhejiang.Login.LoginActivity;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.github.clans.fab.FloatingActionButton;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -68,6 +69,10 @@ public class TicketDetailActivity extends AppCompatActivity {
         detailContent4 = findViewById(R.id.detail_content4);
         goodsImage = findViewById(R.id.goods_image);
         banner = findViewById(R.id.banner);
+
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         //取得从上一个Activity当中传递过来的Intent对象
         Intent intent = getIntent();

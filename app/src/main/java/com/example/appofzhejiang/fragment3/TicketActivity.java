@@ -14,6 +14,7 @@ import android.view.View;
 import com.example.appofzhejiang.Business.ReceiptActivity;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.coolweather.gson.Now;
 import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
 import com.example.appofzhejiang.xihu.more;
@@ -46,6 +47,9 @@ public class TicketActivity extends FragmentActivity {
                 finish();
             }
         });
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         intFragmentList();
 

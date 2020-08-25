@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import com.example.appofzhejiang.Business.ReceiptActivity;
 import com.example.appofzhejiang.Login.LoginActivity;
 import com.example.appofzhejiang.Setting.SettingActivity;
+import com.example.appofzhejiang.StatusBarUtil.DensityUtil;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.pay.PayActivity;
 import com.example.appofzhejiang.us.AboutUsActivity;
 import com.example.appofzhejiang.us.NotesActivity;
@@ -32,6 +35,7 @@ public class MyFragment4 extends Fragment {
     private CircleImageView imageUser;
     private Boolean isLoginStatus;
     public String username;
+    private RelativeLayout relativeLayout;
 
     public MyFragment4(){}
     public MyFragment4(String content) {

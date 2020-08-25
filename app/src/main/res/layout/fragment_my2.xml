@@ -8,9 +8,11 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/fg2_lin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
+        android:elevation="5dp"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"

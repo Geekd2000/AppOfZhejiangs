@@ -46,27 +46,13 @@
         <activity android:name=".fragment3.SubmitOrderActivity" />
         <activity android:name=".fragment3.TicketDetailActivity" />
         <activity android:name=".fragment3.TicketActivity" />
-        <activity
-            android:name=".tourismculture.TourismCultureFolkActivity"
-            android:theme="@style/DefaultCityPickerTheme" />
-        <activity
-            android:name=".tourismculture.TourismCultureAreaActivity"
-            android:theme="@style/DefaultCityPickerTheme" />
-        <activity
-            android:name=".tourismculture.TourismCultureHistoryActivity"
-            android:theme="@style/DefaultCityPickerTheme" />
-        <activity
-            android:name=".tourismculture.TourismCultureFestivalActivity"
-            android:theme="@style/DefaultCityPickerTheme" />
-        <activity
-            android:name=".coolweather.WeatherActivity"
-            android:theme="@style/DefaultCityPickerTheme" />
-        <activity
-            android:name=".coolweather.CoolWeatherActivity"
-            android:theme="@style/DefaultCityPickerTheme" />
-        <activity
-            android:name=".recyclerpage.RecyclerPageActivity"
-            android:theme="@style/DefaultCityPickerTheme" />
+        <activity android:name=".tourismculture.TourismCultureFolkActivity" />
+        <activity android:name=".tourismculture.TourismCultureAreaActivity" />
+        <activity android:name=".tourismculture.TourismCultureHistoryActivity" />
+        <activity android:name=".tourismculture.TourismCultureFestivalActivity" />
+        <activity android:name=".coolweather.WeatherActivity" />
+        <activity android:name=".coolweather.CoolWeatherActivity" />
+        <activity android:name=".recyclerpage.RecyclerPageActivity" />
         <activity android:name=".Login.RegisterActivity" />
         <activity android:name=".Login.LoginActivity" />
         <activity android:name=".Setting.PersonalInformationActivity" />
@@ -75,8 +61,7 @@
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/DefaultCityPickerTheme"
-            android:windowSoftInputMode="adjustPan|stateHidden">
-        </activity>
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
         <!-- 引导页 -->
         <activity
             android:name=".LauncherPage.GuideActivity"
@@ -84,13 +69,13 @@
             android:theme="@style/NoActivityFullscreen" />
         <!-- 启动页 -->
         <activity
-        android:name=".LauncherPage.LaunchActivity"
-        android:theme="@style/LunchTheme">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-            <category android:name="android.intent.category.LAUNCHER"/>
-        </intent-filter>
-    </activity>
+            android:name=".LauncherPage.LaunchActivity"
+            android:theme="@style/LunchTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <!--<meta-data
             android:name="com.baidu.lbsapi.API_KEY"

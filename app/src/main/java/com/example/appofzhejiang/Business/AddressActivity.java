@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.lljjcoder.citypickerview.widget.CityPicker;
 
 
@@ -39,6 +40,10 @@ public class AddressActivity extends AppCompatActivity {
         setContentView(R.layout.activity_address);
         //初始化，找到控件
         initView();
+
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         //获取传过来的参数
         Intent intent = getIntent();
