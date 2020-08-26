@@ -13,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.alibaba.fastjson.JSON;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -37,6 +38,9 @@ public class BeautifulZJActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beautiful_zj);
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
         // 设置标题
         TextView tourismPublicityTitle = (TextView) findViewById(R.id.tourism_publicity_title);
         tourismPublicityTitle.setText("最美浙江，最美杭州－精美图片展");

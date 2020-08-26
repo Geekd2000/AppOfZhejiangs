@@ -22,6 +22,7 @@ import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.OnTimeSelectChangeListener;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
+import com.bumptech.glide.Glide;
 import com.example.appofzhejiang.Business.ReceiptActivity;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
@@ -35,7 +36,7 @@ import java.util.Date;
 public class SubmitOrderActivity extends AppCompatActivity {
 
     private TimePickerView pvTime;//时间选择器
-    private String tot,image;
+    private String tot;
     private Toolbar toolbar;//顶部标题栏
     private TextView goodsName;//商品名称
     private TextView goodsType;//商品规格
@@ -93,13 +94,13 @@ public class SubmitOrderActivity extends AppCompatActivity {
         String name = intent.getStringExtra("goodsName");
         String type = intent.getStringExtra("goodsType");
         String unitPrice = intent.getStringExtra("goodsPrice");
-        image = intent.getStringExtra("goodsImage");
+        final String image = intent.getStringExtra("goodsImage");
 
         //将传递过来的参设设置进去
         goodsName.setText(name);//商品名称
         goodsType.setText(type);//商品种类
         goodsUnitPrice.setText(unitPrice);//商品单价
-        goodsImage.setImageResource(Integer.parseInt(image));//商品图片
+        Glide.with(this).load(image).into(goodsImage);//商品图片
 
         //合计、实付
         tot = Integer.toString(Integer.parseInt(buyCount.getText().toString()) * Integer.parseInt(goodsUnitPrice.getText().toString()));

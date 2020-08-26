@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
@@ -80,7 +81,7 @@ public class OrderActivity extends AppCompatActivity {
         mUsername.setText(username);
         mTelephone.setText(telephone);
         mAddress.setText(address);
-        imageGoods.setImageResource(Integer.parseInt(image));
+        Glide.with(this).load(image).into(imageGoods);
     }
 
     //悬浮按钮配置

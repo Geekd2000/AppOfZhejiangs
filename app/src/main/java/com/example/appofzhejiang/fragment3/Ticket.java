@@ -1,37 +1,62 @@
 package com.example.appofzhejiang.fragment3;
 
-public class Ticket {
-    private int imageId;
-    private String name;
-    private String price;
-    private String location;
-    private String count;
+import java.io.Serializable;
 
-    public Ticket(int imageId, String name, String price, String location, String count) {
-        this.imageId = imageId;
-        this.name = name;
-        this.price = price;
-        this.location = location;
-        this.count = count;
+public class Ticket implements Serializable {
+    private String path;
+    private String name;
+    private String prices;
+    private String sales;
+    private int product_id;
+
+    public Ticket() {
     }
 
-    public int getImageId() {
-        return imageId;
+    public Ticket(String path, String name, String prices, String sales,int product_id) {
+        this.path = path;
+        this.name = name;
+        this.prices = prices;
+        this.sales = sales;
+        this.product_id = product_id;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPrice() {
-        return price;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLocation() {
-        return location;
+    public String getPrices() {
+        return prices;
     }
 
-    public String getCount() {
-        return count;
+    public void setPrices(String prices) {
+        this.prices = prices;
+    }
+
+    public String getSales() {
+        return sales;
+    }
+
+    public void setSales(String sales) {
+        this.sales = sales;
+    }
+
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
     }
 }

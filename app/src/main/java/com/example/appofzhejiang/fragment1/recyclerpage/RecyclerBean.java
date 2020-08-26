@@ -24,10 +24,10 @@ public class RecyclerBean implements Serializable {
     public void setPictures(String pictures) {
         this.pictures = pictures;
     }
+
     public String getPictures() {
         return pictures;
     }
-
 
     public String getTitle() {
         return title;
