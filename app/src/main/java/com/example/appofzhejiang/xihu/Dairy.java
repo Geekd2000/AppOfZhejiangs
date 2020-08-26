@@ -37,7 +37,7 @@ public class Dairy extends AppCompatActivity {
         });
 
         initDate();
-        intView();
+        initView();
 
         textView = findViewById(R.id.txt_xihu);
         textView.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +49,7 @@ public class Dairy extends AppCompatActivity {
         });
     }
 
-    private void intView() {
+    private void initView() {
         mLocalImageLoader =new LocalImageLoader();
         mBanner = findViewById(R.id.banner);
 

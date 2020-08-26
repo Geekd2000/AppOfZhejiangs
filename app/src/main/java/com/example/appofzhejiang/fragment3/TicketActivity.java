@@ -10,10 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.appofzhejiang.Business.ReceiptActivity;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
-import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
+import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerPageActivity;
 import com.github.clans.fab.FloatingActionButton;
 
 import java.util.ArrayList;

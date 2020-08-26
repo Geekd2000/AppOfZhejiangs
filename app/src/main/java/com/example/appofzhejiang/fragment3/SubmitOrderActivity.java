@@ -26,13 +26,10 @@ import com.example.appofzhejiang.Business.ReceiptActivity;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.pay.OrderActivity;
-import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
 import com.github.clans.fab.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import javax.security.auth.PrivateCredentialPermission;
 
 public class SubmitOrderActivity extends AppCompatActivity {
 

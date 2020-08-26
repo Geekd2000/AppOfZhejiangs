@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/tourism_publicity_title" />
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_gravity="top"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="-10dp"
+                android:src="@drawable/culture_poem_zj" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="12dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="诗画浙江：在诗和远方绽放"
+                    android:textColor="#000"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2019年09月18日 06:42"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="来源：浙江日报 作者：陈 爽"
+                            android:textSize="16dp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#ccc"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="作为文化和旅游资源大省，浙江正着力建设全国文化高地、中国最佳旅游目的地、全国文化和旅游融合发展样板地。旅游消费升级时代，如何擦亮浙江诗画底色，进一步打响“诗画浙江”品牌，从而彰显浙江文旅融合先行者的先发优势？"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="近日，“诗心自在”2019“诗画浙江”全国诗人作家重走诗路启动仪式暨百度诗路导航地图上线仪式举行，来自全国的知名作家、诗人们寻访古人足迹，以重走“四条诗路”的形式，体验浙江深厚的自然人文积淀，诗画浙江的独特魅力和文旅融合风采再次得以生动呈现。"
+                    android:textSize="16dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="全景体验，挖掘江南诗意底色"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="近年来，浙江文旅融合成绩斐然。文化和旅游产业双双突破万亿大关，在文化+旅游的实践探索中，浙江旅游市场形成了一系列极具影响力的特色旅游产品，《宋城千古情》《最忆是杭州》等文化演艺“一枝独秀”，横店影视城、象山影视城等影视旅游“后来居上”，“四古”旅游、红色旅游、非遗活化、文创产品、节事活动、研学旅游等百花齐放，浙江文旅融合呈现出融合早、占比大、态势旺、成效好和体会深的发展态势。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="作为浙江大花园建设的重要内容，贯穿浙东、浙西、浙南、浙北、浙中的浙东唐诗之路、钱塘江诗路、瓯江山水诗路、大运河诗路，无疑是浙江探索高质量文旅融合的重头戏，串起了诗画浙江的山水和文化精华。“湖月照我影，送我至剡溪”“天姥连天向天横，势拔五岳掩赤城”……从晋代至清代，历代文人在四条诗路上留下无数诗词名篇，一条总长约190公里的“浙东唐诗之路”，诗人写下了1500余首佳作。正如中国作家协会会员、上海作家协会理事、著名作家陈丹燕在启动仪式上所言，“‘诗路文化带’这个概念可以提升浙江省的文化自信，浙江文化底蕴深厚，有很多内容可以挖掘。”"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="体会浙江，便是体会中国江南之美的精髓。与诗人作家深入体验诗路之美活动形成呼应，在线上，浙江诗路电子导航地图正式上线，游客来到浙江，只要打开手机，点击百度地图上诗路气泡的标志，便可以进入专题页面，跟着导航便可以畅游浙江四条诗路，“线上线下”融合，诗画浙江全景体验的便捷度、科技感再次升级。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="“接下来，浙江的诗路文化带建设，将不断地挖掘诗路文化，打造诗路景观，落地诗路产业，这也是浙江省充分发挥文化资源，为人民美好生活创造更好条件的意义所在。”浙江省文化和旅游厅有关领导说。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="开放联动，诗画之美唱响全球"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="从巍峨雄伟的天姥山到小桥流水的运河古镇群，从清新雅丽的富春江边到世外桃源般的楠溪江畔，四天的诗路之旅，来自全国各地的80多名诗人作家全身心领略诗画浙江的古朴和现代之美，青年编剧吴孟婕形容这段旅程是一部很柔和的电影：“地图、诗句、骄阳、星夜，人文山水在画面中流动。”"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="绍兴会稽山是浙东唐诗之路采风活动的首站。集山水风光与人文景观于一体的兰亭，已再现当年“崇山峻岭，茂林修竹”的生态美，是浙江省文旅融合示范景区，每年农历三月初三，借助中国兰亭书法节，兰亭景区都会重现曲水流觞的盛景。以节日为载体，彰显当地文化底蕴，已成为各地打响本土旅游品牌的有力抓手，如松阳银猴茶叶节、云和梯田开犁节、龙泉宝剑文化节等，均取得了良好的市场效果。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=""
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="来到衢州，诗人、作家们在水亭门的夜间风景里读懂了这座城市的厚重。夜游水亭门是时下火热的“网红打卡点”，水亭门历史街区上演的3D裸眼灯光秀，将现代技术和古城墙体有机结合，通过灯光影像传递本地的文化、历史、人物和风景。同样是灯光秀，杭州钱江新城灯光秀展示了一个风景秀美、精致和谐、开放包容的杭州；在宁波，三江六岸灯光秀则将河姆渡文化、十里红妆、海上丝绸之路等生动再现，不少地方正通过灯光秀等科技创新，丰富本地旅游产品内容，为“诗画浙江”注入现代元素。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="诗人作家重走诗路，是对浙江文旅融合阶段性成果的一次全面检视，在挖掘浙江诗意底蕴的同时，提升着“诗画浙江”的知名度。近年来，与世界联动，让世界共享诗画浙江逐渐成为“诗画浙江”品牌推广的一大特色。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="8月14日，“美丽中国，诗画浙江”纽约推介会和波士顿路演活动举办，借助宣传片，浙江的万里竹海、千年古镇，以及刚刚入选世界遗产名录的良渚古城遗址，给当地民众留下了深刻印象。几天后，一场“‘诗画浙江’流动巴士音乐秀暨浙江文化旅游互动体验”活动在加拿大万锦市举行，不少民众积极参与现场拼图、书法、投壶等互动活动，并在个人Facebook等社交媒体上转发，为“诗画浙江”提升在北美地区的影响力开辟了新通道。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="与此同时，在国内，浙江与宁夏、贵州、甘肃等兄弟省份的旅游推介业已形成良性互动，依托别开生面、形式多样的旅游推介活动积极“走出去”，打响“诗画浙江”的金字招牌已成为常态。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="“请进来”体验与“走出去”推广并行，为吸引更多游客来到浙江、领略浙江“诗画”风采提供了新载体，也为浙江文旅融合迈入新境界带来了更多可能性。"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

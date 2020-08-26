@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -16,11 +17,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.fragment1.util.LocalImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
+
 
 import java.util.ArrayList;
+
+import javax.xml.transform.Transformer;
 
 public class Jingqu extends AppCompatActivity {
 
@@ -106,8 +110,9 @@ public class Jingqu extends AppCompatActivity {
         mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
         //加载器
         mBanner.setImageLoader(mLocalImageLoader);
+
         //动画效果
-        mBanner.setBannerAnimation(Transformer.ZoomOutSlide);
+//        mBanner.setBannerAnimation(Transformer.ZoomOutSlide);
         //图片标题
         mBanner.setBannerTitles(imageTitle);
         //间隔时间

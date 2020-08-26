@@ -5,13 +5,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
-import com.example.appofzhejiang.coolweather.WeatherActivity;
-import com.example.appofzhejiang.recyclerpage.RecyclerBeanListUtil;
-import com.example.appofzhejiang.recyclerpage.RecyclerType;
-import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.appofzhejiang.fragment1.beautifulzj.BeautifulZJActivity;
+import com.example.appofzhejiang.fragment1.util.LocalImageLoader;
+import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerBean;
+import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerBeanListUtil;
+import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerType;
+import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerPageActivity;
 
+
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,28 +30,25 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.example.appofzhejiang.CustomDialog.CustomDialog;
-import com.example.appofzhejiang.coolweather.CoolWeatherActivity;
-import com.example.appofzhejiang.coolweather.gson.Weather;
-import com.example.appofzhejiang.coolweather.json.JsonCity;
-import com.example.appofzhejiang.coolweather.json.JsonProvince;
-import com.example.appofzhejiang.coolweather.json.WeatherCity;
-import com.example.appofzhejiang.coolweather.util.HttpUtil;
-import com.example.appofzhejiang.coolweather.util.Utility;
-import com.example.appofzhejiang.recyclerpage.RecyclerPageAdapter;
-import com.example.appofzhejiang.tourismculture.TourismCultureAreaActivity;
-import com.example.appofzhejiang.tourismculture.TourismCultureFestivalActivity;
-import com.example.appofzhejiang.tourismculture.TourismCultureFolkActivity;
-import com.example.appofzhejiang.tourismculture.TourismCultureHistoryActivity;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.example.appofzhejiang.fragment1.CustomDialog.CustomDialog;
+
+import com.example.appofzhejiang.fragment1.tourismculture.TourismCultureAreaActivity;
+import com.example.appofzhejiang.fragment1.tourismculture.TourismCultureDramaActivity;
+import com.example.appofzhejiang.fragment1.tourismculture.TourismCultureFestivalActivity;
+import com.example.appofzhejiang.fragment1.tourismculture.TourismCultureFolkActivity;
+import com.example.appofzhejiang.fragment1.tourismculture.TourismCultureHeritageActivity;
+import com.example.appofzhejiang.fragment1.tourismculture.TourismCultureHistoryActivity;
+import com.example.appofzhejiang.fragment1.tourismculture.TourismCultureIndustrialActivity;
+import com.example.appofzhejiang.fragment1.tourismculture.TourismCulturePoemZJActivity;
+import com.youth.banner.Banner;
+
+import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerListener;
 import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
@@ -60,37 +62,36 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
-import interfaces.heweather.com.interfacesmodule.bean.base.Code;
-import interfaces.heweather.com.interfacesmodule.bean.weather.WeatherNowBean;
-import interfaces.heweather.com.interfacesmodule.view.HeConfig;
-import interfaces.heweather.com.interfacesmodule.view.HeWeather;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+
 
 public class MyFragment1 extends Fragment {
     public LocationClient mLocationClient;
     private View view; // 定义view用来设置fragment的layout
-    public RecyclerView recyclerView; // 定义RecyclerView
-    private FragmentAdapter1 fragmentAdapter1;  // 自定义RecyclerView的适配器
     private TextView txtCity; // 当前城市
-    private TextView txtWeather; // 当前天气
-    private TextView txtPoem;// 诗画浙江
     private TextView txtSearch;//搜索按钮
     private EditText editSearch;//搜索框
-    private ImageView indexNewsImage; // 专题新闻
-    private ImageView indexFolkImage; // 民族风情
-    private ImageView indexAreaImage; // 地域概况
-    private ImageView indexHistoryImage; // 历史故事
-    private ImageView indexFestivalImage; // 历史故事
     private String currentCity; // 当前城市
     private String currentProvince; // 当前省份
-    private String weatherId; // 当前weatherId;
+    private List<Integer> imagesPath; // 轮播图地址
+    private List<String> imagesTile; // 轮播图标题
+    private LocalImageLoader localImageLoader; // 轮播图Loder
+    private Banner banner; // 轮播图板块
+    private ImageView hotImageView1; // 热门攻略1
+    private ImageView hotImageView2; // 热门攻略2
+    private ImageView hotImageView3; // 热门攻略3
+    private View strategyMore; // 热门攻略->更多
+    private View culturePoemZJView; // 诗画浙江
+    private View cultureHeritageView; // 文化遗产
+    private View cultureDramaView; // 戏剧文化
+    private View cultureIndustrialView; // 工艺美术
+    private View cultureFolkView; // 民俗文化
+    private View areaView; // 地域概况
+    private View festivalView; // 传统节日
+    private View historyView; // 历史沿革
+    private View beautifulZJView; // 最美浙江
 
 
 
@@ -103,7 +104,9 @@ public class MyFragment1 extends Fragment {
         this.currentCity = city;
         // 如果获取的城市名字最后面带有市或省份后面带有省，要去除
         removeRedundantWord();
+
     }
+
 
     /**
      * 此方法会在onCreateView方法前执行，因为fragemnt有缓存机制导致页面切换时城市信息不同步
@@ -121,12 +124,9 @@ public class MyFragment1 extends Fragment {
                 currentCity = cityInfo.split("=")[1];
                 txtCity = view.findViewById(R.id.txt_city);
                 txtCity.setText(this.currentCity);
-                // 设置天气
-                setWeather(currentProvince, currentCity);
-                // 设置城市给攻略
-                txtPoem.setText("攻略 · " + currentCity);
-                // 初始化首页的RecyclerView
-                initRecyclerView();
+
+                // 设置轮播图数据
+                setBanner();
 
             }
         }
@@ -138,6 +138,11 @@ public class MyFragment1 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my1, container, false);
 
+        // 处理小浙特别提醒
+        setLittleRemind();
+
+        // 设置轮播图数据
+        setBanner();
 
         // 设置城市定位 start
 
@@ -185,38 +190,169 @@ public class MyFragment1 extends Fragment {
             }
         });
 
-        // 初始化首页的RecyclerView，没有缓存信息时使用
-        initRecyclerView();
+        // 设置宣传栏1的点击事件
+        getClick1View();
+        setClick1();
+
+        // 设置宣传栏2的点击事件
+        getClick2View();
+        setClick2();
+
+        // 设置热点攻略
+        getHotStrategyView();
+        setHotStrategy();
 
 
-        // 设置天气
-        txtWeather = view.findViewById(R.id.txt_weather);
-        setWeather(currentProvince, currentCity);
-        txtWeather.setOnClickListener(new View.OnClickListener() {
+
+        return view;
+    }
+
+    /**
+     * 如果没存数据就正常显示，存数据了就隐藏不显示
+     */
+    private void setLittleRemind() {
+        final String isVisibility = load("data_littleRemind");
+        final View littleRemindView = view.findViewById(R.id.little_zj_remind);
+        // 等待view加载完成后再执行
+        littleRemindView.post(new Runnable() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CoolWeatherActivity.class);
-                intent.putExtra("weatherId", weatherId);
-                startActivity(intent);
+            public void run() {
+                if (isVisibility == null || "".equals(isVisibility.trim())) {
+                    View littleCloseView = view.findViewById(R.id.little_zj_close);
+                    View littleFindView = view.findViewById(R.id.little_zj_find);
+                    littleRemindView.setVisibility(View.VISIBLE);
+                    littleCloseView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            littleRemindView.setVisibility(View.GONE);
+                            save("false","data_littleRemind");
+                        }
+                    });
+                    littleFindView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            // 进入图片展示区 或 关于浙江的优雅美文
+                            Intent intent = new Intent(getActivity(), BeautifulZJActivity.class);
+                            startActivity(intent);
+                            littleRemindView.setVisibility(View.GONE);
+                            save("false","data_littleRemind");
+
+                        }
+                    });
+
+                } else {
+                    // 如果有数据就不显示，默认不显示
+                }
             }
         });
 
-        // 点击专题新闻
-        indexNewsImage = (ImageView) view.findViewById(R.id.index_news);
-        indexNewsImage.setOnClickListener(new View.OnClickListener() {
+    }
+
+    /**
+     * 获取宣传栏1的LineanerLayout
+     */
+    private void getClick1View() {
+        cultureFolkView = view.findViewById(R.id.index_culture_folk);
+        culturePoemZJView = view.findViewById(R.id.index_poem_zj);
+        cultureHeritageView = view.findViewById(R.id.index_culture_heritage);
+        cultureDramaView = view.findViewById(R.id.index_culture_drama);
+        cultureIndustrialView = view.findViewById(R.id.index_culture_industrial);
+    }
+    private void setClick1() {
+        culturePoemZJView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RecyclerPageActivity.class);
+                Intent intent = new Intent(getActivity(), TourismCulturePoemZJActivity.class);
                 intent.putExtra("currentCity", currentCity);
-                intent.putExtra("type", RecyclerType.NEWS);
+                startActivity(intent);
+            }
+        });
+        cultureHeritageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TourismCultureHeritageActivity.class);
+                intent.putExtra("currentCity", currentCity);
+                startActivity(intent);
+            }
+        });
+        cultureDramaView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TourismCultureDramaActivity.class);
+                intent.putExtra("currentCity", currentCity);
+                startActivity(intent);
+            }
+        });
+        cultureIndustrialView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TourismCultureIndustrialActivity.class);
+                intent.putExtra("currentCity", currentCity);
                 startActivity(intent);
             }
         });
 
-        // 点击攻略·地点TextView事件
-        txtPoem = (TextView) view.findViewById(R.id.txt_poem);
-        txtPoem.setText("攻略 · " + currentCity);
-        txtPoem.setOnClickListener(new View.OnClickListener() {
+        cultureFolkView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TourismCultureFolkActivity.class);
+                intent.putExtra("currentCity", currentCity);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void getClick2View() {
+        areaView = view.findViewById(R.id.index_area);
+        festivalView = view.findViewById(R.id.index_festival);
+        historyView =  view.findViewById(R.id.index_history);
+        beautifulZJView = view.findViewById(R.id.index_beautiful_zj);
+    }
+    private void setClick2() {
+        areaView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TourismCultureAreaActivity.class);
+                intent.putExtra("currentCity", currentCity);
+                startActivity(intent);
+            }
+        });
+        festivalView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TourismCultureFestivalActivity.class);
+                intent.putExtra("currentCity", currentCity);
+                startActivity(intent);
+            }
+        });
+        historyView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TourismCultureHistoryActivity.class);
+                intent.putExtra("currentCity", currentCity);
+                startActivity(intent);
+            }
+        });
+        beautifulZJView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), BeautifulZJActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    /**
+     * 获取热点攻略的图片
+     */
+    private void getHotStrategyView() {
+        hotImageView1 = view.findViewById(R.id.strategy_hot1);
+        hotImageView2 = view.findViewById(R.id.strategy_hot2);
+        hotImageView3 = view.findViewById(R.id.strategy_hot3);
+        strategyMore = view.findViewById(R.id.stratrgy_more);
+    }
+    private void setHotStrategy() {
+        strategyMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RecyclerPageActivity.class);
@@ -226,191 +362,34 @@ public class MyFragment1 extends Fragment {
             }
         });
 
-        // 设置民族风情点击事件
-        indexFolkImage = (ImageView) view.findViewById(R.id.index_folk);
-        indexFolkImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TourismCultureFolkActivity.class);
-                intent.putExtra("currentCity", currentCity);
-                startActivity(intent);
-            }
-        });
-
-        // 设置地域概况点击事件
-        indexAreaImage = (ImageView) view.findViewById(R.id.index_area);
-        indexAreaImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TourismCultureAreaActivity.class);
-                intent.putExtra("currentCity", currentCity);
-                startActivity(intent);
-            }
-        });
-
-        // 设置历史故事点击事件
-        indexHistoryImage = (ImageView) view.findViewById(R.id.index_history);
-        indexHistoryImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TourismCultureHistoryActivity.class);
-                intent.putExtra("currentCity", currentCity);
-                startActivity(intent);
-            }
-        });
-
-        // 设置传统节日点击事件
-        indexFestivalImage = (ImageView) view.findViewById(R.id.index_festival);
-        indexFestivalImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TourismCultureFestivalActivity.class);
-                intent.putExtra("currentCity", currentCity);
-                startActivity(intent);
-            }
-        });
-        return view;
-    }
-
-    /**
-     * 对RecycleView进行配置
-     */
-    private void initRecyclerView() {
-
-        recyclerView = view.findViewById(R.id.fg1_recyclerView);
-        RecyclerPageAdapter adapter = new RecyclerPageAdapter(new RecyclerBeanListUtil(currentCity,null).getRecyclerBeanList(),this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-    }
-
-    /**
-     * 设置Myfragment1页面上跟天气有关的信息
-     */
-
-    private void setWeather(final String province, String city) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    // 通过省份和城市来获取weatherId start
-                    // 第一次请求，目的：得到省份id
-                    OkHttpClient client1 = new OkHttpClient();
-                    String url = "http://guolin.tech/api/china";
-                    Request request1 = new Request.Builder().url(url).build();
-                    Response response1 = client1.newCall(request1).execute();
-                    String responseData1 = response1.body().string();
-                    int provinceId = parseJSON1(responseData1); // 得到省份id
-
-                    /// 第二次请求，目的：得到城市id
-                    OkHttpClient client2 = new OkHttpClient();
-                    url = url + "/" + provinceId;
-                    Request request2 = new Request.Builder().url(url).build();
-                    Response response2 = client2.newCall(request2).execute();
-                    String responseData2 = response2.body().string();
-                    int cityId = parseJSON2(responseData2); // 得到城市id
-
-                    // 第三次请求，目的：得到城市weatherId
-                    OkHttpClient client3 = new OkHttpClient();
-                    url = url + "/" + cityId;
-                    Request request3 = new Request.Builder().url(url).build();
-                    Response response3 = client3.newCall(request3).execute();
-                    String responseData3 = response3.body().string();
-                    String wId = parseJSON3(responseData3); // 得到城市id
-                    weatherId = wId;
-                    // 通过省份和城市来获取weatherId end
-
-                    //设置Myfragment1页面上跟天气有关的信息
-                    if (weatherId == null) {
-                        txtWeather.setText("无法获取当地天气");
-                    } else {
-                        String degree = requestDegree(weatherId);
-                        if (degree != null) {
-                            txtWeather.setText(currentCity + "天气：" + degree);
-                        } else {
-                            txtWeather.setText("当地天气：");
-                        }
-                    }
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
-
-    /**
-     * 获取degree
-     */
-    public String requestDegree(final String weatherId) {
-        final boolean[] flag1 = {false};
-        final String[] tempe = {null};
-        HeWeather.getWeatherNow(getContext(), weatherId, new HeWeather.OnResultWeatherNowListener() {
-            @Override
-            public void onError(Throwable throwable) {
-                Log.i("min", "getWeather onError: " + throwable);
-            }
-
-            @Override
-            public void onSuccess(WeatherNowBean weatherNowBean) {
-                if (Code.OK.getCode().equalsIgnoreCase(weatherNowBean.getCode())) {
-                    String str = new Gson().toJson(weatherNowBean);
-                    // 温度
-                    int feelsLike = str.indexOf("feelsLike");
-                    String temp = str.substring(feelsLike + 12);
-                    int indexTempLast = temp.indexOf("\"");
-                    tempe[0] = temp.substring(0, indexTempLast);
-                    flag1[0] = true;
-                } else {
-                    //在此查看返回数据失败的原因
-                    String status = weatherNowBean.getCode();
-                    Code code = Code.toEnum(status);
-                    Log.i("Min", "failed code: " + code);
-                }
-            }
-        });
-        if (flag1[0]) {
-            return tempe[0];
-        } else {
-            String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId + "&key=8fb20072276e48aa83d1200cce3653e0";
-            final Weather[] weather = new Weather[1];
-            save("false", "data_weather");
-            HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-
-                    final String responseText = response.body().string();
-                    weather[0] = Utility.handleWeatherResponse(responseText);
-                    save("true", "data_weather");
-                }
-
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    e.printStackTrace();
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getActivity(), "获取天气信息失败", Toast.LENGTH_SHORT).show();
-                            save("true", "data_weather");
-                        }
-                    });
-                }
-            });
-
-            // 等待okHttp返回数据
-            while (true) {
-                String flag = load("data_weather");
-                if ("true".equalsIgnoreCase(flag)) {
-                    break;
-                }
-            }
-
-            String degree = null;
-            if (weather[0] != null) {
-                degree = weather[0].now.temperature + "℃";
-            }
-            return degree;
+        List<RecyclerBean> recyclerBeanList = new RecyclerBeanListUtil(currentCity,RecyclerType.STRATEGY).getRecyclerBeanList();
+        List<String> urls = new LinkedList<>();
+        for(int i = 0; i < 3; i ++) {
+            RecyclerBean bean = recyclerBeanList.get(i);
+            urls.add(bean.getPictures());
         }
+        Glide.with(getContext())
+                .load(urls.get(0))
+                .dontAnimate()
+                .into(hotImageView1);
+        Glide.with(getContext())
+                .load(urls.get(1))
+                .dontAnimate()
+                .into(hotImageView2);
+        Glide.with(getContext())
+                .load(urls.get(2))
+                .dontAnimate()
+                .into(hotImageView3);
+    }
 
+
+    private void useGlide(Context context, String url, ImageView imageView) {
+        Glide.with(context)
+                .load(url)
+                .dontAnimate()
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(imageView);
     }
 
 
@@ -511,15 +490,6 @@ public class MyFragment1 extends Fragment {
                         // 设置城市
                         txtCity.setText(currentCity);
 
-                        // 设置天气
-                        setWeather(currentProvince, currentCity);
-
-                        // 设置城市给攻略
-                        txtPoem.setText("攻略 · " + currentCity);
-
-                        // 初始化首页的RecyclerView
-                        initRecyclerView();
-
                         // 把城市信息缓存到本地
                         save(currentProvince + "=" + currentCity, "data_cityInfo");
 
@@ -558,15 +528,6 @@ public class MyFragment1 extends Fragment {
             // 设置城市
             txtCity.setText(currentCity);
 
-            // 设置天气
-            setWeather(currentProvince, currentCity);
-
-            // 设置城市给攻略
-            txtPoem.setText("攻略 · " + currentCity);
-
-            // 初始化首页的RecyclerView
-            initRecyclerView();
-
             // 把城市信息缓存到本地
             save(currentProvince + "=" + currentCity, "data_cityInfo");
 
@@ -586,59 +547,7 @@ public class MyFragment1 extends Fragment {
         }
     }
 
-    /**
-     * 解析JSON第一次，得到provinceId
-     */
-    private int parseJSON1(String responseData) {
-        int provinceId = 1;
-        Gson gson = new Gson();
-        List<JsonProvince> provinceList = gson.fromJson(responseData, new TypeToken<List<JsonProvince>>() {
-        }.getType());
-        for (JsonProvince province : provinceList) {
-            if (province.getName().equalsIgnoreCase(currentProvince)) {
-                provinceId = province.getId();
-                break;
-            }
-        }
-        return provinceId;
 
-    }
-
-    /**
-     * 解析JSON第二次
-     */
-    private int parseJSON2(String responseData) {
-        int cityId = 1;
-        Gson gson = new Gson();
-        List<JsonCity> cityList = gson.fromJson(responseData, new TypeToken<List<JsonCity>>() {
-        }.getType());
-        for (JsonCity city : cityList) {
-            if (city.getName().equalsIgnoreCase(currentCity)) {
-                cityId = city.getId();
-                break;
-            }
-        }
-        return cityId;
-
-    }
-
-    /**
-     * 解析JSON第三次
-     */
-    private String parseJSON3(String responseData) {
-        String weatherId = null;
-        Gson gson = new Gson();
-        List<WeatherCity> cityList = gson.fromJson(responseData, new TypeToken<List<WeatherCity>>() {
-        }.getType());
-        for (WeatherCity weatherCity : cityList) {
-            if (weatherCity.getName().equalsIgnoreCase(currentCity)) {
-                weatherId = weatherCity.getWeather_id();
-                break;
-            }
-        }
-        return weatherId;
-
-    }
 
     /**
      * 把数据存储在本地
@@ -697,6 +606,64 @@ public class MyFragment1 extends Fragment {
             }
         }
         return sBuffer.toString();
+    }
+
+    private void setBanner() {
+        initData();
+        localImageLoader = new LocalImageLoader();
+        banner = view.findViewById(R.id.fg1_banner);
+        if(banner != null) {
+
+            banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
+            banner.setImageLoader(localImageLoader);
+            banner.setBannerTitles(imagesTile);
+            banner.setImages(imagesPath);
+            banner.setDelayTime(4000);
+            banner.isAutoPlay(true);
+            view.findViewById(com.youth.banner.R.id.titleView).getBackground().setAlpha(0); // 设置标题背景透明
+            ((TextView)view.findViewById(com.youth.banner.R.id.bannerTitle)).setTypeface(Typeface.create("sans",Typeface.BOLD));
+            banner.setIndicatorGravity(BannerConfig.RIGHT);
+
+
+            banner.setOnBannerListener(new OnBannerListener() {
+                @Override
+                public void OnBannerClick(int position) {
+                    switch(position) {
+                        case 0:
+                            Intent intent0 = new Intent(getActivity(), RecyclerPageActivity.class);
+                            intent0.putExtra("currentCity", currentCity);
+                            intent0.putExtra("type", RecyclerType.NEWS);
+                            startActivity(intent0);
+                            break;
+                        case 1:
+
+                            break;
+                        case 2:
+
+                            break;
+                        case 3:
+
+                            break;
+                    }
+                }
+            });
+            banner.start();
+        }
+
+    }
+
+    private void initData() {
+        imagesTile = new LinkedList<>();
+        imagesPath = new LinkedList<>();
+
+        imagesPath.add(R.drawable.index_news);
+        imagesPath.add(R.drawable.index_silk);
+        imagesPath.add(R.drawable.index_tea);
+        imagesPath.add(R.drawable.index_chinaware);
+        imagesTile.add("专题新闻");
+        imagesTile.add("最具\"中国元素\"的商品－丝绸");
+        imagesTile.add("最具\"中国元素\"的商品－茶叶");
+        imagesTile.add("最具\"中国元素\"的商品－瓷器");
     }
 
 
