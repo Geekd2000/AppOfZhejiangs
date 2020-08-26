@@ -54,7 +54,6 @@
         <activity android:name=".fragment3.SubmitOrderActivity" />
         <activity android:name=".fragment3.TicketDetailActivity" />
         <activity android:name=".fragment3.TicketActivity" />
-<<<<<<< HEAD
         <activity
             android:name=".fragment1.tourismculture.TourismCultureFolkActivity"
             android:theme="@style/DefaultCityPickerTheme" />
@@ -70,15 +69,6 @@
         <activity
             android:name=".fragment1.recyclerpage.RecyclerPageActivity"
             android:theme="@style/DefaultCityPickerTheme" />
-=======
-        <activity android:name=".tourismculture.TourismCultureFolkActivity" />
-        <activity android:name=".tourismculture.TourismCultureAreaActivity" />
-        <activity android:name=".tourismculture.TourismCultureHistoryActivity" />
-        <activity android:name=".tourismculture.TourismCultureFestivalActivity" />
-        <activity android:name=".coolweather.WeatherActivity" />
-        <activity android:name=".coolweather.CoolWeatherActivity" />
-        <activity android:name=".recyclerpage.RecyclerPageActivity" />
->>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
         <activity android:name=".Login.RegisterActivity" />
         <activity android:name=".Login.LoginActivity" />
         <activity android:name=".Setting.PersonalInformationActivity" />

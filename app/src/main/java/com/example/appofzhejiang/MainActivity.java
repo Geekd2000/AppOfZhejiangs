@@ -15,16 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-
-
-import com.example.appofzhejiang.fragment3.TicketActivity;
-import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerPageActivity;
-import com.github.clans.fab.FloatingActionButton;
-=======
-import com.example.appofzhejiang.StatusBarUtil.DensityUtil;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
->>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
+
+import interfaces.heweather.com.interfacesmodule.view.HeConfig;
+
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
@@ -44,14 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final int PAGE_THREE = 2;
     public static final int PAGE_FOUR = 3;
 
-<<<<<<< HEAD
-=======
-    static {
-        HeConfig.init("HE2008052029531704", "8fb20072276e48aa83d1200cce3653e0");
-        //切换至开发版服务
-        HeConfig.switchToDevService();
-    }
->>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

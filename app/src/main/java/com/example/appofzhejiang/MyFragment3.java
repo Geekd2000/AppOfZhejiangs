@@ -2,6 +2,7 @@ package com.example.appofzhejiang;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -25,14 +26,10 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-<<<<<<< HEAD
+
 import com.example.appofzhejiang.fragment1.CustomDialog.CustomDialog;
 import com.example.appofzhejiang.fragment3.Ticket;
-=======
-import com.example.appofzhejiang.CustomDialog.CustomDialog;
-import com.example.appofzhejiang.StatusBarUtil.DensityUtil;
-import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
-import com.example.appofzhejiang.fragment3.Ticket;
+
 import com.example.appofzhejiang.fragment3.TicketActivity;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
@@ -40,7 +37,7 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
->>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
+
 import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;

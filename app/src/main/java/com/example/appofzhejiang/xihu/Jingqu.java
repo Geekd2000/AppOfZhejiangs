@@ -17,11 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.R;
-<<<<<<< HEAD
+
 import com.example.appofzhejiang.fragment1.util.LocalImageLoader;
-=======
+
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
->>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
+
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 

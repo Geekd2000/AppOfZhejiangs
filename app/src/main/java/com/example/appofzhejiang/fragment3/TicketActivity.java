@@ -13,15 +13,9 @@ import android.view.View;
 
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
-<<<<<<< HEAD
-import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerPageActivity;
-=======
+
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
-import com.example.appofzhejiang.coolweather.gson.Now;
-import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
-import com.example.appofzhejiang.xihu.more;
->>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
-import com.github.clans.fab.FloatingActionButton;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;

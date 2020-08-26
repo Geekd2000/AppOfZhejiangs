@@ -26,14 +26,9 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-<<<<<<< HEAD
+
 import com.example.appofzhejiang.fragment1.CustomDialog.CustomDialog;
-=======
-import com.example.appofzhejiang.CustomDialog.CustomDialog;
-import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
-import com.example.appofzhejiang.fragment3.Ticket;
-import com.example.appofzhejiang.xihu.Jingqu;
->>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
+
 import com.example.appofzhejiang.xihu.more;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
