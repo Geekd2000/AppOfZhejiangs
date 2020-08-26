@@ -19,7 +19,6 @@ import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerPageActivity;
 import android.graphics.Typeface;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +38,7 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.example.appofzhejiang.fragment1.CustomDialog.CustomDialog;
+import com.example.appofzhejiang.CustomDialog.CustomDialog;
 
 import com.example.appofzhejiang.fragment1.tourismculture.TourismCultureAreaActivity;
 import com.example.appofzhejiang.fragment1.tourismculture.TourismCultureDramaActivity;

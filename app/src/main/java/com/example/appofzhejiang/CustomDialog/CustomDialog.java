@@ -1,4 +1,4 @@
-package com.example.appofzhejiang.fragment1.CustomDialog;
+package com.example.appofzhejiang.CustomDialog;
 
 import android.app.Dialog;
 import android.content.Context;

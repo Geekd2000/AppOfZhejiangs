@@ -4,13 +4,11 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +25,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 
-import com.example.appofzhejiang.fragment1.CustomDialog.CustomDialog;
+import com.example.appofzhejiang.CustomDialog.CustomDialog;
 import com.example.appofzhejiang.fragment3.Ticket;
 
 import com.example.appofzhejiang.fragment3.TicketActivity;
