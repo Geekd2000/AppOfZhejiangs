@@ -240,9 +240,6 @@ public class MyFragment1 extends Fragment {
                             // 进入图片展示区 或 关于浙江的优雅美文
                             Intent intent = new Intent(getActivity(), BeautifulZJActivity.class);
                             startActivity(intent);
-                            littleRemindView.setVisibility(View.GONE);
-                            save("false","data_littleRemind");
-
                         }
                     });
 
