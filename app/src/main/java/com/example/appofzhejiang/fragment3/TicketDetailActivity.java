@@ -3,7 +3,9 @@ package com.example.appofzhejiang.fragment3;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,8 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appofzhejiang.Login.LoginActivity;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.github.clans.fab.FloatingActionButton;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -32,8 +36,7 @@ public class TicketDetailActivity extends AppCompatActivity {
             detailBuy1, detailBuy2, detailContent1, detailContent2, detailContent3, detailContent4;
     private Banner banner;
     private List images;
-    //悬浮按钮
-    private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
+    private Boolean isLoginStatus;//登录状态
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +70,9 @@ public class TicketDetailActivity extends AppCompatActivity {
         goodsImage = findViewById(R.id.goods_image);
         banner = findViewById(R.id.banner);
 
-        //初始化悬浮按钮
-        initFloatActionButton();
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         //取得从上一个Activity当中传递过来的Intent对象
         Intent intent = getIntent();
@@ -119,23 +123,37 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
-                        intentBuy.putExtra("goodsType", detailGoods1.getText());
-                        intentBuy.putExtra("goodsImage", finalImage0);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                            intentBuy.putExtra("goodsType", detailGoods1.getText());
+                            intentBuy.putExtra("goodsImage", finalImage0);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                        intentBuy.putExtra("goodsType", detailGoods2.getText());
-                        intentBuy.putExtra("goodsImage", finalImage0);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage0);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 break;
@@ -180,23 +198,37 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
-                        intentBuy.putExtra("goodsType", detailGoods1.getText());
-                        intentBuy.putExtra("goodsImage", finalImage1);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage1);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                        intentBuy.putExtra("goodsType", detailGoods2.getText());
-                        intentBuy.putExtra("goodsImage", finalImage1);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage1);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 break;
@@ -242,23 +274,37 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
-                        intentBuy.putExtra("goodsType", detailGoods1.getText());
-                        intentBuy.putExtra("goodsImage", finalImage2);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage2);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                        intentBuy.putExtra("goodsType", detailGoods2.getText());
-                        intentBuy.putExtra("goodsImage", finalImage2);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage2);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 break;
@@ -304,23 +350,37 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
-                        intentBuy.putExtra("goodsType", detailGoods1.getText());
-                        intentBuy.putExtra("goodsImage", finalImage3);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage3);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                        intentBuy.putExtra("goodsType", detailGoods2.getText());
-                        intentBuy.putExtra("goodsImage", finalImage3);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage3);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 break;
@@ -365,23 +425,37 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
-                        intentBuy.putExtra("goodsType", detailGoods1.getText());
-                        intentBuy.putExtra("goodsImage", finalImage4);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage4);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                        intentBuy.putExtra("goodsType", detailGoods2.getText());
-                        intentBuy.putExtra("goodsImage", finalImage4);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage4);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 break;
@@ -426,23 +500,37 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
-                        intentBuy.putExtra("goodsType", detailGoods1.getText());
-                        intentBuy.putExtra("goodsImage", finalImage5);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage5);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                        intentBuy.putExtra("goodsType", detailGoods2.getText());
-                        intentBuy.putExtra("goodsImage", finalImage5);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage5);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 break;
@@ -487,23 +575,37 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
-                        intentBuy.putExtra("goodsType", detailGoods1.getText());
-                        intentBuy.putExtra("goodsImage", finalImage6);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage6);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                        intentBuy.putExtra("goodsType", detailGoods2.getText());
-                        intentBuy.putExtra("goodsImage", finalImage6);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage6);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 break;
@@ -549,68 +651,40 @@ public class TicketDetailActivity extends AppCompatActivity {
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice1.getText());
-                        intentBuy.putExtra("goodsType", detailGoods1.getText());
-                        intentBuy.putExtra("goodsImage", finalImage7);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage7);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 detailBuy2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
-                        intentBuy.putExtra("goodsName", detailTitle.getText());
-                        intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                        intentBuy.putExtra("goodsType", detailGoods2.getText());
-                        intentBuy.putExtra("goodsImage", finalImage7);
-                        startActivity(intentBuy);
+                        SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                        isLoginStatus = sp.getBoolean("isLogin", false);
+                        if (isLoginStatus.equals(true)) {
+                            Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
+                            intentBuy.putExtra("goodsName", detailTitle.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
+                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsImage", finalImage7);
+                            startActivity(intentBuy);
+                        } else {
+                            Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(TicketDetailActivity.this, LoginActivity.class));
+                        }
                     }
                 });
                 break;
         }
-    }
-
-    //悬浮按钮配置
-    public void initFloatActionButton() {
-        floatingActionButton1 = findViewById(R.id.floatingActionButton1);
-        floatingActionButton2 = findViewById(R.id.floatingActionButton2);
-        floatingActionButton3 = findViewById(R.id.floatingActionButton3);
-
-        floatingActionButton1.setLabelText("首页");
-        floatingActionButton2.setLabelText("景点");
-        floatingActionButton3.setLabelText("商城");
-        floatingActionButton1.setImageResource(R.drawable.shouye);
-        floatingActionButton2.setImageResource(R.drawable.jingdian);
-        floatingActionButton3.setImageResource(R.drawable.shangcheng);
-
-        //跳转至首页页面
-        floatingActionButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TicketDetailActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        //跳转至更多热门景点列表页面（暂无跳转 更多景点页面未写）
-        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, RecyclerPageActivity.class);
-//                startActivity(intent);
-            }
-        });
-
-        //跳转至商品列表页面(默认进入商品列表的门票页面)
-        floatingActionButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TicketDetailActivity.this, TicketActivity.class);
-                intent.putExtra("num", "0");
-                startActivity(intent);
-            }
-        });
     }
 }

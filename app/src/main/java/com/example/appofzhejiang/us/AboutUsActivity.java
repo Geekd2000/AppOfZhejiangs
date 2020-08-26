@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.appofzhejiang.Login.LoginActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 public class AboutUsActivity extends AppCompatActivity {
 
@@ -21,6 +22,9 @@ public class AboutUsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         mBack = findViewById(R.id.setting_toolbar);
         tv1 = findViewById(R.id.txt_setting_1);

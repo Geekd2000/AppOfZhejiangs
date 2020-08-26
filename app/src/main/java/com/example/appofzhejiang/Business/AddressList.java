@@ -1,7 +1,7 @@
 package com.example.appofzhejiang.Business;
 
 public class AddressList {
-    private String username,phone,address;
+    private String username,phone,address,select;
 
     public String getUsername() {
         return username;
@@ -25,5 +25,13 @@ public class AddressList {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getSelect() {
+        return select;
+    }
+
+    public void setSelect(String select) {
+        this.select = select;
     }
 }

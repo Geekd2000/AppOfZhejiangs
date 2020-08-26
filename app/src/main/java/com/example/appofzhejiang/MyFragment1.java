@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+<<<<<<< HEAD
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.appofzhejiang.fragment1.beautifulzj.BeautifulZJActivity;
@@ -16,6 +17,15 @@ import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerPageActivity;
 
 
 import android.graphics.Typeface;
+=======
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
+import com.example.appofzhejiang.coolweather.WeatherActivity;
+import com.example.appofzhejiang.recyclerpage.RecyclerBeanListUtil;
+import com.example.appofzhejiang.recyclerpage.RecyclerType;
+import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
+
+import android.graphics.Color;
+>>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -138,12 +148,15 @@ public class MyFragment1 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my1, container, false);
 
+<<<<<<< HEAD
         // 处理小浙特别提醒
         setLittleRemind();
 
         // 设置轮播图数据
         setBanner();
 
+=======
+>>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
         // 设置城市定位 start
 
         // 如果缓存中有城市信息，则从缓存中获取城市

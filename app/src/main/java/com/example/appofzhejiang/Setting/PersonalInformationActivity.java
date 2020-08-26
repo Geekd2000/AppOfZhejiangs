@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 public class PersonalInformationActivity extends AppCompatActivity {
 
@@ -34,6 +35,9 @@ public class PersonalInformationActivity extends AppCompatActivity {
         mBack = findViewById(R.id.personal_toolbar);
         passwordChange = findViewById(R.id.user_password);
         username = findViewById(R.id.ni_cheng);
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         OnClick onClick = new OnClick();
 

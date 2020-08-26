@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 public class TourismCultureHistoryActivity extends AppCompatActivity {
     private TextView tourismPublicityTitle;
@@ -22,6 +23,9 @@ public class TourismCultureHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_culture_history);
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
         // 隐藏系统标题
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

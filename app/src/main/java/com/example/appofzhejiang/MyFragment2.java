@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,8 +26,21 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+<<<<<<< HEAD
 import com.example.appofzhejiang.fragment1.CustomDialog.CustomDialog;
+=======
+import com.example.appofzhejiang.CustomDialog.CustomDialog;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
+import com.example.appofzhejiang.fragment3.Ticket;
+import com.example.appofzhejiang.xihu.Jingqu;
+>>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
 import com.example.appofzhejiang.xihu.more;
+import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.header.ClassicsHeader;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
@@ -53,6 +67,7 @@ public class MyFragment2 extends Fragment {
     private String currentCity; // 当前城市
     private String currentProvince; // 当前省份
     public LocationClient mLocationClient;//定位
+    private SmartRefreshLayout refreshLayout;//刷新
 
     public MyFragment2(){}
 
@@ -138,6 +153,34 @@ public class MyFragment2 extends Fragment {
         //配置RecyclerView
         initRecyclerView1();
         initRecyclerView2();
+        refreshLayout = view.findViewById(R.id.refreshLayout);//SmartRefreshLayout控件
+        refreshLayout.setRefreshHeader(new ClassicsHeader(getActivity()));//设置Header样式
+        refreshLayout.setRefreshFooter(new ClassicsFooter(getActivity()));//设置Footer样式
+        //下拉刷新
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
+
+                //模拟网络请求到的数据
+
+
+                refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                //不传时间则立即停止刷新
+            }
+        });
+        //上拉加载
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+
+                //模拟网络请求到的数据
+
+
+                refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
+            }
+        });
         return view;
     }
 

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.fragment3.SubmitOrderActivity;
 import com.example.appofzhejiang.fragment3.TicketActivity;
 import com.github.clans.fab.FloatingActionButton;
@@ -39,7 +40,9 @@ public class OrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order);
         //初始化控件
         init();
-
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
         mBtnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

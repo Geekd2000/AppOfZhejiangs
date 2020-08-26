@@ -31,6 +31,7 @@ import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
 import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 import java.util.List;
 
@@ -48,6 +49,9 @@ public class Jingqu_around_park extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_jingqu_around_park);
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
         //返回按钮
         mBack=findViewById(R.id.toolbar);
         mBack.setNavigationOnClickListener(new View.OnClickListener() {

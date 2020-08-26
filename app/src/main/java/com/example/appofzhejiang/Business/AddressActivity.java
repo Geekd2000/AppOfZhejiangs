@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.lljjcoder.citypickerview.widget.CityPicker;
 
 
@@ -39,6 +40,10 @@ public class AddressActivity extends AppCompatActivity {
         setContentView(R.layout.activity_address);
         //初始化，找到控件
         initView();
+
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         //获取传过来的参数
         Intent intent = getIntent();
@@ -93,13 +98,24 @@ public class AddressActivity extends AppCompatActivity {
                 } else if (TextUtils.isEmpty(detailAddress.getText().toString().trim())) {
                     Toast.makeText(AddressActivity.this, "请输入详细地址", Toast.LENGTH_SHORT).show();
                 } else {
-                    //saveAddressInfo(receiveName.getText().toString(),telephoneNumber.getText().toString(),newAddress.getText().toString(),detailAddress.getText().toString());
-                    Intent intent = new Intent();
-                    intent.putExtra("name", receiveName.getText().toString());
-                    intent.putExtra("phone", telephoneNumber.getText().toString());
-                    intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    boolean isCheck = globalValue.isCheck();
+                    if(isCheck==false){
+                        Intent intent = new Intent();
+                        intent.putExtra("name", receiveName.getText().toString());
+                        intent.putExtra("phone", telephoneNumber.getText().toString());
+                        intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
+                        intent.putExtra("select", "false");
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }else{
+                        Intent intent = new Intent();
+                        intent.putExtra("name", receiveName.getText().toString());
+                        intent.putExtra("phone", telephoneNumber.getText().toString());
+                        intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
+                        intent.putExtra("select", "true");
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
                 }
             }
         });

@@ -36,6 +36,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/shouhuoren"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="15dp"
@@ -48,10 +49,11 @@
 
             <EditText
                 android:id="@+id/new_username"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/shouhuoren"
                 android:background="@drawable/bg_edit_address"
                 android:gravity="right"
                 android:hint="姓名"
@@ -76,6 +78,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/shoujihao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="15dp"
@@ -88,13 +91,15 @@
 
             <EditText
                 android:id="@+id/new_number"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/shoujihao"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/bg_edit_address"
                 android:gravity="right"
                 android:hint="手机号码"
+                android:maxLength="11"
                 android:inputType="number"
                 android:maxLines="1"
                 android:paddingLeft="10dp"
@@ -116,6 +121,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/quyu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="15dp"
@@ -128,13 +134,15 @@
 
             <TextView
                 android:id="@+id/new_address"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/quyu"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
                 android:background="@color/colorWhite"
                 android:maxLines="1"
                 android:paddingLeft="10dp"
+                android:gravity="right"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"

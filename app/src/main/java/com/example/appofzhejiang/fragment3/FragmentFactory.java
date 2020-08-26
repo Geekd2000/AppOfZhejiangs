@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +19,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.fragment3.hotel.Hotel;
 import com.example.appofzhejiang.fragment3.hotel.HotelAdapter;
+import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.header.ClassicsHeader;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +37,7 @@ public class FragmentFactory extends Fragment {
     private List<Hotel> hotelList;
     private LinearLayout linearLayout;
     private HotelAdapter adapter;
-    private SwipeRefreshLayout refreshLayout;
+    private SmartRefreshLayout refreshLayout;
 
     private final String mText_key = "FragmentFactory";
 
@@ -53,22 +60,8 @@ public class FragmentFactory extends Fragment {
         final int index = this.index;
         View v = inflater.inflate(R.layout.recyclerview, container, false);
         refreshLayout = v.findViewById(R.id.refreshLayout);
-        refreshLayout.setColorSchemeResources(R.color.colorLightGreen);
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                /*if (refreshLayout.isRefreshing()) {
-                    refreshLayout.setRefreshing(false);
-                }*/
-                //模拟网络请求需要3000毫秒，请求完成，设置setRefreshing 为false
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        refreshLayout.setRefreshing(false);
-                    }
-                }, 3000);
-            }
-        });
+        refreshLayout.setRefreshHeader(new ClassicsHeader(getActivity()));//设置Header样式
+        refreshLayout.setRefreshFooter(new ClassicsFooter(getActivity()));//设置Footer样式
         if (index == 0) {
             initTickets();
             RecyclerView recyclerView = v.findViewById(R.id.recycler_view);
@@ -91,6 +84,37 @@ public class FragmentFactory extends Fragment {
                     intent.putExtra("count", hotel.getCount());
                     intent.putExtra("image", img);
                     startActivity(intent);
+                }
+            });
+            //下拉刷新
+            refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+                @Override
+                public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                    //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 20; i++) {
+                        newList.add(new Hotel(R.drawable.songcity, "杭州宋城" +i, "50", "全域旅行", "99"));
+                    }
+                    adapter.refresh(newList);
+                    refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                    //不传时间则立即停止刷新
+                }
+            });
+            //上拉加载
+            refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+                @Override
+                public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 10; i++) {
+                        newList.add(new Hotel(R.drawable.songcity, "杭州宋城" + (hotelList.size() + i + 1), "50", "全域旅行", "99"));
+                    }
+                    adapter.add(newList);
+                    refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                    refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
                 }
             });
             return v;
@@ -118,6 +142,37 @@ public class FragmentFactory extends Fragment {
                     startActivity(intent);
                 }
             });
+            //下拉刷新
+            refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+                @Override
+                public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                    //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 20; i++) {
+                        newList.add(new Hotel(R.drawable.hotel_image, "大酒店" +i, "150", "无敌连锁公司", "99"));
+                    }
+                    adapter.refresh(newList);
+                    refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                    //不传时间则立即停止刷新
+                }
+            });
+            //上拉加载
+            refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+                @Override
+                public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 10; i++) {
+                        newList.add(new Hotel(R.drawable.hotel_image, "大酒店" + (hotelList.size() + i + 1), "150", "无敌连锁公司", "99"));
+                    }
+                    adapter.add(newList);
+                    refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                    refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
+                }
+            });
             return v;
         } else if (index == 2) {
             initTaxis();
@@ -141,6 +196,37 @@ public class FragmentFactory extends Fragment {
                     intent.putExtra("count", hotel.getCount());
                     intent.putExtra("image", img);
                     startActivity(intent);
+                }
+            });
+            //下拉刷新
+            refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+                @Override
+                public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                    //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 20; i++) {
+                        newList.add(new Hotel(R.drawable.taxi_image, "Tesla" +i, "200", "八戒租车", "99"));
+                    }
+                    adapter.refresh(newList);
+                    refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                    //不传时间则立即停止刷新
+                }
+            });
+            //上拉加载
+            refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+                @Override
+                public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 10; i++) {
+                        newList.add(new Hotel(R.drawable.taxi_image, "Tesla" + (hotelList.size() + i + 1), "200", "八戒租车", "99"));
+                    }
+                    adapter.add(newList);
+                    refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                    refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
                 }
             });
             return v;
@@ -168,6 +254,37 @@ public class FragmentFactory extends Fragment {
                     startActivity(intent);
                 }
             });
+            //下拉刷新
+            refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+                @Override
+                public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                    //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 20; i++) {
+                        newList.add(new Hotel(R.drawable.guider_image, "导游" +i, "220", "无敌导游公司", "99"));
+                    }
+                    adapter.refresh(newList);
+                    refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                    //不传时间则立即停止刷新
+                }
+            });
+            //上拉加载
+            refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+                @Override
+                public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 10; i++) {
+                        newList.add(new Hotel(R.drawable.guider_image, "导游" + (hotelList.size() + i + 1), "220", "无敌导游公司", "99"));
+                    }
+                    adapter.add(newList);
+                    refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                    refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
+                }
+            });
             return v;
         } else if (index == 4) {
             initFarmhouses();
@@ -191,6 +308,37 @@ public class FragmentFactory extends Fragment {
                     intent.putExtra("count", hotel.getCount());
                     intent.putExtra("image", img);
                     startActivity(intent);
+                }
+            });
+            //下拉刷新
+            refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+                @Override
+                public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                    //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 20; i++) {
+                        newList.add(new Hotel(R.drawable.farmhouse, "农家乐" +i, "398", "超级无敌大公司", "99"));
+                    }
+                    adapter.refresh(newList);
+                    refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                    //不传时间则立即停止刷新
+                }
+            });
+            //上拉加载
+            refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+                @Override
+                public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 10; i++) {
+                        newList.add(new Hotel(R.drawable.farmhouse, "农家乐" + (hotelList.size() + i + 1), "398", "超级无敌大公司", "99"));
+                    }
+                    adapter.add(newList);
+                    refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                    refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
                 }
             });
             return v;
@@ -218,6 +366,37 @@ public class FragmentFactory extends Fragment {
                     startActivity(intent);
                 }
             });
+            //下拉刷新
+            refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+                @Override
+                public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                    //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 20; i++) {
+                        newList.add(new Hotel(R.drawable.longjingxiaren, "龙井虾仁" +i, "98", "诗画美食", "99"));
+                    }
+                    adapter.refresh(newList);
+                    refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                    //不传时间则立即停止刷新
+                }
+            });
+            //上拉加载
+            refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+                @Override
+                public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 10; i++) {
+                        newList.add(new Hotel(R.drawable.longjingxiaren, "龙井虾仁" + (hotelList.size() + i + 1), "98", "诗画美食", "99"));
+                    }
+                    adapter.add(newList);
+                    refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                    refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
+                }
+            });
             return v;
         } else if (index == 6) {
             initShopping();
@@ -241,6 +420,37 @@ public class FragmentFactory extends Fragment {
                     intent.putExtra("count", hotel.getCount());
                     intent.putExtra("image", img);
                     startActivity(intent);
+                }
+            });
+            //下拉刷新
+            refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+                @Override
+                public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                    //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 20; i++) {
+                        newList.add(new Hotel(R.drawable.westlakelongjing, "杭州原产西湖龙井茶" +i, "198", "超级无敌大公司", "99"));
+                    }
+                    adapter.refresh(newList);
+                    refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                    //不传时间则立即停止刷新
+                }
+            });
+            //上拉加载
+            refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+                @Override
+                public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+
+                    //模拟网络请求到的数据
+                    ArrayList<Hotel> newList = new ArrayList<Hotel>();
+                    for (int i = 0; i < 10; i++) {
+                        newList.add(new Hotel(R.drawable.westlakelongjing, "杭州原产西湖龙井茶" + (hotelList.size() + i + 1), "198", "超级无敌大公司", "99"));
+                    }
+                    adapter.add(newList);
+                    refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                    refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
                 }
             });
             return v;

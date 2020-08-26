@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Setting.PersonalInformationActivity">
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/personal_toolbar"
@@ -78,9 +77,10 @@
 
         <EditText
             android:id="@+id/ni_cheng"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/nicheng"
             android:background="@drawable/bg_edit_address"
             android:gravity="right"
             android:hint="昵称"
@@ -91,6 +91,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/nicheng"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -115,10 +116,12 @@
 
         <TextView
             android:id="@+id/sex_change"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/xingbie"
+            android:gravity="right"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp"
@@ -128,6 +131,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/xingbie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -144,19 +148,19 @@
 
     <TextView
         android:id="@+id/user_password"
-        android:background="@color/colorWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:background="@color/colorWhite"
         android:drawableRight="@drawable/arrow"
         android:foreground="?selectableItemBackground"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="25dp"
+        android:paddingBottom="10dp"
         android:text="修改密码"
         android:textColor="@color/colorLightBlack"
-        android:textSize="16sp"
-        android:paddingLeft="20dp"
-        android:paddingRight="25dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
+        android:textSize="16sp" />
 
 </LinearLayout>

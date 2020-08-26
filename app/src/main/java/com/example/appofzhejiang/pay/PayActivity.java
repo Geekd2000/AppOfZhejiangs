@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.fragment3.TicketActivity;
 import com.github.clans.fab.FloatingActionButton;
 
@@ -39,6 +40,9 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
 
         //初始化悬浮按钮
         initFloatActionButton();
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         mAdapter = new OrderFragmentPagerAdapter(getSupportFragmentManager());
         bindViews();

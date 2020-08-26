@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.appofzhejiang.Login.MD5Utils;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 public class PasswordChangeActivity extends AppCompatActivity {
 
@@ -34,7 +35,9 @@ public class PasswordChangeActivity extends AppCompatActivity {
         new_password_again = findViewById(R.id.new_password_again);
 
         BindView();
-
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
     }
 
     public void BindView() {

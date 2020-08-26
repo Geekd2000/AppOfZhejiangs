@@ -17,7 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.R;
+<<<<<<< HEAD
 import com.example.appofzhejiang.fragment1.util.LocalImageLoader;
+=======
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
+>>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
@@ -44,6 +48,9 @@ public class Jingqu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jingqu);
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         initDate();
         intView();

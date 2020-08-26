@@ -54,6 +54,7 @@
         <activity android:name=".fragment3.SubmitOrderActivity" />
         <activity android:name=".fragment3.TicketDetailActivity" />
         <activity android:name=".fragment3.TicketActivity" />
+<<<<<<< HEAD
         <activity
             android:name=".fragment1.tourismculture.TourismCultureFolkActivity"
             android:theme="@style/DefaultCityPickerTheme" />
@@ -69,6 +70,15 @@
         <activity
             android:name=".fragment1.recyclerpage.RecyclerPageActivity"
             android:theme="@style/DefaultCityPickerTheme" />
+=======
+        <activity android:name=".tourismculture.TourismCultureFolkActivity" />
+        <activity android:name=".tourismculture.TourismCultureAreaActivity" />
+        <activity android:name=".tourismculture.TourismCultureHistoryActivity" />
+        <activity android:name=".tourismculture.TourismCultureFestivalActivity" />
+        <activity android:name=".coolweather.WeatherActivity" />
+        <activity android:name=".coolweather.CoolWeatherActivity" />
+        <activity android:name=".recyclerpage.RecyclerPageActivity" />
+>>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
         <activity android:name=".Login.RegisterActivity" />
         <activity android:name=".Login.LoginActivity" />
         <activity android:name=".Setting.PersonalInformationActivity" />
@@ -77,10 +87,18 @@
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/DefaultCityPickerTheme"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <!-- 引导页 -->
+        <activity
+            android:name=".LauncherPage.GuideActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActivityFullscreen" />
+        <!-- 启动页 -->
+        <activity
+            android:name=".LauncherPage.LaunchActivity"
+            android:theme="@style/LunchTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

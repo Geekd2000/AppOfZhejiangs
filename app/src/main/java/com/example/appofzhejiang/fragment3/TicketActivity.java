@@ -1,5 +1,6 @@
 package com.example.appofzhejiang.fragment3;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -12,7 +13,14 @@ import android.view.View;
 
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+<<<<<<< HEAD
 import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerPageActivity;
+=======
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
+import com.example.appofzhejiang.coolweather.gson.Now;
+import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
+import com.example.appofzhejiang.xihu.more;
+>>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
 import com.github.clans.fab.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -24,9 +32,8 @@ public class TicketActivity extends FragmentActivity {
     private IndicatorTabBar mIndicatorTabBar;
     private List<String> tableNames = Arrays.asList("门票", "酒店", "包租车", "导游预约", "农家乐", "寻美食", "特产购买");
     private List<Fragment> fragmentList;
+    private Toolbar mBack;
     private String value;
-    //悬浮按钮
-    private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
     private int index=0;
 
     @Override
@@ -35,11 +42,19 @@ public class TicketActivity extends FragmentActivity {
         setContentView(R.layout.activity_ticket);
         mViewPager = findViewById(R.id.viewpager);
         mIndicatorTabBar = findViewById(R.id.indicatorTabBar);
+        mBack = findViewById(R.id.toolbar);
+        //返回按钮
+        mBack.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         intFragmentList();
-
-        //初始化悬浮按钮
-        initFloatActionButton();
 
         mViewPager.setAdapter(new MyViewPager(getSupportFragmentManager(), fragmentList));
         mIndicatorTabBar.initView(tableNames, mViewPager, 5);
@@ -85,45 +100,5 @@ public class TicketActivity extends FragmentActivity {
         public int getCount() {
             return fragmentList.size();
         }
-    }
-    //悬浮按钮配置
-    public void initFloatActionButton() {
-        floatingActionButton1 = findViewById(R.id.floatingActionButton1);
-        floatingActionButton2 = findViewById(R.id.floatingActionButton2);
-        floatingActionButton3 = findViewById(R.id.floatingActionButton3);
-
-        floatingActionButton1.setLabelText("首页");
-        floatingActionButton2.setLabelText("景点");
-        floatingActionButton3.setLabelText("攻略");
-        floatingActionButton1.setImageResource(R.drawable.shouye);
-        floatingActionButton2.setImageResource(R.drawable.jingdian);
-        floatingActionButton3.setImageResource(R.drawable.gonglue);
-
-        //跳转至首页页面
-        floatingActionButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TicketActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        //跳转至更多热门景点列表页面（暂无跳转 更多景点页面未写）
-        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, RecyclerPageActivity.class);
-//                startActivity(intent);
-            }
-        });
-
-        //跳转至攻略列表页面
-        floatingActionButton3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TicketActivity.this, RecyclerPageActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

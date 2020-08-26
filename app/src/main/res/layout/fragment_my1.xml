@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +7,9 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/fg1_lin"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="match_parent"
         android:background="@color/colorNotWhite"
         android:orientation="vertical">
@@ -750,3 +752,358 @@
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
+=======
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:elevation="5dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/txt_city"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:drawableRight="@drawable/arrow_down"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:text="定位"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/main_search"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_edit_search"
+            android:drawableLeft="@drawable/main_search"
+            android:drawablePadding="10dp"
+            android:hint="@string/edit_strategy"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="搜索"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorNotWhite"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/txt_weather"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:drawableLeft="@drawable/local_weather"
+                    android:drawableRight="@drawable/arrow"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/localWeather"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:id="@+id/ly_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ly_topImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="3"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2">
+
+                            <ImageView
+                                android:id="@+id/index_news"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/index_news" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="75dp"
+                                    android:gravity="left"
+                                    android:text="专题新闻"
+                                    android:textColor="#fff"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold"
+                                    android:typeface="sans" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="-2dp"
+                                    android:gravity="left"
+                                    android:text="news"
+                                    android:textColor="#fff"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:typeface="sans" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/index_area"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="3dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/index_area" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="75dp"
+                                    android:gravity="left"
+                                    android:text="地域概况"
+                                    android:textColor="#fff"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold"
+                                    android:typeface="sans" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="-2dp"
+                                    android:gravity="left"
+                                    android:text="region"
+                                    android:textColor="#fff"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:typeface="sans" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ly_bottomImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/index_festival"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/index_festival" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="37dp"
+                                    android:gravity="left"
+                                    android:text="传统节日"
+                                    android:textColor="#fff"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold"
+                                    android:typeface="sans" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="-1dp"
+                                    android:gravity="left"
+                                    android:text="festival"
+                                    android:textColor="#fff"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:typeface="sans" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/index_history"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="3dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/index_history" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="37dp"
+                                    android:gravity="left"
+                                    android:text="历史沿革"
+                                    android:textColor="#fff"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold"
+                                    android:typeface="sans" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="-1dp"
+                                    android:gravity="left"
+                                    android:text="history"
+                                    android:textColor="#fff"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:typeface="sans" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/index_folk"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="3dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/index_folk" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="37dp"
+                                    android:gravity="left"
+                                    android:text="民族风情"
+                                    android:textColor="#fff"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold"
+                                    android:typeface="sans" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="-1dp"
+                                    android:gravity="left"
+                                    android:text="folk"
+                                    android:textColor="#fff"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold"
+                                    android:typeface="sans" />
+
+                            </LinearLayout>
+                        </FrameLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txt_poem"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:drawableLeft="@drawable/poem"
+                    android:drawableRight="@drawable/arrow"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/localPoem"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/colorGray" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fg1_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+</LinearLayout>
+>>>>>>> 3c9bbdde65df78e0ff718c43d76954956b5fb80e
