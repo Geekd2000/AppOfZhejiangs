@@ -1,6 +1,5 @@
 package com.example.appofzhejiang;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,12 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.appofzhejiang.fragment3.Ticket;
-import com.example.appofzhejiang.TicketDetail.TicketDetailActivity;
+import com.example.appofzhejiang.fragment3.TicketDetail.TicketDetailActivity;
 
 import java.util.List;
 
@@ -64,11 +62,11 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<LinearViewHolder> {
         //处理价格
         String s = ticket.getPrices();
         String[] ss = s.split(",");
-        if(Integer.parseInt(ss[0]) < Integer.parseInt(ss[1])){
-            price=ss[0];
+        if (Integer.parseInt(ss[0]) < Integer.parseInt(ss[1])) {
+            price = ss[0];
             holder.getPriceText().setText(ss[0]);
-        }else {
-            price=ss[1];
+        } else {
+            price = ss[1];
             holder.getPriceText().setText(ss[1]);
         }
         holder.getNameText().setText(ticket.getName());
@@ -79,6 +77,21 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<LinearViewHolder> {
     @Override
     public int getItemCount() {
         return ticketList.size();
+    }
+
+    //下面两个方法提供给页面刷新和加载时调用
+    public void add(List<Ticket> addTicketList) {
+        //增加数据
+        int position = ticketList.size();
+        ticketList.addAll(position, addTicketList);
+        notifyItemInserted(position);
+    }
+
+    public void refresh(List<Ticket> newTicketList) {
+        //刷新数据
+        ticketList.removeAll(ticketList);
+        ticketList.addAll(newTicketList);
+        notifyDataSetChanged();
     }
 }
 

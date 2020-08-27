@@ -49,7 +49,7 @@
         <activity android:name=".pay.PayActivity" />
         <activity android:name=".pay.OrderActivity" />
         <activity android:name=".fragment3.SubmitOrderActivity" />
-        <activity android:name=".TicketDetail.TicketDetailActivity" />
+        <activity android:name=".fragment3.TicketDetail.TicketDetailActivity" />
         <activity android:name=".fragment3.TicketActivity" />
         <activity
             android:name=".fragment1.tourismculture.TourismCultureFolkActivity"

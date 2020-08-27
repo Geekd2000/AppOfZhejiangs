@@ -53,6 +53,8 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+
 public class MyFragment3 extends Fragment {
 
     private View view;
@@ -239,14 +241,8 @@ public class MyFragment3 extends Fragment {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
-
-//                //模拟网络请求到的数据
-//                ArrayList<Ticket> newList = new ArrayList<Ticket>();
-//                for (int i = 0; i < 10; i++) {
-//                    newList.add(new Ticket(Integer.toString(R.drawable.westlake), "杭州西湖" + (ticketList.size() + i + 1), "35", "超级无敌大公司", "99"));
-//                }
-//                fragmentAdapter3.refresh(newList);
-                refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                fragmentAdapter3.refresh(new TicketUtil(currentCity, TicketType.TICKET).getTicketList());
+                refreshLayout.finishRefresh();//延迟2000毫秒后结束刷新  传入false表示刷新失败
                 //不传时间则立即停止刷新
             }
         });
@@ -261,7 +257,7 @@ public class MyFragment3 extends Fragment {
 //                    newList.add(new Ticket(Integer.toString(R.drawable.westlake), "杭州西湖" + (ticketList.size() + i + 1), "35", "超级无敌大公司", "99"));
 //                }
 //                fragmentAdapter3.add(newList);
-                refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                refreshLayout.finishLoadMore(1000);//延迟2000毫秒后结束加载  传入false表示刷新失败
                 refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
             }
         });
@@ -274,9 +270,9 @@ public class MyFragment3 extends Fragment {
     private void initRecyclerView() {
         recyclerView = view.findViewById(R.id.fg3_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
         fragmentAdapter3 = new FragmentAdapter3(new TicketUtil(currentCity, TicketType.TICKET).getTicketList(),getActivity());
         recyclerView.setAdapter(fragmentAdapter3);
-        recyclerView.setLayoutManager(layoutManager);
     }
 
     /*public void init() {

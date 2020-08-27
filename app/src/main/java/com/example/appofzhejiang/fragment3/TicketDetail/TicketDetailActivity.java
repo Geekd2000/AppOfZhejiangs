@@ -1,4 +1,4 @@
-package com.example.appofzhejiang.TicketDetail;
+package com.example.appofzhejiang.fragment3.TicketDetail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -21,7 +21,6 @@ import com.example.appofzhejiang.fragment3.SubmitOrderActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
-import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,9 +75,9 @@ public class TicketDetailActivity extends AppCompatActivity {
         //从Intent当中根据key取得value
         String value = intent.getStringExtra("index");
         int index = Integer.parseInt(value);
-        String product_id = intent.getStringExtra("product_id");
-        String company = intent.getStringExtra("company");
-        String image = intent.getStringExtra("image");
+        String product_id = intent.getStringExtra("product_id");//商品ID
+        String company = intent.getStringExtra("company");//公司名称
+        String image = intent.getStringExtra("image");//商品封面
 
         switch (index) {
             case 0:
@@ -135,6 +134,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                             intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage0);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -153,6 +153,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage0);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -211,6 +212,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                             intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage1);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -229,6 +231,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage1);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -287,6 +290,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                             intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage2);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -305,6 +309,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage2);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -362,6 +367,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                             intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage3);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -380,6 +386,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage3);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -438,6 +445,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                             intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage4);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -456,6 +464,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage4);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -514,6 +523,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                             intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage5);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -532,6 +542,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage5);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -590,6 +601,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                             intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage6);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -608,6 +620,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage6);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -670,6 +683,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage7);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -688,6 +702,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage7);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();

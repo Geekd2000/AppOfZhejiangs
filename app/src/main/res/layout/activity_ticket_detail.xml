@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TicketDetail.TicketDetailActivity">
+    tools:context=".fragment3.TicketDetail.TicketDetailActivity">
 
     <ImageView
         android:id="@+id/goods_image"

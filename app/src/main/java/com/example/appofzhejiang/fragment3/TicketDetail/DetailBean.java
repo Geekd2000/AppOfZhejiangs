@@ -1,4 +1,4 @@
-package com.example.appofzhejiang.TicketDetail;
+package com.example.appofzhejiang.fragment3.TicketDetail;
 
 import java.io.Serializable;
 
@@ -10,17 +10,19 @@ public class DetailBean implements Serializable {
     private String sales;
     private String pictures;
     private String introduct;
+    private int inventory;
 
     public DetailBean() {
     }
 
-    public DetailBean(String params, String name, String prices, String sales, String pictures, String introduct) {
+    public DetailBean(String params, String name, String prices, String sales, String pictures, String introduct,int inventory) {
         this.params = params;
         this.name = name;
         this.prices = prices;
         this.sales = sales;
         this.pictures = pictures;
         this.introduct = introduct;
+        this.inventory = inventory;
     }
 
     public String getParams() {
@@ -69,5 +71,13 @@ public class DetailBean implements Serializable {
 
     public void setIntroduct(String introduct) {
         this.introduct = introduct;
+    }
+
+    public int getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
     }
 }

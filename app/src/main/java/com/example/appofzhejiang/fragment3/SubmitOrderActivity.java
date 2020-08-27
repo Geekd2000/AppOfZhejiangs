@@ -95,12 +95,14 @@ public class SubmitOrderActivity extends AppCompatActivity {
         String type = intent.getStringExtra("goodsType");
         String unitPrice = intent.getStringExtra("goodsPrice");
         final String image = intent.getStringExtra("goodsImage");
+        String inventory = intent.getStringExtra("inventory");
 
         //将传递过来的参设设置进去
         goodsName.setText(name);//商品名称
         goodsType.setText(type);//商品种类
         goodsUnitPrice.setText(unitPrice);//商品单价
         Glide.with(this).load(image).into(goodsImage);//商品图片
+        stock.setText(inventory);//商品库存
 
         //合计、实付
         tot = Integer.toString(Integer.parseInt(buyCount.getText().toString()) * Integer.parseInt(goodsUnitPrice.getText().toString()));
