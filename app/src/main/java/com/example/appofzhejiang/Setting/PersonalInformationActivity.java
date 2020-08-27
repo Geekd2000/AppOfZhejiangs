@@ -17,6 +17,8 @@ import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class PersonalInformationActivity extends AppCompatActivity {
 
     private TextView sexChange, mBtnSave;
@@ -24,6 +26,7 @@ public class PersonalInformationActivity extends AppCompatActivity {
     private String[] sexArry = new String[]{"保密", "男", "女"};// 性别选择
     private TextView passwordChange;
     private EditText username;
+    private CircleImageView mImage;
 
 
     @Override
@@ -35,6 +38,7 @@ public class PersonalInformationActivity extends AppCompatActivity {
         mBack = findViewById(R.id.personal_toolbar);
         passwordChange = findViewById(R.id.user_password);
         username = findViewById(R.id.ni_cheng);
+        mImage = findViewById(R.id.user_image);
         //设置沉浸式
         StatusBarUtil.setTransparent(this);
         StatusBarUtil.setDarkFont(this);
