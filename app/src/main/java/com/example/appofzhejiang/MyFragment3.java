@@ -24,15 +24,20 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+
 import com.example.appofzhejiang.CustomDialog.CustomDialog;
 import com.example.appofzhejiang.fragment3.Ticket;
+
 import com.example.appofzhejiang.fragment3.TicketActivity;
+import com.example.appofzhejiang.fragment3.TicketType;
+import com.example.appofzhejiang.fragment3.TicketUtil;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
+
 import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
@@ -97,7 +102,7 @@ public class MyFragment3 extends Fragment {
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my3, container, false);
-        init();
+//        init();
         //设初始化RecyclerView
         initRecyclerView();
 
@@ -149,6 +154,7 @@ public class MyFragment3 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), TicketActivity.class);
                 intent.putExtra("num", "0");
+                intent.putExtra("city", currentCity);
                 startActivity(intent);
             }
         });
@@ -160,6 +166,7 @@ public class MyFragment3 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), TicketActivity.class);
                 intent.putExtra("num", "1");
+                intent.putExtra("city", currentCity);
                 startActivity(intent);
             }
         });
@@ -171,6 +178,7 @@ public class MyFragment3 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), TicketActivity.class);
                 intent.putExtra("num", "2");
+                intent.putExtra("city", currentCity);
                 startActivity(intent);
             }
         });
@@ -182,6 +190,7 @@ public class MyFragment3 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), TicketActivity.class);
                 intent.putExtra("num", "3");
+                intent.putExtra("city", currentCity);
                 startActivity(intent);
             }
         });
@@ -193,6 +202,7 @@ public class MyFragment3 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), TicketActivity.class);
                 intent.putExtra("num", "4");
+                intent.putExtra("city", currentCity);
                 startActivity(intent);
             }
         });
@@ -204,6 +214,7 @@ public class MyFragment3 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), TicketActivity.class);
                 intent.putExtra("num", "5");
+                intent.putExtra("city", currentCity);
                 startActivity(intent);
             }
         });
@@ -215,6 +226,7 @@ public class MyFragment3 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), TicketActivity.class);
                 intent.putExtra("num", "6");
+                intent.putExtra("city", currentCity);
                 startActivity(intent);
             }
         });
@@ -228,12 +240,12 @@ public class MyFragment3 extends Fragment {
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
 
-                //模拟网络请求到的数据
-                ArrayList<Ticket> newList = new ArrayList<Ticket>();
-                for (int i = 0; i < 10; i++) {
-                    newList.add(new Ticket(R.drawable.westlake, "杭州西湖" + (ticketList.size() + i + 1), "35", "超级无敌大公司", "99"));
-                }
-                fragmentAdapter3.refresh(newList);
+//                //模拟网络请求到的数据
+//                ArrayList<Ticket> newList = new ArrayList<Ticket>();
+//                for (int i = 0; i < 10; i++) {
+//                    newList.add(new Ticket(Integer.toString(R.drawable.westlake), "杭州西湖" + (ticketList.size() + i + 1), "35", "超级无敌大公司", "99"));
+//                }
+//                fragmentAdapter3.refresh(newList);
                 refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
                 //不传时间则立即停止刷新
             }
@@ -243,12 +255,12 @@ public class MyFragment3 extends Fragment {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
 
-                //模拟网络请求到的数据
-                ArrayList<Ticket> newList = new ArrayList<Ticket>();
-                for (int i = 0; i < 10; i++) {
-                    newList.add(new Ticket(R.drawable.westlake, "杭州西湖" + (ticketList.size() + i + 1), "35", "超级无敌大公司", "99"));
-                }
-                fragmentAdapter3.add(newList);
+//                //模拟网络请求到的数据
+//                ArrayList<Ticket> newList = new ArrayList<Ticket>();
+//                for (int i = 0; i < 10; i++) {
+//                    newList.add(new Ticket(Integer.toString(R.drawable.westlake), "杭州西湖" + (ticketList.size() + i + 1), "35", "超级无敌大公司", "99"));
+//                }
+//                fragmentAdapter3.add(newList);
                 refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
                 refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
             }
@@ -262,18 +274,18 @@ public class MyFragment3 extends Fragment {
     private void initRecyclerView() {
         recyclerView = view.findViewById(R.id.fg3_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        fragmentAdapter3 = new FragmentAdapter3(ticketList, getActivity());
+        fragmentAdapter3 = new FragmentAdapter3(new TicketUtil(currentCity, TicketType.TICKET).getTicketList(),getActivity());
         recyclerView.setAdapter(fragmentAdapter3);
+        recyclerView.setLayoutManager(layoutManager);
     }
 
-    public void init() {
+    /*public void init() {
         ticketList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Ticket ticket = new Ticket(R.drawable.westlake, "杭州西湖" + i, "35", "超级无敌大公司", "666");
+            Ticket ticket = new Ticket(Integer.toString(R.drawable.westlake), "杭州西湖" + i, "35", "超级无敌大公司", "666");
             ticketList.add(ticket);
         }
-    }
+    }*/
 
     /**
      * 功能：打开选择城市页面，可以设置热点城市

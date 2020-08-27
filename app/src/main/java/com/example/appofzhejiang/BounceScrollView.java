@@ -136,7 +136,7 @@ public class BounceScrollView extends ScrollView {
     public void animation() {
         // 开启移动动画
         TranslateAnimation ta = new TranslateAnimation(0, 0, inner.getTop(), normal.top);
-        ta.setDuration(200);
+        ta.setDuration(300);
         inner.startAnimation(ta);
         // 设置回到正常的布局位置
         inner.layout(normal.left, normal.top, normal.right, normal.bottom);

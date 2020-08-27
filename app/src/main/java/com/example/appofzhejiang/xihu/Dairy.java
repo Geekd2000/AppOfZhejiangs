@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -27,6 +28,9 @@ public class Dairy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dairy);
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -37,7 +41,7 @@ public class Dairy extends AppCompatActivity {
         });
 
         initDate();
-        intView();
+        initView();
 
         textView = findViewById(R.id.txt_xihu);
         textView.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +53,7 @@ public class Dairy extends AppCompatActivity {
         });
     }
 
-    private void intView() {
+    private void initView() {
         mLocalImageLoader =new LocalImageLoader();
         mBanner = findViewById(R.id.banner);
 

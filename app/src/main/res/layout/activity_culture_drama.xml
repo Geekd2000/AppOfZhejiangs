@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/tourism_publicity_title" />
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_gravity="top"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="-10dp"
+                android:src="@drawable/culture_drama" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="12dp"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/tourismculture_img" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="全域旅游文化组"
+                            android:textColor="#000"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2020-08-10"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="戏剧文化-浙江篇"
+                    android:textColor="#000"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="婺剧"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=" 金华是国家历史文化名城，有2200多年建制史，历史悠久，文化底蕴深厚，素有“小邹鲁”之称，诞生了戏剧大师李渔，孕育了国家级非物质文化遗产婺剧。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="  有着500余年历史，拥有500多本剧目、1000多种曲牌的婺剧，是浙江最具代表性的戏曲剧种之一。婺剧拥有高腔、昆腔、乱弹、徽戏、滩簧、时调6种声腔，几乎涵盖了全国地方戏声腔的所有种类，川剧、赣剧与婺剧的高（腔）、昆（腔）、乱（弹）、徽（戏）、时调等声腔对应，婺剧的乱弹与北方梆子戏有着“血缘”上的关联，黄梅戏、越剧、甬剧与婺剧滩簧本就是一个“大家庭”，婺剧艺术堪称中国戏曲的摇篮。"
+                    android:textSize="16dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="越剧"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="越剧——中国第二大剧种，有第二国剧之称"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="“越剧”清末起源于浙江嵊州（即春秋越国所在地而得名），最初是从曲艺“落地唱书”发展而成，后又有称为“女子科班”、“绍兴女子文戏”、“的笃班”、“草台班戏”、“小歌班”、“绍兴戏剧”、“绍兴文戏”、“髦儿小歌班”、“绍剧”、“嵊剧”、“剡剧”等。"
+                    android:textSize="16dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="南戏"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="浙江是我国戏曲史上著名南戏的发源地，对民间戏曲的发展有着深远的影响。南戏，又称“戏文”，是宋、元时南曲演唱的戏曲，因最初产生于浙江温州地区，故也叫温州杂剧。一般认为，南戏是中国戏曲最早的成熟形式之一。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="南戏的戏剧音乐结构在总体上依据于剧本，以主要角色的上下场来分场，每场自成起讫，称为出，或称折；一本戏可长达几十出，曲牌和套数的运用较为灵活自由。首出由末色介绍剧情大意，称为“副末开场”。自第2出起，正戏开始，主要和次要角色次第出场，各种大小冷热场次互相配搭，戏剧矛盾逐渐展开，直到形成高潮。最末一出终场时，则有评述全剧性质的下场诗以为终结。"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

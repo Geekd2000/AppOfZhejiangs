@@ -6,20 +6,16 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import interfaces.heweather.com.interfacesmodule.view.HeConfig;
-
-
-import com.example.appofzhejiang.fragment3.TicketActivity;
-import com.example.appofzhejiang.recyclerpage.RecyclerPageActivity;
-import com.github.clans.fab.FloatingActionButton;
-import com.github.clans.fab.FloatingActionMenu;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 import interfaces.heweather.com.interfacesmodule.view.HeConfig;
 
@@ -41,12 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final int PAGE_TWO = 1;
     public static final int PAGE_THREE = 2;
     public static final int PAGE_FOUR = 3;
-    static {
-        HeConfig.init("HE2008052029531704", "8fb20072276e48aa83d1200cce3653e0");
-        //切换至开发版服务
-        HeConfig.switchToDevService();
 
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         bindViews();
         tab_main.setSelected(true);//进去后选择第一项
+
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
     }
 
     //UI组件初始化与事件绑定

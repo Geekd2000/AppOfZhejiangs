@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/tourism_publicity_title" />
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_gravity="top"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="-10dp"
+                android:src="@drawable/culture_heritage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="12dp"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/tourismculture_img" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="全域旅游文化组"
+                            android:textColor="#000"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2020-08-10"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="世界文化遗产-浙江篇"
+                    android:textColor="#000"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="江郎山"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="江郎山景区为国家级重点风景名胜区和国家级5A级景区，由三爿石、十八曲、塔山、牛鼻峰、须女湖（青龙湖 曾用名）和仙居寺等部分组成，面积11.86平方公里，景源类型以自然景观为主，同时也有丰富的人文景观。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="2010年8月作为“中国丹霞”的系列提名地之一列入世界自然遗产名录。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="江郎山以雄伟奇特的“三爿石”著称于世，拥有中国丹霞第一奇峰、全国之最的一线天、天然造化的伟人峰、惊险陡峭的郎峰天游，千年古刹开明禅寺、千年学府江郎书院、全国最大的毛泽东手书体“江山如此多娇”摩崖石刻、“烟霞亭”等景点景观一百余处。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="杭州西湖"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="杭州西湖它不仅是一个自然湖，也是一个人文湖，它是人类与自然和谐相处的产物，这种基因是无法复制的。西湖被誉为“自然与人类共同的作品”，故有春来“花满苏堤柳满烟”，夏有“红衣绿扇映清波”，秋是“一色湖光万顷秋”，冬则“白堤一痕青花墨”。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="2007年5月8日经国家旅游局正式批准为国家AAAAA级旅游景区。2011年6月24日，杭州西湖作为文化景观遗产被列入《世界遗产名录》，成为我国第41处“世界遗产”。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="西湖十景是指西湖上的十处特色风景，历史上，杭州曾多次开展西湖十景评选活动，每次评选都极大地提高了西湖和杭州的知名度、美誉度。比如，南宋时评选产生的“西湖十景”，至今已流传了千年。最常见的说法是苏堤春晓、曲院风荷、平湖秋月、断桥残雪、柳浪闻莺、花港观鱼、雷峰夕照、双峰插云、南屏晚钟、三潭印月。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="京杭大运河"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="京杭大运河全长1794千米，是中国仅次于长江的第二条“黄金水道”。它是世界上开凿最早、长度最长的一条人工河道"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="在2014年6月列入《世界遗产名录》"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="京杭大运河的杭州段更是运河历史古迹最丰富、文化底蕴最深厚的一段。想要充分游玩杭州段的京杭大运河，可以选择“运河广场-京杭大运河博物馆-拱宸桥-桥西历史街区”的路线，也可以到西湖文化广场，还可以在夜晚坐游船游畅玩京杭大运河。可以说大运河是杭州旅游的一张名片，也是江南水乡文化体验的经典目的地。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="良渚古城遗址"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="良渚文化的年代为距今5300-4300年，持续发展约1000年，属于新石器时代晚期的考古学文化。分布于长江下游一带，共发现了136个遗址。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="在2019年列入《世界自然遗产名录》"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="良渚古城遗址共包括四个遗产点：瑶山片区、谷口高坝片区、平原低坝—山前长堤片区和城址片区。良渚古城是目前国内发现的同时代最大的城址，为中华文明起源提供了十分重要的资料。以良渚文明为代表的距今5300～4300年，可以称为良渚时代，这是中国乃至世界文明诞生及发展的重要时期。"
+                    android:textSize="16dp" />
+
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

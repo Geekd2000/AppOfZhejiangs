@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.appofzhejiang.Login.LoginActivity;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -41,6 +42,10 @@ public class SettingActivity extends AppCompatActivity {
         mPush = findViewById(R.id.push);
 
         LoginStatus();
+
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         mPush.setOnClickListener(new View.OnClickListener() {
             @Override

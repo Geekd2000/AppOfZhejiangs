@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -25,6 +26,9 @@ public class more extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more);
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -37,7 +41,7 @@ public class more extends AppCompatActivity {
         //景区攻略的recelyeView
         RecycleViewAdepter_more recycleViewAdepter_more = new RecycleViewAdepter_more(this);
         RecyclerView recyclerView = findViewById(R.id.jq_recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this );
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         //创建并设置Adapter

@@ -44,6 +44,7 @@ import com.baidu.mapapi.search.route.OnGetRoutePlanResultListener;
 import com.baidu.mapapi.search.route.RoutePlanSearch;
 import com.baidu.mapapi.search.route.WalkingRouteResult;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +73,9 @@ public class Jingqu_daohang extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_jingqu_daohang);
-
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

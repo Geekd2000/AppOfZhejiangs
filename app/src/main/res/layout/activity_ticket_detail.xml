@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment3.TicketDetailActivity">
+    tools:context=".TicketDetail.TicketDetailActivity">
 
     <ImageView
         android:id="@+id/goods_image"
@@ -354,28 +354,6 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginBottom="5dp"
                         android:scaleType="centerCrop" />
-
-                    <TextView
-                        android:id="@+id/detail_content3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="15dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="15dp"
-                        android:paddingBottom="5dp"
-                        android:textColor="@color/colorLightBlack"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/detail_content4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="15dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="15dp"
-                        android:paddingBottom="5dp"
-                        android:textColor="@color/colorLightBlack"
-                        android:textSize="16sp" />
 
                 </LinearLayout>
 

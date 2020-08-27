@@ -30,6 +30,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".fragment1.beautifulzj.BeautifulZJActivity" />
+        <activity android:name=".fragment1.tourismculture.TourismCulturePoemZJActivity" />
+        <activity android:name=".fragment1.tourismculture.TourismCultureHeritageActivity" />
+        <activity android:name=".fragment1.tourismculture.TourismCultureDramaActivity" />
+        <activity android:name=".fragment1.tourismculture.TourismCultureIndustrialActivity" />
         <activity android:name=".xihu.Dairy" />
         <activity android:name=".xihu.more" />
         <activity android:name=".xihu.Jingqu_around_park" />
@@ -44,28 +49,22 @@
         <activity android:name=".pay.PayActivity" />
         <activity android:name=".pay.OrderActivity" />
         <activity android:name=".fragment3.SubmitOrderActivity" />
-        <activity android:name=".fragment3.TicketDetailActivity" />
+        <activity android:name=".TicketDetail.TicketDetailActivity" />
         <activity android:name=".fragment3.TicketActivity" />
         <activity
-            android:name=".tourismculture.TourismCultureFolkActivity"
+            android:name=".fragment1.tourismculture.TourismCultureFolkActivity"
             android:theme="@style/DefaultCityPickerTheme" />
         <activity
-            android:name=".tourismculture.TourismCultureAreaActivity"
+            android:name=".fragment1.tourismculture.TourismCultureAreaActivity"
             android:theme="@style/DefaultCityPickerTheme" />
         <activity
-            android:name=".tourismculture.TourismCultureHistoryActivity"
+            android:name=".fragment1.tourismculture.TourismCultureHistoryActivity"
             android:theme="@style/DefaultCityPickerTheme" />
         <activity
-            android:name=".tourismculture.TourismCultureFestivalActivity"
+            android:name=".fragment1.tourismculture.TourismCultureFestivalActivity"
             android:theme="@style/DefaultCityPickerTheme" />
         <activity
-            android:name=".coolweather.WeatherActivity"
-            android:theme="@style/DefaultCityPickerTheme" />
-        <activity
-            android:name=".coolweather.CoolWeatherActivity"
-            android:theme="@style/DefaultCityPickerTheme" />
-        <activity
-            android:name=".recyclerpage.RecyclerPageActivity"
+            android:name=".fragment1.recyclerpage.RecyclerPageActivity"
             android:theme="@style/DefaultCityPickerTheme" />
         <activity android:name=".Login.RegisterActivity" />
         <activity android:name=".Login.LoginActivity" />
@@ -75,8 +74,7 @@
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/DefaultCityPickerTheme"
-            android:windowSoftInputMode="adjustPan|stateHidden">
-        </activity>
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
         <!-- 引导页 -->
         <activity
             android:name=".LauncherPage.GuideActivity"
@@ -84,13 +82,13 @@
             android:theme="@style/NoActivityFullscreen" />
         <!-- 启动页 -->
         <activity
-        android:name=".LauncherPage.LaunchActivity"
-        android:theme="@style/LunchTheme">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-            <category android:name="android.intent.category.LAUNCHER"/>
-        </intent-filter>
-    </activity>
+            android:name=".LauncherPage.LaunchActivity"
+            android:theme="@style/LunchTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <!--<meta-data
             android:name="com.baidu.lbsapi.API_KEY"

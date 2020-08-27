@@ -22,8 +22,9 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="270dp"
+                android:layout_height="230dp"
                 android:layout_gravity="top"
+                android:scaleType="centerCrop"
                 android:layout_marginTop="-10dp"
                 android:src="@drawable/culture_festival" />
 

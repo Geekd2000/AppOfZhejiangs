@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,10 @@ public class ReceiptActivity extends AppCompatActivity {
         initView();
         //初始化RecyclerView
         initRecycleView();
+
+        //设置沉浸式
+        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setDarkFont(this);
 
         mBack.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
