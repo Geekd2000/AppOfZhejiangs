@@ -9,12 +9,16 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +37,7 @@ public class AddressActivity extends AppCompatActivity {
     private RadioButton mRadioButton;//默认地址单选按钮
     private Button cancel;
     private Button save;
+    private RelativeLayout addressPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +104,7 @@ public class AddressActivity extends AppCompatActivity {
                     Toast.makeText(AddressActivity.this, "请输入详细地址", Toast.LENGTH_SHORT).show();
                 } else {
                     boolean isCheck = globalValue.isCheck();
-                    if(isCheck==false){
+                    if (isCheck == false) {
                         Intent intent = new Intent();
                         intent.putExtra("name", receiveName.getText().toString());
                         intent.putExtra("phone", telephoneNumber.getText().toString());
@@ -107,7 +112,7 @@ public class AddressActivity extends AppCompatActivity {
                         intent.putExtra("select", "false");
                         setResult(RESULT_OK, intent);
                         finish();
-                    }else{
+                    } else {
                         Intent intent = new Intent();
                         intent.putExtra("name", receiveName.getText().toString());
                         intent.putExtra("phone", telephoneNumber.getText().toString());
@@ -119,6 +124,8 @@ public class AddressActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     //获取单选按钮checked值的类
@@ -191,6 +198,48 @@ public class AddressActivity extends AppCompatActivity {
         detailAddress = findViewById(R.id.detail_address);
         cancel = findViewById(R.id.btn_address_cancel);
         save = findViewById(R.id.btn_address_save);
+        addressPage = findViewById(R.id.traceroute_rootview);
     }
 
+    //点击空白处收起键盘
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (isShouldHideInput(v, ev)) {
+
+                InputMethodManager imm = (InputMethodManager) getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+            return super.dispatchTouchEvent(ev);
+        }
+        // 必不可少，否则所有的组件都不会有TouchEvent了
+        if (getWindow().superDispatchTouchEvent(ev)) {
+            return true;
+        }
+        return onTouchEvent(ev);
+    }
+
+
+    public boolean isShouldHideInput(View v, MotionEvent event) {
+        if (v != null && (v instanceof EditText)) {
+            int[] leftTop = {0, 0};
+            //获取输入框当前的location位置
+            v.getLocationInWindow(leftTop);
+            int left = leftTop[0];
+            int top = leftTop[1];
+            int bottom = top + v.getHeight();
+            int right = left + v.getWidth();
+            if (event.getX() > left && event.getX() < right
+                    && event.getY() > top && event.getY() < bottom) {
+                // 点击的是输入框区域，保留点击EditText的事件
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
 }
