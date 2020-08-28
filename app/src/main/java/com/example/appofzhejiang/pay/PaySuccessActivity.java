@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.fragment3.TicketActivity;
 
 public class PaySuccessActivity extends AppCompatActivity {
 
@@ -36,7 +37,9 @@ public class PaySuccessActivity extends AppCompatActivity {
         continueBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(PaySuccessActivity.this, TicketActivity.class);
+                intent.putExtra("num", "0");
+                startActivity(intent);
             }
         });
 

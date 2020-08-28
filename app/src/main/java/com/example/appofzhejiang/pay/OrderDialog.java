@@ -2,6 +2,7 @@ package com.example.appofzhejiang.pay;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.text.TextUtils;

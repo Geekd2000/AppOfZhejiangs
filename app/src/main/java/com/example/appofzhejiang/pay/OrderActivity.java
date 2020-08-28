@@ -32,6 +32,7 @@ public class OrderActivity extends AppCompatActivity {
     private TextView mAddress;//收货地址
     private ImageView imageGoods;//商品图片
     private TextView orderNumber;//订单编号
+    private TextView orderBuy;//去付款
     //悬浮按钮
     private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
 
@@ -39,7 +40,7 @@ public class OrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         overridePendingTransition(R.anim.right_in, R.anim.right_silent);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_1);
+        setContentView(R.layout.activity_order);
         //初始化控件
         init();
         //设置沉浸式
@@ -57,6 +58,15 @@ public class OrderActivity extends AppCompatActivity {
                 finish();
             }
         });//标题栏返回按钮
+        //跳转至支付成功页面
+        orderBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(OrderActivity.this,PaySuccessActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         //初始化悬浮按钮
         initFloatActionButton();
@@ -151,5 +161,6 @@ public class OrderActivity extends AppCompatActivity {
         mAddress = findViewById(R.id.address);
         imageGoods = findViewById(R.id.imageGoods);
         orderNumber=findViewById(R.id.order_number);
+        orderBuy = findViewById(R.id.order_buy);
     }
 }

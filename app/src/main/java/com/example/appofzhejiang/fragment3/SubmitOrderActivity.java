@@ -32,6 +32,7 @@ import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.pay.OrderActivity;
 import com.example.appofzhejiang.pay.PayActivity;
 import com.example.appofzhejiang.pay.OrderDialog;
+import com.example.appofzhejiang.pay.PaySuccessActivity;
 import com.github.clans.fab.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
@@ -218,8 +219,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
                         @Override
                         public void onConfirm(OrderDialog dialog) {
                             Toast.makeText(SubmitOrderActivity.this, "付款成功", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SubmitOrderActivity.this, TicketActivity.class);
-                            intent.putExtra("num", "0");
+                            Intent intent=new Intent(SubmitOrderActivity.this, PaySuccessActivity.class);
                             startActivity(intent);
                         }
                     });
