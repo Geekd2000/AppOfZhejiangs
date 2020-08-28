@@ -39,23 +39,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_hotel_item, parent, false);
         final ViewHolder viewHolder = new ViewHolder(view);
-        /*// 注册点击事件 start
-        viewHolder.getHotelView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int position = viewHolder.getAdapterPosition();
-                Hotel hotel = hotelList.get(position);
-                Intent intent = new Intent(parent.getContext(), TicketDetailActivity.class);
-                intent.putExtra("index", s);
-                intent.putExtra("title", hotel.getName());
-                intent.putExtra("price", price);
-                intent.putExtra("company", "全城旅游");
-                intent.putExtra("count", hotel.getSales());
-                intent.putExtra("image", hotel.getPath());
-                parent.getContext().startActivity(intent);
-            }
-        });
-        // 注册点击事件 end*/
         return viewHolder;
     }
 
@@ -144,7 +127,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
 
         public ViewHolder(View view) {
             super(view);
-            setHotelView(view);
             setLogoImage((ImageView) view.findViewById(R.id.image_logo));
             setNameText((TextView) view.findViewById(R.id.hotel_name));
             setPriceText((TextView) view.findViewById(R.id.hotel_price));
@@ -161,7 +143,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
                     }
                 }
             });
-
         }
 
         public View getHotelView() {

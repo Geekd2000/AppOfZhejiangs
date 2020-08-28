@@ -38,6 +38,7 @@ public class TicketDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in,R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_detail);
         toolbar = findViewById(R.id.toolbar_goods);
@@ -712,5 +713,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                 });
                 break;
         }
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent,R.anim.right_out);
     }
 }

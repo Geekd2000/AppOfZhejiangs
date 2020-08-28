@@ -1,7 +1,18 @@
 package com.example.appofzhejiang.Business;
 
 public class AddressList {
-    private String username,phone,address,select;
+
+    private String username, phone, address, select;
+
+    public AddressList() {
+    }
+
+    public AddressList(String username, String phone, String address, String select) {
+        this.username = username;
+        this.phone = phone;
+        this.address = address;
+        this.select = select;
+    }
 
     public String getUsername() {
         return username;

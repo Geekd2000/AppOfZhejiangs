@@ -81,6 +81,7 @@ public class MyFragment4 extends Fragment {
                 isLoginStatus = sp.getBoolean("isLogin", false);
                 if (isLoginStatus == true) {
                     Intent intent = new Intent(getActivity(), ReceiptActivity.class);
+                    intent.putExtra("code","10");
                     startActivity(intent);
                 }else{
                     Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();

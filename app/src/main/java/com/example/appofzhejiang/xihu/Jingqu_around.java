@@ -35,6 +35,7 @@ public class Jingqu_around extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.bottom_in, R.anim.bottom_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jingqu_around);
         //设置沉浸式
@@ -52,6 +53,12 @@ public class Jingqu_around extends AppCompatActivity implements View.OnClickList
                 finish();
             }
         });
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.bottom_silent, R.anim.bottom_out);
     }
 
     //UI组件初始化与事件绑定

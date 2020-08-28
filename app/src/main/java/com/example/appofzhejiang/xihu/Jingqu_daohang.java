@@ -70,6 +70,7 @@ public class Jingqu_daohang extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in,R.anim.right_silent);
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_jingqu_daohang);
@@ -115,6 +116,12 @@ public class Jingqu_daohang extends AppCompatActivity {
                 .icon(bitmap);
 //在地图上添加Marker，并显示
         baiduMap.addOverlay(option);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent,R.anim.right_out);
     }
 
     private void requestLocation() {

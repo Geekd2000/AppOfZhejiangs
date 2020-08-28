@@ -26,6 +26,7 @@ public class PasswordChangeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in, R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_change);
         mBtnBack = findViewById(R.id.personal_toolbar);
@@ -40,20 +41,26 @@ public class PasswordChangeActivity extends AppCompatActivity {
         StatusBarUtil.setDarkFont(this);
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent, R.anim.right_out);
+    }
+
     public void BindView() {
         Onclick onclick = new Onclick();
         mBtnBack.setOnClickListener(onclick);
         mBtnChange.setOnClickListener(onclick);
     }
 
-    private void submit(){
+    private void submit() {
         String psw = old_password.getText().toString().trim();
         String newPsw = new_password.getText().toString().trim();
         String again = new_password_again.getText().toString().trim();
 
         SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
 
-        String username = sp.getString("loginUserName",null);
+        String username = sp.getString("loginUserName", null);
 
         if (TextUtils.isEmpty(psw)) {
             Toast.makeText(PasswordChangeActivity.this, "请输入原始密码", Toast.LENGTH_SHORT).show();
@@ -94,8 +101,8 @@ public class PasswordChangeActivity extends AppCompatActivity {
         }
     }
 
-    public void Out(Boolean status){
-        SharedPreferences sp = getSharedPreferences("loginInfo",MODE_PRIVATE);
+    public void Out(Boolean status) {
+        SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
         //获取编辑器
         SharedPreferences.Editor editor = sp.edit();
         //存入boolean类型的登录状态
@@ -105,7 +112,6 @@ public class PasswordChangeActivity extends AppCompatActivity {
     }
 
     class Onclick implements View.OnClickListener {
-
 
 
         @Override
@@ -121,12 +127,13 @@ public class PasswordChangeActivity extends AppCompatActivity {
             }
         }
     }
+
     /**
      * 从SharedPreferences中根据用户名读取密码
      */
     private String readPsw() {
         SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
-        String username = sp.getString("loginUserName",null);
+        String username = sp.getString("loginUserName", null);
         String spPsw = sp.getString(username, "");
         Log.i("username", username);
         Log.i("spPsw", spPsw);
@@ -137,7 +144,7 @@ public class PasswordChangeActivity extends AppCompatActivity {
     private void modifyPsw() {
         SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
 
-        String username = sp.getString("loginUserName",null);
+        String username = sp.getString("loginUserName", null);
 
         String newPsw = new_password.getText().toString().trim();
 

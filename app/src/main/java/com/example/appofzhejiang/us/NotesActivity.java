@@ -48,6 +48,7 @@ public class NotesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in,R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
         //设置沉浸式
@@ -93,6 +94,12 @@ public class NotesActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent,R.anim.right_out);
     }
 
     private void openAlbum() {
