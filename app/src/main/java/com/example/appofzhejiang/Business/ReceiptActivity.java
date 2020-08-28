@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class ReceiptActivity extends AppCompatActivity {
 
-    private Button mBtnNew;
+    private TextView mTxtNew;
     private Toolbar mBack;
     private RecyclerView mRyAddress;
     private ReceiptAdapter adapter;
@@ -30,6 +31,7 @@ public class ReceiptActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.bottom_in, R.anim.bottom_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt);
         initView();
@@ -47,16 +49,36 @@ public class ReceiptActivity extends AppCompatActivity {
             }
         });
 
-        mBtnNew.setOnClickListener(new View.OnClickListener() {
+        mTxtNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ReceiptActivity.this, AddressActivity.class);
                 intent.putExtra("size", Integer.toString(data.size()));
                 startActivityForResult(intent, 101);
-                //添加自带默认动画
-                //adapter.addData(data.size());
             }
         });
+
+        Intent in = getIntent();
+        int code = Integer.parseInt(in.getStringExtra("code"));
+        if (code == 1) {
+            adapter.setOnItemClickListener(new ReceiptAdapter.OnItemClickListener() {
+                @Override
+                public void OnItemClick(View view, AddressList addressList) {
+                    Intent intent = new Intent();
+                    intent.putExtra("name", addressList.getUsername());
+                    intent.putExtra("phone", addressList.getPhone());
+                    intent.putExtra("address", addressList.getAddress());
+                    setResult(2, intent);
+                    finish();
+                }
+            });
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.bottom_silent, R.anim.bottom_out);
     }
 
     @Override
@@ -89,7 +111,7 @@ public class ReceiptActivity extends AppCompatActivity {
 
     //初始化控件
     private void initView() {
-        mBtnNew = findViewById(R.id.btn_new);
+        mTxtNew = findViewById(R.id.txt_new);
         mBack = findViewById(R.id.receipt_toolbar);
         mRyAddress = findViewById(R.id.address_message);
     }

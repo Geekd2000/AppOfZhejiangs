@@ -31,6 +31,7 @@ public class PersonalInformationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in,R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_information);
         mBtnSave = findViewById(R.id.save);
@@ -53,6 +54,12 @@ public class PersonalInformationActivity extends AppCompatActivity {
         username.setText(save());
         sexChange.setText(sex());
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent,R.anim.right_out);
     }
 
     class OnClick implements View.OnClickListener {

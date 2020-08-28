@@ -1,12 +1,9 @@
-package com.example.appofzhejiang.TicketDetail;
+package com.example.appofzhejiang.fragment3.TicketDetail;
 
 import com.alibaba.fastjson.JSON;
-import com.example.appofzhejiang.fragment3.Ticket;
-import com.example.appofzhejiang.fragment3.TicketType;
 
 import java.io.IOException;
 
-import java.util.List;
 import java.util.concurrent.Callable;
 
 import java.util.concurrent.ExecutorService;

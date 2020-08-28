@@ -30,6 +30,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".pay.PaySuccessActivity"></activity>
         <activity android:name=".fragment1.beautifulzj.BeautifulZJActivity" />
         <activity android:name=".fragment1.tourismculture.TourismCulturePoemZJActivity" />
         <activity android:name=".fragment1.tourismculture.TourismCultureHeritageActivity" />
@@ -49,7 +50,7 @@
         <activity android:name=".pay.PayActivity" />
         <activity android:name=".pay.OrderActivity" />
         <activity android:name=".fragment3.SubmitOrderActivity" />
-        <activity android:name=".TicketDetail.TicketDetailActivity" />
+        <activity android:name=".fragment3.TicketDetail.TicketDetailActivity" />
         <activity android:name=".fragment3.TicketActivity" />
         <activity
             android:name=".fragment1.tourismculture.TourismCultureFolkActivity"
@@ -74,30 +75,30 @@
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/DefaultCityPickerTheme"
-            android:windowSoftInputMode="adjustPan|stateHidden"/>
-        <!-- 引导页 -->
+            android:windowSoftInputMode="adjustPan|stateHidden" /> <!-- 引导页 -->
         <activity
             android:name=".LauncherPage.GuideActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActivityFullscreen" />
-        <!-- 启动页 -->
+            android:theme="@style/NoActivityFullscreen" /> <!-- 启动页 -->
         <activity
             android:name=".LauncherPage.LaunchActivity"
             android:theme="@style/LunchTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!--<meta-data
+        <!--
+<meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="WXNAQ1ipzflk2TtRKfIRd8ZtoFNbnp7q" />-->
-
-        <!--<meta-data
+            android:value="WXNAQ1ipzflk2TtRKfIRd8ZtoFNbnp7q" />
+        -->
+        <!--
+<meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="8F1XanrDQSWo9unKTVTs0NkR5ExbB5S1" />-->
-
+            android:value="8F1XanrDQSWo9unKTVTs0NkR5ExbB5S1" />
+        -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="G8xi1YFTUNIDP1B6KtbP4Z0zGltZ37A4" />

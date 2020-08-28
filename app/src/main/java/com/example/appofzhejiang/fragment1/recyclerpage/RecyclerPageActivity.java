@@ -31,6 +31,7 @@ public class RecyclerPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in, R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_page);
         Intent intent = getIntent();
@@ -53,7 +54,7 @@ public class RecyclerPageActivity extends AppCompatActivity {
         recyclerBeanList = new RecyclerBeanListUtil(currentCity, type).getRecyclerBeanList();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        adapter = new RecyclerPageAdapter(recyclerBeanList,getApplicationContext());
+        adapter = new RecyclerPageAdapter(recyclerBeanList, getApplicationContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -118,6 +119,13 @@ public class RecyclerPageActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent, R.anim.right_out);
+    }
+
     private void refreshBeanList() {
         new Thread(new Runnable() {
             @Override

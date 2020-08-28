@@ -73,7 +73,7 @@
                 <com.youth.banner.Banner
                     android:id="@+id/fg1_banner"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="150dp"
                     app:indicator_drawable_selected="@drawable/banner_selected"
                     app:indicator_drawable_unselected="@drawable/banner_unselected"
                     app:indicator_height="10dp"
@@ -416,8 +416,8 @@
                             android:id="@+id/index_beautiful_zj"
                             android:layout_width="0dp"
                             android:layout_height="65dp"
-                            android:background="@drawable/fg1_display_bg5"
                             android:layout_weight="1"
+                            android:background="@drawable/fg1_display_bg5"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -535,12 +535,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_radius"
                 android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="10dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp">
@@ -565,9 +565,9 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginTop="10dp"
-                        android:textSize="14sp"
+                        android:drawableRight="@drawable/arrow"
                         android:text="更多"
-                        android:drawableRight="@drawable/arrow"/>
+                        android:textSize="14sp" />
                 </RelativeLayout>
 
                 <LinearLayout
@@ -577,14 +577,16 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
                         <com.makeramen.roundedimageview.RoundedImageView
                             android:id="@+id/strategy_hot1"
                             android:layout_width="110dp"
-                            android:layout_height="130dp"
+                            android:layout_height="140dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/test"
                             app:riv_corner_radius="10dp" />
@@ -601,6 +603,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -632,21 +635,20 @@
                                 android:layout_marginLeft="2dp"
                                 android:src="@drawable/hot" />
 
-
                         </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
                         <com.makeramen.roundedimageview.RoundedImageView
                             android:id="@+id/strategy_hot2"
                             android:layout_width="110dp"
-                            android:layout_height="130dp"
+                            android:layout_height="140dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/test"
                             app:riv_corner_radius="10dp" />
@@ -663,6 +665,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -699,14 +702,16 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
                         <com.makeramen.roundedimageview.RoundedImageView
                             android:id="@+id/strategy_hot3"
                             android:layout_width="110dp"
-                            android:layout_height="130dp"
+                            android:layout_height="140dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/test"
                             app:riv_corner_radius="10dp" />
@@ -723,6 +728,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
                             android:orientation="horizontal">
 
                             <ImageView

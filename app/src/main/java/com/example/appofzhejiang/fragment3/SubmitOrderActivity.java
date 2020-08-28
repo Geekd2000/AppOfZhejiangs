@@ -2,9 +2,11 @@ package com.example.appofzhejiang.fragment3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -28,6 +30,7 @@ import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.pay.OrderActivity;
+import com.example.appofzhejiang.pay.PayActivity;
 import com.github.clans.fab.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
@@ -58,6 +61,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in, R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_order);
 
@@ -83,9 +87,9 @@ public class SubmitOrderActivity extends AppCompatActivity {
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(SubmitOrderActivity.this, "你点击了", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SubmitOrderActivity.this, ReceiptActivity.class);
-                startActivity(intent);
+                intent.putExtra("code", "1");
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -95,12 +99,14 @@ public class SubmitOrderActivity extends AppCompatActivity {
         String type = intent.getStringExtra("goodsType");
         String unitPrice = intent.getStringExtra("goodsPrice");
         final String image = intent.getStringExtra("goodsImage");
+        String inventory = intent.getStringExtra("inventory");
 
         //将传递过来的参设设置进去
         goodsName.setText(name);//商品名称
         goodsType.setText(type);//商品种类
         goodsUnitPrice.setText(unitPrice);//商品单价
         Glide.with(this).load(image).into(goodsImage);//商品图片
+        stock.setText(inventory);//商品库存
 
         //合计、实付
         tot = Integer.toString(Integer.parseInt(buyCount.getText().toString()) * Integer.parseInt(goodsUnitPrice.getText().toString()));
@@ -144,26 +150,6 @@ public class SubmitOrderActivity extends AppCompatActivity {
                 }
             }
         });
-
-        //添加订单，跳转至订单详情页面
-        addOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(SubmitOrderActivity.this, "订单添加成功", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(SubmitOrderActivity.this, OrderActivity.class);
-                intent.putExtra("goodsName", goodsName.getText().toString());
-                intent.putExtra("goodsType", goodsType.getText().toString());
-                intent.putExtra("goodsUnitPrice", goodsUnitPrice.getText().toString());
-                intent.putExtra("goodsAmount", endCount.getText().toString());
-                intent.putExtra("goodsPay", payment.getText().toString());
-                intent.putExtra("username", username.getText().toString());
-                intent.putExtra("telephone", telephone.getText().toString());
-                intent.putExtra("address", address.getText().toString());
-                intent.putExtra("goodsImage", image);
-                startActivity(intent);
-            }
-        });
-
         //出行时间设置
         initTimePicker();
         time.setOnClickListener(new View.OnClickListener() {
@@ -174,6 +160,55 @@ public class SubmitOrderActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //添加订单，跳转至订单详情页面
+        addOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //订单编号随机生成
+                int r1 = (int) (Math.random() * (10));//产生2个0-9的随机数
+                int r2 = (int) (Math.random() * (10));
+                long now = System.currentTimeMillis();//一个13位的时间戳
+                String paymentID = String.valueOf(r1) + String.valueOf(r2) + String.valueOf(now);// 订单ID
+                Intent intent = new Intent(SubmitOrderActivity.this, OrderActivity.class);
+                intent.putExtra("goodsName", goodsName.getText().toString());
+                intent.putExtra("goodsType", goodsType.getText().toString());
+                intent.putExtra("goodsUnitPrice", goodsUnitPrice.getText().toString());
+                intent.putExtra("goodsAmount", endCount.getText().toString());
+                intent.putExtra("goodsPay", payment.getText().toString());
+                intent.putExtra("username", username.getText().toString());
+                intent.putExtra("telephone", telephone.getText().toString());
+                intent.putExtra("address", address.getText().toString());
+                intent.putExtra("paymentID", paymentID);
+                intent.putExtra("goodsImage", image);
+                if (TextUtils.isEmpty(time.getText().toString())) {
+                    Toast.makeText(SubmitOrderActivity.this, "请选择使用时间", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SubmitOrderActivity.this, "订单添加成功", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (intent != null && requestCode == 1 && resultCode == 2) {
+            String nameInfo = intent.getStringExtra("name");
+            String phoneInfo = intent.getStringExtra("phone");
+            String addressInfo = intent.getStringExtra("address");
+            username.setText(nameInfo);
+            telephone.setText(phoneInfo);
+            address.setText(addressInfo);
+        }
+    }
+
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent, R.anim.right_out);
     }
 
     //初始化控件

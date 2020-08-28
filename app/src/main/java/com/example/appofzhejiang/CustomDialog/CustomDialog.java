@@ -66,6 +66,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
         d.getSize(size);
         p.width=(int)(size.x*0.8); //设置dialog的宽度为当前手机屏幕宽度的80％
         getWindow().setAttributes(p);
+        getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
         tvTitle = findViewById(R.id.custom_title);
         tvMessage = findViewById(R.id.custom_message);

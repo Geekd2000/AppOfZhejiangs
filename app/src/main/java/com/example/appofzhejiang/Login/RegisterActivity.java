@@ -33,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.bottom_in,R.anim.bottom_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         //设置此界面为竖屏
@@ -41,6 +42,11 @@ public class RegisterActivity extends AppCompatActivity {
         //设置沉浸式
         StatusBarUtil.setTransparent(this);
         StatusBarUtil.setDarkFont(this);
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.bottom_silent,R.anim.bottom_out);
     }
 
     private void init() {

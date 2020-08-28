@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.fragment3.Ticket;
 import com.example.appofzhejiang.fragment3.TicketType;
 
 import java.util.List;
@@ -38,23 +39,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_hotel_item, parent, false);
         final ViewHolder viewHolder = new ViewHolder(view);
-        /*// 注册点击事件 start
-        viewHolder.getHotelView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int position = viewHolder.getAdapterPosition();
-                Hotel hotel = hotelList.get(position);
-                Intent intent = new Intent(parent.getContext(), TicketDetailActivity.class);
-                intent.putExtra("index", s);
-                intent.putExtra("title", hotel.getName());
-                intent.putExtra("price", price);
-                intent.putExtra("company", "全城旅游");
-                intent.putExtra("count", hotel.getSales());
-                intent.putExtra("image", hotel.getPath());
-                parent.getContext().startActivity(intent);
-            }
-        });
-        // 注册点击事件 end*/
         return viewHolder;
     }
 
@@ -99,6 +83,21 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
         return hotelList.size();
     }
 
+    //下面两个方法提供给页面刷新和加载时调用
+    public void add(List<Hotel> addHotelList) {
+        //增加数据
+        int position = hotelList.size();
+        hotelList.addAll(position, addHotelList);
+        notifyItemInserted(position);
+    }
+
+    public void refresh(List<Hotel> newHotelList) {
+        //刷新数据
+        hotelList.removeAll(hotelList);
+        hotelList.addAll(newHotelList);
+        notifyDataSetChanged();
+    }
+
     //设置item的监听事件的接口
     public interface OnItemClickListener {
         /*  *
@@ -128,7 +127,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
 
         public ViewHolder(View view) {
             super(view);
-            setHotelView(view);
             setLogoImage((ImageView) view.findViewById(R.id.image_logo));
             setNameText((TextView) view.findViewById(R.id.hotel_name));
             setPriceText((TextView) view.findViewById(R.id.hotel_price));
@@ -145,7 +143,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
                     }
                 }
             });
-
         }
 
         public View getHotelView() {

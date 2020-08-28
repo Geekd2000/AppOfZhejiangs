@@ -17,14 +17,15 @@ import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.fragment3.SubmitOrderActivity;
 import com.example.appofzhejiang.fragment3.TicketActivity;
+import com.example.appofzhejiang.xihu.more;
 import com.github.clans.fab.FloatingActionButton;
 
 public class OrderActivity extends AppCompatActivity {
 
     private Button mBtnReturn;
     private Toolbar mBtnBack;
-    private TextView mPay1,mPay2;//两个实付
-    private TextView mGoodsName1,mGoodsName2;//两盒商品名称
+    private TextView mPay1, mPay2;//两个实付
+    private TextView mGoodsName1, mGoodsName2;//两盒商品名称
     private TextView mGoodsType;//商品种类
     private TextView mAmount;//商品数量
     private TextView mGoodsUnitPrice;//商品单价
@@ -32,11 +33,13 @@ public class OrderActivity extends AppCompatActivity {
     private TextView mTelephone;//收货电话
     private TextView mAddress;//收货地址
     private ImageView imageGoods;//商品图片
+    private TextView orderNumber;//订单编号
     //悬浮按钮
     private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in, R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         //初始化控件
@@ -70,7 +73,8 @@ public class OrderActivity extends AppCompatActivity {
         String username = intent.getStringExtra("username");
         String telephone = intent.getStringExtra("telephone");
         String address = intent.getStringExtra("address");
-        String image =intent.getStringExtra("goodsImage");
+        String image = intent.getStringExtra("goodsImage");
+        String paymentID = intent.getStringExtra("paymentID");
         mGoodsName1.setText(name);
         mGoodsName2.setText(name);
         mPay1.setText(pay);
@@ -81,7 +85,14 @@ public class OrderActivity extends AppCompatActivity {
         mUsername.setText(username);
         mTelephone.setText(telephone);
         mAddress.setText(address);
+        orderNumber.setText(paymentID);
         Glide.with(this).load(image).into(imageGoods);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent, R.anim.right_out);
     }
 
     //悬浮按钮配置
@@ -110,8 +121,8 @@ public class OrderActivity extends AppCompatActivity {
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, RecyclerPageActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(OrderActivity.this, more.class);
+                startActivity(intent);
             }
         });
 
@@ -130,16 +141,17 @@ public class OrderActivity extends AppCompatActivity {
     public void init() {
         mBtnBack = findViewById(R.id.order_toolbar_back);
         mBtnReturn = findViewById(R.id.order_return);
-        mGoodsName1=findViewById(R.id.goods_name1);
-        mGoodsName2=findViewById(R.id.goods_name2);
-        mPay1=findViewById(R.id.pay1);
-        mPay2=findViewById(R.id.pay2);
-        mGoodsType=findViewById(R.id.goods_type);
-        mAmount=findViewById(R.id.order_amount);
-        mGoodsUnitPrice=findViewById(R.id.order_goods_unitPrice);
-        mUsername=findViewById(R.id.username);
-        mTelephone=findViewById(R.id.telephone);
-        mAddress=findViewById(R.id.address);
-        imageGoods=findViewById(R.id.imageGoods);
+        mGoodsName1 = findViewById(R.id.goods_name1);
+        mGoodsName2 = findViewById(R.id.goods_name2);
+        mPay1 = findViewById(R.id.pay1);
+        mPay2 = findViewById(R.id.pay2);
+        mGoodsType = findViewById(R.id.goods_type);
+        mAmount = findViewById(R.id.order_amount);
+        mGoodsUnitPrice = findViewById(R.id.order_goods_unitPrice);
+        mUsername = findViewById(R.id.username);
+        mTelephone = findViewById(R.id.telephone);
+        mAddress = findViewById(R.id.address);
+        imageGoods = findViewById(R.id.imageGoods);
+        orderNumber=findViewById(R.id.order_number);
     }
 }
