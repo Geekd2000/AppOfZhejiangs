@@ -13,7 +13,7 @@ public class MD5Utils {
             byte[] result = digest.digest(text.getBytes());
             //创建StringBuilder对象 然后建议StringBuffer，安全性高
             //StringBuilder sb = new StringBuilder();
-            StringBuffer sb = new StringBuffer();
+            StringBuffer sBuffer = new StringBuffer();
             // result数组，digest.digest ( ); -> text.getBytes();
             // for 循环数组byte[] result;
             for (byte b : result){
@@ -22,13 +22,13 @@ public class MD5Utils {
                 // number值 转换 字符串 Integer.toHexString( );
                 String hex = Integer.toHexString(number);
                 if (hex.length() == 1){
-                    sb.append("0"+hex);
+                    sBuffer.append("0"+hex);
                 }else {
-                    sb.append(hex);
+                    sBuffer.append(hex);
                 }
             }
             //sb StringBuffer sb = new StringBuffer();对象实例化
-            return sb.toString();
+            return sBuffer.toString();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             //发送异常return空字符串
