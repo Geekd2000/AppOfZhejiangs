@@ -2,7 +2,6 @@ package com.example.appofzhejiang.pay;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import com.bumptech.glide.Glide;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
-import com.example.appofzhejiang.fragment3.SubmitOrderActivity;
 import com.example.appofzhejiang.fragment3.TicketActivity;
 import com.github.clans.fab.FloatingActionButton;
 
@@ -38,7 +36,7 @@ public class OrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order);
+        setContentView(R.layout.activity_order_1);
         //初始化控件
         init();
         //设置沉浸式

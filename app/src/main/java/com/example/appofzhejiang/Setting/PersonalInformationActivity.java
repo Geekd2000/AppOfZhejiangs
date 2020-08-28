@@ -3,6 +3,8 @@ package com.example.appofzhejiang.Setting;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -16,6 +18,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
+
+import java.io.File;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -38,7 +42,9 @@ public class PersonalInformationActivity extends AppCompatActivity {
         mBack = findViewById(R.id.personal_toolbar);
         passwordChange = findViewById(R.id.user_password);
         username = findViewById(R.id.ni_cheng);
-        mImage = findViewById(R.id.user_image);
+        mImage = findViewById(R.id.user_image_my);
+
+
         //设置沉浸式
         StatusBarUtil.setTransparent(this);
         StatusBarUtil.setDarkFont(this);
@@ -49,10 +55,10 @@ public class PersonalInformationActivity extends AppCompatActivity {
         mBtnSave.setOnClickListener(onClick);
         mBack.setOnClickListener(onClick);
         passwordChange.setOnClickListener(onClick);
+        mImage.setOnClickListener(onClick);
 
         username.setText(save());
         sexChange.setText(sex());
-
     }
 
     class OnClick implements View.OnClickListener {
@@ -101,7 +107,9 @@ public class PersonalInformationActivity extends AppCompatActivity {
                     //跳转到主界面，登录成功的状态传递到 MainActivity 中
                     startActivity(new Intent(PersonalInformationActivity.this, MainActivity.class));
                     break;
+                case R.id.user_image_my:
 
+                    break;
             }
         }
     }
