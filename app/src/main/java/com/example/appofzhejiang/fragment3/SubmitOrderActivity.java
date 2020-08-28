@@ -31,10 +31,12 @@ import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.pay.OrderActivity;
 import com.example.appofzhejiang.pay.PayActivity;
+import com.example.appofzhejiang.pay.OrderDialog;
 import com.github.clans.fab.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class SubmitOrderActivity extends AppCompatActivity {
 
@@ -165,27 +167,62 @@ public class SubmitOrderActivity extends AppCompatActivity {
         addOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //订单编号随机生成
-                int r1 = (int) (Math.random() * (10));//产生2个0-9的随机数
-                int r2 = (int) (Math.random() * (10));
-                long now = System.currentTimeMillis();//一个13位的时间戳
-                String paymentID = String.valueOf(r1) + String.valueOf(r2) + String.valueOf(now);// 订单ID
-                Intent intent = new Intent(SubmitOrderActivity.this, OrderActivity.class);
-                intent.putExtra("goodsName", goodsName.getText().toString());
-                intent.putExtra("goodsType", goodsType.getText().toString());
-                intent.putExtra("goodsUnitPrice", goodsUnitPrice.getText().toString());
-                intent.putExtra("goodsAmount", endCount.getText().toString());
-                intent.putExtra("goodsPay", payment.getText().toString());
-                intent.putExtra("username", username.getText().toString());
-                intent.putExtra("telephone", telephone.getText().toString());
-                intent.putExtra("address", address.getText().toString());
-                intent.putExtra("paymentID", paymentID);
-                intent.putExtra("goodsImage", image);
                 if (TextUtils.isEmpty(time.getText().toString())) {
                     Toast.makeText(SubmitOrderActivity.this, "请选择使用时间", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(SubmitOrderActivity.this, "订单添加成功", Toast.LENGTH_SHORT).show();
-                    startActivity(intent);
+                    //订单
+                    long currentTime = System.currentTimeMillis();
+                    String timeNow = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
+
+                    //订单号生成
+                    //订单编号随机生成
+                    int r1 = (int) (Math.random() * (10));//产生2个0-9的随机数
+                    int r2 = (int) (Math.random() * (10));
+                    long now = System.currentTimeMillis();//一个13位的时间戳
+                    String paymentID = String.valueOf(r1) + String.valueOf(r2) + String.valueOf(now);// 订单ID
+
+                    OrderDialog orderDialog = new OrderDialog(SubmitOrderActivity.this);
+                    orderDialog.setGoodsName1(goodsName.getText().toString());
+                    orderDialog.setGoodsName2(goodsName.getText().toString());
+                    orderDialog.setGoodsType(goodsType.getText().toString());
+                    orderDialog.setGoodsUnitPrice(goodsUnitPrice.getText().toString());
+                    orderDialog.setAmount(endCount.getText().toString());
+                    orderDialog.setPay1(payment.getText().toString());
+                    orderDialog.setPay2(payment.getText().toString());
+                    orderDialog.setUsername(username.getText().toString());
+                    orderDialog.setTelephone(telephone.getText().toString());
+                    orderDialog.setAddress(address.getText().toString());
+                    orderDialog.setImage(image, SubmitOrderActivity.this);
+                    orderDialog.setTimeNow(timeNow);
+                    orderDialog.setNumber(paymentID);
+                    orderDialog.show();
+                    orderDialog.setCancel("cancel", new OrderDialog.IOnCancelListener() {
+                        @Override
+                        public void onCancel(OrderDialog dialog) {
+                            Toast.makeText(SubmitOrderActivity.this, "取消成功", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(SubmitOrderActivity.this, TicketActivity.class);
+                            intent.putExtra("num", "0");
+                            startActivity(intent);
+                        }
+                    });
+                    orderDialog.setGoto("back", new OrderDialog.IOnGotoListener() {
+                        @Override
+                        public void onGoto(OrderDialog dialog) {
+                            Intent intent = new Intent(SubmitOrderActivity.this, TicketActivity.class);
+                            intent.putExtra("num", "0");
+                            startActivity(intent);
+                        }
+                    });
+                    orderDialog.setConfirm("pay", new OrderDialog.IOnConfirmListener() {
+                        @Override
+                        public void onConfirm(OrderDialog dialog) {
+                            Toast.makeText(SubmitOrderActivity.this, "付款成功", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(SubmitOrderActivity.this, TicketActivity.class);
+                            intent.putExtra("num", "0");
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         });
@@ -203,7 +240,6 @@ public class SubmitOrderActivity extends AppCompatActivity {
             address.setText(addressInfo);
         }
     }
-
 
     @Override
     public void finish() {
@@ -234,7 +270,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
     }
 
     //悬浮按钮配置
-    public void initFloatActionButton() {
+    public void initFloatActionButton () {
         floatingActionButton1 = findViewById(R.id.floatingActionButton1);
         floatingActionButton2 = findViewById(R.id.floatingActionButton2);
         floatingActionButton3 = findViewById(R.id.floatingActionButton3);
@@ -275,7 +311,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
         });
     }
 
-    private void initTimePicker() {//Dialog 模式下，在底部弹出
+    private void initTimePicker (){//Dialog 模式下，在底部弹出
 
         pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
             @Override
@@ -322,4 +358,5 @@ public class SubmitOrderActivity extends AppCompatActivity {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         return format.format(date);
     }
+
 }

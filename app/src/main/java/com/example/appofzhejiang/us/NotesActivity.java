@@ -42,7 +42,7 @@ public class NotesActivity extends AppCompatActivity {
 
     private Dialog mShareDialog;
     private ImageButton button;
-    private ImageView imageView,imageView2;
+    private ImageView imageView, imageView2;
     private Toolbar toolbar;
     private List<ImageView> imageViews;
 
@@ -70,7 +70,7 @@ public class NotesActivity extends AppCompatActivity {
                         Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.
                         PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(NotesActivity.this, new
-                            String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE }, 1);
+                            String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 } else {
 
                     openAlbum();
@@ -87,7 +87,7 @@ public class NotesActivity extends AppCompatActivity {
             }
         });
 
-        toolbar=findViewById(R.id.setting_toolbar);
+        toolbar = findViewById(R.id.setting_toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,47 +144,47 @@ public class NotesActivity extends AppCompatActivity {
     private void handleImageOnKitKat(Intent data) {
         String imagePath = null;
         Uri uri = data.getData();
-        if(DocumentsContract.isDocumentUri(this,uri)){
+        if (DocumentsContract.isDocumentUri(this, uri)) {
             //如果是document类型的Uri，则通过documentID处理
             String docId = DocumentsContract.getDocumentId(uri);
-            if("com.android.providers.media.documents".equals(uri.getAuthority())){
+            if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
                 String id = docId.split(":")[1];
-                String selection = MediaStore.Images.Media._ID+"="+id;
+                String selection = MediaStore.Images.Media._ID + "=" + id;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    imagePath = getImagePath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,selection);
+                    imagePath = getImagePath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, selection);
                 }
-            }else if("com.android.providers.downloads.document".equals(uri.
-                    getAuthority())){
-                Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloas"),Long.valueOf(docId));
+            } else if ("com.android.providers.downloads.document".equals(uri.
+                    getAuthority())) {
+                Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloas"), Long.valueOf(docId));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    imagePath = getImagePath(contentUri,null);
+                    imagePath = getImagePath(contentUri, null);
                 }
             }
-        }else if("content".equalsIgnoreCase(uri.getScheme())){
+        } else if ("content".equalsIgnoreCase(uri.getScheme())) {
             imagePath = uri.getPath();
         }
         displayImage(imagePath);
     }
 
     private void displayImage(String imagePath) {
-        if(imagePath != null){
+        if (imagePath != null) {
             Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
             imageView.setImageBitmap(bitmap);
-            if(imageView.getVisibility() == View.INVISIBLE){
+            if (imageView.getVisibility() == View.INVISIBLE) {
                 imageView.setVisibility(View.VISIBLE);
             }
-        }else{
+        } else {
             Toast.makeText(this, "failed to get image", Toast.LENGTH_SHORT).show();
         }
     }
 
 
     private String getImagePath(Uri externalContentUri, String selection) {
-        String path =null;
+        String path = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             Cursor cursor = getContentResolver().query(externalContentUri, null, selection, null, null);
-            if(cursor != null){
-                if(cursor.moveToFirst()){
+            if (cursor != null) {
+                if (cursor.moveToFirst()) {
                     path = cursor.getString(cursor.getColumnIndex(MediaStore.
                             Images.Media.DATA));
                 }
@@ -200,6 +200,7 @@ public class NotesActivity extends AppCompatActivity {
         }
         mShareDialog.show();
     }
+
     /**
      * 初始化分享弹出框
      */
