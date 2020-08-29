@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/tourism_publicity_title" />
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="12dp"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2020年08月13日 04:39:21 "
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="来源： 浙江在线-浙江日报 记者 王国锋"
+                            android:textSize="16dp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#ccc"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="　浙江在线8月13日讯（浙江在线记者 王国锋）由国家文物局、省政府主办的“2020丝绸之路周”展览，正在中国丝绸博物馆展出。12日，省领导车俊、陈金彪、朱国贤参观展览。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="在上百件（组）文物精品和文献资料前，车俊一行细细驻足观看，不时询问有关情况。车俊说，古丝绸之路不仅是一条商贸通道，更是一条东西方文化交流的纽带。浙江作为古丝绸之路的重要起点之一，要深入学习贯彻习近平总书记关于“一带一路”建设的重要论述精神，坚决扛起“三个地”和“重要窗口”的使命担当，传承和弘扬丝路精神，牢固树立开放强省的鲜明导向，把握机遇、发挥优势，以“一带一路”统领我省新一轮对外开放，打造“一带一路”重要枢纽，勇当“一带一路”建设排头兵。车俊要求中国丝绸博物馆用足用好“2020丝绸之路周”的红利，努力打造成为浙江联接世界的重要国际人文交流基地。"
+                    android:textSize="16dp" />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="据了解，“丝绸之路周”由浙江省首次举办。此次展览为“2020丝绸之路周”的重要内容，共分“众望同归：丝绸之路的前世今生”和“一花一世界：丝绸之路上的互学互鉴”两大部分，详细介绍了丝绸之路的形成和发展，生动讲述了丝路故事，具有较强的历史文化内涵和艺术观赏价值。展览自6月中旬开展以来，吸引了205多万人线上线下参观，将于8月23日结束。"
+                    android:textSize="16dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="责任编辑： 叶露"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="right" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

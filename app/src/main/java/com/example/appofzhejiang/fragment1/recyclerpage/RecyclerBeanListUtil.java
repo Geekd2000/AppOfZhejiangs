@@ -42,7 +42,7 @@ public class RecyclerBeanListUtil {
             sendRequest("http://120.26.172.104:9002/web/findDestinationByType?type=旅游攻略");
         } else if (RecyclerType.NEWS.equals(this.type)) {
             sendRequest("http://120.26.172.104:9002/web/findDestinationByType?type=专题新闻");
-        } else if (this.type == null) {
+        } else {
             sendRequest("http://120.26.172.104:9002/web/findAllDestination");
         }
     }

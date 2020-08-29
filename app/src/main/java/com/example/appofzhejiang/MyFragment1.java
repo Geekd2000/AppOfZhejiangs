@@ -8,7 +8,13 @@ import android.content.pm.PackageManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.appofzhejiang.fragment1.bannerpic.BannerPorcelainActivity;
+import com.example.appofzhejiang.fragment1.bannerpic.BannerSilkActivity;
+import com.example.appofzhejiang.fragment1.bannerpic.BannerTeaActivity;
 import com.example.appofzhejiang.fragment1.beautifulzj.BeautifulZJActivity;
+import com.example.appofzhejiang.fragment1.hotstrategy.HotStrategy1Activity;
+import com.example.appofzhejiang.fragment1.hotstrategy.HotStrategy2Activity;
+import com.example.appofzhejiang.fragment1.hotstrategy.HotStrategy3Activity;
 import com.example.appofzhejiang.fragment1.util.LocalImageLoader;
 import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerBean;
 import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerBeanListUtil;
@@ -82,10 +88,6 @@ public class MyFragment1 extends Fragment {
     private List<String> imagesTile; // 轮播图标题
     private LocalImageLoader localImageLoader; // 轮播图Loder
     private Banner banner; // 轮播图板块
-    private ImageView hotImageView1; // 热门攻略1
-    private ImageView hotImageView2; // 热门攻略2
-    private ImageView hotImageView3; // 热门攻略3
-    private View strategyMore; // 热门攻略->更多
     private View culturePoemZJView; // 诗画浙江
     private View cultureHeritageView; // 文化遗产
     private View cultureDramaView; // 戏剧文化
@@ -95,6 +97,16 @@ public class MyFragment1 extends Fragment {
     private View festivalView; // 传统节日
     private View historyView; // 历史沿革
     private View beautifulZJView; // 最美浙江
+    private ImageView hotImageView1; // 热门攻略 图1
+    private ImageView hotImageView2; // 热门攻略 图2
+    private ImageView hotImageView3; // 热门攻略 图3
+    private TextView hotImage1Title; // 热门攻略 标题1
+    private TextView hotImage2Title; // 热门攻略 标题2
+    private TextView hotImage3Title; // 热门攻略 标题3
+    private View hotStrategy1; // 热门攻略1
+    private View hotStrategy2; // 热门攻略2
+    private View hotStrategy3; // 热门攻略3
+    private View strategyMore; // 热门攻略->更多
 
 
 
@@ -223,6 +235,7 @@ public class MyFragment1 extends Fragment {
             @Override
             public void run() {
                 if (isVisibility == null || "".equals(isVisibility.trim())) {
+                    // 如果没有数据，说明没有被操作过，则显示；否则不显示。默认不显示
                     View littleCloseView = view.findViewById(R.id.little_zj_close);
                     View littleFindView = view.findViewById(R.id.little_zj_find);
                     littleRemindView.setVisibility(View.VISIBLE);
@@ -242,8 +255,6 @@ public class MyFragment1 extends Fragment {
                         }
                     });
 
-                } else {
-                    // 如果有数据就不显示，默认不显示
                 }
             }
         });
@@ -348,10 +359,16 @@ public class MyFragment1 extends Fragment {
      * 获取热点攻略的图片
      */
     private void getHotStrategyView() {
-        hotImageView1 = view.findViewById(R.id.strategy_hot1);
-        hotImageView2 = view.findViewById(R.id.strategy_hot2);
-        hotImageView3 = view.findViewById(R.id.strategy_hot3);
+        hotImageView1 = view.findViewById(R.id.strategy_hot_img1);
+        hotImageView2 = view.findViewById(R.id.strategy_hot_img2);
+        hotImageView3 = view.findViewById(R.id.strategy_hot_img3);
         strategyMore = view.findViewById(R.id.stratrgy_more);
+        hotImage1Title = view.findViewById(R.id.hot_img1_title);
+        hotImage2Title = view.findViewById(R.id.hot_img2_title);
+        hotImage3Title = view.findViewById(R.id.hot_img3_title);
+        hotStrategy1 = view.findViewById(R.id.strategy_hot1);
+        hotStrategy2 = view.findViewById(R.id.strategy_hot2);
+        hotStrategy3 = view.findViewById(R.id.strategy_hot3);
     }
     private void setHotStrategy() {
         strategyMore.setOnClickListener(new View.OnClickListener() {
@@ -363,12 +380,38 @@ public class MyFragment1 extends Fragment {
                 startActivity(intent);
             }
         });
+        hotStrategy1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), HotStrategy1Activity.class);
+                intent.putExtra("currentCity", currentCity);
+                startActivity(intent);
+            }
+        });
+        hotStrategy2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), HotStrategy2Activity.class);
+                intent.putExtra("currentCity", currentCity);
+                startActivity(intent);
+            }
+        });
+        hotStrategy3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), HotStrategy3Activity.class);
+                intent.putExtra("currentCity", currentCity);
+                startActivity(intent);
+            }
+        });
 
         List<RecyclerBean> recyclerBeanList = new RecyclerBeanListUtil(currentCity,RecyclerType.STRATEGY).getRecyclerBeanList();
         List<String> urls = new LinkedList<>();
+        List<String> titles = new LinkedList<>();
         for(int i = 0; i < 3; i ++) {
             RecyclerBean bean = recyclerBeanList.get(i);
             urls.add(bean.getPictures());
+            titles.add(bean.getTitle());
         }
         Glide.with(getContext())
                 .load(urls.get(0))
@@ -382,6 +425,9 @@ public class MyFragment1 extends Fragment {
                 .load(urls.get(2))
                 .dontAnimate()
                 .into(hotImageView3);
+        hotImage1Title.setText(titles.get(0));
+        hotImage2Title.setText(titles.get(1));
+        hotImage3Title.setText(titles.get(2));
     }
 
 
@@ -638,13 +684,19 @@ public class MyFragment1 extends Fragment {
                             startActivity(intent0);
                             break;
                         case 1:
-
+                            Intent intent1 = new Intent(getActivity(), BannerSilkActivity.class);
+                            intent1.putExtra("currentCity", currentCity);
+                            startActivity(intent1);
                             break;
                         case 2:
-
+                            Intent intent2 = new Intent(getActivity(), BannerTeaActivity.class);
+                            intent2.putExtra("currentCity", currentCity);
+                            startActivity(intent2);
                             break;
                         case 3:
-
+                            Intent intent3 = new Intent(getActivity(), BannerPorcelainActivity.class);
+                            intent3.putExtra("currentCity", currentCity);
+                            startActivity(intent3);
                             break;
                     }
                 }

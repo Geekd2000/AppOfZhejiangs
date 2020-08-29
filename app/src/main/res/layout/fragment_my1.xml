@@ -561,15 +561,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/strategy_hot1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <com.makeramen.roundedimageview.RoundedImageView
-                        android:id="@+id/strategy_hot1"
+                        android:id="@+id/strategy_hot_img1"
                         android:layout_width="110dp"
                         android:layout_height="140dp"
                         android:scaleType="centerCrop"
@@ -577,10 +579,13 @@
                         app:riv_corner_radius="10dp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/hot_img1_title"
+                        android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="5dp"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:text="西湖一日游"
                         android:textColor="#101318"
                         android:textSize="16dp" />
@@ -589,33 +594,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14dp"
+                            android:text="推荐指数：" />
 
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginLeft="-2dp"
+                            android:layout_marginTop="3dp"
                             android:src="@drawable/hot" />
 
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginTop="3dp"
                             android:layout_marginLeft="2dp"
                             android:src="@drawable/hot" />
 
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_marginLeft="2dp"
-                            android:src="@drawable/hot" />
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_marginLeft="2dp"
-                            android:src="@drawable/hot" />
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginTop="3dp"
                             android:layout_marginLeft="2dp"
                             android:src="@drawable/hot" />
 
@@ -624,6 +626,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/strategy_hot2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -631,7 +634,7 @@
                     android:orientation="vertical">
 
                     <com.makeramen.roundedimageview.RoundedImageView
-                        android:id="@+id/strategy_hot2"
+                        android:id="@+id/strategy_hot_img2"
                         android:layout_width="110dp"
                         android:layout_height="140dp"
                         android:scaleType="centerCrop"
@@ -639,11 +642,14 @@
                         app:riv_corner_radius="10dp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/hot_img2_title"
+                        android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="5dp"
                         android:text="西湖一日游"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:textColor="#101318"
                         android:textSize="16dp" />
 
@@ -652,32 +658,30 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14dp"
+                            android:text="推荐指数：" />
+
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginLeft="-2dp"
+                            android:layout_marginTop="3dp"
                             android:src="@drawable/hot" />
 
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginTop="3dp"
                             android:layout_marginLeft="2dp"
                             android:src="@drawable/hot" />
 
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_marginLeft="2dp"
-                            android:src="@drawable/hot" />
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_marginLeft="2dp"
-                            android:src="@drawable/hot" />
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginTop="3dp"
                             android:layout_marginLeft="2dp"
                             android:src="@drawable/hot" />
 
@@ -686,12 +690,13 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/strategy_hot3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <com.makeramen.roundedimageview.RoundedImageView
-                        android:id="@+id/strategy_hot3"
+                        android:id="@+id/strategy_hot_img3"
                         android:layout_width="110dp"
                         android:layout_height="140dp"
                         android:scaleType="centerCrop"
@@ -699,11 +704,14 @@
                         app:riv_corner_radius="10dp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/hot_img3_title"
+                        android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="5dp"
                         android:text="西湖一日游"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:textColor="#101318"
                         android:textSize="16dp" />
 
@@ -712,35 +720,32 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14dp"
+                            android:text="推荐指数：" />
+
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginLeft="-2dp"
+                            android:layout_marginTop="3dp"
                             android:src="@drawable/hot" />
 
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginTop="3dp"
                             android:layout_marginLeft="2dp"
                             android:src="@drawable/hot" />
 
                         <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:layout_marginTop="3dp"
                             android:layout_marginLeft="2dp"
                             android:src="@drawable/hot" />
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_marginLeft="2dp"
-                            android:src="@drawable/hot" />
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_marginLeft="2dp"
-                            android:src="@drawable/hot" />
-
 
                     </LinearLayout>
                 </LinearLayout>

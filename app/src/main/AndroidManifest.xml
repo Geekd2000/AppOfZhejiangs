@@ -31,8 +31,12 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
 
-
-
+        <activity android:name=".fragment1.hotstrategy.HotStrategy3Activity" />
+        <activity android:name=".fragment1.hotstrategy.HotStrategy2Activity" />
+        <activity android:name=".fragment1.hotstrategy.HotStrategy1Activity" />
+        <activity android:name=".fragment1.bannerpic.BannerTeaActivity" />
+        <activity android:name=".fragment1.bannerpic.BannerSilkActivity" />
+        <activity android:name=".fragment1.bannerpic.BannerPorcelainActivity" />
         <activity android:name=".fragment1.beautifulzj.BeautifulZJActivity" />
         <activity android:name=".fragment1.tourismculture.TourismCulturePoemZJActivity" />
         <activity android:name=".fragment1.tourismculture.TourismCultureHeritageActivity" />

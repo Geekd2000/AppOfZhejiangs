@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.appofzhejiang.R;
 
 import java.util.List;
@@ -33,13 +36,13 @@ public class BeautifulPictureAdapter extends RecyclerView.Adapter<ViewHolder> {
         final ViewHolder viewHolder = new ViewHolder(view);
 
         // 注册点击事件 start
-        viewHolder.getHotelView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int position = viewHolder.getAdapterPosition();
-                BeautifulPicture hotel = bpList.get(position);
-            }
-        });
+//        viewHolder.getHotelView().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int position = viewHolder.getAdapterPosition();
+//                BeautifulPicture hotel = bpList.get(position);
+//            }
+//        });
         // 注册点击事件 end
 
         return viewHolder;
@@ -48,10 +51,14 @@ public class BeautifulPictureAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BeautifulPicture bp = bpList.get(position);
-
-
         if(context != null) {
-            Glide.with(context).load(bp.getUrl()).centerCrop().dontAnimate().into(holder.getImageView());
+            Glide.with(context)
+                    .load(bp.getPicture())
+                    .centerCrop()
+                    .skipMemoryCache(true)
+                    .diskCacheStrategy(DiskCacheStrategy.DATA)
+                    .dontAnimate()
+                    .into(holder.getImageView());
         }
        holder.getTextView().setText(bp.getIntroduction());
     }
@@ -60,6 +67,8 @@ public class BeautifulPictureAdapter extends RecyclerView.Adapter<ViewHolder> {
     public int getItemCount() {
         return bpList.size();
     }
+
+
 }
 
 class ViewHolder extends RecyclerView.ViewHolder {

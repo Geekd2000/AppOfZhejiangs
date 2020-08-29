@@ -2,7 +2,10 @@ package com.example.appofzhejiang.fragment1.beautifulzj;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,11 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.alibaba.fastjson.JSON;
+import com.bumptech.glide.Glide;
 import com.example.appofzhejiang.R;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -56,6 +62,7 @@ public class BeautifulZJActivity extends AppCompatActivity {
         adapter = new BeautifulPictureAdapter(bpList, getApplicationContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
+
         // RecyclerView end
 
         // 实现下拉刷新 start
@@ -73,13 +80,7 @@ public class BeautifulZJActivity extends AppCompatActivity {
 
     private void initBPList() {
         bpList.clear();
-        for (int i = 0; i < 100; i++) {
-            BeautifulPicture bp = new BeautifulPicture();
-            bp.setUrl("http://120.26.172.104:8080/picture/des-picture/hz-pic/hz_pic1.png");
-            bp.setIntroduction("漂亮极了");
-            bpList.add(bp);
-        }
-//        bpList = getPictures("");
+        bpList = getPictures("http://120.26.172.104:9002/web/findPicture");
     }
 
     private List<BeautifulPicture> getPictures(String url) {
@@ -126,7 +127,6 @@ public class BeautifulZJActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         initBPList();
-                        adapter.notifyDataSetChanged();
                         swipeRefresh.setRefreshing(false); // 刷新事件结束，并隐藏刷新进度条。
                     }
                 });

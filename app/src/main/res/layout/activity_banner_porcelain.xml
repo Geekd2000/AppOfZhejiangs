@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/tourism_publicity_title" />
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_gravity="top"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="-10dp"
+                android:src="@drawable/banner_chinaware_img1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="浙江省博物馆坐落于西湖湖畔，经过断桥，旁边是孤山公园，沿着湖再往前走就是白堤，风景美不胜收，阳光洒洒，波光粼粼，驾着小船，远处传来雷峰塔上钟声，仿佛在诉说着许仙与白素贞凄美的爱情故事。"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/banner_chinaware_img2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="在这样一个风景优美的环境里，在这样一个感人的爱情故事下，我们讲一讲瓷器，越往南走越能感觉到南方人的细腻，柔和，就像他们的器物一样，不再是厚重一样的青铜，不再是精美一样的璞玉，而是变成了一件件 光泽 亮丽的瓷器，一件件炫彩夺目的漆器。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="上山文化"
+                    android:paddingLeft="10dp"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="上山文化，是迄今为止 浙江 境内发掘并命名的时代最早的一处新石器时代文化，年代距今8400年至11400年，本世纪初发现于 浦江 黄宅镇上山而命名。这里出土的陶器有大口盆、平底盘、双耳罐等，尽管稚拙原始，确实目前所知 浙江 最古老的陶器。遗址出土的夹碳陶片中发现了较多的稻壳、稻叶痕迹，成为探索稻作起源的重要依据。其文化内涵和制陶技术被河姆渡等史前文化继承和发展。"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/banner_chinaware_img3" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="双耳陶罐"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="山上遗址出土，粗泥红陶，表面施红色陶衣，为一种储食器类。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:text="跨桥湖文化"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="跨湖桥文化，距今7000到8000年，上世纪九十年代初发现于 杭州 萧山 跨湖桥，是钱塘 江南 岸又一处重要的史前文化。跨湖桥遗址出土了大量的陶器、骨器、木器、石器，以及人工栽培水稻等文物。跨湖桥文化的陶器，仍以原始的泥条盘筑法为主，比上山文化已有显著的进步。"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/banner_chinaware_img4" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="大口双耳罐（跨桥湖遗址出土）"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="河姆渡文化"
+                    android:paddingLeft="10dp"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="河姆渡文化，是分布于 杭州 湾南岸宁绍平原及 舟山 群岛的新石器时代文化，其年代距今6000年至7000年，因以 余姚 河姆渡村遗址发掘最早而得名。河姆渡遗址自上世纪七十年代发现以来，经过多次考古发掘和多学科综合研究，充分揭示了其文化内涵和重要价值，成为研究稻作农业、制陶技术及干栏式建筑的文化宝库，在 浙江 乃至整个 江南 地区新石器考古中具有坐标式的意义。"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/banner_chinaware_img5" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="河姆渡遗址出土的黑陶"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="马家浜文化"
+                    android:paddingLeft="10dp"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="马家浜文化，银 嘉兴 马家浜遗址而得名，分布在 太湖 周边的浙北与苏南一带，距今6000至7000年，上世纪70年代发现并命名，是 浙江 境内钱塘江北岸最早的一处新石器时代文化。其时代和制陶技术与河姆渡文化相对应。所出陶器均为手制，以夹砂陶为主，泥质陶器很少，陶色欠纯正，不事装饰，烧成温度也不高。"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/banner_chinaware_img7" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="夹砂红陶单把罐"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="崧泽文化"
+                    android:paddingLeft="10dp"
+                    android:textColor="#fb3939"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="崧泽文化，距今5300年之6000年，是新石器时代中晚期的一处史前文化，因首次发现于 上海 市 青浦 区崧泽村而命名，崧泽文化上承马家浜文化，下启良渚文化，是浙北 太湖 流域重要的文化阶段。崧泽时期的制陶业有了长足的发展，不见熟练掌握了轮制技术，使器型规整，器壁均薄，而且对烧成火候也能把握自如，能根据需要使陶器变红或变灰。同时出现了一种灰胎黑衣陶，灰胎表面微小的空隙为黑衣所覆盖，是器物显得光洁美丽，且具有不渗水的特点。"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/banner_chinaware_img8" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="陶鼎"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="良渚文化"
+                    android:textColor="#fb3939"
+                    android:paddingLeft="10dp"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="良渚文化，因1936年发现于 余杭 良渚而得名，距今4000年到5000年历史，是我国新石器时代晚期一处著名的史前文化，其遗址分布在长江下游的 太湖 流域。良渚文化时期已有了成熟的犁耕农业，精美的黑陶制作，品种丰富，形制规整，胎质细腻，色泽素雅，尤以磨光黑皮陶最具特色。娴熟的轮制技术使每一件器物的制作得心应手，实用美观，给人以宁静沉穆之感。它们无疑代表了 浙江 史前制陶业的最高水平，同时与仰韶文化彩陶南北辉映，成为我国新时器时代制陶业两座并峙的高峰。"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/banner_chinaware_img9" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="黑陶双鼻壶"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

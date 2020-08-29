@@ -23,10 +23,10 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
-                android:layout_gravity="top"
                 android:scaleType="centerCrop"
+                android:layout_gravity="top"
                 android:layout_marginTop="-10dp"
-                android:src="@drawable/culture_area" />
+                android:src="@drawable/hot_strategy_pic1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="初识杭州 | 地域概况"
+                    android:text="初识杭州 | 民俗风情"
                     android:textColor="#000"
                     android:textSize="22dp"
                     android:textStyle="bold" />
@@ -80,21 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="杭州，简称“杭”，古称临安、钱塘，杭州是环杭州湾大湾区核心城市、沪嘉杭G60科创走廊中心城市、国际重要的电子商务中心。杭州人文古迹众多，西湖及其周边有大量的自然及人文景观遗迹，具代表性的有西湖文化、良渚文化、丝绸文化、茶文化，以及流传下来的许多故事传说。"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="杭州自秦朝设县治以来已有2200多年的历史，曾是吴越国和南宋的都城。因风景秀丽，素有“人间天堂”的美誉。"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="地形地貌"
+                    android:text="余杭滚灯"
                     android:textColor="#fb3939"
                     android:textSize="20dp" />
 
@@ -102,14 +88,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="杭州地处长江三角洲南沿和钱塘江流域，地形复杂多样。杭州市西部属浙西丘陵区，主干山脉有天目山等。东部属浙北平原，地势低平，河网密布，湖泊密布，物产丰富，具有典型的“江南水乡”特征。"
+                    android:text="余杭滚灯源于浙江余杭翁梅一带，流传至今已有八百余年历史，是节庆和灯会期间表演的具有强烈竞技特点的民间舞蹈。"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="气候"
+                    android:text="南宋诗人范成大在诗作《上元纪吴中节物俳谐体三十二韵》中曾对滚灯作如下描绘：“掷烛腾空稳，推球滚地轻”，可见南宋时滚灯就已流行。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="余杭处杭州近郊，南宋时为京畿之地，各种庙会活动频繁，滚灯做为旧时俗节迎会仪仗队伍中必出的特色节目，自然十分盛行。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="西湖绸伞制作技艺"
                     android:textColor="#fb3939"
                     android:textSize="20dp" />
 
@@ -117,14 +117,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="杭州处于亚热带季风区，属于亚热带季风气候，四季分明，雨量充沛。全年平均气温17.8℃，平均相对湿度70.3%，年降水量1454毫米，年日照时数1765小时。夏季气候炎热，湿润，是新四大火炉之一。相反，冬季寒冷，干燥。春秋两季气候宜人，是观光旅游的黄金季节。"
+                    android:text="西湖绸伞是杭州特有的传统手工艺品，既实用又具有观赏性。西湖绸伞，以竹作骨，以绸张面，轻巧悦目，式样美观，携带方便，素有“西湖之花”的美称。"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="风景名胜"
+                    android:text="西湖绸伞创制于1932年，当时杭州都锦生丝织厂的艺人受日本绢伞的启发，采用杭嘉湖特有的丝绸及富阳出产的淡竹制作，经刷花工艺把西湖风景图案装饰在伞面上，获得成功，故称西湖绸伞，当时，尤以著名艺人竹振斐的制伞工艺最为出色。"
+                    android:textSize="16dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="武林活拳"
                     android:textColor="#fb3939"
                     android:textSize="20dp" />
 
@@ -132,38 +140,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="杭州拥有两个国家级风景名胜区——西湖风景名胜区、“两江两湖”（富春江——新安江——千岛湖——湘湖）风景名胜区；两个国家级自然保护区——天目山、清凉峰自然保护区；七个国家森林公园——千岛湖、大奇山、午潮山、富春江、青山湖、半山和桐庐瑶琳森林公园；一个国家级旅游度假区——之江国家旅游度假区；全国首个国家级湿地——西溪国家湿地公园。"
+                    android:text="武林活拳系当代武术大师何长海在继承中华传统武术的基础上所创。何长海祖籍浙江诸暨，自幼在杭州居住并遍访名师。"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="著名的旅游胜地有瑶琳仙境、桐君山、雷峰塔、岳庙、三潭映月、苏堤、六和塔、宋城、南宋御街、灵隐寺、跨湖桥遗址等。2011年6月24日，杭州西湖正式列入《世界遗产名录》。"
+                    android:text="师承武术名家刘百川（曾为孙中山、蒋介石保镖，黄埔军校武术教官），1930年在浙江国术馆又得到杨澄甫、田兆先、黄元秀、高振东、李景林等著名武术大师真传，集少林、武当造诣于一身。"
                     android:textSize="16dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="旅行季节"
-                    android:textColor="#fb3939"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="杭州气候温暖湿润，四季分明。每年3月-4月春暖花开，是旅游的旺季，气温在9－15℃之间，也是旅游的最好季节。9月-10月天气转凉，秋高气爽，但中秋以后常有较强的冷空气活动，应多备些衣服，一定要备好雨伞。"
-                    android:textSize="16dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="杭州一年四季都有不同景致，如春天的柳浪闻莺，夏天的曲院风荷，秋天的平湖秋月，冬天的断桥残雪。但作为江南城市，春天可看的景色最多。"
-                    android:textSize="16dp" />
 
             </LinearLayout>
+
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

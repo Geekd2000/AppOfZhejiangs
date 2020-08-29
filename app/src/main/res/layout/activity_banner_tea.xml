@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/tourism_publicity_title" />
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="top"
+                android:layout_marginTop="-10dp"
+                android:src="@drawable/index_tea" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="12dp"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/tourismstrategy_img" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="全域旅游攻略组"
+                            android:textColor="#000"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2020-08-10"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="浙江十大名茶"
+                    android:textColor="#000"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="浙江是中国最大的产茶省份之一。茶叶是浙江具有明显优势的农业主导产业。2003年全省茶园面积214.5万亩，茶叶产量13.3万吨、产值32.6亿元；其中名优茶产量4.0万吨、产值29.7亿元。名优茶已成为浙江茶叶产业经济的支撑，为实现浙山区农业经济的持续增长起到了积极的推动作用，也为我国茶叶产业发展和世界绿茶贸易作出了贡献。"
+                    android:textColor="#333"
+                    android:textSize="20dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#000"
+                    android:text="1、大佛龙井"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="佛龙井茶产于中国名茶之乡新昌县。大佛龙井茶高香甘醇，经久耐泡，具典型高山茶风味。产品曾多次荣获全国、省农业名牌产品，全国农博会、茶博会金奖，获全国绿色农产品（基地）认证。大佛龙井茶已覆盖全国20多个省市，品牌信誉和知名度不断提高。新昌县将进一步把茶叶作为战略性主导产业加以培育发展，大佛龙井茶发展环境良好，市场前景广阔。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#000"
+                    android:text="2、开化龙顶"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="开化龙顶茶产于钱塘江源头开化县，是国家级生态示范园，国家无公害茶叶示范基地先进县和中国龙顶名茶之乡，开化龙顶茶外形紧直挺秀，银绿披毫，内质香高持久，鲜醇甘爽，杏绿清澈，匀齐成朵，具有干茶色绿，汤水清绿，叶底鲜绿的三绿特征。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="在明崇祯四年（公元1631年）被列为贡品。开化龙顶茶自1985年被评为中国名茶以来，曾40次获中国国际农博会“国际名茶” 金奖和全国无公害绿色食品，浙江省名牌产品称号。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#000"
+                    android:text="3、安吉白茶"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="安吉白茶产于黄浦江源头的浙西北天目山山麓。生态环境优越，品质特异，成茶外形细紧，形如凤羽。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="2001年获国家工商总局原产地证明和浙江省名牌产品，2002年获省、市著名商标，2003年获浙江省名茶证书，2004年4月获国家质检总局原产地地域产品保护，历年来多次参加省市级名优新产品评比，均获金奖。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#000"
+                    android:text="4、武阳春雨"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="“一夕轻雷落万丝”，武阳春雨茶产于武义县，境内峰峦叠嶂，山清水秀。优越的自然环境造就了武阳春雨茶纯天然、无污染的先天品质。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#000"
+                    android:text="5、西湖龙井"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="西湖龙井茶始于宋，闻于元，扬于明，盛于清，古称龙井茶，是西子湖畔一棵灿烂的明珠，它孕育于得天独厚的自然环境间，凝西湖山水之精华，聚中华茶人之智慧，具有悠久的历史和丰富的文化内涵。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#000"
+                    android:text="6、金奖惠明茶"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="金奖惠明茶产于景宁畲族自治县惠明山脉，产地雨量充沛，林木葱茏，云雾弥漫。惠明茶，自唐代开始种植，已有1200余年历史，"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="金奖惠明茶1915年获巴拿马万国博览会一等证书和金质奖章，成为我国赞誉最高的饮品之一。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#000"
+                    android:text="7、松阳银猴"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="松阳银猴产于国家级生态示范区——浙南山区，银猴山兰，银猴龙剑，银猴白茶，银猴香茶等名茶系列品质优异，饮之心旷神怡，回味无穷，被誉为“茶中瑰宝”，在国内茶事大赛中多次获奖。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#000"
+                    android:text="8、望海茶"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="望海茶1980年开始创制，1984年获浙江省级名茶证书，为宁波市最早的省级名茶，产于宁波市唯一的国家级生态示范园——宁海县城。"
+                    android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="获中国国际农业博览会名牌产品、浙江农业博览会金奖。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#000"
+                    android:text="9、绿剑茶"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="绿剑茶原料采自无污染的生态茶园，采用手工与机械相结合的方法，按无公害或有机茶标准生产，成品茶形如绿色宝剑。"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#000"
+                    android:text="10、径山茶"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#333"
+                    android:text="径山茶文化底蕴浓厚 。唐代陆羽曾隐居山径东麓著《茶经》，宋时径山盛行“茶宴”，后传至日本，逐步发展成日本“茶道”，故径山又有“茶圣著经之地。"
+                    android:textSize="16dp" />
+
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

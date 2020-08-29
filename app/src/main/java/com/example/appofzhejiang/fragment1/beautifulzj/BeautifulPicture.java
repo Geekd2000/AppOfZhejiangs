@@ -1,23 +1,23 @@
 package com.example.appofzhejiang.fragment1.beautifulzj;
 
 public class BeautifulPicture {
-    private String url;
+    private String picture;
     private String introduction;
 
     public BeautifulPicture() {
     }
 
-    public BeautifulPicture(String url, String introduction) {
-        this.url = url;
+    public BeautifulPicture(String picture, String introduction) {
+        this.picture = picture;
         this.introduction = introduction;
     }
 
-    public String getUrl() {
-        return url;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public String getIntroduction() {

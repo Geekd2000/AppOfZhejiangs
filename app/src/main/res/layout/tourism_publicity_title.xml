@@ -20,7 +20,9 @@
             android:layout_gravity="center"
             android:text="标题"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:singleLine="true"
+            android:ellipsize="end"/>
 
     </androidx.appcompat.widget.Toolbar>
 
