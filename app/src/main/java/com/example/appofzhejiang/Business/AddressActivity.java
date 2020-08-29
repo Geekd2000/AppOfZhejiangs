@@ -9,15 +9,20 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appofzhejiang.CustomDialog.CustomDialog;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.lljjcoder.citypickerview.widget.CityPicker;
@@ -31,8 +36,8 @@ public class AddressActivity extends AppCompatActivity {
     private EditText telephoneNumber;//手机号
     private EditText detailAddress;//详细地址
     private RadioButton mRadioButton;//默认地址单选按钮
-    private Button cancel;
-    private Button save;
+    private RelativeLayout addressPage;
+    private TextView save;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +60,7 @@ public class AddressActivity extends AppCompatActivity {
                 chooseArea(view);
             }
         });
-        //返回按钮
-        mBtnBack.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+
         //默认地址按钮设置选中和取消
         final GlobalValue globalValue = new GlobalValue();
         mRadioButton.setOnClickListener(new View.OnClickListener() {
@@ -78,13 +77,64 @@ public class AddressActivity extends AppCompatActivity {
                 globalValue.setCheck(!isCheck);
             }
         });
-        //取消按钮,返回上一页
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        //toolbar返回按钮
+        if (TextUtils.isEmpty(receiveName.getText().toString()) && TextUtils.isEmpty(telephoneNumber.getText().toString())
+                && TextUtils.isEmpty(newAddress.getText().toString()) && TextUtils.isEmpty(detailAddress.getText().toString())) {
+            mBtnBack.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+        } else {
+            mBtnBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    CustomDialog customDialog = new CustomDialog(AddressActivity.this);
+                    customDialog.setTitle("提示").setMessage("是否保存本次编辑结果")
+                            .setCancel("取消", new CustomDialog.IOnCancelListener() {
+                                @Override
+                                public void onCancel(CustomDialog dialog) {
+                                    // 若取消，就返回上一页
+                                    finish();
+                                }
+                            }).setConfirm("保存", new CustomDialog.IOnConfirmListener() {
+                        @Override
+                        public void onConfirm(CustomDialog dialog) {
+                            // 保存本条记录
+                            if (TextUtils.isEmpty(receiveName.getText().toString().trim())) {
+                                Toast.makeText(AddressActivity.this, "请输入收货人姓名", Toast.LENGTH_SHORT).show();
+                            } else if (TextUtils.isEmpty(telephoneNumber.getText().toString().trim())) {
+                                Toast.makeText(AddressActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
+                            } else if (TextUtils.isEmpty(newAddress.getText().toString().trim())) {
+                                Toast.makeText(AddressActivity.this, "请选择区域", Toast.LENGTH_SHORT).show();
+                            } else if (TextUtils.isEmpty(detailAddress.getText().toString().trim())) {
+                                Toast.makeText(AddressActivity.this, "请输入详细地址", Toast.LENGTH_SHORT).show();
+                            } else {
+                                boolean isCheck = globalValue.isCheck();
+                                if (isCheck == false) {
+                                    Intent intent = new Intent();
+                                    intent.putExtra("name", receiveName.getText().toString());
+                                    intent.putExtra("phone", telephoneNumber.getText().toString());
+                                    intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
+                                    intent.putExtra("select", "false");
+                                    setResult(RESULT_OK, intent);
+                                    finish();
+                                } else {
+                                    Intent intent = new Intent();
+                                    intent.putExtra("name", receiveName.getText().toString());
+                                    intent.putExtra("phone", telephoneNumber.getText().toString());
+                                    intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
+                                    intent.putExtra("select", "true");
+                                    setResult(RESULT_OK, intent);
+                                    finish();
+                                }
+                            }
+                        }
+                    }).show();
+                }
+            });
+        }
         //保存按钮,保存添加一条地址信息
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +149,7 @@ public class AddressActivity extends AppCompatActivity {
                     Toast.makeText(AddressActivity.this, "请输入详细地址", Toast.LENGTH_SHORT).show();
                 } else {
                     boolean isCheck = globalValue.isCheck();
-                    if(isCheck==false){
+                    if (isCheck == false) {
                         Intent intent = new Intent();
                         intent.putExtra("name", receiveName.getText().toString());
                         intent.putExtra("phone", telephoneNumber.getText().toString());
@@ -107,7 +157,7 @@ public class AddressActivity extends AppCompatActivity {
                         intent.putExtra("select", "false");
                         setResult(RESULT_OK, intent);
                         finish();
-                    }else{
+                    } else {
                         Intent intent = new Intent();
                         intent.putExtra("name", receiveName.getText().toString());
                         intent.putExtra("phone", telephoneNumber.getText().toString());
@@ -119,6 +169,8 @@ public class AddressActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     //获取单选按钮checked值的类
@@ -189,8 +241,49 @@ public class AddressActivity extends AppCompatActivity {
         receiveName = findViewById(R.id.new_username);
         telephoneNumber = findViewById(R.id.new_number);
         detailAddress = findViewById(R.id.detail_address);
-        cancel = findViewById(R.id.btn_address_cancel);
-        save = findViewById(R.id.btn_address_save);
+        addressPage = findViewById(R.id.traceroute_rootview);
+        save = findViewById(R.id.txt_address_save);
     }
 
+    //点击空白处收起键盘
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (isShouldHideInput(v, ev)) {
+
+                InputMethodManager imm = (InputMethodManager) getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+            return super.dispatchTouchEvent(ev);
+        }
+        // 必不可少，否则所有的组件都不会有TouchEvent了
+        if (getWindow().superDispatchTouchEvent(ev)) {
+            return true;
+        }
+        return onTouchEvent(ev);
+    }
+
+
+    public boolean isShouldHideInput(View v, MotionEvent event) {
+        if (v != null && (v instanceof EditText)) {
+            int[] leftTop = {0, 0};
+            //获取输入框当前的location位置
+            v.getLocationInWindow(leftTop);
+            int left = leftTop[0];
+            int top = leftTop[1];
+            int bottom = top + v.getHeight();
+            int right = left + v.getWidth();
+            if (event.getX() > left && event.getX() < right
+                    && event.getY() > top && event.getY() < bottom) {
+                // 点击的是输入框区域，保留点击EditText的事件
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
 }

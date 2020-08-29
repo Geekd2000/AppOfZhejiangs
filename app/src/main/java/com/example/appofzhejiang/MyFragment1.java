@@ -74,8 +74,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
 public class MyFragment1 extends Fragment {
     public LocationClient mLocationClient;
     private View view; // 定义view用来设置fragment的layout
@@ -108,10 +106,7 @@ public class MyFragment1 extends Fragment {
     private View hotStrategy3; // 热门攻略3
     private View strategyMore; // 热门攻略->更多
 
-
-
     public MyFragment1(){}
-
 
     // 传入默认城市名称
     public MyFragment1(String province, String city) {
@@ -119,9 +114,7 @@ public class MyFragment1 extends Fragment {
         this.currentCity = city;
         // 如果获取的城市名字最后面带有市或省份后面带有省，要去除
         removeRedundantWord();
-
     }
-
 
     /**
      * 此方法会在onCreateView方法前执行，因为fragemnt有缓存机制导致页面切换时城市信息不同步
@@ -139,13 +132,10 @@ public class MyFragment1 extends Fragment {
                 currentCity = cityInfo.split("=")[1];
                 txtCity = view.findViewById(R.id.txt_city);
                 txtCity.setText(this.currentCity);
-
                 // 设置轮播图数据
                 setBanner();
-
             }
         }
-
     }
 
     @Nullable
@@ -159,7 +149,6 @@ public class MyFragment1 extends Fragment {
 
         // 设置轮播图数据
         setBanner();
-
 
         // 设置城市定位 start
 
@@ -182,14 +171,12 @@ public class MyFragment1 extends Fragment {
                     public void onCancel(CustomDialog dialog) {
                         // 若取消，就打开选择城市页面进行手动选择
                         setCity();
-
                     }
                 }).setConfirm("确定", new CustomDialog.IOnConfirmListener() {
                     @Override
                     public void onConfirm(CustomDialog dialog) {
                         // 定位城市，开启权限
                         setLocated();
-
                     }
                 }).show();
             }
@@ -218,8 +205,6 @@ public class MyFragment1 extends Fragment {
         // 设置热点攻略
         getHotStrategyView();
         setHotStrategy();
-
-
 
         return view;
     }

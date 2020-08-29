@@ -2,6 +2,7 @@ package com.example.appofzhejiang.pay;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,14 @@ import android.view.ViewGroup;
 
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.fragment3.Ticket;
+import com.example.appofzhejiang.fragment3.TicketType;
+import com.example.appofzhejiang.fragment3.hotel.HotelUtil;
+import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.header.ClassicsHeader;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +30,7 @@ public class OrderFragment1 extends Fragment {
     private View view;
     public RecyclerView recyclerView;
     private PayAdapter payAdapter;
+    private SmartRefreshLayout refreshLayout;
     private List<FileList> fileLists = new ArrayList<FileList>();
     private String content;
 
@@ -28,7 +38,7 @@ public class OrderFragment1 extends Fragment {
     }
 
     public OrderFragment1(String content) {
-        this.content=content;
+        this.content = content;
     }
 
     @Override
@@ -39,6 +49,31 @@ public class OrderFragment1 extends Fragment {
         initData();
         initList();
         initRecyclerView();
+
+        //刷新加载
+        refreshLayout = view.findViewById(R.id.refreshLayout);
+        refreshLayout.setRefreshHeader(new ClassicsHeader(getActivity()));//设置Header样式
+        refreshLayout.setRefreshFooter(new ClassicsFooter(getActivity()));//设置Footer样式
+        //下拉刷新
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
+                refreshLayout.autoRefresh();
+                refreshLayout.finishRefresh(2000);//结束刷新  传入false表示刷新失败
+                //不传时间则立即停止刷新
+            }
+        });
+        //上拉加载
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+
+                //模拟网络请求到的数据
+                refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
+            }
+        });
         return view;
     }
 

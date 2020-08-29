@@ -1,4 +1,4 @@
-package com.example.appofzhejiang.fragment3;
+package com.example.appofzhejiang.fragment3.TicketDetail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,20 +8,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.appofzhejiang.Login.LoginActivity;
-import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
-import com.github.clans.fab.FloatingActionButton;
+import com.example.appofzhejiang.fragment3.GlideImageLoader;
+import com.example.appofzhejiang.fragment3.SubmitOrderActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
-import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,17 +28,17 @@ import java.util.List;
 public class TicketDetailActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private String value;
-    private int index;
     private ImageView image1, image2, goodsImage;
     private TextView detailTitle, detailPrice, detailCompany, detailSales, detailGoods1, detailGoods2, detailPrice1, detailPrice2,
-            detailBuy1, detailBuy2, detailContent1, detailContent2, detailContent3, detailContent4;
+            detailBuy1, detailBuy2, detailContent1, detailContent2;
     private Banner banner;
     private List images;
     private Boolean isLoginStatus;//登录状态
+    private DetailBean detailBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in,R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_detail);
         toolbar = findViewById(R.id.toolbar_goods);
@@ -65,8 +64,6 @@ public class TicketDetailActivity extends AppCompatActivity {
         detailBuy2 = findViewById(R.id.detail_buy2);
         detailContent1 = findViewById(R.id.detail_content1);
         detailContent2 = findViewById(R.id.detail_content2);
-        detailContent3 = findViewById(R.id.detail_content3);
-        detailContent4 = findViewById(R.id.detail_content4);
         goodsImage = findViewById(R.id.goods_image);
         banner = findViewById(R.id.banner);
 
@@ -77,48 +74,55 @@ public class TicketDetailActivity extends AppCompatActivity {
         //取得从上一个Activity当中传递过来的Intent对象
         Intent intent = getIntent();
         //从Intent当中根据key取得value
-        value = intent.getStringExtra("index");
-        index = Integer.parseInt(value);
+        String value = intent.getStringExtra("index");
+        int index = Integer.parseInt(value);
+        String product_id = intent.getStringExtra("product_id");//商品ID
+        String company = intent.getStringExtra("company");//公司名称
+        String image = intent.getStringExtra("image");//商品封面
 
         switch (index) {
             case 0:
-                String title = null;
-                String price = null;
-                String company = null;
-                String count = null;
-                String image = null;
-                int imgId = 0;
-                if (intent != null) {
-                    title = intent.getStringExtra("title");
-                    price = intent.getStringExtra("price");
-                    company = intent.getStringExtra("company");
-                    count = intent.getStringExtra("count");
-                    image = intent.getStringExtra("image");
-                    imgId = Integer.parseInt(image);
-                }
-                goodsImage.setImageResource(imgId);
+                detailBean = new DetailBeanUtil(product_id).getDetailBeanList();
+                //图片URL获取
+                String url = detailBean.getPictures();
+                String[] urlArray = url.split(",");
+                //处理价格
+                String price = detailBean.getPrices();
+                String[] priceArray = price.split(",");
+                //商品规格
+                String goodsName = detailBean.getParams();
+                String[] goodsNameArray = goodsName.split(",");
+                //商品介绍
+                String introduce = detailBean.getIntroduct();
+                String[] introduceArray = introduce.split("<");
+                //轮播图
                 images = new ArrayList<>();
-                images.add(R.drawable.songcity);
-                images.add(R.drawable.songcheng);
+                images.add(urlArray[0]);
+                images.add(urlArray[1]);
+                images.add(urlArray[2]);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
-                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setBannerAnimation(Transformer.Default);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
                 banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
                 banner.start();//开始轮播，一定要调用此方法。
-                //mainImage.setImageResource(R.drawable.songcity);
-                detailTitle.setText(title);
-                detailPrice.setText(price);
+                Glide.with(this).load(image).into(goodsImage);
+                detailTitle.setText(detailBean.getName());
+                if (Integer.parseInt(priceArray[0]) < Integer.parseInt(priceArray[1])) {
+                    detailPrice.setText(priceArray[0]);
+                } else {
+                    detailPrice.setText(priceArray[1]);
+                }
                 detailCompany.setText(company);
-                detailSales.setText(count);
-                detailGoods1.setText("杭州宋城景区");
-                detailPrice1.setText("50");
-                detailGoods2.setText("杭州宋城景区+千古情演出");
-                detailPrice2.setText("160");
-                detailContent1.setText(R.string.songcheng);
-                detailContent2.setText(R.string.songchengqianguqing);
-                image1.setImageResource(R.drawable.songcity);
-                image2.setImageResource(R.drawable.songcheng);
+                detailSales.setText(detailBean.getSales());
+                detailGoods1.setText(goodsNameArray[0]);
+                detailPrice1.setText(priceArray[0]);
+                detailGoods2.setText(goodsNameArray[1]);
+                detailPrice2.setText(priceArray[1]);
+                Glide.with(this).load(urlArray[3]).into(image1);
+                Glide.with(this).load(urlArray[2]).into(image2);
+                detailContent1.setText(introduceArray[0]);
+                detailContent2.setText(introduceArray[1]);
                 final String finalImage0 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -131,6 +135,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice1.getText());
                             intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage0);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -149,6 +154,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage0);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -158,42 +164,43 @@ public class TicketDetailActivity extends AppCompatActivity {
                 });
                 break;
             case 1:
-                title = null;
-                price = null;
-                company = null;
-                count = null;
-                image = null;
-                imgId = 0;
-                if (intent != null) {
-                    title = intent.getStringExtra("title");
-                    price = intent.getStringExtra("price");
-                    company = intent.getStringExtra("company");
-                    count = intent.getStringExtra("count");
-                    image = intent.getStringExtra("image");
-                    imgId = Integer.parseInt(image);
-                }
-                goodsImage.setImageResource(imgId);
+                detailBean = new DetailBeanUtil(product_id).getDetailBeanList();
+                //图片URL获取
+                url = detailBean.getPictures();
+                urlArray = url.split(",");
+                //处理价格
+                price = detailBean.getPrices();
+                priceArray = price.split(",");
+                //商品规格
+                goodsName = detailBean.getParams();
+                goodsNameArray = goodsName.split(",");
+                //轮播图
                 images = new ArrayList<>();
-                images.add(R.drawable.hotel_image);
+                images.add(urlArray[0]);
+                images.add(urlArray[1]);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
-                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setBannerAnimation(Transformer.Default);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
                 banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
                 banner.start();//开始轮播，一定要调用此方法。
-//                mainImage.setImageResource(R.drawable.hotel_image);
-                detailTitle.setText(title);
-                detailPrice.setText(price);
+                Glide.with(this).load(image).into(goodsImage);
+                detailTitle.setText(detailBean.getName());
+                if (Integer.parseInt(priceArray[0]) < Integer.parseInt(priceArray[1])) {
+                    detailPrice.setText(priceArray[0]);
+                } else {
+                    detailPrice.setText(priceArray[1]);
+                }
                 detailCompany.setText(company);
-                detailSales.setText(count);
-                detailGoods1.setText("大床房");
-                detailPrice1.setText("120");
-                detailGoods2.setText("双床房");
-                detailPrice2.setText("150");
+                detailSales.setText(detailBean.getSales());
+                detailGoods1.setText(goodsNameArray[0]);
+                detailPrice1.setText(priceArray[0]);
+                detailGoods2.setText(goodsNameArray[1]);
+                detailPrice2.setText(priceArray[1]);
+                Glide.with(this).load(urlArray[0]).into(image1);
+                Glide.with(this).load(urlArray[1]).into(image2);
                 detailContent1.setText(R.string.hotel1);
                 detailContent2.setText(R.string.hotel2);
-                image1.setImageResource(R.drawable.hotel_image);
-                image2.setImageResource(R.drawable.hotel_image);
                 final String finalImage1 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -203,9 +210,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         if (isLoginStatus.equals(true)) {
                             Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
                             intentBuy.putExtra("goodsName", detailTitle.getText());
-                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                            intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage1);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -224,6 +232,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage1);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -233,43 +242,43 @@ public class TicketDetailActivity extends AppCompatActivity {
                 });
                 break;
             case 2:
-                title = null;
-                price = null;
-                company = null;
-                count = null;
-                image = null;
-                imgId = 0;
-                if (intent != null) {
-                    title = intent.getStringExtra("title");
-                    price = intent.getStringExtra("price");
-                    company = intent.getStringExtra("company");
-                    count = intent.getStringExtra("count");
-                    image = intent.getStringExtra("image");
-                    imgId = Integer.parseInt(image);
-                }
-                goodsImage.setImageResource(imgId);
+                detailBean = new DetailBeanUtil(product_id).getDetailBeanList();
+                //图片URL获取
+                url = detailBean.getPictures();
+                urlArray = url.split(",");
+                //处理价格
+                price = detailBean.getPrices();
+                priceArray = price.split(",");
+                //商品规格
+                goodsName = detailBean.getParams();
+                goodsNameArray = goodsName.split(",");
+                //轮播图
                 images = new ArrayList<>();
-                images.add(R.drawable.taxi_image);
-                images.add(R.drawable.taxi_image2);
+                images.add(urlArray[0]);
+                images.add(urlArray[1]);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
-                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setBannerAnimation(Transformer.Default);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
                 banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
                 banner.start();//开始轮播，一定要调用此方法。
-//                mainImage.setImageResource(R.drawable.taxi_image);
-                detailTitle.setText(title);
-                detailPrice.setText(price);
+                Glide.with(this).load(image).into(goodsImage);
+                detailTitle.setText(detailBean.getName());
+                if (Integer.parseInt(priceArray[0]) < Integer.parseInt(priceArray[1])) {
+                    detailPrice.setText(priceArray[0]);
+                } else {
+                    detailPrice.setText(priceArray[1]);
+                }
                 detailCompany.setText(company);
-                detailSales.setText(count);
-                detailGoods1.setText("一日租");
-                detailPrice1.setText("198");
-                detailGoods2.setText("三日短期租");
-                detailPrice2.setText("498");
+                detailSales.setText(detailBean.getSales());
+                detailGoods1.setText(goodsNameArray[0]);
+                detailPrice1.setText(priceArray[0]);
+                detailGoods2.setText(goodsNameArray[1]);
+                detailPrice2.setText(priceArray[1]);
+                Glide.with(this).load(urlArray[0]).into(image1);
+                Glide.with(this).load(urlArray[1]).into(image2);
                 detailContent1.setText(R.string.taxi1);
                 detailContent2.setText(R.string.taxi2);
-                image1.setImageResource(R.drawable.taxi_image);
-                image2.setImageResource(R.drawable.taxi_image2);
                 final String finalImage2 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -279,9 +288,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         if (isLoginStatus.equals(true)) {
                             Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
                             intentBuy.putExtra("goodsName", detailTitle.getText());
-                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                            intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage2);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -300,6 +310,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage2);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -309,43 +320,42 @@ public class TicketDetailActivity extends AppCompatActivity {
                 });
                 break;
             case 3:
-                title = null;
-                price = null;
-                company = null;
-                count = null;
-                image = null;
-                imgId = 0;
-                if (intent != null) {
-                    title = intent.getStringExtra("title");
-                    price = intent.getStringExtra("price");
-                    company = intent.getStringExtra("company");
-                    count = intent.getStringExtra("count");
-                    image = intent.getStringExtra("image");
-                    imgId = Integer.parseInt(image);
-                }
-                goodsImage.setImageResource(imgId);
+                detailBean = new DetailBeanUtil(product_id).getDetailBeanList();
+                //图片URL获取
+                url = detailBean.getPictures();
+                urlArray = url.split(",");
+                //处理价格
+                price = detailBean.getPrices();
+                priceArray = price.split(",");
+                //商品规格
+                goodsName = detailBean.getParams();
+                goodsNameArray = goodsName.split(",");
+                //轮播图
                 images = new ArrayList<>();
-                images.add(R.drawable.guider_image);
-                images.add(R.drawable.guider_image2);
+                images.add(urlArray[0]);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
-                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setBannerAnimation(Transformer.Default);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
                 banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
                 banner.start();//开始轮播，一定要调用此方法。
-//                mainImage.setImageResource(R.drawable.guider_image);
-                detailTitle.setText(title);
-                detailPrice.setText(price);
+                Glide.with(this).load(image).into(goodsImage);
+                detailTitle.setText(detailBean.getName());
+                if (Integer.parseInt(priceArray[0]) < Integer.parseInt(priceArray[1])) {
+                    detailPrice.setText(priceArray[0]);
+                } else {
+                    detailPrice.setText(priceArray[1]);
+                }
                 detailCompany.setText(company);
-                detailSales.setText(count);
-                detailGoods1.setText("西湖导游");
-                detailPrice1.setText("200");
-                detailGoods2.setText("西湖+雷峰塔+岳王庙");
-                detailPrice2.setText("300");
+                detailSales.setText(detailBean.getSales());
+                detailGoods1.setText(goodsNameArray[0]);
+                detailPrice1.setText(priceArray[0]);
+                detailGoods2.setText(goodsNameArray[1]);
+                detailPrice2.setText(priceArray[1]);
+                Glide.with(this).load(urlArray[0]).into(image1);
+                Glide.with(this).load(urlArray[0]).into(image2);
                 detailContent1.setText(R.string.guider1);
                 detailContent2.setText(R.string.guider2);
-                image1.setImageResource(R.drawable.guider_image);
-                image2.setImageResource(R.drawable.guider_image2);
                 final String finalImage3 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -355,9 +365,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         if (isLoginStatus.equals(true)) {
                             Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
                             intentBuy.putExtra("goodsName", detailTitle.getText());
-                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                            intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage3);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -376,6 +387,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage3);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -385,42 +397,43 @@ public class TicketDetailActivity extends AppCompatActivity {
                 });
                 break;
             case 4:
-                title = null;
-                price = null;
-                company = null;
-                count = null;
-                image = null;
-                imgId = 0;
-                if (intent != null) {
-                    title = intent.getStringExtra("title");
-                    price = intent.getStringExtra("price");
-                    company = intent.getStringExtra("company");
-                    count = intent.getStringExtra("count");
-                    image = intent.getStringExtra("image");
-                    imgId = Integer.parseInt(image);
-                }
-                goodsImage.setImageResource(imgId);
+                detailBean = new DetailBeanUtil(product_id).getDetailBeanList();
+                //图片URL获取
+                url = detailBean.getPictures();
+                urlArray = url.split(",");
+                //处理价格
+                price = detailBean.getPrices();
+                priceArray = price.split(",");
+                //商品规格
+                goodsName = detailBean.getParams();
+                goodsNameArray = goodsName.split(",");
+                //轮播图
                 images = new ArrayList<>();
-                images.add(R.drawable.farmhouse);
+                images.add(urlArray[0]);
+                images.add(urlArray[1]);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
-                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setBannerAnimation(Transformer.Default);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
                 banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
                 banner.start();//开始轮播，一定要调用此方法。
-//                mainImage.setImageResource(R.drawable.farmhouse);
-                detailTitle.setText(title);
-                detailPrice.setText(price);
+                Glide.with(this).load(image).into(goodsImage);
+                detailTitle.setText(detailBean.getName());
+                if (Integer.parseInt(priceArray[0]) < Integer.parseInt(priceArray[1])) {
+                    detailPrice.setText(priceArray[0]);
+                } else {
+                    detailPrice.setText(priceArray[1]);
+                }
                 detailCompany.setText(company);
-                detailSales.setText(count);
-                detailGoods1.setText("小套间");
-                detailPrice1.setText("398");
-                detailGoods2.setText("大套间");
-                detailPrice2.setText("598");
+                detailSales.setText(detailBean.getSales());
+                detailGoods1.setText(goodsNameArray[0]);
+                detailPrice1.setText(priceArray[0]);
+                detailGoods2.setText(goodsNameArray[1]);
+                detailPrice2.setText(priceArray[1]);
+                Glide.with(this).load(urlArray[0]).into(image1);
+                Glide.with(this).load(urlArray[1]).into(image2);
                 detailContent1.setText(R.string.farmhouse1);
                 detailContent2.setText(R.string.farmhouse2);
-                image1.setImageResource(R.drawable.farmhouse);
-                image2.setImageResource(R.drawable.farmhouse);
                 final String finalImage4 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -430,9 +443,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         if (isLoginStatus.equals(true)) {
                             Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
                             intentBuy.putExtra("goodsName", detailTitle.getText());
-                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                            intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage4);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -451,6 +465,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage4);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -460,42 +475,43 @@ public class TicketDetailActivity extends AppCompatActivity {
                 });
                 break;
             case 5:
-                title = null;
-                price = null;
-                company = null;
-                count = null;
-                image = null;
-                imgId = 0;
-                if (intent != null) {
-                    title = intent.getStringExtra("title");
-                    price = intent.getStringExtra("price");
-                    company = intent.getStringExtra("company");
-                    count = intent.getStringExtra("count");
-                    image = intent.getStringExtra("image");
-                    imgId = Integer.parseInt(image);
-                }
-                goodsImage.setImageResource(imgId);
+                detailBean = new DetailBeanUtil(product_id).getDetailBeanList();
+                //图片URL获取
+                url = detailBean.getPictures();
+                urlArray = url.split(",");
+                //处理价格
+                price = detailBean.getPrices();
+                priceArray = price.split(",");
+                //商品规格
+                goodsName = detailBean.getParams();
+                goodsNameArray = goodsName.split(",");
+                //轮播图
                 images = new ArrayList<>();
-                images.add(R.drawable.longjingxiaren);
+                images.add(urlArray[0]);
+                images.add(urlArray[1]);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
-                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setBannerAnimation(Transformer.Default);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
                 banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
                 banner.start();//开始轮播，一定要调用此方法。
-//                mainImage.setImageResource(R.drawable.longjingxiaren);
-                detailTitle.setText(title);
-                detailPrice.setText(price);
+                Glide.with(this).load(image).into(goodsImage);
+                detailTitle.setText(detailBean.getName());
+                if (Integer.parseInt(priceArray[0]) < Integer.parseInt(priceArray[1])) {
+                    detailPrice.setText(priceArray[0]);
+                } else {
+                    detailPrice.setText(priceArray[1]);
+                }
                 detailCompany.setText(company);
-                detailSales.setText(count);
-                detailGoods1.setText("龙井虾仁");
-                detailPrice1.setText("98");
-                detailGoods2.setText("龙井虾仁+龙井茶");
-                detailPrice2.setText("128");
+                detailSales.setText(detailBean.getSales());
+                detailGoods1.setText(goodsNameArray[0]);
+                detailPrice1.setText(priceArray[0]);
+                detailGoods2.setText(goodsNameArray[1]);
+                detailPrice2.setText(priceArray[1]);
+                Glide.with(this).load(urlArray[0]).into(image1);
+                Glide.with(this).load(urlArray[1]).into(image2);
                 detailContent1.setText(R.string.food1);
                 detailContent2.setText(R.string.food2);
-                image1.setImageResource(R.drawable.longjingxiaren);
-                image2.setImageResource(R.drawable.longjingxiaren);
                 final String finalImage5 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -505,9 +521,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         if (isLoginStatus.equals(true)) {
                             Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
                             intentBuy.putExtra("goodsName", detailTitle.getText());
-                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                            intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage5);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -526,6 +543,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage5);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -535,42 +553,43 @@ public class TicketDetailActivity extends AppCompatActivity {
                 });
                 break;
             case 6:
-                title = null;
-                price = null;
-                company = null;
-                count = null;
-                image = null;
-                imgId = 0;
-                if (intent != null) {
-                    title = intent.getStringExtra("title");
-                    price = intent.getStringExtra("price");
-                    company = intent.getStringExtra("company");
-                    count = intent.getStringExtra("count");
-                    image = intent.getStringExtra("image");
-                    imgId = Integer.parseInt(image);
-                }
-                goodsImage.setImageResource(imgId);
+                detailBean = new DetailBeanUtil(product_id).getDetailBeanList();
+                //图片URL获取
+                url = detailBean.getPictures();
+                urlArray = url.split(",");
+                //处理价格
+                price = detailBean.getPrices();
+                priceArray = price.split(",");
+                //商品规格
+                goodsName = detailBean.getParams();
+                goodsNameArray = goodsName.split(",");
+                //轮播图
                 images = new ArrayList<>();
-                images.add(R.drawable.westlakelongjing);
+                images.add(urlArray[0]);
+                images.add(urlArray[1]);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
-                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setBannerAnimation(Transformer.Default);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
                 banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
                 banner.start();//开始轮播，一定要调用此方法。
-//                mainImage.setImageResource(R.drawable.westlakelongjing);
-                detailTitle.setText(title);
-                detailPrice.setText(price);
+                Glide.with(this).load(image).into(goodsImage);
+                detailTitle.setText(detailBean.getName());
+                if (Integer.parseInt(priceArray[0]) < Integer.parseInt(priceArray[1])) {
+                    detailPrice.setText(priceArray[0]);
+                } else {
+                    detailPrice.setText(priceArray[1]);
+                }
                 detailCompany.setText(company);
-                detailSales.setText(count);
-                detailGoods1.setText("机器西湖龙井");
-                detailPrice1.setText("198");
-                detailGoods2.setText("手工西湖龙井");
-                detailPrice2.setText("358");
+                detailSales.setText(detailBean.getSales());
+                detailGoods1.setText(goodsNameArray[0]);
+                detailPrice1.setText(priceArray[0]);
+                detailGoods2.setText(goodsNameArray[1]);
+                detailPrice2.setText(priceArray[1]);
+                Glide.with(this).load(urlArray[0]).into(image1);
+                Glide.with(this).load(urlArray[1]).into(image2);
                 detailContent1.setText(R.string.techan1);
                 detailContent2.setText(R.string.techan2);
-                image1.setImageResource(R.drawable.westlakelongjing);
-                image2.setImageResource(R.drawable.westlakelongjing);
                 final String finalImage6 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -580,9 +599,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         if (isLoginStatus.equals(true)) {
                             Intent intentBuy = new Intent(TicketDetailActivity.this, SubmitOrderActivity.class);
                             intentBuy.putExtra("goodsName", detailTitle.getText());
-                            intentBuy.putExtra("goodsPrice", detailPrice2.getText());
-                            intentBuy.putExtra("goodsType", detailGoods2.getText());
+                            intentBuy.putExtra("goodsPrice", detailPrice1.getText());
+                            intentBuy.putExtra("goodsType", detailGoods1.getText());
                             intentBuy.putExtra("goodsImage", finalImage6);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -601,6 +621,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage6);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -610,43 +631,47 @@ public class TicketDetailActivity extends AppCompatActivity {
                 });
                 break;
             case 7:
-                title = null;
-                price = null;
-                company = null;
-                count = null;
-                image = null;
-                imgId = 0;
-                if (intent != null) {
-                    title = intent.getStringExtra("title");
-                    price = intent.getStringExtra("price");
-                    company = intent.getStringExtra("company");
-                    count = intent.getStringExtra("count");
-                    image = intent.getStringExtra("image");
-                    imgId = Integer.parseInt(image);
-                }
-                goodsImage.setImageResource(imgId);
+                detailBean = new DetailBeanUtil(product_id).getDetailBeanList();
+                //图片URL获取
+                url = detailBean.getPictures();
+                urlArray = url.split(",");
+                //处理价格
+                price = detailBean.getPrices();
+                priceArray = price.split(",");
+                //商品规格
+                goodsName = detailBean.getParams();
+                goodsNameArray = goodsName.split(",");
+                //商品介绍
+                introduce = detailBean.getIntroduct();
+                introduceArray = introduce.split("<");
+                //轮播图
                 images = new ArrayList<>();
-                images.add(R.drawable.westlake);
-                images.add(R.drawable.westlake2);
+                images.add(urlArray[0]);
+                images.add(urlArray[1]);
+                images.add(urlArray[2]);
                 banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
                 banner.setImages(images);//设置图片源
                 banner.setDelayTime(3000);//设置轮播事件，单位毫秒
-                banner.setBannerAnimation(Transformer.Stack);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
+                banner.setBannerAnimation(Transformer.Default);//设置轮播动画，动画种类很多，有兴趣的去试试吧，我在这里用的是默认
                 banner.setIndicatorGravity(BannerConfig.CENTER);//设置指示器的位置
                 banner.start();//开始轮播，一定要调用此方法。
-//                mainImage.setImageResource(R.drawable.westlake);
-                detailTitle.setText(title);
-                detailPrice.setText(price);
+                Glide.with(this).load(image).into(goodsImage);
+                detailTitle.setText(detailBean.getName());
+                if (Integer.parseInt(priceArray[0]) < Integer.parseInt(priceArray[1])) {
+                    detailPrice.setText(priceArray[0]);
+                } else {
+                    detailPrice.setText(priceArray[1]);
+                }
                 detailCompany.setText(company);
-                detailSales.setText(count);
-                detailGoods1.setText("西湖一日游");
-                detailPrice1.setText("35");
-                detailGoods2.setText("西湖三日游");
-                detailPrice2.setText("98");
-                detailContent1.setText("西湖的水，我的泪");
-                detailContent2.setText("西湖的水，我的泪");
-                image1.setImageResource(R.drawable.westlake);
-                image2.setImageResource(R.drawable.westlake);
+                detailSales.setText(detailBean.getSales());
+                detailGoods1.setText(goodsNameArray[0]);
+                detailPrice1.setText(priceArray[0]);
+                detailGoods2.setText(goodsNameArray[1]);
+                detailPrice2.setText(priceArray[1]);
+                Glide.with(this).load(urlArray[3]).into(image1);
+                Glide.with(this).load(urlArray[1]).into(image2);
+                detailContent1.setText(introduceArray[0]);
+                detailContent2.setText(introduceArray[1]);
                 final String finalImage7 = image;
                 detailBuy1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -659,6 +684,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage7);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -677,6 +703,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                             intentBuy.putExtra("goodsPrice", detailPrice2.getText());
                             intentBuy.putExtra("goodsType", detailGoods2.getText());
                             intentBuy.putExtra("goodsImage", finalImage7);
+                            intentBuy.putExtra("inventory", Integer.toString(detailBean.getInventory()));
                             startActivity(intentBuy);
                         } else {
                             Toast.makeText(TicketDetailActivity.this, "请先登录", Toast.LENGTH_SHORT).show();
@@ -686,5 +713,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                 });
                 break;
         }
+    }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent,R.anim.right_out);
     }
 }

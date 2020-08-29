@@ -46,6 +46,7 @@ public class Jingqu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in,R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jingqu);
         //设置沉浸式
@@ -107,6 +108,12 @@ public class Jingqu extends AppCompatActivity {
         //创建并设置Adapter
         recyclerView.setAdapter(recycleViewAdepter);
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent,R.anim.right_out);
     }
 
     private void intView() {

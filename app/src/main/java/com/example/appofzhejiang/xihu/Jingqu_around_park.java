@@ -46,6 +46,7 @@ public class Jingqu_around_park extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.bottom_in,R.anim.bottom_silent);
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_jingqu_around_park);
@@ -74,6 +75,12 @@ public class Jingqu_around_park extends AppCompatActivity {
         nearbyPoiSearch(mBaidumap);
 
         mBaidumap.setMapStatus(mMapStatusUpdate);//改变地图状态
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.bottom_silent, R.anim.bottom_out);
     }
 
     private void nearbyPoiSearch(final BaiduMap mBaidumap) {

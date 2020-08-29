@@ -17,9 +17,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="收货信息"
+            android:text="我的收货地址"
             android:textColor="@color/colorLightBlack"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txt_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="15dp"
+            android:text="添加新地址"
+            android:textColor="@color/colorLightGreen"
+            android:textSize="16sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -28,16 +38,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
-        android:layout_above="@id/btn_new"
         android:layout_below="@id/receipt_toolbar" />
 
-    <Button
-        android:id="@+id/btn_new"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/bg_btn_order1"
-        android:text="新建"
-        android:textColor="#ffffff"
-        android:textSize="18sp" />
 </RelativeLayout>

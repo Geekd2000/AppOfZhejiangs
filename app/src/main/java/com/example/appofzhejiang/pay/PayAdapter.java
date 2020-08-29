@@ -2,9 +2,6 @@ package com.example.appofzhejiang.pay;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,21 +12,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.R;
-import com.example.appofzhejiang.fragment3.Ticket;
-import com.example.appofzhejiang.fragment3.TicketDetailActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 public class PayAdapter extends RecyclerView.Adapter<PayAdapter.LinearViewHolder> {
 
     private Context mContext;
-    private List<FileList> fileLists;
+    private List<FileList> fileDta;
 
-    public PayAdapter(Context context,List<FileList> fileLists) {
+    public PayAdapter(Context context,List<FileList> fileDta) {
         this.mContext = context;
-        this.fileLists=fileLists;
+        this.fileDta=fileDta;
     }
 
     @NonNull
@@ -42,7 +35,7 @@ public class PayAdapter extends RecyclerView.Adapter<PayAdapter.LinearViewHolder
             @Override
             public void onClick(View view) {
                 int position = linearViewHolder.getAdapterPosition();
-                FileList fileList=fileLists.get(position);
+                FileList fileList=fileDta.get(position);
                 linearViewHolder.mIvPicture.setDrawingCacheEnabled(true);
                 String img = Integer.toString(fileList.getPicture());
                 Intent intent = new Intent(mContext, OrderActivity.class);

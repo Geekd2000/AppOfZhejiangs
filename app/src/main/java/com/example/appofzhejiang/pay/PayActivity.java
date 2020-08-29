@@ -15,6 +15,7 @@ import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.fragment3.TicketActivity;
+import com.example.appofzhejiang.xihu.more;
 import com.github.clans.fab.FloatingActionButton;
 
 public class PayActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
@@ -35,6 +36,7 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in,R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay);
 
@@ -63,6 +65,12 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
             viewPager.setCurrentItem(PAGE_ONE);
             mTvAll.setSelected(true);//进去后选择第一项
         }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent,R.anim.right_out);
     }
 
     //重置所有文本的选中状态
@@ -179,8 +187,8 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, RecyclerPageActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(PayActivity.this, more.class);
+                startActivity(intent);
             }
         });
 

@@ -16,10 +16,11 @@ import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 public class AboutUsActivity extends AppCompatActivity {
 
     private Toolbar mBack;
-    private TextView tv1,tv2,tv3,tv4;
+    private TextView tv1, tv2, tv3, tv4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in, R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
         //设置沉浸式
@@ -66,5 +67,11 @@ public class AboutUsActivity extends AppCompatActivity {
                 Toast.makeText(AboutUsActivity.this, "自己体验", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent, R.anim.right_out);
     }
 }

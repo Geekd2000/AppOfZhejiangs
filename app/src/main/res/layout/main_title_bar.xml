@@ -4,7 +4,8 @@
     android:id="@+id/title_bar"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@android:color/transparent">
+    android:elevation="5dp"
+    android:background="@color/colorWhite">
     <!--一个是显示返回键，一个是显示标题框-->
     <!--通过TextView来显示，id ： tv_back , tv_main_title -->
     <androidx.appcompat.widget.Toolbar
@@ -12,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorWhite"
-        android:elevation="5dp"
         app:navigationIcon="@drawable/ic_back">
 
         <TextView
