@@ -34,8 +34,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-
-
         <activity android:name=".fragment1.hotstrategy.HotStrategy3Activity" />
         <activity android:name=".fragment1.hotstrategy.HotStrategy2Activity" />
         <activity android:name=".fragment1.hotstrategy.HotStrategy1Activity" />

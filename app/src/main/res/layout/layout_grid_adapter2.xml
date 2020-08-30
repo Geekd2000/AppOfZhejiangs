@@ -12,7 +12,7 @@
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/grid_image"
-        android:layout_width="180dp"
+        android:layout_width="165dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
         android:src="@drawable/picturezhejiang"

@@ -6,12 +6,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.appofzhejiang.R;
@@ -26,9 +23,7 @@ public class ReceiptActivity extends AppCompatActivity {
     private Toolbar mBack;
     private RecyclerView mRyAddress;
     private ReceiptAdapter adapter;
-    private List<AddressList> data = new ArrayList<AddressList>();//收货信息
-    private AddressList addressList = new AddressList();
-
+    private List<AddressBean> data = new ArrayList<AddressBean>();//收货信息
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         overridePendingTransition(R.anim.bottom_in, R.anim.bottom_silent);
@@ -63,11 +58,11 @@ public class ReceiptActivity extends AppCompatActivity {
         if (code == 1) {
             adapter.setOnItemClickListener(new ReceiptAdapter.OnItemClickListener() {
                 @Override
-                public void OnItemClick(View view, AddressList addressList) {
+                public void OnItemClick(View view, AddressBean addressBean) {
                     Intent intent = new Intent();
-                    intent.putExtra("name", addressList.getUsername());
-                    intent.putExtra("phone", addressList.getPhone());
-                    intent.putExtra("address", addressList.getAddress());
+                    intent.putExtra("name", addressBean.getName());
+                    intent.putExtra("phone", addressBean.getMobile());
+                    intent.putExtra("address", addressBean.getAddress());
                     setResult(2, intent);
                     finish();
                 }
@@ -81,7 +76,7 @@ public class ReceiptActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.bottom_silent, R.anim.bottom_out);
     }
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         if (intent != null) {
@@ -89,21 +84,21 @@ public class ReceiptActivity extends AppCompatActivity {
             String telephone = intent.getStringExtra("phone");
             String address = intent.getStringExtra("address");
             String select = intent.getStringExtra("select");
-            addressList.setUsername(receiveName);
-            addressList.setPhone(telephone);
-            addressList.setAddress(address);
-            addressList.setSelect(select);
+            addressBean.setUsername(receiveName);
+            addressBean.setPhone(telephone);
+            addressBean.setAddress(address);
+            addressBean.setSelect(select);
             //添加自带默认动画
             adapter.addData(data.size());
         }
-    }
+    }*/
 
 
     //初始化RecyclerView
     private void initRecycleView() {
         mRyAddress.setLayoutManager(new LinearLayoutManager(ReceiptActivity.this));
         //获取数据,向适配器传数据,绑定适配器
-        adapter = new ReceiptAdapter(ReceiptActivity.this, data, addressList);
+        adapter = new ReceiptAdapter(new AddressBeanList("1").getAddressBeanList(),ReceiptActivity.this);
         mRyAddress.setAdapter(adapter);
         //添加动画
         mRyAddress.setItemAnimator(new DefaultItemAnimator());

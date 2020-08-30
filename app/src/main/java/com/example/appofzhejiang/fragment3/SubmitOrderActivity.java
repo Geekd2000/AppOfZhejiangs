@@ -205,6 +205,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
                             Intent intent = new Intent(SubmitOrderActivity.this, TicketActivity.class);
                             intent.putExtra("num", "0");
                             startActivity(intent);
+                            SubmitOrderActivity.this.finish();
                         }
                     });
                     orderDialog.setGoto("back", new OrderDialog.IOnGotoListener() {
@@ -213,6 +214,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
                             Intent intent = new Intent(SubmitOrderActivity.this, TicketActivity.class);
                             intent.putExtra("num", "0");
                             startActivity(intent);
+                            SubmitOrderActivity.this.finish();
                         }
                     });
                     orderDialog.setConfirm("pay", new OrderDialog.IOnConfirmListener() {
@@ -221,6 +223,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
                             Toast.makeText(SubmitOrderActivity.this, "付款成功", Toast.LENGTH_SHORT).show();
                             Intent intent=new Intent(SubmitOrderActivity.this, PaySuccessActivity.class);
                             startActivity(intent);
+                            SubmitOrderActivity.this.finish();
                         }
                     });
                 }
