@@ -441,6 +441,7 @@
                         android:layout_height="wrap_content">
 
                         <LinearLayout
+                            android:id="@+id/index_video1"
                             android:layout_width="0dp"
                             android:layout_height="65dp"
                             android:layout_weight="1"
@@ -451,18 +452,19 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="水产品"
+                                android:text="人文"
                                 android:textColor="#101318" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="舟山"
+                                android:text="纪录片"
                                 android:textColor="#666"
                                 android:textSize="12dp" />
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/index_video2"
                             android:layout_width="0dp"
                             android:layout_height="65dp"
                             android:layout_weight="1"
@@ -473,18 +475,19 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="小京生"
+                                android:text="山水"
                                 android:textColor="#101318" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="新昌"
+                                android:text="纪录片"
                                 android:textColor="#666"
                                 android:textSize="12dp" />
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/index_video3"
                             android:layout_width="0dp"
                             android:layout_height="65dp"
                             android:layout_weight="1"
@@ -495,18 +498,19 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="绿茶"
+                                android:text="古镇"
                                 android:textColor="#101318" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="丽水"
+                                android:text="纪录片"
                                 android:textColor="#666"
                                 android:textSize="12dp" />
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/index_video4"
                             android:layout_width="0dp"
                             android:layout_height="65dp"
                             android:layout_weight="1"
@@ -516,13 +520,13 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="四库全酥"
+                                android:text="味道"
                                 android:textColor="#101318" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="衢州"
+                                android:text="纪录片"
                                 android:textColor="#666"
                                 android:textSize="12dp" />
                         </LinearLayout>
@@ -568,6 +572,7 @@
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">

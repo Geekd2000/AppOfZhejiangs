@@ -12,6 +12,7 @@ import com.example.appofzhejiang.fragment1.bannerpic.BannerPorcelainActivity;
 import com.example.appofzhejiang.fragment1.bannerpic.BannerSilkActivity;
 import com.example.appofzhejiang.fragment1.bannerpic.BannerTeaActivity;
 import com.example.appofzhejiang.fragment1.beautifulzj.BeautifulZJActivity;
+import com.example.appofzhejiang.fragment1.culturevideo.CultureVideoActivity;
 import com.example.appofzhejiang.fragment1.hotstrategy.HotStrategy1Activity;
 import com.example.appofzhejiang.fragment1.hotstrategy.HotStrategy2Activity;
 import com.example.appofzhejiang.fragment1.hotstrategy.HotStrategy3Activity;
@@ -82,19 +83,27 @@ public class MyFragment1 extends Fragment {
     private EditText editSearch;//搜索框
     private String currentCity; // 当前城市
     private String currentProvince; // 当前省份
+
     private List<Integer> imagesPath; // 轮播图地址
     private List<String> imagesTile; // 轮播图标题
     private LocalImageLoader localImageLoader; // 轮播图Loder
     private Banner banner; // 轮播图板块
+
     private View culturePoemZJView; // 诗画浙江
     private View cultureHeritageView; // 文化遗产
     private View cultureDramaView; // 戏剧文化
     private View cultureIndustrialView; // 工艺美术
-    private View cultureFolkView; // 民俗文化
     private View areaView; // 地域概况
+
+    private View cultureFolkView; // 民俗文化
     private View festivalView; // 传统节日
     private View historyView; // 历史沿革
     private View beautifulZJView; // 最美浙江
+    private View video1View; // 视频1
+    private View video2View; // 视频2
+    private View video3View; // 视频3
+    private View video4View; // 视频4
+
     private ImageView hotImageView1; // 热门攻略 图1
     private ImageView hotImageView2; // 热门攻略 图2
     private ImageView hotImageView3; // 热门攻略 图3
@@ -106,7 +115,8 @@ public class MyFragment1 extends Fragment {
     private View hotStrategy3; // 热门攻略3
     private View strategyMore; // 热门攻略->更多
 
-    public MyFragment1(){}
+    public MyFragment1() {
+    }
 
     // 传入默认城市名称
     public MyFragment1(String province, String city) {
@@ -223,12 +233,14 @@ public class MyFragment1 extends Fragment {
                     // 如果没有数据，说明没有被操作过，则显示；否则不显示。默认不显示
                     View littleCloseView = view.findViewById(R.id.little_zj_close);
                     View littleFindView = view.findViewById(R.id.little_zj_find);
+
                     littleRemindView.setVisibility(View.VISIBLE);
+
                     littleCloseView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             littleRemindView.setVisibility(View.GONE);
-                            save("false","data_littleRemind");
+                            save("false", "data_littleRemind");
                         }
                     });
                     littleFindView.setOnClickListener(new View.OnClickListener() {
@@ -256,6 +268,7 @@ public class MyFragment1 extends Fragment {
         cultureDramaView = view.findViewById(R.id.index_culture_drama);
         cultureIndustrialView = view.findViewById(R.id.index_culture_industrial);
     }
+
     private void setClick1() {
         culturePoemZJView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -303,9 +316,14 @@ public class MyFragment1 extends Fragment {
     private void getClick2View() {
         areaView = view.findViewById(R.id.index_area);
         festivalView = view.findViewById(R.id.index_festival);
-        historyView =  view.findViewById(R.id.index_history);
+        historyView = view.findViewById(R.id.index_history);
         beautifulZJView = view.findViewById(R.id.index_beautiful_zj);
+        video1View = view.findViewById(R.id.index_video1);
+        video2View = view.findViewById(R.id.index_video2);
+        video3View = view.findViewById(R.id.index_video3);
+        video4View = view.findViewById(R.id.index_video4);
     }
+
     private void setClick2() {
         areaView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -338,6 +356,38 @@ public class MyFragment1 extends Fragment {
                 startActivity(intent);
             }
         });
+        video1View.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CultureVideoActivity.class);
+                intent.putExtra("type", "1");
+                startActivity(intent);
+            }
+        });
+        video2View.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CultureVideoActivity.class);
+                intent.putExtra("type", "2");
+                startActivity(intent);
+            }
+        });
+        video3View.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CultureVideoActivity.class);
+                intent.putExtra("type", "3");
+                startActivity(intent);
+            }
+        });
+        video4View.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CultureVideoActivity.class);
+                intent.putExtra("type", "4");
+                startActivity(intent);
+            }
+        });
     }
 
     /**
@@ -355,6 +405,7 @@ public class MyFragment1 extends Fragment {
         hotStrategy2 = view.findViewById(R.id.strategy_hot2);
         hotStrategy3 = view.findViewById(R.id.strategy_hot3);
     }
+
     private void setHotStrategy() {
         strategyMore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -390,10 +441,10 @@ public class MyFragment1 extends Fragment {
             }
         });
 
-        List<RecyclerBean> recyclerBeanList = new RecyclerBeanListUtil(currentCity,RecyclerType.STRATEGY).getRecyclerBeanList();
+        List<RecyclerBean> recyclerBeanList = new RecyclerBeanListUtil(currentCity, RecyclerType.STRATEGY).getRecyclerBeanList();
         List<String> urls = new LinkedList<>();
         List<String> titles = new LinkedList<>();
-        for(int i = 0; i < 3; i ++) {
+        for (int i = 0; i < 3; i++) {
             RecyclerBean bean = recyclerBeanList.get(i);
             urls.add(bean.getPictures());
             titles.add(bean.getTitle());
@@ -581,7 +632,6 @@ public class MyFragment1 extends Fragment {
     }
 
 
-
     /**
      * 把数据存储在本地
      */
@@ -645,7 +695,7 @@ public class MyFragment1 extends Fragment {
         initData();
         localImageLoader = new LocalImageLoader();
         banner = view.findViewById(R.id.fg1_banner);
-        if(banner != null) {
+        if (banner != null) {
 
             banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
             banner.setImageLoader(localImageLoader);
@@ -654,14 +704,14 @@ public class MyFragment1 extends Fragment {
             banner.setDelayTime(4000);
             banner.isAutoPlay(true);
             view.findViewById(com.youth.banner.R.id.titleView).getBackground().setAlpha(0); // 设置标题背景透明
-            ((TextView)view.findViewById(com.youth.banner.R.id.bannerTitle)).setTypeface(Typeface.create("sans",Typeface.BOLD));
+            ((TextView) view.findViewById(com.youth.banner.R.id.bannerTitle)).setTypeface(Typeface.create("sans", Typeface.BOLD));
             banner.setIndicatorGravity(BannerConfig.RIGHT);
 
 
             banner.setOnBannerListener(new OnBannerListener() {
                 @Override
                 public void OnBannerClick(int position) {
-                    switch(position) {
+                    switch (position) {
                         case 0:
                             Intent intent0 = new Intent(getActivity(), RecyclerPageActivity.class);
                             intent0.putExtra("currentCity", currentCity);
