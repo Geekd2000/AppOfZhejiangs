@@ -5,9 +5,9 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingLeft="10dp"
-    android:paddingTop="10dp"
+    android:paddingTop="5dp"
     android:paddingRight="10dp"
-    android:paddingBottom="10dp">
+    android:paddingBottom="5dp">
 
     <ImageView
         android:id="@+id/list2_image"

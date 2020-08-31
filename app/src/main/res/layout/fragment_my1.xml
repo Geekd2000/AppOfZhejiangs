@@ -6,52 +6,37 @@
     android:background="@color/colorNotWhite"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:background="@color/colorWhite"
         android:elevation="5dp"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/txt_city"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             android:drawableRight="@drawable/arrow_down"
             android:gravity="center"
             android:paddingRight="10dp"
             android:text="定位"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/main_search"
-            android:layout_width="240dp"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_edit_search"
-            android:drawableLeft="@drawable/main_search"
-            android:drawablePadding="10dp"
-            android:hint="@string/edit_strategy"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:textColor="@color/colorBlack"
-            android:textColorHint="@color/colorGray"
-            android:textSize="16sp" />
+            />
 
         <TextView
-            android:id="@+id/txt_search"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="搜索"
-            android:textColor="@color/colorDarkGray"
-            android:textSize="16sp" />
-    </LinearLayout>
+            android:text="首页"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -73,7 +58,7 @@
                 <com.youth.banner.Banner
                     android:id="@+id/fg1_banner"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="160dp"
                     app:indicator_drawable_selected="@drawable/banner_selected"
                     app:indicator_drawable_unselected="@drawable/banner_unselected"
                     app:indicator_height="10dp"
@@ -325,11 +310,8 @@
                                 android:textSize="16dp" />
 
                         </RelativeLayout>
-
-
                     </RelativeLayout>
                 </RelativeLayout>
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -339,8 +321,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/fg1_display_bg2">
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:id="@+id/index_area"
@@ -539,17 +520,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:paddingRight="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_radius"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -575,13 +561,16 @@
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/strategy_hot1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginRight="5dp"
                         android:orientation="vertical">
 
                         <com.makeramen.roundedimageview.RoundedImageView
@@ -599,10 +588,11 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
                             android:ellipsize="end"
+                            android:gravity="center"
                             android:singleLine="true"
                             android:text="西湖一日游"
                             android:textColor="#101318"
-                            android:textSize="16dp" />
+                            android:textSize="14sp" />
 
 
                         <LinearLayout
@@ -615,7 +605,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="推荐指数："
-                                android:textSize="14dp" />
+                                android:textSize="12sp" />
 
                             <ImageView
                                 android:layout_width="13dp"
@@ -643,9 +633,12 @@
 
                     <LinearLayout
                         android:id="@+id/strategy_hot2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
                         android:orientation="vertical">
 
                         <com.makeramen.roundedimageview.RoundedImageView
@@ -663,10 +656,11 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
                             android:ellipsize="end"
+                            android:gravity="center"
                             android:singleLine="true"
                             android:text="西湖一日游"
                             android:textColor="#101318"
-                            android:textSize="16dp" />
+                            android:textSize="14sp" />
 
 
                         <LinearLayout
@@ -679,7 +673,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="推荐指数："
-                                android:textSize="14dp" />
+                                android:textSize="12sp" />
 
                             <ImageView
                                 android:layout_width="13dp"
@@ -704,10 +698,14 @@
 
                         </LinearLayout>
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/strategy_hot3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginLeft="5dp"
                         android:orientation="vertical">
 
                         <com.makeramen.roundedimageview.RoundedImageView
@@ -718,6 +716,7 @@
                             android:src="@drawable/test"
                             app:riv_corner_radius="10dp" />
 
+
                         <TextView
                             android:id="@+id/hot_img3_title"
                             android:layout_width="110dp"
@@ -725,11 +724,11 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
                             android:ellipsize="end"
+                            android:gravity="center"
                             android:singleLine="true"
                             android:text="西湖一日游"
                             android:textColor="#101318"
-                            android:textSize="16dp" />
-
+                            android:textSize="14sp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -741,7 +740,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="推荐指数："
-                                android:textSize="14dp" />
+                                android:textSize="12sp" />
 
                             <ImageView
                                 android:layout_width="13dp"

@@ -56,8 +56,7 @@ public class MyFragment2 extends Fragment {
     private RecyclerView recyclerView1,recyclerView2;
     private FragmentAdapter2_1 fragmentAdapter2_1;
     private FragmentAdapter2_2 fragmentAdapter2_2;
-    private TextView txtCity, txtMore, txtSearch;
-    private EditText editSearch;
+    private TextView txtCity, txtMore;
     private String currentCity; // 当前城市
     private String currentProvince; // 当前省份
     public LocationClient mLocationClient;//定位
@@ -132,15 +131,6 @@ public class MyFragment2 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), more.class);
                 startActivity(intent);
-            }
-        });
-        txtSearch = view.findViewById(R.id.txt_search);
-        editSearch = view.findViewById(R.id.main_search);
-        txtSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String s = editSearch.getText().toString();
-                Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
             }
         });
 

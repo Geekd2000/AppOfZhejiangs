@@ -7,52 +7,36 @@
     android:fillViewport="true"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/fg2_lin"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:background="@color/colorWhite"
         android:elevation="5dp"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp">
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/txt_city"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             android:drawableRight="@drawable/arrow_down"
             android:gravity="center"
             android:paddingRight="10dp"
             android:text="定位"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/main_search"
-            android:layout_width="240dp"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_edit_search"
-            android:drawableLeft="@drawable/main_search"
-            android:drawablePadding="10dp"
-            android:hint="@string/edit_scenic"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:textColor="@color/colorBlack"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/txt_search"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="搜索"
-            android:textColor="@color/colorDarkGray"
-            android:textSize="16sp" />
-    </LinearLayout>
+            android:text="发现"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
@@ -82,218 +66,13 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="28sp" />
 
-                <!--<LinearLayout
-                    android:id="@+id/list1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_top_radius"
-                    android:orientation="horizontal"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp">
-
-                    <ImageView
-                        android:id="@+id/list2_image"
-                        android:layout_width="120dp"
-                        android:layout_height="75dp"
-                        android:background="#000"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/westlake" />
-
-                    <LinearLayout
-                        android:id="@+id/linear_layout1"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="3"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txt_place"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:text="西湖"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/txt_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:background="@color/colorLightGreen"
-                            android:gravity="center"
-                            android:padding="2dp"
-                            android:text="5A景区"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/txt_detai1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="详情"
-                            android:textColor="@color/colorLightBlack"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/list2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_top_radius"
-                    android:orientation="horizontal"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp">
-
-                    <ImageView
-                        android:id="@+id/list2_image2"
-                        android:layout_width="120dp"
-                        android:layout_height="75dp"
-                        android:background="#000"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/wetland" />
-
-                    <LinearLayout
-                        android:id="@+id/linear_layout2"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="3"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txt_place2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:text="西溪国家湿地公园"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/txt_label2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:background="@color/colorLightGreen"
-                            android:gravity="center"
-                            android:padding="2dp"
-                            android:text="5A景区"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/txt_detail2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="详情"
-                            android:textColor="@color/colorLightBlack"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/list3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_top_radius"
-                    android:orientation="horizontal"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp">
-
-                    <ImageView
-                        android:id="@+id/list2_image3"
-                        android:layout_width="120dp"
-                        android:layout_height="75dp"
-                        android:background="#000"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/songcity" />
-
-                    <LinearLayout
-                        android:id="@+id/linear_layout3"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="3"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txt_place3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:text="杭州宋城景区"
-                            android:textColor="@color/colorBlack"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/txt_label3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:background="@color/colorLightGreen"
-                            android:gravity="center"
-                            android:padding="2dp"
-                            android:text="4A景区"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/txt_detail3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="详情"
-                            android:textColor="@color/colorLightBlack"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-                </LinearLayout>-->
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/fg2_linear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_top_radius" />
+                    android:background="@drawable/bg_top_radius"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
 
                 <View
                     android:layout_width="match_parent"

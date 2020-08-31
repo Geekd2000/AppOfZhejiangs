@@ -2,7 +2,7 @@ package com.example.appofzhejiang.Business;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,26 +13,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appofzhejiang.CustomDialog.CustomDialog;
 import com.example.appofzhejiang.R;
-import com.example.appofzhejiang.fragment3.Ticket;
-import com.example.appofzhejiang.fragment3.TicketDetail.TicketDetailActivity;
-import com.example.appofzhejiang.fragment3.hotel.Hotel;
-import com.example.appofzhejiang.fragment3.hotel.HotelAdapter;
-import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearViewHolder> {
 
     private Context mContext;
-    private List<AddressList> addressData;//收货信息
-    private AddressList addressList;
+    private List<AddressBean> addressData;//收货信息
 
-    public ReceiptAdapter(Context context, List<AddressList> addressData, AddressList addressList) {
+    public ReceiptAdapter(List<AddressBean> addressData, Context context) {
         this.mContext = context;
         this.addressData = addressData;
-        this.addressList = addressList;
     }
 
     @NonNull
@@ -45,19 +38,33 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
 
     @Override
     public void onBindViewHolder(@NonNull LinearViewHolder holder, final int position) {
-        if ((addressData.get(position).getSelect()).equals("false")) {
+        AddressBean addressBean=addressData.get(position);
+        if (!addressBean.getDefault()) {
             holder.toleration.setVisibility(View.INVISIBLE);
-        } else if ((addressData.get(position).getSelect()).equals("true")) {
+        } else {
             holder.toleration.setVisibility(View.VISIBLE);
         }
-        holder.username.setText(addressData.get(position).getUsername());
-        holder.phone.setText(addressData.get(position).getPhone());
-        holder.address.setText(addressData.get(position).getAddress());
+        holder.username.setText(addressBean.getName());
+        holder.phone.setText(addressBean.getMobile());
+        holder.address.setText(addressBean.getAddress());
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //删除自带默认动画
-                removeData(position);
+                CustomDialog customDialog = new CustomDialog(mContext);
+                customDialog.setTitle("提示").setMessage("确定要删除该地址吗？")
+                        .setCancel("取消", new CustomDialog.IOnCancelListener() {
+                            @Override
+                            public void onCancel(CustomDialog dialog) {
+                                // 取消删除
+                            }
+                        }).setConfirm("确定", new CustomDialog.IOnConfirmListener() {
+                    @Override
+                    public void onConfirm(CustomDialog dialog) {
+                        // 确定删除 删除记录
+                        //删除自带默认动画
+                        removeData(position);
+                    }
+                }).show();
             }
         });
     }
@@ -67,14 +74,14 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
         return addressData.size();
     }
 
-    // 添加数据
+    /*// 添加数据
     public void addData(int position) {
         //在list中添加数据，并通知条目加入一条
-        addressData.add(position, addressList);
+        addressData.add(position, addressBean);
         //添加动画
         notifyItemInserted(position);
     }
-
+*/
     // 删除数据
     public void removeData(int position) {
         addressData.remove(position);
@@ -117,7 +124,7 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
          * @param view 点击的item的视图
          * @param data 点击的item的数据*/
 
-        public void OnItemClick(View view, AddressList addressList);
+        public void OnItemClick(View view, AddressBean addressBean);
     }
 
     //需要外部访问，所以需要设置set方法，方便调用

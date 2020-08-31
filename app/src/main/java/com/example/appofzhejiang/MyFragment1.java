@@ -79,8 +79,6 @@ public class MyFragment1 extends Fragment {
     public LocationClient mLocationClient;
     private View view; // 定义view用来设置fragment的layout
     private TextView txtCity; // 当前城市
-    private TextView txtSearch;//搜索按钮
-    private EditText editSearch;//搜索框
     private String currentCity; // 当前城市
     private String currentProvince; // 当前省份
 
@@ -192,17 +190,6 @@ public class MyFragment1 extends Fragment {
             }
         });
         // 设置城市定位 end
-
-        //搜索框
-        txtSearch = view.findViewById(R.id.txt_search);
-        editSearch = view.findViewById(R.id.main_search);
-        txtSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String s = editSearch.getText().toString();
-                Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
-            }
-        });
 
         // 设置宣传栏1的点击事件
         getClick1View();

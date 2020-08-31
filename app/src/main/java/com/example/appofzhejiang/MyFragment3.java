@@ -61,10 +61,7 @@ public class MyFragment3 extends Fragment {
     private View view;
     private RecyclerView recyclerView;
     private FragmentAdapter3 fragmentAdapter3;
-    private String content;
     private TextView txtCity, txtTicket, txtHotel, txtTaxi, txtGuider, txtNongjiale, txtFood, txtCommodity, txtSearch;
-    private EditText editSearch;//搜索框
-    private List<Ticket> ticketList;
     private String currentCity; // 当前城市
     private String currentProvince; // 当前省份
     public LocationClient mLocationClient;//定位
@@ -105,7 +102,7 @@ public class MyFragment3 extends Fragment {
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my3, container, false);
-//        init();
+
         //设初始化RecyclerView
         initRecyclerView();
 
@@ -136,17 +133,6 @@ public class MyFragment3 extends Fragment {
                         setLocated();
                     }
                 }).show();
-            }
-        });
-
-        //搜索按钮
-        txtSearch = view.findViewById(R.id.txt_search);
-        editSearch = view.findViewById(R.id.main_search);
-        txtSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String s = editSearch.getText().toString();
-                Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -275,14 +261,6 @@ public class MyFragment3 extends Fragment {
         fragmentAdapter3 = new FragmentAdapter3(new TicketUtil(currentCity, TicketType.TICKET).getTicketList(),getActivity());
         recyclerView.setAdapter(fragmentAdapter3);
     }
-
-    /*public void init() {
-        ticketList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Ticket ticket = new Ticket(Integer.toString(R.drawable.westlake), "杭州西湖" + i, "35", "超级无敌大公司", "666");
-            ticketList.add(ticket);
-        }
-    }*/
 
     /**
      * 功能：打开选择城市页面，可以设置热点城市
