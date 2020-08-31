@@ -33,11 +33,18 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/receipt_toolbar">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/address_message"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:layout_below="@id/receipt_toolbar" />
+        android:layout_margin="5dp" />
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
 </RelativeLayout>

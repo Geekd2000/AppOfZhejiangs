@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.CustomDialog.CustomDialog;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.fragment3.Ticket;
 
 import java.util.List;
 
@@ -72,6 +73,13 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
     @Override
     public int getItemCount() {
         return addressData.size();
+    }
+
+    public void refresh(List<AddressBean> newList) {
+        //刷新数据
+        addressData.removeAll(addressData);
+        addressData.addAll(newList);
+        notifyDataSetChanged();
     }
 
     /*// 添加数据

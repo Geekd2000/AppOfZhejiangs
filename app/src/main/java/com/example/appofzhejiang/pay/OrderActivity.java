@@ -33,6 +33,7 @@ public class OrderActivity extends AppCompatActivity {
     private ImageView imageGoods;//商品图片
     private TextView orderNumber;//订单编号
     private TextView orderBuy;//去付款
+    private TextView orderTime;//下单时间
     //悬浮按钮
     private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
 
@@ -67,34 +68,29 @@ public class OrderActivity extends AppCompatActivity {
             }
         });
 
-
         //初始化悬浮按钮
         initFloatActionButton();
 
         //获得传递过来的参数
         Intent intent = getIntent();
-        String name = intent.getStringExtra("goodsName");
-        String type = intent.getStringExtra("goodsType");
-        String unitPrice = intent.getStringExtra("goodsUnitPrice");
-        String amount = intent.getStringExtra("goodsAmount");
-        String pay = intent.getStringExtra("goodsPay");
-        String username = intent.getStringExtra("username");
-        String telephone = intent.getStringExtra("telephone");
-        String address = intent.getStringExtra("address");
-        String image = intent.getStringExtra("goodsImage");
-        String paymentID = intent.getStringExtra("paymentID");
-        mGoodsName1.setText(name);
-        mGoodsName2.setText(name);
-        mPay1.setText(pay);
-        mPay2.setText(pay);
-        mGoodsType.setText(type);
-        mAmount.setText(amount);
-        mGoodsUnitPrice.setText(unitPrice);
-        mUsername.setText(username);
-        mTelephone.setText(telephone);
-        mAddress.setText(address);
-        orderNumber.setText(paymentID);
-        Glide.with(this).load(image).into(imageGoods);
+        String order_id=intent.getStringExtra("order_id");
+        //通过订单ID获取服务器数据
+        OrderBean orderBean = new OrderBeanUtil(order_id).getOrderBean();
+        //单价获取
+        double unitPrice = orderBean.getMoney() / orderBean.getNum();
+        mGoodsName1.setText(orderBean.getShop_name());
+        mGoodsName2.setText(orderBean.getShop_name());
+        mPay1.setText(String.valueOf(orderBean.getMoney()));
+        mPay2.setText(String.valueOf(orderBean.getMoney()));
+        mGoodsType.setText(orderBean.getParam());
+        mAmount.setText(String.valueOf(orderBean.getNum()));
+        mGoodsUnitPrice.setText(String.valueOf(unitPrice));
+        mUsername.setText(orderBean.getName());
+        mTelephone.setText(orderBean.getTel());
+        mAddress.setText(orderBean.getDelivery_way());
+        orderNumber.setText(orderBean.getOrder_no());
+        orderTime.setText(orderBean.getDatetime());
+        Glide.with(this).load(orderBean.getRemarks()).into(imageGoods);
     }
 
     @Override
@@ -162,5 +158,6 @@ public class OrderActivity extends AppCompatActivity {
         imageGoods = findViewById(R.id.imageGoods);
         orderNumber=findViewById(R.id.order_number);
         orderBuy = findViewById(R.id.order_buy);
+        orderTime = findViewById(R.id.order_time);
     }
 }

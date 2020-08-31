@@ -33,7 +33,6 @@ public class OrderFragment2 extends Fragment {
     public RecyclerView recyclerView;
     private PayAdapter payAdapter;
     private SmartRefreshLayout refreshLayout;
-    private List<FileList> fileLists = new ArrayList<FileList>();
     private String content;
 
     public OrderFragment2() {
@@ -49,7 +48,7 @@ public class OrderFragment2 extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_order2, container, false);
         initData();
-        initList();
+//        initList();
         initRecyclerView();
 
         //刷新加载
@@ -62,7 +61,8 @@ public class OrderFragment2 extends Fragment {
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
                 refreshLayout.autoRefresh();
-                refreshLayout.finishRefresh(2000);//结束刷新  传入false表示刷新失败
+                payAdapter.refresh(new OrderBeanListUtil(2,"1").getOrderBeanList());
+                refreshLayout.finishRefresh();//结束刷新  传入false表示刷新失败
                 //不传时间则立即停止刷新
             }
         });
@@ -90,15 +90,15 @@ public class OrderFragment2 extends Fragment {
         //获取recyclerview
         recyclerView = view.findViewById(R.id.fragment_order2);
         //创建Adapter
-        payAdapter = new PayAdapter(getActivity(), fileLists);
+        payAdapter = new PayAdapter(new OrderBeanListUtil(2,"1").getOrderBeanList(),getActivity());
         recyclerView.setAdapter(payAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
-    public void initList() {
+    /*public void initList() {
         for (int i = 0; i < 10; i++) {
-            FileList fileList = new FileList(R.drawable.picturezhejiang, "订单号" + i, "西湖游船外事船舶成人票", "小船", "3", "35", "105", "待付款");
-            fileLists.add(fileList);
+            OrderBean orderBean = new OrderBean(R.drawable.picturezhejiang, "订单号" + i, "西湖游船外事船舶成人票", "小船", "3", "35", "105", "待付款");
+            orderBeans.add(orderBean);
         }
-    }
+    }*/
 }

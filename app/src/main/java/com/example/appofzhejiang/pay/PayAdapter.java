@@ -11,18 +11,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.fragment3.Ticket;
 
 import java.util.List;
 
 public class PayAdapter extends RecyclerView.Adapter<PayAdapter.LinearViewHolder> {
 
     private Context mContext;
-    private List<FileList> fileDta;
+    private List<OrderBean> orderBeanList;
 
-    public PayAdapter(Context context,List<FileList> fileDta) {
+    public PayAdapter(List<OrderBean> orderBeanList, Context context) {
         this.mContext = context;
-        this.fileDta=fileDta;
+        this.orderBeanList = orderBeanList;
     }
 
     @NonNull
@@ -35,16 +37,11 @@ public class PayAdapter extends RecyclerView.Adapter<PayAdapter.LinearViewHolder
             @Override
             public void onClick(View view) {
                 int position = linearViewHolder.getAdapterPosition();
-                FileList fileList=fileDta.get(position);
+                OrderBean orderBean = orderBeanList.get(position);
+                double unitPrice = orderBean.getMoney() / orderBean.getNum();
                 linearViewHolder.mIvPicture.setDrawingCacheEnabled(true);
-                String img = Integer.toString(fileList.getPicture());
                 Intent intent = new Intent(mContext, OrderActivity.class);
-                intent.putExtra("goodsName", fileList.getTitle());
-                intent.putExtra("goodsType", fileList.getType());
-                intent.putExtra("goodsUnitPrice", fileList.getMoney1());
-                intent.putExtra("goodsAmount", fileList.getCount());
-                intent.putExtra("goodsPay", fileList.getMoney2());
-                intent.putExtra("goodsImage", img);
+                intent.putExtra("order_id", String.valueOf(orderBean.getOrder_id()));//传入订单id
                 mContext.startActivity(intent);
             }
         });
@@ -54,12 +51,38 @@ public class PayAdapter extends RecyclerView.Adapter<PayAdapter.LinearViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull LinearViewHolder holder, int position) {
+        OrderBean orderBean = orderBeanList.get(position);
+        //单价获取
+        double unitPrice = orderBean.getMoney() / orderBean.getNum();
+
+        Glide.with(mContext).load(orderBean.getRemarks()).into(holder.getIvPicture());
+        holder.getTvOrder().setText(orderBean.getOrder_no());
+        holder.getTvTitle().setText(orderBean.getShop_name());
+        holder.getTvType().setText(orderBean.getParam());
+        holder.getTvCount().setText(String.valueOf(orderBean.getNum()));
+        holder.getTvMoney1().setText(String.valueOf(unitPrice));
+        holder.getTvMoney2().setText(String.valueOf(orderBean.getMoney()));
+        if (!orderBean.getPay()) {
+            holder.getTvStatus().setText("待付款");
+        } else if (orderBean.getPay()) {
+            holder.getTvStatus().setText("已付款");
+        } else if (orderBean.getPin()) {
+            holder.getTvStatus().setText("已完成");
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return orderBeanList.size();
     }
+
+    public void refresh(List<OrderBean> newOrderList) {
+        //刷新数据
+        orderBeanList.removeAll(orderBeanList);
+        orderBeanList.addAll(newOrderList);
+        notifyDataSetChanged();
+    }
+
 
     class LinearViewHolder extends RecyclerView.ViewHolder {
 
