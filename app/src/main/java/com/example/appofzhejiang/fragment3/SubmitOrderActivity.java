@@ -2,14 +2,11 @@ package com.example.appofzhejiang.fragment3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -29,26 +26,18 @@ import com.bigkoo.pickerview.listener.OnTimeSelectChangeListener;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.bumptech.glide.Glide;
+import com.example.appofzhejiang.Business.AddressBean;
+import com.example.appofzhejiang.Business.GetDefaultAddressUtil;
 import com.example.appofzhejiang.Business.ReceiptActivity;
-import com.example.appofzhejiang.Login.LoginBean;
 import com.example.appofzhejiang.Login.LoginUtil;
-import com.example.appofzhejiang.Login.RegisterActivity;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
-import com.example.appofzhejiang.ToastUtils;
-import com.example.appofzhejiang.fragment3.TicketDetail.TicketDetailActivity;
-import com.example.appofzhejiang.pay.OrderActivity;
-import com.example.appofzhejiang.pay.OrderBean;
-import com.example.appofzhejiang.pay.OrderBeanListUtil;
-import com.example.appofzhejiang.pay.OrderBeanUtil;
-import com.example.appofzhejiang.pay.PayActivity;
 import com.example.appofzhejiang.pay.OrderDialog;
 import com.example.appofzhejiang.pay.PaySuccessActivity;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -81,7 +70,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
     private TextView address;//地址
     private ImageView goodsImage;//商品图片
     private RelativeLayout relativeLayout;//选择地址
-    private String loginUserName;//登陆名
+    private int userID;//用户ID
 
     //悬浮按钮
     private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
@@ -109,16 +98,6 @@ public class SubmitOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-            }
-        });
-
-        //跳转到收货地址页面
-        relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SubmitOrderActivity.this, ReceiptActivity.class);
-                intent.putExtra("code", "1");
-                startActivityForResult(intent, 1);
             }
         });
 
@@ -192,9 +171,26 @@ public class SubmitOrderActivity extends AppCompatActivity {
             }
         });
 
-        /*SharedPreferences sp = SubmitOrderActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
-        loginUserName = sp.getString("loginUserName",null);
-        final LoginBean loginBean = new LoginUtil(loginUserName).getLoginRegisterBean();*/
+        //用户ID
+        SharedPreferences sp = SubmitOrderActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+        String loginUserName = sp.getString("loginUserName", null);
+        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
+        //设置默认地址
+        AddressBean addressBean=new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean();
+        username.setText(addressBean.getName());
+        telephone.setText(addressBean.getMobile());
+        address.setText(addressBean.getAddress());
+
+        //跳转到收货地址页面,选择地址
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SubmitOrderActivity.this, ReceiptActivity.class);
+                intent.putExtra("code", "1");
+                startActivityForResult(intent, 1);
+            }
+        });
+
         //添加订单，跳转至订单详情页面
         addOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -219,7 +215,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
                         runRegister(false,address.getText().toString(),Double.parseDouble(payment.getText().toString()),
                                 username.getText().toString(),Integer.parseInt(endCount.getText().toString()),paymentID,false,
                                 Integer.parseInt(product_id),image,goodsName.getText().toString(),telephone.getText().toString(),
-                                1,totalType,goodsType.getText().toString());
+                                userID,totalType,goodsType.getText().toString());
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

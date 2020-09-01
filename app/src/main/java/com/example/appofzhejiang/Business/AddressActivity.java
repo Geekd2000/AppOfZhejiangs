@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,9 +24,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appofzhejiang.CustomDialog.CustomDialog;
+import com.example.appofzhejiang.Login.LoginUtil;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
+import com.example.appofzhejiang.ToastUtils;
+import com.example.appofzhejiang.fragment3.SubmitOrderActivity;
+import com.google.gson.Gson;
 import com.lljjcoder.citypickerview.widget.CityPicker;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.Headers;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class AddressActivity extends AppCompatActivity {
@@ -38,6 +57,12 @@ public class AddressActivity extends AppCompatActivity {
     private RadioButton mRadioButton;//默认地址单选按钮
     private RelativeLayout addressPage;
     private TextView save;
+    private int userID;//用户ID
+    private String id;//地址编号
+    private AddressBean addressBean;
+
+    Gson gson = new Gson();
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +77,21 @@ public class AddressActivity extends AppCompatActivity {
 
         //获取传过来的参数
         Intent intent = getIntent();
-        final int size = Integer.parseInt(intent.getStringExtra("size"));
+        final int num = Integer.parseInt(intent.getStringExtra("num"));
+        if (num == 1) {
+            id = intent.getStringExtra("id");
+            addressBean = new GetAddressUtil(id).getAddressBean();
+            receiveName.setText(addressBean.getName());
+            telephoneNumber.setText(addressBean.getMobile());
+            detailAddress.setText(addressBean.getAddress());
+            if (addressBean.getDefault()) {
+                mRadioButton.setChecked(true);
+            } else {
+                mRadioButton.setChecked(false);
+            }
+        }
+
+
         //区域选择
         newAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,9 +116,15 @@ public class AddressActivity extends AppCompatActivity {
                 globalValue.setCheck(!isCheck);
             }
         });
+
+        //用户ID
+        SharedPreferences sp = AddressActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+        String loginUserName = sp.getString("loginUserName", null);
+        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
+
         //toolbar返回按钮
-        if (TextUtils.isEmpty(receiveName.getText().toString()) && TextUtils.isEmpty(telephoneNumber.getText().toString())
-                && TextUtils.isEmpty(newAddress.getText().toString()) && TextUtils.isEmpty(detailAddress.getText().toString())) {
+        if (TextUtils.isEmpty(receiveName.getText().toString().trim()) && TextUtils.isEmpty(telephoneNumber.getText().toString().trim())
+                && TextUtils.isEmpty(detailAddress.getText().toString().trim())) {
             mBtnBack.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -111,24 +156,31 @@ public class AddressActivity extends AppCompatActivity {
                             } else if (TextUtils.isEmpty(detailAddress.getText().toString().trim())) {
                                 Toast.makeText(AddressActivity.this, "请输入详细地址", Toast.LENGTH_SHORT).show();
                             } else {
-                                boolean isCheck = globalValue.isCheck();
-                                if (isCheck == false) {
-                                    Intent intent = new Intent();
-                                    intent.putExtra("name", receiveName.getText().toString());
-                                    intent.putExtra("phone", telephoneNumber.getText().toString());
-                                    intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
-                                    intent.putExtra("select", "false");
-                                    setResult(RESULT_OK, intent);
-                                    finish();
+                                if (num == 1) {
+                                    String name = receiveName.getText().toString();
+                                    String phone = telephoneNumber.getText().toString();
+                                    String address = newAddress.getText().toString() + detailAddress.getText().toString();
+                                    try {
+                                        runUpdate(address, Integer.parseInt(id), phone, name);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                    //默认地址修改
+                                    runDefaultSet(id,String.valueOf(addressBean.getUser_id()));
+                                    ToastUtils.show(AddressActivity.this,"修改成功");
                                 } else {
-                                    Intent intent = new Intent();
-                                    intent.putExtra("name", receiveName.getText().toString());
-                                    intent.putExtra("phone", telephoneNumber.getText().toString());
-                                    intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
-                                    intent.putExtra("select", "true");
-                                    setResult(RESULT_OK, intent);
-                                    finish();
+                                    boolean isCheck = globalValue.isCheck();
+                                    String name = receiveName.getText().toString();
+                                    String phone = telephoneNumber.getText().toString();
+                                    String address = newAddress.getText().toString() + detailAddress.getText().toString();
+                                    try {
+                                        runAddress(isCheck, address, phone, name, userID);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                    ToastUtils.show(AddressActivity.this,"添加成功");
                                 }
+                                finish();
                             }
                         }
                     }).show();
@@ -148,29 +200,128 @@ public class AddressActivity extends AppCompatActivity {
                 } else if (TextUtils.isEmpty(detailAddress.getText().toString().trim())) {
                     Toast.makeText(AddressActivity.this, "请输入详细地址", Toast.LENGTH_SHORT).show();
                 } else {
-                    boolean isCheck = globalValue.isCheck();
-                    if (isCheck == false) {
-                        Intent intent = new Intent();
-                        intent.putExtra("name", receiveName.getText().toString());
-                        intent.putExtra("phone", telephoneNumber.getText().toString());
-                        intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
-                        intent.putExtra("select", "false");
-                        setResult(RESULT_OK, intent);
-                        finish();
+                    if (num == 1) {
+                        String name = receiveName.getText().toString();
+                        String phone = telephoneNumber.getText().toString();
+                        String address = newAddress.getText().toString() + detailAddress.getText().toString();
+                        try {
+                            runUpdate(address, Integer.parseInt(id), phone, name);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        //默认地址修改
+                        runDefaultSet(id,String.valueOf(addressBean.getUser_id()));
+                        ToastUtils.show(AddressActivity.this,"修改成功");
                     } else {
-                        Intent intent = new Intent();
-                        intent.putExtra("name", receiveName.getText().toString());
-                        intent.putExtra("phone", telephoneNumber.getText().toString());
-                        intent.putExtra("address", newAddress.getText().toString() + detailAddress.getText().toString());
-                        intent.putExtra("select", "true");
-                        setResult(RESULT_OK, intent);
-                        finish();
+                        boolean isCheck = globalValue.isCheck();
+                        String name = receiveName.getText().toString();
+                        String phone = telephoneNumber.getText().toString();
+                        String address = newAddress.getText().toString() + detailAddress.getText().toString();
+                        try {
+                            runAddress(isCheck, address, phone, name, userID);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        ToastUtils.show(AddressActivity.this,"添加成功");
                     }
+                    finish();
                 }
             }
         });
 
 
+    }
+
+    //向服务器发送post请求
+    private void runAddress(boolean _default, String address, String mobile, String name,
+                            int user_id) throws InterruptedException {
+        final OkHttpClient client = new OkHttpClient();
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        map.put("_default", _default);
+        map.put("address", address);
+        map.put("mobile", mobile);
+        map.put("name", name);
+        map.put("user_id", user_id);
+        String params = gson.toJson(map);
+
+        RequestBody requestBody = RequestBody.create(JSON, params);
+        final Request request = new Request.Builder()
+                .url("http://120.26.172.104:9002//wx/insertAddress")
+                .post(requestBody)
+                .build();
+        //处理注册逻辑
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Response response = client.newCall(request).execute();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        t1.start();
+        t1.join();
+    }
+
+    //向服务器发送put请求,处理修改信息
+    private void runUpdate(String address, int id, String mobile, String name) throws InterruptedException {
+        final OkHttpClient client = new OkHttpClient();
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        map.put("address", address);
+        map.put("id", id);
+        map.put("mobile", mobile);
+        map.put("name", name);
+        String params = gson.toJson(map);
+
+        RequestBody requestBody = RequestBody.create(JSON, params);
+        final Request request = new Request.Builder()
+                .url("http://120.26.172.104:9002//wx/updateAddress")
+                .put(requestBody)
+                .build();
+        //处理注册逻辑
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Response response = client.newCall(request).execute();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        t1.start();
+        t1.join();
+    }
+
+    //向服务器发送put请求,修改默认地址
+    private void runDefaultSet(String id, String user_id) {
+        String url = "http://120.26.172.104:9002//wx/updateDefaultAddress";
+        RequestBody formBody = new FormBody.Builder()
+                .add("id", id)
+                .add("user_id", user_id)
+                .build();
+        Request request = new Request.Builder()
+                .url(url)
+                .put(formBody)
+                .build();
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("TAG", "onFailure: " + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d("TAG", response.protocol() + " " +response.code() + " " + response.message());
+                Headers headers = response.headers();
+                for (int i = 0; i < headers.size(); i++) {
+                    Log.d("TAG", headers.name(i) + ":" + headers.value(i));
+                }
+                Log.d("TAG", "onResponse: " + response.body().string());
+            }
+        });
     }
 
     //获取单选按钮checked值的类

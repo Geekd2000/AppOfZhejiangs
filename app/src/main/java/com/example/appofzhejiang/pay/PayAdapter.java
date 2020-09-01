@@ -66,7 +66,8 @@ public class PayAdapter extends RecyclerView.Adapter<PayAdapter.LinearViewHolder
             holder.getTvStatus().setText("待付款");
         } else if (orderBean.getPay()) {
             holder.getTvStatus().setText("已付款");
-        } else if (orderBean.getPin()) {
+        }
+        if (orderBean.getPin()) {
             holder.getTvStatus().setText("已完成");
         }
     }

@@ -1,28 +1,28 @@
 package com.example.appofzhejiang.pay;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.fragment3.TicketActivity;
 
-public class PaySuccessActivity extends AppCompatActivity {
+public class UseSuccessActivity extends AppCompatActivity {
 
-    private TextView continueBuy,backMain,toUse;
+    private TextView continueUse,backMain;
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         overridePendingTransition(R.anim.right_in, R.anim.right_silent);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay_success);
+        setContentView(R.layout.activity_use_success);
         //设置沉浸式
         StatusBarUtil.setTransparent(this);
         StatusBarUtil.setDarkFont(this);
@@ -36,15 +36,14 @@ public class PaySuccessActivity extends AppCompatActivity {
             }
         });
 
-        //跳转至商城
-        continueBuy=findViewById(R.id.continue_buy);
-        continueBuy.setOnClickListener(new View.OnClickListener() {
+        //跳转至订单管理页面
+        continueUse=findViewById(R.id.continue_use);
+        continueUse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(PaySuccessActivity.this, TicketActivity.class);
-                intent.putExtra("num", "0");
+                Intent intent=new Intent(UseSuccessActivity.this, PayActivity.class);
                 startActivity(intent);
-                PaySuccessActivity.this.finish();
+                UseSuccessActivity.this.finish();
             }
         });
 
@@ -53,20 +52,9 @@ public class PaySuccessActivity extends AppCompatActivity {
         backMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(PaySuccessActivity.this, MainActivity.class);
+                Intent intent=new Intent(UseSuccessActivity.this, MainActivity.class);
                 startActivity(intent);
-                PaySuccessActivity.this.finish();
-            }
-        });
-
-        //跳转至订单管理
-        toUse=findViewById(R.id.toUse);
-        toUse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(PaySuccessActivity.this, PayActivity.class);
-                startActivity(intent);
-                PaySuccessActivity.this.finish();
+                UseSuccessActivity.this.finish();
             }
         });
     }

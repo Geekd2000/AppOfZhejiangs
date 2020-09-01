@@ -1,5 +1,7 @@
 package com.example.appofzhejiang.pay;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.appofzhejiang.Login.LoginUtil;
 import com.example.appofzhejiang.R;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
@@ -28,6 +31,7 @@ public class OrderFragment4 extends Fragment {
     private PayAdapter payAdapter;
     private SmartRefreshLayout refreshLayout;
     private String content;
+    private int userID;//用户ID
 
     public OrderFragment4() {
     }
@@ -43,6 +47,12 @@ public class OrderFragment4 extends Fragment {
         view = inflater.inflate(R.layout.fragment_order4, container, false);
         initData();
 //        initList();
+
+        //获取用户id
+        SharedPreferences sp = getActivity().getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+        String loginUserName = sp.getString("loginUserName", null);
+        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
+
         initRecyclerView();
 
         //刷新加载
@@ -54,8 +64,7 @@ public class OrderFragment4 extends Fragment {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
-                refreshLayout.autoRefresh();
-                payAdapter.refresh(new OrderBeanListUtil(4,"1").getOrderBeanList());
+                payAdapter.refresh(new OrderBeanListUtil(4,String.valueOf(userID)).getOrderBeanList());
                 refreshLayout.finishRefresh();//结束刷新  传入false表示刷新失败
                 //不传时间则立即停止刷新
             }
@@ -66,7 +75,7 @@ public class OrderFragment4 extends Fragment {
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
 
                 //模拟网络请求到的数据
-                refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                refreshLayout.finishLoadMore(1000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
                 refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
             }
         });
@@ -84,7 +93,7 @@ public class OrderFragment4 extends Fragment {
         //获取recyclerview
         recyclerView = view.findViewById(R.id.fragment_order4);
         //创建Adapter
-        payAdapter = new PayAdapter(new OrderBeanListUtil(4,"1").getOrderBeanList(),getActivity());
+        payAdapter = new PayAdapter(new OrderBeanListUtil(4,String.valueOf(userID)).getOrderBeanList(),getActivity());
         recyclerView.setAdapter(payAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }

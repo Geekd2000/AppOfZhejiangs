@@ -40,7 +40,7 @@
 
     <TextView
         android:id="@+id/receipt_address"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/receipt_phone"
         android:layout_marginLeft="30dp"
@@ -55,12 +55,28 @@
         android:layout_marginTop="20dp"
         android:background="@color/colorGray" />
 
-    <Button
-        android:id="@+id/receipt_delete"
-        android:layout_width="20dp"
-        android:layout_height="25dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="20dp"
-        android:background="@drawable/lajitong" />
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/receipt_delete"
+            android:layout_width="20dp"
+            android:layout_height="25dp"
+            android:background="@drawable/lajitong" />
+
+        <TextView
+            android:id="@+id/update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="编辑"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorGray"
+            android:textSize="12sp"/>
+    </LinearLayout>
 </RelativeLayout>
