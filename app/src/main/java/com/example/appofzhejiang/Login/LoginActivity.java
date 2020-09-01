@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
         final OkHttpClient client = new OkHttpClient();
 
         final Request request = new Request.Builder()
-                .url("http://120.26.172.104:9002//web/userLogin?username="+username+"&tel="+psw)
+                .url("http://120.26.172.104:9002//web/userLogin?name="+username+"&tel="+psw)
                 .build();
         //处理注册逻辑
         Thread t1 = new Thread(new Runnable() {

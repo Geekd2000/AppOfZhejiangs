@@ -177,10 +177,10 @@ public class RegisterActivity extends AppCompatActivity {
         }
     };
 
-    private void runRegister(final String username, final String tel, final String tell) throws InterruptedException {
+    private void runRegister(final String name, final String tel, final String tell) throws InterruptedException {
         final OkHttpClient client = new OkHttpClient();
         Map map = new HashMap<>();
-        map.put("username", username);
+        map.put("name", name);
         map.put("tel", tel);
         map.put("tell", tell);
         String param = gson.toJson(map);

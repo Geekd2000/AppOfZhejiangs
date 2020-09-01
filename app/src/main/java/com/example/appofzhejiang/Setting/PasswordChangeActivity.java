@@ -109,7 +109,7 @@ public class PasswordChangeActivity extends AppCompatActivity {
         final OkHttpClient client = new OkHttpClient();
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("username", username);
+            jsonObject.put("name", username);
             jsonObject.put("psw", psw);
             jsonObject.put("tel", tel);
             jsonObject.put("tell", tell);

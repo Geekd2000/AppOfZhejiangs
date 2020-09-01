@@ -16,17 +16,17 @@ public class LoginUtil {
     Future<LoginBean> result;
 
     //登陆时获取密码的构造函数
-    public LoginUtil(String username){
-        sendGetRequest(username);
+    public LoginUtil(String name){
+        sendGetRequest(name);
     }
 
     /**
      * 使用GET访问网络
      *
-     * @param username
+     * @param name
      * @return 服务器返回的结果
      */
-    private void sendGetRequest(final String username) {
+    private void sendGetRequest(final String name) {
         ExecutorService pool = Executors.newFixedThreadPool(2);
         result = pool.submit(new Callable<LoginBean>() {
             @Override
@@ -34,7 +34,7 @@ public class LoginUtil {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://120.26.172.104:9002//wx/findUser?username="+username)
+                            .url("http://120.26.172.104:9002//wx/findUser?name="+name)
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
