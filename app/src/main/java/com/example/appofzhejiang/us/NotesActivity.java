@@ -148,30 +148,29 @@ public class NotesActivity extends AppCompatActivity {
             if (msg.what == 1) {
                 String result = "";
                 result = (String) msg.obj;
-                ToastUtils.show(NotesActivity.this,"发布成功");
-                Intent intent = new Intent(NotesActivity.this,MainActivity.class);
+                ToastUtils.show(NotesActivity.this, "发布成功");
+                finish();
             }
         }
     };
 
-    private void runRelease( String content,  String title,  String region  ) throws InterruptedException {
+    private void runRelease(String content, String title, String region) throws InterruptedException {
         final OkHttpClient client = new OkHttpClient();
 
         long currentTime = System.currentTimeMillis();
         String timeNow = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
-
+        int dread = (int) (Math.random() * (200));//产生0-199的随机数
         Map map = new HashMap<>();
         map.put("content", content);
-//        map.put("destination_id",0);
-//        map.put("dread",0);
-//        map.put("editor","");
-//        map.put("file", null);
-//        map.put("picture",null);
-//        map.put("pictures","");
+        map.put("dread", dread);
+        map.put("editor", "");
+        map.put("file", null);
+        map.put("picture", null);
+        map.put("pictures", "");
         map.put("region", region);
-        map.put("time" ,timeNow);
+        map.put("time", timeNow);
         map.put("title", title);
-//        map.put("type","");
+        map.put("type", "游记");
         String param = gson.toJson(map);
 
         System.out.println(param);
