@@ -180,9 +180,10 @@ public class RegisterActivity extends AppCompatActivity {
     private void runRegister(final String name, final String tel, final String tell) throws InterruptedException {
         final OkHttpClient client = new OkHttpClient();
         Map map = new HashMap<>();
-        map.put("name", name);
+        map.put("username", name);
         map.put("tel", tel);
         map.put("tell", tell);
+        map.put("name", name);
         String param = gson.toJson(map);
 
         RequestBody requestBody = RequestBody.create(JSON, param);
