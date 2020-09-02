@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/traceroute_rootview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorNotWhite"
-    android:clickable="true"
-    android:id="@+id/traceroute_rootview">
+    android:clickable="true">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/address_toolbar"
@@ -28,8 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
-            android:text="保存"
             android:layout_marginRight="15dp"
+            android:text="保存"
             android:textColor="@color/colorLightGreen"
             android:textSize="16sp" />
 
@@ -106,13 +106,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_toRightOf="@+id/shoujihao"
                 android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/shoujihao"
                 android:background="@drawable/bg_edit_address"
                 android:gravity="right"
                 android:hint="手机号码"
-                android:maxLength="11"
                 android:inputType="number"
+                android:maxLength="11"
                 android:maxLines="1"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
@@ -148,17 +148,17 @@
                 android:id="@+id/new_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/quyu"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/quyu"
                 android:background="@color/colorWhite"
+                android:gravity="right"
+                android:hint="省份-城市-区县"
                 android:maxLines="1"
                 android:paddingLeft="10dp"
-                android:gravity="right"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                android:text="省份-城市-区县"
                 android:textColor="@color/colorGray"
                 android:textSize="16sp" />
         </RelativeLayout>
@@ -175,14 +175,14 @@
             android:background="@drawable/bg_edit_address"
             android:gravity="top"
             android:hint="请输入详细地址"
+            android:maxLength="70"
             android:maxLines="3"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
-            android:textSize="16sp"
             android:singleLine="true"
-            android:maxLength="70"/>
+            android:textSize="16sp" />
 
         <View
             android:layout_width="match_parent"

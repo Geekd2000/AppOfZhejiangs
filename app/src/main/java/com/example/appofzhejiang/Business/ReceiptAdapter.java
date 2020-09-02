@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.CustomDialog.CustomDialog;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.fragment3.Ticket;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
 
     @Override
     public void onBindViewHolder(@NonNull LinearViewHolder holder, final int position) {
-        AddressBean addressBean=addressData.get(position);
+        final AddressBean addressBean=addressData.get(position);
         if (!addressBean.getDefault()) {
             holder.toleration.setVisibility(View.INVISIBLE);
         } else {
@@ -67,11 +68,27 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
                 }).show();
             }
         });
+        holder.update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext,AddressActivity.class);
+                intent.putExtra("id",String.valueOf(addressBean.getId()));
+                intent.putExtra("num","1");
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return addressData.size();
+    }
+
+    public void refresh(List<AddressBean> newList) {
+        //刷新数据
+        addressData.removeAll(addressData);
+        addressData.addAll(newList);
+        notifyDataSetChanged();
     }
 
     /*// 添加数据
@@ -92,7 +109,7 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
 
     public class LinearViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView username, phone, address, toleration;
+        private TextView username, phone, address, toleration,update;
         private Button delete;
 
         public LinearViewHolder(@NonNull View itemView) {
@@ -102,6 +119,7 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
             address = itemView.findViewById(R.id.receipt_address);
             toleration = itemView.findViewById(R.id.receipt_default);
             delete = itemView.findViewById(R.id.receipt_delete);
+            update = itemView.findViewById(R.id.update);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

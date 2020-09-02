@@ -1,6 +1,8 @@
-package com.example.appofzhejiang.Login;
+package com.example.appofzhejiang.pay;
 
 import com.alibaba.fastjson.JSON;
+import com.example.appofzhejiang.fragment3.TicketDetail.DetailBean;
+
 import java.io.IOException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -11,34 +13,40 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class LoginUtil {
+public class OrderBeanUtil {
+    private String order_id;
+    Future<OrderBean> result;
 
-    Future<LoginBean> result;
-
-    //登陆时获取密码的构造函数
-    public LoginUtil(String name){
-        sendGetRequest(name);
+    public OrderBeanUtil (String order_id) {
+        this.order_id = order_id;
+        this.initOrderBean();
     }
 
     /**
-     * 使用GET访问网络
-     *
-     * @param name
-     * @return 服务器返回的结果
+     * 初始化OrderBean
      */
-    private void sendGetRequest(final String name) {
+    private void initOrderBean() {
+        sendRequest("http://120.26.172.104:9002/wx/findOrderByOrderId?order_id="+order_id);
+    }
+
+    /**
+     * 向服务器发送请求
+     *
+     * @param address
+     */
+    private void sendRequest(final String address) {
         ExecutorService pool = Executors.newFixedThreadPool(2);
-        result = pool.submit(new Callable<LoginBean>() {
+        result = pool.submit(new Callable<OrderBean>() {
             @Override
-            public LoginBean call() throws Exception {
+            public OrderBean call() throws Exception {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://120.26.172.104:9002//wx/findUser?name="+name)
+                            .url(address)
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
-                    return parseGetJSON(responseData);
+                    return parseJSON(responseData);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -53,14 +61,14 @@ public class LoginUtil {
      * @param responseData
      * @return
      */
-    private LoginBean parseGetJSON(String responseData) {
-        return JSON.parseObject(responseData, LoginBean.class);
+    private OrderBean parseJSON(String responseData) {
+        return JSON.parseObject(responseData, OrderBean.class);
     }
 
     /**
-     * 得到LoginRegisterBean
+     * 得到OrderBean
      */
-    public LoginBean getLoginRegisterBean() {
+    public OrderBean getOrderBean() {
         try {
             return result.get();
         } catch (Exception e) {

@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -20,6 +21,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.view.Gravity;
@@ -27,15 +30,33 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appofzhejiang.Login.RegisterActivity;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
+import com.example.appofzhejiang.ToastUtils;
+import com.google.gson.Gson;
 
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class NotesActivity extends AppCompatActivity {
     private static final int CHOOSE_PHOTO = 2;
@@ -45,10 +66,17 @@ public class NotesActivity extends AppCompatActivity {
     private ImageView imageView, imageView2;
     private Toolbar toolbar;
     private List<ImageView> imageViews;
+    private Button release;
+    private EditText content, title;
+    private TextView region;
+
+    OkHttpClient client = new OkHttpClient();
+    Gson gson = new Gson();
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        overridePendingTransition(R.anim.right_in,R.anim.right_silent);
+        overridePendingTransition(R.anim.right_in, R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
         //设置沉浸式
@@ -62,6 +90,24 @@ public class NotesActivity extends AppCompatActivity {
 
         button = findViewById(R.id.imageButton);
         imageView = findViewById(R.id.image);
+        release = findViewById(R.id.button);
+        content = findViewById(R.id.edit2);
+        title = findViewById(R.id.edit1);
+        region = findViewById(R.id.txt_openTime);
+
+        release.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String con = content.getText().toString().trim();
+                String title1 = title.getText().toString().trim();
+                String address = region.getText().toString().trim();
+                try {
+                    runRelease(con, title1, address);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,10 +142,67 @@ public class NotesActivity extends AppCompatActivity {
         });
     }
 
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                String result = "";
+                result = (String) msg.obj;
+                ToastUtils.show(NotesActivity.this, "发布成功");
+                finish();
+            }
+        }
+    };
+
+    private void runRelease(String content, String title, String region) throws InterruptedException {
+        final OkHttpClient client = new OkHttpClient();
+
+        long currentTime = System.currentTimeMillis();
+        String timeNow = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
+        int dread = (int) (Math.random() * (200));//产生0-199的随机数
+        Map map = new HashMap<>();
+        map.put("content", content);
+        map.put("dread", dread);
+        map.put("editor", "");
+        map.put("file", null);
+        map.put("picture", null);
+        map.put("pictures", "");
+        map.put("region", region);
+        map.put("time", timeNow);
+        map.put("title", title);
+        map.put("type", "游记");
+        String param = gson.toJson(map);
+
+        System.out.println(param);
+        RequestBody requestBody = RequestBody.create(JSON, param);
+        final Request request = new Request.Builder()
+                .url("http://120.26.172.104:9002//web/insertDestination")
+                .post(requestBody)
+                .build();
+        //处理注册逻辑
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Response response = client.newCall(request).execute();
+                    if (!response.isSuccessful()) {
+                        throw new IOException("Unexpected code " + response);
+                    } else {
+                        mHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        t1.start();
+        t1.join();
+    }
+
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.right_silent,R.anim.right_out);
+        overridePendingTransition(R.anim.right_silent, R.anim.right_out);
     }
 
     private void openAlbum() {
@@ -224,5 +327,47 @@ public class NotesActivity extends AppCompatActivity {
         });
         window.setContentView(view);
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);//设置横向全屏
+    }
+
+    //点击空白处收起键盘
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (isShouldHideInput(v, ev)) {
+
+                InputMethodManager imm = (InputMethodManager) getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+            return super.dispatchTouchEvent(ev);
+        }
+        // 必不可少，否则所有的组件都不会有TouchEvent了
+        if (getWindow().superDispatchTouchEvent(ev)) {
+            return true;
+        }
+        return onTouchEvent(ev);
+    }
+
+
+    public boolean isShouldHideInput(View v, MotionEvent event) {
+        if (v != null && (v instanceof EditText)) {
+            int[] leftTop = {0, 0};
+            //获取输入框当前的location位置
+            v.getLocationInWindow(leftTop);
+            int left = leftTop[0];
+            int top = leftTop[1];
+            int bottom = top + v.getHeight();
+            int right = left + v.getWidth();
+            if (event.getX() > left && event.getX() < right
+                    && event.getY() > top && event.getY() < bottom) {
+                // 点击的是输入框区域，保留点击EditText的事件
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
     }
 }

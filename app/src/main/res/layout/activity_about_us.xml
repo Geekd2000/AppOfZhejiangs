@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".us.AboutUsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".us.AboutUsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/setting_toolbar"
@@ -24,32 +24,37 @@
             android:textSize="18sp" />
 
     </androidx.appcompat.widget.Toolbar>
+
     <RelativeLayout
         android:id="@+id/rl_login"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="180dp"
         android:background="@color/colorWhite"
         android:paddingLeft="30dp"
         android:paddingRight="30dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/user_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/user_image" />
-
-        <TextView
-            android:id="@+id/user_name"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/user_image"
-            android:text="测试版 1.0"
-            android:textColor="@color/cp_color_gray"
-            android:textSize="16sp"
-            android:layout_marginTop="5dp"/>
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/user_image" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="测试版 1.0"
+                android:textColor="@color/cp_color_gray"
+                android:textSize="16sp" />
+        </LinearLayout>
 
     </RelativeLayout>
 

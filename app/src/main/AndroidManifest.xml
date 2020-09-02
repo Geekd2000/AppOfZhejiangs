@@ -36,9 +36,11 @@
 
         <activity android:name=".fragment1.culturevideo.CultureVideoActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActivityFullscreen">
 
         </activity>
+        <activity android:name=".pay.UseSuccessActivity" />
         <activity android:name=".fragment1.hotstrategy.HotStrategy3Activity" />
         <activity android:name=".fragment1.hotstrategy.HotStrategy2Activity" />
         <activity android:name=".fragment1.hotstrategy.HotStrategy1Activity" />
@@ -90,11 +92,13 @@
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/DefaultCityPickerTheme"
-            android:windowSoftInputMode="adjustPan|stateHidden" /> <!-- 引导页 -->
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <!-- 引导页 -->
         <activity
             android:name=".LauncherPage.GuideActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActivityFullscreen" /> <!-- 启动页 -->
+            android:theme="@style/NoActivityFullscreen" />
+        <!-- 启动页 -->
         <activity
             android:name=".LauncherPage.LaunchActivity"
             android:theme="@style/LunchTheme">

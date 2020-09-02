@@ -3,12 +3,17 @@ package com.example.appofzhejiang.Login;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +22,16 @@ import android.widget.Toast;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
+import com.example.appofzhejiang.ToastUtils;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
     private String userName, psw, spPsw;//获取的用户名，密码，加密密码
     private EditText et_user_name, et_psw;//编辑框
     private Toolbar toolbar;
-    private LoginBean loginBean;//登录请求
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,23 +105,30 @@ public class LoginActivity extends AppCompatActivity {
                 userName = et_user_name.getText().toString().trim();
                 psw = et_psw.getText().toString().trim();
                 //请求获取服务器数据
-                loginBean = new LoginUtil(userName).getLoginRegisterBean();
-                //对当前用户输入的密码进行MD5加密再进行比对判断, MD5Utils.md5( ); psw 进行加密判断是否一致
-                String md5Psw = MD5Utils.md5(psw);
-                // md5Psw ; spPsw 为 根据从SharedPreferences中用户名读取密码
-                // 定义方法 readPsw为了读取用户名，得到密码
-//                spPsw = readPsw(userName);
-                spPsw = loginBean.getTel();//获取当前用户名存在数据库中的密码
-                // TextUtils.isEmpty
-                if (TextUtils.isEmpty(userName)) {
-                    Toast.makeText(LoginActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
+                try {
+                    runLogin(userName, psw);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                String  result = "";
+                result = (String) msg.obj;
+                if (result.equals("[\"用户名不存在\"]")) {
+                    ToastUtils.show(LoginActivity.this, "用户名不存在");
                     return;
-                } else if (TextUtils.isEmpty(psw)) {
-                    Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
+                } else if (result.equals("[\"密码错误\"]")) {
+                    ToastUtils.show(LoginActivity.this, "密码错误");
                     return;
-                    // md5Psw.equals(); 判断，输入的密码加密后，是否与保存在SharedPreferences中一致
-                } else if (psw.equals(spPsw)) {
-                    //一致登录成功
+                } else if (result.equals("[\"未审核\"]")) {
+                    ToastUtils.show(LoginActivity.this, "未审核");
+                    return;
+                } else {
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     //保存登录状态，在界面保存登录的用户名 定义个方法 saveLoginStatus boolean 状态 , userName 用户名;
                     saveLoginStatus(true, userName);
@@ -122,15 +143,36 @@ public class LoginActivity extends AppCompatActivity {
                     LoginActivity.this.finish();
                     //跳转到主界面，登录成功的状态传递到 MainActivity 中
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    return;
-                } else if ((spPsw != null && !TextUtils.isEmpty(spPsw) && !psw.equals(spPsw))) {
-                    Toast.makeText(LoginActivity.this, "输入的用户名和密码不一致", Toast.LENGTH_SHORT).show();
-                    return;
-                } else {
-                    Toast.makeText(LoginActivity.this, "此用户名不存在", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    };
+    private void runLogin( String username, String psw) throws InterruptedException {
+        final OkHttpClient client = new OkHttpClient();
+
+        final Request request = new Request.Builder()
+                .url("http://120.26.172.104:9002//web/userLogin?name="+username+"&tel="+psw)
+                .build();
+        //处理注册逻辑
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Response response = client.newCall(request).execute();
+                    if (!response.isSuccessful()) {
+                        throw new IOException("Unexpected code " + response);
+                    } else {
+//                        mHandler.obtainMessage(1, response.body().string()).sendToTarget();
+//                        System.out.println(response.body().string());
+                        mHandler.obtainMessage(1, response.body().string()).sendToTarget();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });
+        t1.start();
+        t1.join();
     }
 
     /**
@@ -187,5 +229,46 @@ public class LoginActivity extends AppCompatActivity {
                 et_user_name.setSelection(userName.length());
             }
         }
+    }
+    //点击空白处收起键盘
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (isShouldHideInput(v, ev)) {
+
+                InputMethodManager imm = (InputMethodManager) getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+            return super.dispatchTouchEvent(ev);
+        }
+        // 必不可少，否则所有的组件都不会有TouchEvent了
+        if (getWindow().superDispatchTouchEvent(ev)) {
+            return true;
+        }
+        return onTouchEvent(ev);
+    }
+
+
+    public boolean isShouldHideInput(View v, MotionEvent event) {
+        if (v != null && (v instanceof EditText)) {
+            int[] leftTop = {0, 0};
+            //获取输入框当前的location位置
+            v.getLocationInWindow(leftTop);
+            int left = leftTop[0];
+            int top = leftTop[1];
+            int bottom = top + v.getHeight();
+            int right = left + v.getWidth();
+            if (event.getX() > left && event.getX() < right
+                    && event.getY() > top && event.getY() < bottom) {
+                // 点击的是输入框区域，保留点击EditText的事件
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
     }
 }

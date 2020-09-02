@@ -11,11 +11,14 @@ public class DetailBean implements Serializable {
     private String pictures;
     private String introduct;
     private int inventory;
+    private String type;
+    private int product_id;
 
     public DetailBean() {
     }
 
-    public DetailBean(String params, String name, String prices, String sales, String pictures, String introduct,int inventory) {
+    public DetailBean(String params, String name, String prices, String sales,
+                      String pictures, String introduct, int inventory, String type, int product_id) {
         this.params = params;
         this.name = name;
         this.prices = prices;
@@ -23,6 +26,8 @@ public class DetailBean implements Serializable {
         this.pictures = pictures;
         this.introduct = introduct;
         this.inventory = inventory;
+        this.type = type;
+        this.product_id = product_id;
     }
 
     public String getParams() {
@@ -79,5 +84,21 @@ public class DetailBean implements Serializable {
 
     public void setInventory(int inventory) {
         this.inventory = inventory;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
     }
 }

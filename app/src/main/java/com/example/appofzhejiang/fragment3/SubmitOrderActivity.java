@@ -2,9 +2,10 @@ package com.example.appofzhejiang.fragment3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -25,18 +26,28 @@ import com.bigkoo.pickerview.listener.OnTimeSelectChangeListener;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.bumptech.glide.Glide;
+import com.example.appofzhejiang.Business.AddressBean;
+import com.example.appofzhejiang.Business.GetDefaultAddressUtil;
 import com.example.appofzhejiang.Business.ReceiptActivity;
+import com.example.appofzhejiang.Login.LoginUtil;
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
-import com.example.appofzhejiang.pay.OrderActivity;
-import com.example.appofzhejiang.pay.PayActivity;
 import com.example.appofzhejiang.pay.OrderDialog;
 import com.example.appofzhejiang.pay.PaySuccessActivity;
 import com.github.clans.fab.FloatingActionButton;
+import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class SubmitOrderActivity extends AppCompatActivity {
@@ -59,8 +70,12 @@ public class SubmitOrderActivity extends AppCompatActivity {
     private TextView address;//地址
     private ImageView goodsImage;//商品图片
     private RelativeLayout relativeLayout;//选择地址
+    private int userID;//用户ID
+
     //悬浮按钮
     private FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
+    Gson gson = new Gson();
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,16 +101,6 @@ public class SubmitOrderActivity extends AppCompatActivity {
             }
         });
 
-        //跳转到收货地址页面
-        relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SubmitOrderActivity.this, ReceiptActivity.class);
-                intent.putExtra("code", "1");
-                startActivityForResult(intent, 1);
-            }
-        });
-
         //获得传递过来的参数
         Intent intent = getIntent();
         String name = intent.getStringExtra("goodsName");
@@ -103,6 +108,8 @@ public class SubmitOrderActivity extends AppCompatActivity {
         String unitPrice = intent.getStringExtra("goodsPrice");
         final String image = intent.getStringExtra("goodsImage");
         String inventory = intent.getStringExtra("inventory");
+        final String product_id = intent.getStringExtra("product_id");
+        final String totalType = intent.getStringExtra("type");
 
         //将传递过来的参设设置进去
         goodsName.setText(name);//商品名称
@@ -164,6 +171,26 @@ public class SubmitOrderActivity extends AppCompatActivity {
             }
         });
 
+        //用户ID
+        SharedPreferences sp = SubmitOrderActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+        String loginUserName = sp.getString("loginUserName", null);
+        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
+        //设置默认地址
+        AddressBean addressBean=new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean();
+        username.setText(addressBean.getName());
+        telephone.setText(addressBean.getMobile());
+        address.setText(addressBean.getAddress());
+
+        //跳转到收货地址页面,选择地址
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SubmitOrderActivity.this, ReceiptActivity.class);
+                intent.putExtra("code", "1");
+                startActivityForResult(intent, 1);
+            }
+        });
+
         //添加订单，跳转至订单详情页面
         addOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,10 +205,20 @@ public class SubmitOrderActivity extends AppCompatActivity {
 
                     //订单号生成
                     //订单编号随机生成
-                    int r1 = (int) (Math.random() * (10));//产生2个0-9的随机数
+                    int r1 = (int) (Math.random() * (9) + 1);//产生2个0-9的随机数
                     int r2 = (int) (Math.random() * (10));
                     long now = System.currentTimeMillis();//一个13位的时间戳
                     String paymentID = String.valueOf(r1) + String.valueOf(r2) + String.valueOf(now);// 订单ID
+
+                    //post数据到服务器上
+                    try {
+                        runRegister(false,address.getText().toString(),Double.parseDouble(payment.getText().toString()),
+                                username.getText().toString(),Integer.parseInt(endCount.getText().toString()),paymentID,false,
+                                Integer.parseInt(product_id),image,goodsName.getText().toString(),telephone.getText().toString(),
+                                userID,totalType,goodsType.getText().toString());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
                     OrderDialog orderDialog = new OrderDialog(SubmitOrderActivity.this);
                     orderDialog.setGoodsName1(goodsName.getText().toString());
@@ -220,8 +257,8 @@ public class SubmitOrderActivity extends AppCompatActivity {
                     orderDialog.setConfirm("pay", new OrderDialog.IOnConfirmListener() {
                         @Override
                         public void onConfirm(OrderDialog dialog) {
-                            Toast.makeText(SubmitOrderActivity.this, "付款成功", Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(SubmitOrderActivity.this, PaySuccessActivity.class);
+
+                            Intent intent = new Intent(SubmitOrderActivity.this, PaySuccessActivity.class);
                             startActivity(intent);
                             SubmitOrderActivity.this.finish();
                         }
@@ -229,6 +266,48 @@ public class SubmitOrderActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    //向服务器发送post请求
+    private void runRegister(boolean _pay, String delivery_way, double money, String name,
+                             int num, String order_no, boolean pin, int product_id, String remarks,
+                             String shop_name, String tel, int user_id, String type, String param) throws InterruptedException {
+        final OkHttpClient client = new OkHttpClient();
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        map.put("_pay", _pay);
+        map.put("delivery_way", delivery_way);
+        map.put("money", money);
+        map.put("name", name);
+        map.put("num", num);
+        map.put("order_no", order_no);
+        map.put("pin", pin);
+        map.put("product_id", product_id);
+        map.put("remarks", remarks);
+        map.put("shop_name", shop_name);
+        map.put("tel", tel);
+        map.put("user_id", user_id);
+        map.put("type", type);
+        map.put("param", param);
+        String params = gson.toJson(map);
+
+        RequestBody requestBody = RequestBody.create(JSON, params);
+        final Request request = new Request.Builder()
+                .url("http://120.26.172.104:9002/wx/insertOrder")
+                .post(requestBody)
+                .build();
+        //处理注册逻辑
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Response response = client.newCall(request).execute();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        t1.start();
+        t1.join();
     }
 
     @Override
@@ -273,7 +352,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
     }
 
     //悬浮按钮配置
-    public void initFloatActionButton () {
+    public void initFloatActionButton() {
         floatingActionButton1 = findViewById(R.id.floatingActionButton1);
         floatingActionButton2 = findViewById(R.id.floatingActionButton2);
         floatingActionButton3 = findViewById(R.id.floatingActionButton3);
@@ -314,7 +393,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
         });
     }
 
-    private void initTimePicker (){//Dialog 模式下，在底部弹出
+    private void initTimePicker() {//Dialog 模式下，在底部弹出
 
         pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
             @Override
