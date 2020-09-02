@@ -76,7 +76,7 @@ public class FragmentAdapter2_2 extends RecyclerView.Adapter<FragmentAdapter2_2.
 
     @Override
     public int getItemCount() {
-        return 10;
+        return ticketList.size();
     }
 
     public class GridViewHolder extends RecyclerView.ViewHolder {
