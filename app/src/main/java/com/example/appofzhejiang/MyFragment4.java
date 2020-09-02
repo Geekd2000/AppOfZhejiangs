@@ -55,7 +55,7 @@ public class MyFragment4 extends Fragment {
         txtSetting = view.findViewById(R.id.txt_setting);
         txtAbout = view.findViewById(R.id.txt_about);
         txtUsername = view.findViewById(R.id.user_name);
-        imageUser = view.findViewById(R.id.user_image);
+        imageUser = view.findViewById(R.id.user_image_my_self);
         txtTobePaid = view.findViewById(R.id.txt_tobePaid);
         txtPaid = view.findViewById(R.id.txt_paid);
         txtFinish = view.findViewById(R.id.txt_finished);

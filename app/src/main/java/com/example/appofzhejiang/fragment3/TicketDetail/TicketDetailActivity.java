@@ -29,6 +29,8 @@ import com.youth.banner.Transformer;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class TicketDetailActivity extends AppCompatActivity {
 
     private Toolbar toolbar;

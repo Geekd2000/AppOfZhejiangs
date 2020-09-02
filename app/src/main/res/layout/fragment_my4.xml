@@ -16,7 +16,7 @@
         android:paddingRight="30dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/user_image"
+            android:id="@+id/user_image_my_self"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerVertical="true"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="30dp"
-            android:layout_toRightOf="@+id/user_image"
+            android:layout_toRightOf="@+id/user_image_my_self"
             android:text="@string/login"
             android:textColor="@color/colorWhite"
             android:textSize="20sp" />
