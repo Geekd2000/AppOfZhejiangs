@@ -437,14 +437,20 @@ public class MyFragment1 extends Fragment {
         Glide.with(getContext())
                 .load(urls.get(0))
                 .dontAnimate()
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .into(hotImageView1);
         Glide.with(getContext())
                 .load(urls.get(1))
                 .dontAnimate()
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .into(hotImageView2);
         Glide.with(getContext())
                 .load(urls.get(2))
                 .dontAnimate()
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .into(hotImageView3);
         hotImage1Title.setText(titles.get(0));
         hotImage2Title.setText(titles.get(1));

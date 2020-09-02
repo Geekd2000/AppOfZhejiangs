@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.appofzhejiang.R;
 
 import java.util.List;
@@ -51,7 +52,12 @@ public class RecyclerPageAdapter extends RecyclerView.Adapter<ViewHolder> {
         RecyclerBean hotel = recyclerBeanList.get(position);
 //        holder.getLogoImage().setImageBitmap(hotel.getBitmapImg());
         if(context != null) {
-            Glide.with(context).load(hotel.getPictures()).centerCrop().dontAnimate().into(holder.getLogoImage());
+            Glide.with(context)
+                    .load(hotel.getPictures())
+                    .centerCrop()
+                    .dontAnimate()
+                    .diskCacheStrategy(DiskCacheStrategy.DATA)
+                    .into(holder.getLogoImage());
         }
 
         holder.getNameText().setText(hotel.getTitle());
