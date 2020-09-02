@@ -39,7 +39,6 @@ public class RecyclerPageAdapter extends RecyclerView.Adapter<ViewHolder> {
             public void onClick(View view) {
                 int position = viewHolder.getAdapterPosition();
                 RecyclerBean hotel = recyclerBeanList.get(position);
-                Toast.makeText(view.getContext(), "You clicked view：" + hotel.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
         // 注册点击事件 end
