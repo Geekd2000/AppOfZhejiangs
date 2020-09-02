@@ -561,7 +561,6 @@
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -569,13 +568,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:layout_marginRight="5dp"
                         android:orientation="vertical">
 
                         <com.makeramen.roundedimageview.RoundedImageView
                             android:id="@+id/strategy_hot_img1"
-                            android:layout_width="110dp"
+                            android:layout_width="match_parent"
                             android:layout_height="140dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/test"
@@ -583,12 +581,11 @@
 
                         <TextView
                             android:id="@+id/hot_img1_title"
-                            android:layout_width="110dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
                             android:ellipsize="end"
-                            android:gravity="center"
                             android:singleLine="true"
                             android:text="西湖一日游"
                             android:textColor="#101318"
@@ -598,7 +595,6 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
                             android:orientation="horizontal">
 
                             <TextView
@@ -636,14 +632,13 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:layout_marginRight="5dp"
                         android:layout_marginLeft="5dp"
                         android:orientation="vertical">
 
                         <com.makeramen.roundedimageview.RoundedImageView
                             android:id="@+id/strategy_hot_img2"
-                            android:layout_width="110dp"
+                            android:layout_width="match_parent"
                             android:layout_height="140dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/test"
@@ -651,12 +646,11 @@
 
                         <TextView
                             android:id="@+id/hot_img2_title"
-                            android:layout_width="110dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
                             android:ellipsize="end"
-                            android:gravity="center"
                             android:singleLine="true"
                             android:text="西湖一日游"
                             android:textColor="#101318"
@@ -664,9 +658,8 @@
 
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
                             android:orientation="horizontal">
 
                             <TextView
@@ -704,13 +697,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:layout_marginLeft="5dp"
                         android:orientation="vertical">
 
                         <com.makeramen.roundedimageview.RoundedImageView
                             android:id="@+id/strategy_hot_img3"
-                            android:layout_width="110dp"
+                            android:layout_width="match_parent"
                             android:layout_height="140dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/test"
@@ -719,12 +711,11 @@
 
                         <TextView
                             android:id="@+id/hot_img3_title"
-                            android:layout_width="110dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="5dp"
                             android:ellipsize="end"
-                            android:gravity="center"
                             android:singleLine="true"
                             android:text="西湖一日游"
                             android:textColor="#101318"
