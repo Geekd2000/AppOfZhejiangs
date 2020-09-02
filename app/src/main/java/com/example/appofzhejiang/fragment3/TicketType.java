@@ -2,6 +2,7 @@ package com.example.appofzhejiang.fragment3;
 
 public interface TicketType {
     String TICKET = "mall_ticket"; //门票
+    String SCENIC = "mall_ticket_price"; //门票
     String HOTEL = "mall_hotel"; //酒店
     String TAXI = "mall_taxi"; //租车
     String GUIDER = "mall_guider"; //导游

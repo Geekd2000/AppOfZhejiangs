@@ -76,7 +76,7 @@ public class FragmentAdapter3 extends RecyclerView.Adapter<LinearViewHolder> {
 
     @Override
     public int getItemCount() {
-        return ticketList.size();
+        return 10;
     }
 
     //下面两个方法提供给页面刷新和加载时调用

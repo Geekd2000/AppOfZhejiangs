@@ -73,7 +73,7 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
             public void onClick(View view) {
                 Intent intent = new Intent(mContext,AddressActivity.class);
                 intent.putExtra("id",String.valueOf(addressBean.getId()));
-                intent.putExtra("num","1");
+                intent.putExtra("num",1);
                 mContext.startActivity(intent);
             }
         });

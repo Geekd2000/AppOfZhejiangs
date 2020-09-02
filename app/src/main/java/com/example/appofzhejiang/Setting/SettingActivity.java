@@ -72,6 +72,7 @@ public class SettingActivity extends AppCompatActivity {
                 if (isLoginStatus == true) {
                     Out(false);
                     Intent intent = new Intent(SettingActivity.this, MainActivity.class);
+                    intent.putExtra("numb",3);
                     startActivity(intent);
                     Toast.makeText(SettingActivity.this, "退出成功", Toast.LENGTH_SHORT).show();
                 } else {
@@ -115,6 +116,10 @@ public class SettingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 退出登录
+     * @param status
+     */
     public void Out(Boolean status) {
         SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
         //获取编辑器
@@ -127,7 +132,7 @@ public class SettingActivity extends AppCompatActivity {
 
     public String getName() {
         SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
-        String username = sp.getString("loginUserName", null);
+        String username = sp.getString("loginNickname", null);
         return username;
     }
 

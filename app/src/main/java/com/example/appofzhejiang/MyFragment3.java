@@ -106,6 +106,9 @@ public class MyFragment3 extends Fragment {
         //设初始化RecyclerView
         initRecyclerView();
 
+        // 定位城市，开启权限
+        setLocated();
+
         // 如果缓存中有城市信息，则从缓存中获取城市
         String cityInfo = load("data_cityInfo");
         if (cityInfo != null && !"".equals(cityInfo.trim())) {

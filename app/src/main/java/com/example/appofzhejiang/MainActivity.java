@@ -52,7 +52,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         bindViews();
-        tab_main.setSelected(true);//进去后选择第一项
+        int  id = getIntent().getIntExtra("numb",0);
+        if (id == 0) {
+            viewPager.setCurrentItem(PAGE_ONE);
+            tab_main.setSelected(true);//进去后选择第一项
+        }
+        if (id == 1) {
+            viewPager.setCurrentItem(PAGE_TWO);
+            tab_flag.setSelected(true);//进去后选择第二项
+        }
+        if (id == 2) {
+            viewPager.setCurrentItem(PAGE_THREE);
+            tab_shopping.setSelected(true);//进去后选择第三项
+        }
+        if (id == 3) {
+            viewPager.setCurrentItem(PAGE_FOUR);
+            tab_my.setSelected(true);//进去后选择第四项
+        }
 
         //设置沉浸式
         StatusBarUtil.setTransparent(this);

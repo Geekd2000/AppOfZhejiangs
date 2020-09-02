@@ -149,11 +149,17 @@ public class RegisterActivity extends AppCompatActivity {
             if (msg.what == 1) {
                 String  result = "";
                 result = (String) msg.obj;
-                if (result.equals("\"注册成功\"")) {
+                if (result.equals("\"注册失败\"")) {
+                    ToastUtils.show(RegisterActivity.this, "注册失败");
+                    return;
+                } else if (result.equals("\"用户名已存在\"")) {
+                    ToastUtils.show(RegisterActivity.this, "用户名已存在");
+                    return;
+                } else if (result.equals("\"两次输入的密码不相同\"")) {
+                    ToastUtils.show(RegisterActivity.this, "两次输入的密码不相同");
+                    return;
+                } else {
                     ToastUtils.show(RegisterActivity.this, "注册成功");
-                    /**
-                     * * 保存账号和密码到SharedPreferences中
-                     */
 //                    saveRegisterInfo(userName, psw);
                     //注册成功后把账号传递到LoginActivity.java中
                     // 返回值到loginActivity显示
@@ -163,15 +169,6 @@ public class RegisterActivity extends AppCompatActivity {
                     //RESULT_OK为Activity系统常量，状态码为-1，
                     // 表示此页面下的内容操作成功将data返回到上一页面，如果是用back返回过去的则不存在用setResult传递data值
                     RegisterActivity.this.finish();
-                } else if (result.equals("\"注册失败\"")) {
-                    ToastUtils.show(RegisterActivity.this, "注册失败");
-                    return;
-                } else if (result.equals("\"用户名已存在\"")) {
-                    ToastUtils.show(RegisterActivity.this, "用户名已存在");
-                    return;
-                } else if (result.equals("\"两次输入的密码不相同\"")) {
-                    ToastUtils.show(RegisterActivity.this, "两次输入的密码不相同");
-                    return;
                 }
             }
         }
@@ -180,10 +177,10 @@ public class RegisterActivity extends AppCompatActivity {
     private void runRegister(final String name, final String tel, final String tell) throws InterruptedException {
         final OkHttpClient client = new OkHttpClient();
         Map map = new HashMap<>();
-        map.put("username", name);
+        map.put("username", name);//呢称
         map.put("tel", tel);
         map.put("tell", tell);
-        map.put("name", name);
+        map.put("name", name);//用户名
         String param = gson.toJson(map);
 
         RequestBody requestBody = RequestBody.create(JSON, param);
@@ -209,6 +206,17 @@ public class RegisterActivity extends AppCompatActivity {
         });
         t1.start();
         t1.join();
+    }
+    /**
+     * 保存昵称
+     */
+    private void save(String nickname){
+        //loginInfo表示文件名  SharedPreferences sp=getSharedPreferences("loginInfo", MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("loginInfo", MODE_PRIVATE);
+        //获取编辑器
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("loginNickname", nickname);
+        editor.commit();
     }
 
     /**

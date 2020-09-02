@@ -12,48 +12,66 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.appofzhejiang.fragment3.Ticket;
+import com.example.appofzhejiang.fragment3.TicketDetail.TicketDetailActivity;
 import com.example.appofzhejiang.xihu.Dairy;
 import com.example.appofzhejiang.xihu.Jingqu;
+
+import java.util.List;
 
 public class FragmentAdapter2_2 extends RecyclerView.Adapter<FragmentAdapter2_2.GridViewHolder> {
 
     private Context context;
+    private List<Ticket> ticketList;
+    private String price;
 
-    public FragmentAdapter2_2(Context context) {
+    public FragmentAdapter2_2(List<Ticket> ticketList, Context context) {
+        this.ticketList = ticketList;
         this.context = context;
     }
 
 
     @NonNull
     @Override
-    public FragmentAdapter2_2.GridViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new GridViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_grid_adapter2, parent, false));
+    public FragmentAdapter2_2.GridViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_grid_adapter2, parent, false);
+        final GridViewHolder gridViewHolder = new GridViewHolder(view);
+        // 注册点击事件 start
+        gridViewHolder.gridView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = gridViewHolder.getAdapterPosition();
+                Ticket ticket = ticketList.get(position);
+                Intent intent = new Intent(parent.getContext(), TicketDetailActivity.class);
+                intent.putExtra("index", "7");
+                intent.putExtra("product_id", Integer.toString(ticket.getProduct_id()));
+                intent.putExtra("company", "全城旅游");
+                intent.putExtra("image", ticket.getPath());
+                parent.getContext().startActivity(intent);
+            }
+        });
+        // 注册点击事件 end
+        return gridViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull FragmentAdapter2_2.GridViewHolder holder, final int position) {
-        if (position % 2 != 0) {
-            holder.txtGrid.setText("西湖一日游");
-            holder.txtGridAmount.setText("77人浏览");
-            holder.txtGridName.setText("Clearlove7");
-            holder.txtGridTime.setText("2020-7-7 07:17");
-            holder.gridImage.setImageResource(R.drawable.demo);
-            holder.userImage.setImageResource(R.drawable.userimage);
+        Ticket ticket = ticketList.get(position);
+        Glide.with(context).load(ticket.getPath()).into(holder.gridImage);
+        //处理价格
+        String s = ticket.getPrices();
+        String[] ss = s.split(",");
+        if (Integer.parseInt(ss[0]) < Integer.parseInt(ss[1])) {
+            price = ss[0];
+            holder.txtPrice.setText(ss[0]);
         } else {
-            holder.txtGrid.setText("西溪湿地");
-            holder.txtGridAmount.setText("66人浏览");
-            holder.txtGridName.setText("UZi666");
-            holder.txtGridTime.setText("2020-6-6 16:16");
-            holder.gridImage.setImageResource(R.drawable.demo2);
-            holder.userImage.setImageResource(R.drawable.userimage2);
+            price = ss[1];
+            holder.txtPrice.setText(ss[1]);
         }
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, Dairy.class);
-                context.startActivity(intent);
-            }
-        });
+        holder.txtTitle.setText(ticket.getName());
+        holder.txtGridAmount.setText(ticket.getSales());
+        holder.txtCompany.setText("全城旅游");
     }
 
     @Override
@@ -62,19 +80,18 @@ public class FragmentAdapter2_2 extends RecyclerView.Adapter<FragmentAdapter2_2.
     }
 
     public class GridViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtGrid, txtGridAmount, txtGridName, txtGridTime;
-        private ImageView gridImage, userImage;
-        private LinearLayout linearLayout;
+        private TextView txtTitle, txtGridAmount, txtPrice, txtCompany;
+        private ImageView gridImage;
+        private View gridView;//用来设置点击事件
 
         public GridViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtGrid = itemView.findViewById(R.id.txt_grid);
+            gridView = itemView;
+            txtTitle = itemView.findViewById(R.id.txt_grid_title);
+            txtPrice = itemView.findViewById(R.id.txt_price);
+            txtCompany = itemView.findViewById(R.id.txt_company);
             txtGridAmount = itemView.findViewById(R.id.txt_gridAmount);
-            txtGridName = itemView.findViewById(R.id.grid_name);
-            txtGridTime = itemView.findViewById(R.id.grid_time);
             gridImage = itemView.findViewById(R.id.grid_image);
-            userImage = itemView.findViewById(R.id.circle_user);
-            linearLayout = itemView.findViewById(R.id.grid_list);
         }
     }
 }

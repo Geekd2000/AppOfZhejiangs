@@ -12,62 +12,93 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.fragment2.RecycleBean2_2;
+import com.example.appofzhejiang.fragment3.Ticket;
+import com.example.appofzhejiang.fragment3.TicketDetail.TicketDetailActivity;
 
-public class RecycleViewAdepter_more extends RecyclerView.Adapter<RecycleViewAdepter_more.MyViewHolder>{
+import java.util.List;
+
+public class RecycleViewAdepter_more extends RecyclerView.Adapter<RecycleViewAdepter_more.MyViewHolder> {
     private Context context;
+    private List<RecycleBean2_2> list;
+    private List<RecyclerBeanJingqu> recyclerBeanJingquList;
 
     OnItemClickListener listener;
-    public interface OnItemClickListener{
+
+    public interface OnItemClickListener {
         /*注意参数*/
         public void OnItemClick(View v, int position, String id);
     }
-    public void setOnItemClick(OnItemClickListener listener){
-        this.listener=listener;
+
+    public void setOnItemClick(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
-    public RecycleViewAdepter_more(Context context) {
+    public RecycleViewAdepter_more(List<RecycleBean2_2> list,List<RecyclerBeanJingqu> recyclerBeanJingquList, Context context) {
+        this.recyclerBeanJingquList = recyclerBeanJingquList;
+        this.list = list;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public RecycleViewAdepter_more.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new RecycleViewAdepter_more.MyViewHolder(LayoutInflater.from(context).inflate(R.layout.layout_more, parent, false));
+    public RecycleViewAdepter_more.MyViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_linear_adapter2, parent, false);
+        final RecycleViewAdepter_more.MyViewHolder viewHolder= new RecycleViewAdepter_more.MyViewHolder(view);
+        // 注册点击事件 start
+        viewHolder.jinquView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = viewHolder.getAdapterPosition();
+                RecycleBean2_2 recycler = list.get(position);
+                for(RecyclerBeanJingqu recyclerBeanJingqu : recyclerBeanJingquList){
+                    if(recycler.getName().equals(recyclerBeanJingqu.getName())){
+                        int id = recyclerBeanJingqu.getProduct_id();
+                        Intent intent = new Intent(parent.getContext(), Jingqu.class);
+                        intent.putExtra("product_id", Integer.toString(id));
+                        int id2 = recycler.getPlace_id();
+                        intent.putExtra("place_id", Integer.toString(id2));
+                        parent.getContext().startActivity(intent);
+                    }
+                }
+            }
+        });
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.place.setText("西湖");
-        holder.label.setText("5A景区");
-        holder.list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                    Intent intent=new Intent(v.getContext(), Jingqu.class);
-                    v.getContext().startActivity(intent);
-                }
-
-        });
+        RecycleBean2_2 recycler = list.get(position);
+        for(RecyclerBeanJingqu recyclerBeanJingqu : recyclerBeanJingquList){
+            if(recycler.getName().equals(recyclerBeanJingqu.getName())){
+                String path = recyclerBeanJingqu.getPath();
+                Glide.with(context).load(path).into(holder.listImage);
+                holder.txtTitle.setText(recycler.getName());
+                holder.txtLabel.setText(recycler.getLevel()+"景区");
+                break;
+            }
+        }
     }
 
 
     @Override
     public int getItemCount() {
-        return 10;
+        return list.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView place,label;
-        private ImageView image;
-        private LinearLayout list;
+        private TextView txtTitle, txtLabel;
+        private ImageView listImage;
+        private View jinquView;//用于点击事件
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            place = itemView.findViewById(R.id.txt_place);
-            label = itemView.findViewById(R.id.txt_label);
-            image = itemView.findViewById(R.id.list2_image);
-            list = itemView.findViewById(R.id.list1);
+            jinquView = itemView;
+            txtTitle = itemView.findViewById(R.id.txt_place);
+            txtLabel = itemView.findViewById(R.id.txt_label);
+            listImage = itemView.findViewById(R.id.list2_image);
         }
     }
 }

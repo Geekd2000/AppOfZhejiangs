@@ -119,21 +119,21 @@
                 android:textSize="20sp" />
 
             <Button
-                android:id="@+id/order_cancel"
-                android:layout_width="80dp"
+                android:id="@+id/order_use"
+                android:layout_width="60dp"
                 android:layout_height="40dp"
-                android:layout_marginRight="15dp"
-                android:layout_toLeftOf="@id/order_buy"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/bg_btn_order1"
-                android:text="取消订单"
+                android:text="去使用"
                 android:textColor="#ffffff" />
 
             <Button
                 android:id="@+id/order_buy"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@id/order_use"
+                android:layout_marginRight="15dp"
                 android:background="@drawable/bg_btn_order1"
                 android:text="去付款"
                 android:textColor="#ffffff" />

@@ -58,7 +58,7 @@
             android:background="@drawable/bg_btn_order1"
             android:padding="5dp"
             android:layout_marginLeft="30dp"
-            android:text="返回首页"
+            android:text="返回我的"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
 

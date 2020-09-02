@@ -1,10 +1,12 @@
 package com.example.appofzhejiang.pay;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,9 +53,6 @@ public class OrderFragment2 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_order2, container, false);
-        initData();
-//        initList();
-
         //获取用户id
         SharedPreferences sp = getActivity().getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
         String loginUserName = sp.getString("loginUserName", null);
@@ -88,11 +87,10 @@ public class OrderFragment2 extends Fragment {
         return view;
     }
 
-    private void initData() {
-//        for(int i = 0; i<fileLists.size(); i++){
-//            FileList fileList = new FileList();
-//            fileLists.add(fileList);
-//        }
+    @Override
+    public void onResume() {
+        super.onResume();
+        payAdapter.refresh(new OrderBeanListUtil(2,String.valueOf(userID)).getOrderBeanList());
     }
 
     private void initRecyclerView() {
@@ -104,10 +102,4 @@ public class OrderFragment2 extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
-    /*public void initList() {
-        for (int i = 0; i < 10; i++) {
-            OrderBean orderBean = new OrderBean(R.drawable.picturezhejiang, "订单号" + i, "西湖游船外事船舶成人票", "小船", "3", "35", "105", "待付款");
-            orderBeans.add(orderBean);
-        }
-    }*/
 }

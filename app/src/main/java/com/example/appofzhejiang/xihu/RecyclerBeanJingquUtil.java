@@ -1,12 +1,10 @@
-package com.example.appofzhejiang.fragment3;
+package com.example.appofzhejiang.xihu;
 
 import com.alibaba.fastjson.JSON;
 
 import java.io.IOException;
-
 import java.util.List;
 import java.util.concurrent.Callable;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -15,27 +13,29 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class TicketUtil {
+public class RecyclerBeanJingquUtil {
     private String currentCity;
-    private String type;
-    Future<List<Ticket>> result;
+//    private String type;
+    Future<List<RecyclerBeanJingqu>> result;
 
-    public TicketUtil(String currentCity, String type) {
+    public RecyclerBeanJingquUtil() {
         this.currentCity = currentCity;
-        this.type = type;
-        this.initTicketLists();
+//        this.type = type;
+        this.initRecyclerBeanJingquLists();
     }
 
     /**
      * 初始化TicketLists
      */
-    private void initTicketLists() {
-        if (TicketType.TICKET.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=门票");
-        }else if(TicketType.SCENIC.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesUp?search=&type=门票");
-        }
+    private void initRecyclerBeanJingquLists(){
+        sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=门票");
     }
+
+//    private void initTicketLists() {
+//        if (TicketType.TICKET.equals(this.type)) {
+//            sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=门票");
+//        }
+//    }
 
     /**
      * 向服务器发送请求
@@ -44,9 +44,9 @@ public class TicketUtil {
      */
     private void sendRequest(final String address) {
         ExecutorService pool = Executors.newFixedThreadPool(100);
-        result = pool.submit(new Callable<List<Ticket>>() {
+        result = pool.submit(new Callable<List<RecyclerBeanJingqu>>() {
             @Override
-            public List<Ticket> call() throws Exception {
+            public List<RecyclerBeanJingqu> call() throws Exception {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
@@ -69,14 +69,14 @@ public class TicketUtil {
      * @param responseData
      * @return
      */
-    private List<Ticket> parseJSON(String responseData) {
-        return JSON.parseArray(responseData, Ticket.class);
+    private List<RecyclerBeanJingqu> parseJSON(String responseData) {
+        return JSON.parseArray(responseData, RecyclerBeanJingqu.class);
     }
 
     /**
      * 得到TicketList
      */
-    public List<Ticket> getTicketList() {
+    public List<RecyclerBeanJingqu> getList() {
         try {
             return result.get();
         } catch (Exception e) {

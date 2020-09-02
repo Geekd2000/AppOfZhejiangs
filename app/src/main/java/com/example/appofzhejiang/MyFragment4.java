@@ -1,12 +1,16 @@
 package com.example.appofzhejiang;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,11 +35,11 @@ public class MyFragment4 extends Fragment {
     private String content;
     private View view;
     private TextView txtAddress, txtOrder, txtSetting, txtAbout, txtUsername,
-            txtTobePaid, txtPaid, txtFinish,txtNotes;
+            txtTobePaid, txtPaid, txtFinish,txtService;
     private CircleImageView imageUser;
     private Boolean isLoginStatus;
     public String username;
-    private RelativeLayout relativeLayout;
+    private Dialog mShareDialog;
 
     public MyFragment4(){}
     public MyFragment4(String content) {
@@ -55,21 +59,13 @@ public class MyFragment4 extends Fragment {
         txtTobePaid = view.findViewById(R.id.txt_tobePaid);
         txtPaid = view.findViewById(R.id.txt_paid);
         txtFinish = view.findViewById(R.id.txt_finished);
-        txtNotes = view.findViewById(R.id.txt_travel_notes);
+        txtService = view.findViewById(R.id.txt_service);
 
-        //跳转至我的游记页面
-        txtNotes.setOnClickListener(new View.OnClickListener() {
+        //底部弹出对话框
+        txtService.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                SharedPreferences sp = getActivity().getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
-                isLoginStatus = sp.getBoolean("isLogin", false);
-                if (isLoginStatus == true) {
-                    Intent intent = new Intent(getActivity(), NotesActivity.class);
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getActivity(), LoginActivity.class));
-                }
+            public void onClick(View view) {
+                showDialog();// 单击按钮后 调用显示视图的 showDialog 方法
             }
         });
 
@@ -195,6 +191,37 @@ public class MyFragment4 extends Fragment {
         return view;
     }
 
+    private void showDialog() {
+        if (mShareDialog == null) {
+            initShareDialog();
+        }
+        mShareDialog.show();
+    }
+
+    /**
+     * 初始化分享弹出框
+     */
+    private void initShareDialog() {
+        mShareDialog = new Dialog(getActivity(), R.style.dialog_bottom_full);
+        mShareDialog.setCanceledOnTouchOutside(true); //手指触碰到外界取消
+        mShareDialog.setCancelable(true);             //可取消 为true
+        Window window = mShareDialog.getWindow();      // 得到dialog的窗体
+        window.setGravity(Gravity.BOTTOM);
+        window.setWindowAnimations(R.style.share_animation);
+
+        View view = View.inflate(getActivity(), R.layout.dialog_service, null); //获取布局视图
+        view.findViewById(R.id.know).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mShareDialog != null && mShareDialog.isShowing()) {
+                    mShareDialog.dismiss();
+                }
+            }
+        });
+        window.setContentView(view);
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);//设置横向全屏
+    }
+
     /**
      * 判断登录状态
      */
@@ -202,7 +229,7 @@ public class MyFragment4 extends Fragment {
         SharedPreferences sp = getActivity().getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
         isLoginStatus = sp.getBoolean("isLogin", false);
         if (isLoginStatus == true) {
-            txtUsername.setText(sp.getString("loginUserName", null));
+            txtUsername.setText(sp.getString("loginNickname", null));
             txtUsername.setEnabled(false);
             imageUser.setEnabled(false);
         }

@@ -28,6 +28,13 @@ import com.baidu.location.LocationClientOption;
 
 import com.example.appofzhejiang.CustomDialog.CustomDialog;
 
+import com.example.appofzhejiang.fragment2.RecycleBean2_2;
+import com.example.appofzhejiang.fragment2.RecycleBeanListUtil2_2;
+import com.example.appofzhejiang.fragment2.RecyclerBeanListUtil_2;
+import com.example.appofzhejiang.fragment2.RecyclerBean_2;
+import com.example.appofzhejiang.fragment3.TicketType;
+import com.example.appofzhejiang.fragment3.TicketUtil;
+import com.example.appofzhejiang.xihu.RecyclerBeanJingquUtil;
 import com.example.appofzhejiang.xihu.more;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
@@ -97,6 +104,9 @@ public class MyFragment2 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my2, container, false);
 
+        // 定位城市，开启权限
+        setLocated();
+
         // 如果缓存中有城市信息，则从缓存中获取城市
         String cityInfo = load("data_cityInfo");
         if (cityInfo != null && !"".equals(cityInfo.trim())) {
@@ -133,7 +143,6 @@ public class MyFragment2 extends Fragment {
                 startActivity(intent);
             }
         });
-
         //配置RecyclerView
         initRecyclerView1();
         initRecyclerView2();
@@ -145,11 +154,7 @@ public class MyFragment2 extends Fragment {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
-
-                //模拟网络请求到的数据
-
-
-                refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                refreshLayout.finishRefresh();//延迟2000毫秒后结束刷新  传入false表示刷新失败
                 //不传时间则立即停止刷新
             }
         });
@@ -160,8 +165,7 @@ public class MyFragment2 extends Fragment {
 
                 //模拟网络请求到的数据
 
-
-                refreshLayout.finishLoadMore(2000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
+                refreshLayout.finishLoadMore(1000/*false*/);//延迟2000毫秒后结束加载  传入false表示刷新失败
                 refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
             }
         });
@@ -175,7 +179,7 @@ public class MyFragment2 extends Fragment {
         //获取RecyclerView
         recyclerView1 = view.findViewById(R.id.fg2_linear);
         //创建Adapter
-        fragmentAdapter2_1 = new FragmentAdapter2_1(getActivity());
+        fragmentAdapter2_1 = new FragmentAdapter2_1(new RecycleBeanListUtil2_2().getList(),new RecyclerBeanJingquUtil().getList(),getActivity());
         //给RecyclerView设置Adapter
         recyclerView1.setAdapter(fragmentAdapter2_1);
         //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局
@@ -189,7 +193,7 @@ public class MyFragment2 extends Fragment {
         //获取RecyclerView
         recyclerView2 = view.findViewById(R.id.fg2_grid);
         //创建Adapter
-        fragmentAdapter2_2 = new FragmentAdapter2_2(getActivity());
+        fragmentAdapter2_2 = new FragmentAdapter2_2(new TicketUtil(currentCity, TicketType.SCENIC).getTicketList(),getActivity());
         //给RecyclerView设置Adapter
         recyclerView2.setAdapter(fragmentAdapter2_2);
         //设置layoutManager,可以设置显示效果，是线性布局、grid布局，还是瀑布流布局

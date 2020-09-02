@@ -1,12 +1,10 @@
-package com.example.appofzhejiang.fragment3;
+package com.example.appofzhejiang.xihu;
 
 import com.alibaba.fastjson.JSON;
+import com.example.appofzhejiang.fragment3.TicketDetail.DetailBean;
 
 import java.io.IOException;
-
-import java.util.List;
 import java.util.concurrent.Callable;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -15,26 +13,21 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class TicketUtil {
-    private String currentCity;
-    private String type;
-    Future<List<Ticket>> result;
+public class JinquBeanUtil {
+    private String id;
+    Future<JinquBean> result;
 
-    public TicketUtil(String currentCity, String type) {
-        this.currentCity = currentCity;
-        this.type = type;
-        this.initTicketLists();
+
+    public JinquBeanUtil(String id) {
+        this.id = id;
+        this.initDetailBeanLists();
     }
 
     /**
      * 初始化TicketLists
      */
-    private void initTicketLists() {
-        if (TicketType.TICKET.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=门票");
-        }else if(TicketType.SCENIC.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesUp?search=&type=门票");
-        }
+    private void initDetailBeanLists() {
+        sendRequest("http://120.26.172.104:9002//wx/productById?product_id="+id);
     }
 
     /**
@@ -43,10 +36,10 @@ public class TicketUtil {
      * @param address
      */
     private void sendRequest(final String address) {
-        ExecutorService pool = Executors.newFixedThreadPool(100);
-        result = pool.submit(new Callable<List<Ticket>>() {
+        ExecutorService pool = Executors.newFixedThreadPool(2);
+        result = pool.submit(new Callable<JinquBean>() {
             @Override
-            public List<Ticket> call() throws Exception {
+            public JinquBean call() throws Exception {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
@@ -69,14 +62,14 @@ public class TicketUtil {
      * @param responseData
      * @return
      */
-    private List<Ticket> parseJSON(String responseData) {
-        return JSON.parseArray(responseData, Ticket.class);
+    private JinquBean parseJSON(String responseData) {
+        return JSON.parseObject(responseData, JinquBean.class);
     }
 
     /**
      * 得到TicketList
      */
-    public List<Ticket> getTicketList() {
+    public JinquBean getDetailBeanList() {
         try {
             return result.get();
         } catch (Exception e) {

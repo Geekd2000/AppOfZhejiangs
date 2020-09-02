@@ -1,12 +1,10 @@
-package com.example.appofzhejiang.fragment3;
+package com.example.appofzhejiang.fragment2;
 
 import com.alibaba.fastjson.JSON;
 
 import java.io.IOException;
-
 import java.util.List;
 import java.util.concurrent.Callable;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -15,26 +13,20 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class TicketUtil {
+public class RecyclerBeanListUtil_2 {
     private String currentCity;
-    private String type;
-    Future<List<Ticket>> result;
+    Future<List<RecyclerBean_2>> result;
 
-    public TicketUtil(String currentCity, String type) {
+    public RecyclerBeanListUtil_2(String currentCity) {
         this.currentCity = currentCity;
-        this.type = type;
-        this.initTicketLists();
+        this.initRecyclerBeanLists();
     }
 
     /**
-     * 初始化TicketLists
+     * 初始化recyclerBeanList1
      */
-    private void initTicketLists() {
-        if (TicketType.TICKET.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=门票");
-        }else if(TicketType.SCENIC.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesUp?search=&type=门票");
-        }
+    private void initRecyclerBeanLists() {
+            sendRequest("http://120.26.172.104:9002/web/findDestinationByType?type=旅游攻略");
     }
 
     /**
@@ -44,9 +36,9 @@ public class TicketUtil {
      */
     private void sendRequest(final String address) {
         ExecutorService pool = Executors.newFixedThreadPool(100);
-        result = pool.submit(new Callable<List<Ticket>>() {
+        result = pool.submit(new Callable<List<RecyclerBean_2>>() {
             @Override
-            public List<Ticket> call() throws Exception {
+            public List<RecyclerBean_2> call() throws Exception {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
@@ -69,14 +61,15 @@ public class TicketUtil {
      * @param responseData
      * @return
      */
-    private List<Ticket> parseJSON(String responseData) {
-        return JSON.parseArray(responseData, Ticket.class);
+    private List<RecyclerBean_2> parseJSON(String responseData) {
+        return JSON.parseArray(responseData, RecyclerBean_2.class);
     }
 
+
     /**
-     * 得到TicketList
+     * 得到BeanList
      */
-    public List<Ticket> getTicketList() {
+    public List<RecyclerBean_2> getRecyclerBeanList() {
         try {
             return result.get();
         } catch (Exception e) {
@@ -84,4 +77,5 @@ public class TicketUtil {
         }
         return null;
     }
+
 }

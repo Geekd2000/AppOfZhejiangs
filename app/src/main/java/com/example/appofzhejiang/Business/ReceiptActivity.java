@@ -62,11 +62,12 @@ public class ReceiptActivity extends AppCompatActivity {
             }
         });
 
+        //添加新地址
         mTxtNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ReceiptActivity.this, AddressActivity.class);
-                intent.putExtra("num","0");
+                intent.putExtra("num",0);
                 startActivity(intent);
             }
         });
@@ -112,27 +113,16 @@ public class ReceiptActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.refresh(new AddressBeanList(String.valueOf(userID)).getAddressBeanList());
+    }
+
+    @Override
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.bottom_silent, R.anim.bottom_out);
     }
-
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-        if (intent != null) {
-            String receiveName = intent.getStringExtra("name");
-            String telephone = intent.getStringExtra("phone");
-            String address = intent.getStringExtra("address");
-            String select = intent.getStringExtra("select");
-            addressBean.setUsername(receiveName);
-            addressBean.setPhone(telephone);
-            addressBean.setAddress(address);
-            addressBean.setSelect(select);
-            //添加自带默认动画
-            adapter.addData(data.size());
-        }
-    }*/
 
 
     //初始化RecyclerView

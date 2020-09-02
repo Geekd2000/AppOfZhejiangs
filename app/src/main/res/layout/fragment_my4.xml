@@ -174,11 +174,11 @@
                     android:background="@color/colorGray" />
 
                 <TextView
-                    android:id="@+id/txt_travel_notes"
+                    android:id="@+id/txt_service"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorWhite"
-                    android:drawableLeft="@drawable/post"
+                    android:drawableLeft="@drawable/service"
                     android:drawableRight="@drawable/arrow"
                     android:drawablePadding="8dp"
                     android:gravity="center_vertical"
@@ -186,7 +186,7 @@
                     android:paddingTop="10dp"
                     android:paddingRight="15dp"
                     android:paddingBottom="10dp"
-                    android:text="我的游记"
+                    android:text="客服信息"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="14sp" />
 

@@ -41,8 +41,8 @@ public class PaySuccessActivity extends AppCompatActivity {
         continueBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(PaySuccessActivity.this, TicketActivity.class);
-                intent.putExtra("num", "0");
+                Intent intent=new Intent(PaySuccessActivity.this, MainActivity.class);
+                intent.putExtra("numb",2);
                 startActivity(intent);
                 PaySuccessActivity.this.finish();
             }
@@ -65,6 +65,7 @@ public class PaySuccessActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(PaySuccessActivity.this, PayActivity.class);
+                intent.putExtra("id",2);
                 startActivity(intent);
                 PaySuccessActivity.this.finish();
             }

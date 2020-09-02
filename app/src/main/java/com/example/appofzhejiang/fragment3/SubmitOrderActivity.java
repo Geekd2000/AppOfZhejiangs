@@ -34,7 +34,9 @@ import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.pay.OrderDialog;
+import com.example.appofzhejiang.pay.PayActivity;
 import com.example.appofzhejiang.pay.PaySuccessActivity;
+import com.example.appofzhejiang.xihu.more;
 import com.github.clans.fab.FloatingActionButton;
 import com.google.gson.Gson;
 
@@ -176,7 +178,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
         String loginUserName = sp.getString("loginUserName", null);
         userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
         //设置默认地址
-        AddressBean addressBean=new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean();
+        AddressBean addressBean = new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean();
         username.setText(addressBean.getName());
         telephone.setText(addressBean.getMobile());
         address.setText(addressBean.getAddress());
@@ -212,10 +214,10 @@ public class SubmitOrderActivity extends AppCompatActivity {
 
                     //post数据到服务器上
                     try {
-                        runRegister(false,address.getText().toString(),Double.parseDouble(payment.getText().toString()),
-                                username.getText().toString(),Integer.parseInt(endCount.getText().toString()),paymentID,false,
-                                Integer.parseInt(product_id),image,goodsName.getText().toString(),telephone.getText().toString(),
-                                userID,totalType,goodsType.getText().toString());
+                        runRegister(false, address.getText().toString(), Double.parseDouble(payment.getText().toString()),
+                                username.getText().toString(), Integer.parseInt(endCount.getText().toString()), paymentID, false,
+                                Integer.parseInt(product_id), image, goodsName.getText().toString(), telephone.getText().toString(),
+                                userID, totalType, goodsType.getText().toString());
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -235,12 +237,11 @@ public class SubmitOrderActivity extends AppCompatActivity {
                     orderDialog.setTimeNow(timeNow);
                     orderDialog.setNumber(paymentID);
                     orderDialog.show();
-                    orderDialog.setCancel("cancel", new OrderDialog.IOnCancelListener() {
+                    orderDialog.setUse("use", new OrderDialog.IOnUseListener() {
                         @Override
-                        public void onCancel(OrderDialog dialog) {
-                            Toast.makeText(SubmitOrderActivity.this, "取消成功", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SubmitOrderActivity.this, TicketActivity.class);
-                            intent.putExtra("num", "0");
+                        public void onUse(OrderDialog dialog) {
+                            Intent intent = new Intent(SubmitOrderActivity.this, PayActivity.class);
+                            intent.putExtra("id", 2);
                             startActivity(intent);
                             SubmitOrderActivity.this.finish();
                         }
@@ -248,17 +249,14 @@ public class SubmitOrderActivity extends AppCompatActivity {
                     orderDialog.setGoto("back", new OrderDialog.IOnGotoListener() {
                         @Override
                         public void onGoto(OrderDialog dialog) {
-                            Intent intent = new Intent(SubmitOrderActivity.this, TicketActivity.class);
-                            intent.putExtra("num", "0");
-                            startActivity(intent);
                             SubmitOrderActivity.this.finish();
                         }
                     });
                     orderDialog.setConfirm("pay", new OrderDialog.IOnConfirmListener() {
                         @Override
                         public void onConfirm(OrderDialog dialog) {
-
-                            Intent intent = new Intent(SubmitOrderActivity.this, PaySuccessActivity.class);
+                            Intent intent = new Intent(SubmitOrderActivity.this, PayActivity.class);
+                            intent.putExtra("id", 1);
                             startActivity(intent);
                             SubmitOrderActivity.this.finish();
                         }
@@ -370,6 +368,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(SubmitOrderActivity.this, MainActivity.class);
                 startActivity(intent);
+                SubmitOrderActivity.this.finish();
             }
         });
 
@@ -377,8 +376,9 @@ public class SubmitOrderActivity extends AppCompatActivity {
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, RecyclerPageActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(SubmitOrderActivity.this, more.class);
+                startActivity(intent);
+                SubmitOrderActivity.this.finish();
             }
         });
 
@@ -389,6 +389,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
                 Intent intent = new Intent(SubmitOrderActivity.this, TicketActivity.class);
                 intent.putExtra("num", "0");
                 startActivity(intent);
+                SubmitOrderActivity.this.finish();
             }
         });
     }

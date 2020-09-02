@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="西湖"
+            android:text="天台山"
             android:textColor="@color/colorBlack"
             android:textSize="18sp" />
 

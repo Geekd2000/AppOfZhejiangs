@@ -151,7 +151,6 @@ public class MyFragment1 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my1, container, false);
 
-
         // 处理小浙特别提醒
         setLittleRemind();
 
@@ -159,7 +158,8 @@ public class MyFragment1 extends Fragment {
         setBanner();
 
         // 设置城市定位 start
-
+        // 定位城市，开启权限
+        setLocated();
         // 如果缓存中有城市信息，则从缓存中获取城市
         String cityInfo = load("data_cityInfo");
         if (cityInfo != null && !"".equals(cityInfo.trim())) {
