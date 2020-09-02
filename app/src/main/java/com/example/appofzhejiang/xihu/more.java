@@ -60,8 +60,8 @@ public class more extends AppCompatActivity {
 
                 //模拟网络请求到的数据
 
-
-                refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                recycleViewAdepter_more.refresh(new RecycleBeanListUtil2_2().getList());
+                refreshLayout.finishRefresh();//延迟2000毫秒后结束刷新  传入false表示刷新失败
                 //不传时间则立即停止刷新
             }
         });

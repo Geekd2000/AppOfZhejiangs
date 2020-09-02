@@ -191,6 +191,12 @@ public class MyFragment4 extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        LoginStatus();
+    }
+
     private void showDialog() {
         if (mShareDialog == null) {
             initShareDialog();

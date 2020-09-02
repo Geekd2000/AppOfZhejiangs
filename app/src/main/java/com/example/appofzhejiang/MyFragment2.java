@@ -150,6 +150,8 @@ public class MyFragment2 extends Fragment {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
+                fragmentAdapter2_1.refresh(new RecycleBeanListUtil2_2().getList());
+                fragmentAdapter2_2.refresh(new TicketUtil(currentCity, TicketType.SCENIC).getTicketList());
                 refreshLayout.finishRefresh();//延迟2000毫秒后结束刷新  传入false表示刷新失败
                 //不传时间则立即停止刷新
             }

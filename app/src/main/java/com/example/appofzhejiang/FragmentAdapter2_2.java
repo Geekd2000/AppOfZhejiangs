@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.appofzhejiang.fragment2.RecycleBean2_2;
 import com.example.appofzhejiang.fragment3.Ticket;
 import com.example.appofzhejiang.fragment3.TicketDetail.TicketDetailActivity;
 import com.example.appofzhejiang.xihu.Dairy;
@@ -77,6 +78,13 @@ public class FragmentAdapter2_2 extends RecyclerView.Adapter<FragmentAdapter2_2.
     @Override
     public int getItemCount() {
         return ticketList.size();
+    }
+
+    public void refresh(List<Ticket> newList) {
+        //刷新数据
+        ticketList.removeAll(ticketList);
+        ticketList.addAll(newList);
+        notifyDataSetChanged();
     }
 
     public class GridViewHolder extends RecyclerView.ViewHolder {

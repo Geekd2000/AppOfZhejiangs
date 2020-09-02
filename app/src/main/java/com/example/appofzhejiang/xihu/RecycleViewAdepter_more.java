@@ -88,6 +88,13 @@ public class RecycleViewAdepter_more extends RecyclerView.Adapter<RecycleViewAde
         return list.size();
     }
 
+    public void refresh(List<RecycleBean2_2> newList) {
+        //刷新数据
+        list.removeAll(list);
+        list.addAll(newList);
+        notifyDataSetChanged();
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView txtTitle, txtLabel;
         private ImageView listImage;

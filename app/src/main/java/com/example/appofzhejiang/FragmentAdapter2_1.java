@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.example.appofzhejiang.fragment1.recyclerpage.RecyclerBean;
 import com.example.appofzhejiang.fragment2.RecycleBean2_2;
 import com.example.appofzhejiang.fragment2.RecyclerBean_2;
+import com.example.appofzhejiang.fragment3.Ticket;
 import com.example.appofzhejiang.xihu.Dairy;
 import com.example.appofzhejiang.xihu.Jingqu;
 import com.example.appofzhejiang.xihu.RecyclerBeanJingqu;
@@ -79,6 +80,13 @@ public class FragmentAdapter2_1 extends RecyclerView.Adapter<FragmentAdapter2_1.
     @Override
     public int getItemCount() {
         return 3;
+    }
+
+    public void refresh(List<RecycleBean2_2> newList) {
+        //刷新数据
+        list.removeAll(list);
+        list.addAll(newList);
+        notifyDataSetChanged();
     }
 
     public class LinearViewHolder extends RecyclerView.ViewHolder {
