@@ -103,10 +103,6 @@ public class MyFragment2 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my2, container, false);
-
-        // 定位城市，开启权限
-        setLocated();
-
         // 如果缓存中有城市信息，则从缓存中获取城市
         String cityInfo = load("data_cityInfo");
         if (cityInfo != null && !"".equals(cityInfo.trim())) {
