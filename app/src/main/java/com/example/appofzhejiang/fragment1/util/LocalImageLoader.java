@@ -30,33 +30,5 @@ public class LocalImageLoader extends ImageLoader {
                 .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .into(imageView);
     }
-    /**
-     * 加载网络图片
-     *
-     * @param url
-     *            网络图片地址
-     * @return Bitmap
-     */
-    private Bitmap getHttpBitmap(String url) {
-        URL myFileUrl = null;
-        Bitmap bitmap = null;
-        try {
-            myFileUrl = new URL(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        try {
-            HttpURLConnection conn = (HttpURLConnection) myFileUrl
-                    .openConnection();
-            conn.setConnectTimeout(0);
-            conn.setDoInput(true);
-            conn.connect();
-            InputStream is = conn.getInputStream();
-            bitmap = BitmapFactory.decodeStream(is);
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return bitmap;
-    }
+
 }
