@@ -96,7 +96,6 @@ public class ReceiptActivity extends AppCompatActivity {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 //在这里执行上拉刷新时的具体操作(网络请求、更新UI等)
-                refreshLayout.autoRefresh();
                 adapter.refresh(new AddressBeanList(String.valueOf(userID)).getAddressBeanList());
                 refreshLayout.finishRefresh();//延迟2000毫秒后结束刷新  传入false表示刷新失败
                 //不传时间则立即停止刷新
