@@ -63,6 +63,7 @@
                     app:indicator_drawable_unselected="@drawable/banner_unselected"
                     app:indicator_height="10dp"
                     app:indicator_width="10dp"
+                    app:indicator_margin="2dp"
                     app:title_height="30dp"
                     app:title_textcolor="#fff"
                     app:title_textsize="16dp" />
