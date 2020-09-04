@@ -158,7 +158,7 @@
                     android:id="@+id/order_telephone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="70dp"
                     android:layout_toRightOf="@id/order_name"
                     android:text="17788994455"
                     android:textColor="@color/colorLightBlack"
@@ -166,7 +166,7 @@
 
                 <TextView
                     android:id="@+id/order_address"
-                    android:layout_width="wrap_content"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/order_telephone"
                     android:layout_marginLeft="45dp"

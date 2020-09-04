@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
+import com.example.appofzhejiang.fragment2.RecycleBeanListUtil2_2;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -24,6 +25,7 @@ public class more extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in, R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more);
         //设置沉浸式
@@ -39,7 +41,7 @@ public class more extends AppCompatActivity {
         });
 
         //景区攻略的recelyeView
-        RecycleViewAdepter_more recycleViewAdepter_more = new RecycleViewAdepter_more(this);
+        RecycleViewAdepter_more recycleViewAdepter_more = new RecycleViewAdepter_more(new RecycleBeanListUtil2_2().getList(),new RecyclerBeanJingquUtil().getList(),this);
         RecyclerView recyclerView = findViewById(R.id.jq_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -58,8 +60,8 @@ public class more extends AppCompatActivity {
 
                 //模拟网络请求到的数据
 
-
-                refreshLayout.finishRefresh(2000/*false*/);//延迟2000毫秒后结束刷新  传入false表示刷新失败
+                recycleViewAdepter_more.refresh(new RecycleBeanListUtil2_2().getList());
+                refreshLayout.finishRefresh();//延迟2000毫秒后结束刷新  传入false表示刷新失败
                 //不传时间则立即停止刷新
             }
         });
@@ -75,5 +77,11 @@ public class more extends AppCompatActivity {
                 refreshLayout.finishLoadMoreWithNoMoreData();//完成加载并标记没有更多数据 1.0.4
             }
         });
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent, R.anim.right_out);
     }
 }

@@ -3,6 +3,7 @@ package com.example.appofzhejiang.Business;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,17 @@ import com.example.appofzhejiang.CustomDialog.CustomDialog;
 import com.example.appofzhejiang.R;
 import com.example.appofzhejiang.fragment3.Ticket;
 
+import java.io.IOException;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.Headers;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearViewHolder> {
 
@@ -62,6 +73,7 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
                     @Override
                     public void onConfirm(CustomDialog dialog) {
                         // 确定删除 删除记录
+                        runDelete(String.valueOf(addressBean.getId()));
                         //删除自带默认动画
                         removeData(position);
                     }
@@ -73,8 +85,37 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
             public void onClick(View view) {
                 Intent intent = new Intent(mContext,AddressActivity.class);
                 intent.putExtra("id",String.valueOf(addressBean.getId()));
-                intent.putExtra("num","1");
+                intent.putExtra("num",1);
                 mContext.startActivity(intent);
+            }
+        });
+    }
+
+    //向服务器发送put请求,修改默认地址
+    private void runDelete(String id) {
+        String url = "http://120.26.172.104:9002//wx/deleteAddress";
+        RequestBody formBody = new FormBody.Builder()
+                .add("id", id)
+                .build();
+        Request request = new Request.Builder()
+                .url(url)
+                .delete(formBody)
+                .build();
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("TAG", "onFailure: " + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d("TAG", response.protocol() + " " +response.code() + " " + response.message());
+                Headers headers = response.headers();
+                for (int i = 0; i < headers.size(); i++) {
+                    Log.d("TAG", headers.name(i) + ":" + headers.value(i));
+                }
+                Log.d("TAG", "onResponse: " + response.body().string());
             }
         });
     }

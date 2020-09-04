@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.appofzhejiang.MainActivity;
 import com.example.appofzhejiang.R;
+import com.example.appofzhejiang.Setting.userUtil;
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 import com.example.appofzhejiang.ToastUtils;
 
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     private String userName, psw, spPsw;//获取的用户名，密码，加密密码
     private EditText et_user_name, et_psw;//编辑框
     private Toolbar toolbar;
+    private int n;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         //设置此界面为竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //各种点击事件
         init();
+        //这个数值用来判断是否在商城界面登陆，商城界面登陆为1，其他为0
+        n = getIntent().getIntExtra("n", 0);
         //设置沉浸式
         StatusBarUtil.setTransparent(this);
         StatusBarUtil.setDarkFont(this);
@@ -113,11 +118,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
-                String  result = "";
+                String result = "";
                 result = (String) msg.obj;
                 if (result.equals("[\"用户名不存在\"]")) {
                     ToastUtils.show(LoginActivity.this, "用户名不存在");
@@ -141,17 +147,22 @@ public class LoginActivity extends AppCompatActivity {
                     setResult(RESULT_OK, data);
                     //销毁登录界面
                     LoginActivity.this.finish();
-                    //跳转到主界面，登录成功的状态传递到 MainActivity 中
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    if (n == 0) {
+                        //跳转到主界面，登录成功的状态传递到 MainActivity 中
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("numb", 3);
+                        startActivity(intent);
+                    }
                 }
             }
         }
     };
-    private void runLogin( String username, String psw) throws InterruptedException {
+
+    private void runLogin(String username, String psw) throws InterruptedException {
         final OkHttpClient client = new OkHttpClient();
 
         final Request request = new Request.Builder()
-                .url("http://120.26.172.104:9002//web/userLogin?name="+username+"&tel="+psw)
+                .url("http://120.26.172.104:9002//web/userLogin?name=" + username + "&tel=" + psw)
                 .build();
         //处理注册逻辑
         Thread t1 = new Thread(new Runnable() {
@@ -199,6 +210,10 @@ public class LoginActivity extends AppCompatActivity {
         editor.putBoolean("isLogin", status);
         //存入登录状态时的用户名
         editor.putString("loginUserName", userName);
+        //存入登录状态的昵称
+        String nickname = new userUtil(userName).getUserBean().getUsername();
+        System.out.println(nickname);
+        editor.putString("loginNickname", nickname);
         //提交修改
         editor.commit();
     }
@@ -230,6 +245,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+
     //点击空白处收起键盘
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

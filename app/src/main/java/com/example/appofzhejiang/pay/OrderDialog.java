@@ -21,7 +21,7 @@ import com.example.appofzhejiang.R;
 public class OrderDialog extends Dialog implements View.OnClickListener {
 
     private Button mBtnReturn;
-    private Button mCancel;
+    private Button mUse;
     private Button buy;
     private TextView mPay1, mPay2;//两个实付
     private TextView mGoodsName1, mGoodsName2;//两盒商品名称
@@ -36,7 +36,7 @@ public class OrderDialog extends Dialog implements View.OnClickListener {
     private TextView number;//订单号
 
     private IOnConfirmListener mPay;
-    private IOnCancelListener cancel;
+    private IOnUseListener use;
     private IOnGotoListener mReturn;
 
     private String pay1;
@@ -49,7 +49,7 @@ public class OrderDialog extends Dialog implements View.OnClickListener {
     private String username;
     private String telephone;
     private String address;
-    private String cancel1, confirm, goto1;
+    private String use1, confirm, goto1;
     private String image;
     private Context context;
     private String timeNow;
@@ -107,9 +107,9 @@ public class OrderDialog extends Dialog implements View.OnClickListener {
         this.context = context;
     }
 
-    public void setCancel(String cancel, IOnCancelListener cancelListener) {
-        this.cancel1 = cancel;
-        this.cancel = cancelListener;
+    public void setUse(String use, IOnUseListener useListener) {
+        this.use1 = use;
+        this.use = useListener;
     }
 
     public void setConfirm(String confirm, IOnConfirmListener confirmListener) {
@@ -140,8 +140,8 @@ public class OrderDialog extends Dialog implements View.OnClickListener {
                 mReturn.onGoto(this);
                 dismiss();
                 break;
-            case R.id.order_cancel:
-                cancel.onCancel(this);
+            case R.id.order_use:
+                use.onUse(this);
                 dismiss();
                 break;
             case R.id.order_buy:
@@ -172,7 +172,7 @@ public class OrderDialog extends Dialog implements View.OnClickListener {
 
         //设置点击事件
         buy.setOnClickListener(this);
-        mCancel.setOnClickListener(this);
+        mUse.setOnClickListener(this);
         mBtnReturn.setOnClickListener(this);
 
         if(!TextUtils.isEmpty(mNumber)){
@@ -234,14 +234,14 @@ public class OrderDialog extends Dialog implements View.OnClickListener {
         mAddress = findViewById(R.id.address);
         imageGoods = findViewById(R.id.imageGoods);
         mBtnReturn = findViewById(R.id.order_return);
-        mCancel = findViewById(R.id.order_cancel);
+        mUse = findViewById(R.id.order_use);
         buy = findViewById(R.id.order_buy);
         time = findViewById(R.id.order_time);
         number = findViewById(R.id.order_number);
     }
 
-    public interface IOnCancelListener {
-        void onCancel(OrderDialog dialog);
+    public interface IOnUseListener {
+        void onUse(OrderDialog dialog);
     }
 
     public interface IOnConfirmListener {

@@ -69,12 +69,16 @@ public class OrderActivity extends AppCompatActivity {
         //设置沉浸式
         StatusBarUtil.setTransparent(this);
         StatusBarUtil.setDarkFont(this);
+        //返回我的
         mBtnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(OrderActivity.this, MainActivity.class);
+                intent.putExtra("numb", 3);
+                startActivity(intent);
+                OrderActivity.this.finish();
             }
-        });//返回我的按钮
+        });//返回上一页按钮
         mBtnBack.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -231,7 +235,9 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(OrderActivity.this, MainActivity.class);
+                intent.putExtra("numb", 0);
                 startActivity(intent);
+                OrderActivity.this.finish();
             }
         });
 
@@ -239,8 +245,10 @@ public class OrderActivity extends AppCompatActivity {
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OrderActivity.this, more.class);
+                Intent intent = new Intent(OrderActivity.this, MainActivity.class);
+                intent.putExtra("numb", 1);
                 startActivity(intent);
+                OrderActivity.this.finish();
             }
         });
 
@@ -248,9 +256,10 @@ public class OrderActivity extends AppCompatActivity {
         floatingActionButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OrderActivity.this, TicketActivity.class);
-                intent.putExtra("num", "0");
+                Intent intent = new Intent(OrderActivity.this, MainActivity.class);
+                intent.putExtra("numb", 2);
                 startActivity(intent);
+                OrderActivity.this.finish();
             }
         });
     }

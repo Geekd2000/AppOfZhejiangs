@@ -19,10 +19,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="停车场"
+            android:text="景区周边"
             android:textColor="@color/colorLightBlack"
             android:textSize="18sp" />
     </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit1"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_edit_youji"
+            android:hint="请输入要搜索的内容"
+            android:textSize="16sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="45dp"
+            android:text="搜索"
+            android:textSize="14sp"
+            android:background="@drawable/bg_btn_order1"
+            android:textColor="@color/colorWhite"/>
+
+    </LinearLayout>
 
     <com.baidu.mapapi.map.MapView
         android:id="@+id/map_baidu"

@@ -1,10 +1,15 @@
 package com.example.appofzhejiang.xihu;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -37,16 +42,18 @@ import java.util.List;
 
 public class Jingqu_around_park extends AppCompatActivity {
 
-    private static int count = 0;
     private MapView mMapView;
     private BaiduMap mBaidumap;
     private Toolbar mBack;
     private PoiSearch poiSearch;
+    private Button button;
+    private EditText editText;
     private OnGetPoiSearchResultListener poiListener;
+    String[] addresses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        overridePendingTransition(R.anim.bottom_in,R.anim.bottom_silent);
+        overridePendingTransition(R.anim.bottom_in, R.anim.bottom_silent);
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_jingqu_around_park);
@@ -65,23 +72,36 @@ public class Jingqu_around_park extends AppCompatActivity {
         mMapView = findViewById(R.id.map_baidu);//初始化地图
         mBaidumap = mMapView.getMap();
 
-        LatLng cenpt = new LatLng(30.22730, 120.12979); //设定中心点坐标
+        Intent intent = getIntent();
+        String address = intent.getStringExtra("address");
+        addresses = address.split(",");
 
+        editText = findViewById(R.id.edit1);
+        button = findViewById(R.id.search);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(editText.getText().equals("")){
+                    mBaidumap.clear();
+                }else{
+                    mBaidumap.clear();
+                    nearbyPoiSearch(mBaidumap);
+                }
+            }
+        });
+
+
+
+        LatLng cenpt = new LatLng(Double.parseDouble(addresses[1]), Double.parseDouble(addresses[0])); //设定中心点坐标
         MapStatus mMapStatus = new MapStatus.Builder()//定义地图状态
                 .target(cenpt)
-                .zoom(18)
+                .zoom(15)
                 .build();  //定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
         MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
-        nearbyPoiSearch(mBaidumap);
-
         mBaidumap.setMapStatus(mMapStatusUpdate);//改变地图状态
     }
 
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.bottom_silent, R.anim.bottom_out);
-    }
+
 
     private void nearbyPoiSearch(final BaiduMap mBaidumap) {
         //创建poi检索实例
@@ -101,7 +121,7 @@ public class Jingqu_around_park extends AppCompatActivity {
                         LatLng poiLocation = poiInfo.location;
 //构建Marker图标
                         BitmapDescriptor bitmap = BitmapDescriptorFactory
-                                .fromResource(R.drawable.park);
+                                .fromResource(R.drawable.dingdian);
 //构建MarkerOption，用于在地图上添加Marker
                         OverlayOptions option = new MarkerOptions()
                                 .position(poiLocation)
@@ -149,11 +169,53 @@ public class Jingqu_around_park extends AppCompatActivity {
         poiSearch.setOnGetPoiSearchResultListener(poiListener);
         //设置请求参数
         PoiNearbySearchOption nearbySearchOption = new PoiNearbySearchOption()
-                .keyword("停车场")//检索关键字
-                .location(new LatLng(30.22730, 120.12979))//检索位置
+                .keyword(String.valueOf(editText.getText()))//检索关键字
+                .location(new LatLng(Double.parseDouble(addresses[1]), Double.parseDouble(addresses[0])))//检索位置
                 .radius(1000);//附近检索半径
         //发起请求
         poiSearch.searchNearby(nearbySearchOption);
+    }
+
+    //点击空白处收起键盘
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (isShouldHideInput(v, ev)) {
+
+                InputMethodManager imm = (InputMethodManager) getApplication().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+            return super.dispatchTouchEvent(ev);
+        }
+        // 必不可少，否则所有的组件都不会有TouchEvent了
+        if (getWindow().superDispatchTouchEvent(ev)) {
+            return true;
+        }
+        return onTouchEvent(ev);
+    }
+
+
+    public boolean isShouldHideInput(View v, MotionEvent event) {
+        if (v != null && (v instanceof EditText)) {
+            int[] leftTop = {0, 0};
+            //获取输入框当前的location位置
+            v.getLocationInWindow(leftTop);
+            int left = leftTop[0];
+            int top = leftTop[1];
+            int bottom = top + v.getHeight();
+            int right = left + v.getWidth();
+            if (event.getX() > left && event.getX() < right
+                    && event.getY() > top && event.getY() < bottom) {
+                // 点击的是输入框区域，保留点击EditText的事件
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -174,13 +236,10 @@ public class Jingqu_around_park extends AppCompatActivity {
         mMapView.onDestroy();
     }
 
-    public void flush() {
-        if(count == 0){
-            finish();
-            Log.e(String.valueOf(getClass()), "flush: flushed" );
-            count++;
-            Intent intent = new Intent(this, Jingqu_around_park.class);
-            startActivity(intent);
-        }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.bottom_silent, R.anim.bottom_out);
     }
+
 }

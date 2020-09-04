@@ -32,6 +32,8 @@ public class TicketUtil {
     private void initTicketLists() {
         if (TicketType.TICKET.equals(this.type)) {
             sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=门票");
+        }else if(TicketType.SCENIC.equals(this.type)) {
+            sendRequest("http://120.26.172.104:9002//wx/productBySalesUp?search=&type=门票");
         }
     }
 

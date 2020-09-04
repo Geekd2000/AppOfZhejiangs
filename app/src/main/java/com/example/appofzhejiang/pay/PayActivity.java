@@ -51,15 +51,15 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
         int  id = getIntent().getIntExtra("id",0);
         if (id == 1) {
             viewPager.setCurrentItem(PAGE_TWO);
-            mTvPendingPayment.setSelected(true);//进去后选择第一项
+            mTvPendingPayment.setSelected(true);//进去后选择第二项
         }
         if (id == 2) {
             viewPager.setCurrentItem(PAGE_THREE);
-            mTvPaid.setSelected(true);//进去后选择第一项
+            mTvPaid.setSelected(true);//进去后选择第三项
         }
         if (id == 3) {
             viewPager.setCurrentItem(PAGE_FOUR);
-            mTvCompleted.setSelected(true);//进去后选择第一项
+            mTvCompleted.setSelected(true);//进去后选择第四项
         }
         if (id == 0) {
             viewPager.setCurrentItem(PAGE_ONE);
@@ -180,6 +180,8 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
             public void onClick(View view) {
                 Intent intent = new Intent(PayActivity.this, MainActivity.class);
                 startActivity(intent);
+                intent.putExtra("numb", 0);
+                PayActivity.this.finish();
             }
         });
 
@@ -187,8 +189,10 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PayActivity.this, more.class);
+                Intent intent = new Intent(PayActivity.this, MainActivity.class);
+                intent.putExtra("numb", 1);
                 startActivity(intent);
+                PayActivity.this.finish();
             }
         });
 
@@ -196,9 +200,10 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
         floatingActionButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PayActivity.this, TicketActivity.class);
-                intent.putExtra("num", "0");
+                Intent intent = new Intent(PayActivity.this, MainActivity.class);
+                intent.putExtra("numb", 2);
                 startActivity(intent);
+                PayActivity.this.finish();
             }
         });
     }

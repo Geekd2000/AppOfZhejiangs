@@ -55,8 +55,7 @@ public class AddressActivity extends AppCompatActivity {
     private EditText telephoneNumber;//手机号
     private EditText detailAddress;//详细地址
     private RadioButton mRadioButton;//默认地址单选按钮
-    private RelativeLayout addressPage;
-    private TextView save;
+    private TextView save;//保存
     private int userID;//用户ID
     private String id;//地址编号
     private AddressBean addressBean;
@@ -66,6 +65,7 @@ public class AddressActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.right_in, R.anim.right_silent);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
         //初始化，找到控件
@@ -77,7 +77,7 @@ public class AddressActivity extends AppCompatActivity {
 
         //获取传过来的参数
         Intent intent = getIntent();
-        final int num = Integer.parseInt(intent.getStringExtra("num"));
+        final int num =intent.getIntExtra("num",0);
         if (num == 1) {
             id = intent.getStringExtra("id");
             addressBean = new GetAddressUtil(id).getAddressBean();
@@ -326,6 +326,9 @@ public class AddressActivity extends AppCompatActivity {
 
     //获取单选按钮checked值的类
     class GlobalValue {
+
+        private boolean isCheck;
+
         public boolean isCheck() {
             return isCheck;
         }
@@ -334,7 +337,6 @@ public class AddressActivity extends AppCompatActivity {
             isCheck = check;
         }
 
-        private boolean isCheck;
     }
 
     //TexView的点击事件
@@ -392,7 +394,6 @@ public class AddressActivity extends AppCompatActivity {
         receiveName = findViewById(R.id.new_username);
         telephoneNumber = findViewById(R.id.new_number);
         detailAddress = findViewById(R.id.detail_address);
-        addressPage = findViewById(R.id.traceroute_rootview);
         save = findViewById(R.id.txt_address_save);
     }
 
@@ -436,5 +437,11 @@ public class AddressActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.right_silent, R.anim.right_out);
     }
 }

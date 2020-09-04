@@ -27,7 +27,7 @@
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_app"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -60,7 +60,6 @@
         <activity android:name=".us.AboutUsActivity" />
         <activity android:name=".Setting.PasswordChangeActivity" />
         <activity android:name=".xihu.Jingqu_daohang" />
-        <activity android:name=".xihu.Jingqu_around" />
         <activity android:name=".xihu.Jingqu" />
         <activity android:name=".Business.AddressActivity" />
         <activity android:name=".Business.ReceiptActivity" />

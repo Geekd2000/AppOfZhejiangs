@@ -41,13 +41,11 @@ public class UseSuccessActivity extends AppCompatActivity {
         continueUse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(UseSuccessActivity.this, PayActivity.class);
-                startActivity(intent);
                 UseSuccessActivity.this.finish();
             }
         });
 
-        //跳转至首页
+        //跳转至我的页面
         backMain=findViewById(R.id.back_main);
         backMain.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,7 @@
 package com.example.appofzhejiang.xihu;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -68,9 +69,11 @@ public class Jingqu_daohang extends AppCompatActivity {
 
     private Overlay mOverlay = null;
 
+    String[] addresses;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        overridePendingTransition(R.anim.right_in,R.anim.right_silent);
+        overridePendingTransition(R.anim.bottom_in, R.anim.bottom_silent);
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_jingqu_daohang);
@@ -105,23 +108,20 @@ public class Jingqu_daohang extends AppCompatActivity {
             requestLocation();
         }
 
+        Intent intent = getIntent();
+        String address = intent.getStringExtra("address");
+        addresses = address.split(",");
 
-        LatLng point = new LatLng(30.22730, 120.12979);
+        LatLng point = new LatLng(Double.parseDouble(addresses[1]), Double.parseDouble(addresses[0]));
 //构建Marker图标
         BitmapDescriptor bitmap = BitmapDescriptorFactory
-                .fromResource(R.drawable.address);
+                .fromResource(R.drawable.dingdian);
 //构建MarkerOption，用于在地图上添加Marker
         OverlayOptions option = new MarkerOptions()
                 .position(point)
                 .icon(bitmap);
 //在地图上添加Marker，并显示
         baiduMap.addOverlay(option);
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.right_silent,R.anim.right_out);
     }
 
     private void requestLocation() {
@@ -180,7 +180,7 @@ public class Jingqu_daohang extends AppCompatActivity {
 
     private void navigateTo(BDLocation location) {
         if (isFirstLocate) {
-            LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
+            LatLng ll = new LatLng(Double.parseDouble(addresses[1]), Double.parseDouble(addresses[0]));
             MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(ll);
             baiduMap.animateMapStatus(update);
             update = MapStatusUpdateFactory.zoomTo(16f);
@@ -194,12 +194,12 @@ public class Jingqu_daohang extends AppCompatActivity {
         MyLocationData locationData = locationBuilder.build();
         baiduMap.setMyLocationData(locationData);
 
-        if(mOverlay != null){
+        if (mOverlay != null) {
             mOverlay.remove();
         }
         List<LatLng> points = new ArrayList<LatLng>();
-        points.add(new LatLng(location.getLatitude(),location.getLongitude()));
-        points.add(new LatLng(30.22730, 120.12979));
+        points.add(new LatLng(location.getLatitude(), location.getLongitude()));
+        points.add(new LatLng(Double.parseDouble(addresses[1]), Double.parseDouble(addresses[0])));
         List<Integer> colors = new ArrayList<>();
         colors.add(Integer.valueOf(Color.BLACK));
         mOverlayOptions = new PolylineOptions()
@@ -237,4 +237,11 @@ public class Jingqu_daohang extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.bottom_silent, R.anim.bottom_out);
+    }
+
 }
