@@ -124,17 +124,19 @@ public class BeautifulZJActivity extends AppCompatActivity {
     }
 
     private void refreshBPs() {
-        new Thread(new Runnable() {
+       new Thread(new Runnable() {
             @Override
             public void run() {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        initBPList();
+                        bpList = getPictures("http://120.26.172.104:9002/web/findPicture");
+                        adapter.notifyDataSetChanged();
                         swipeRefresh.setRefreshing(false); // 刷新事件结束，并隐藏刷新进度条。
                     }
                 });
             }
         }).start();
+
     }
 }

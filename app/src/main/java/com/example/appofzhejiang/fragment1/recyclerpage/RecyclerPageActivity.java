@@ -140,6 +140,7 @@ public class RecyclerPageActivity extends AppCompatActivity {
                 });
             }
         }).start();
+
     }
 
 
