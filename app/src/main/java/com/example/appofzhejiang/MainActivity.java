@@ -17,8 +17,6 @@ import android.widget.Toast;
 
 import com.example.appofzhejiang.StatusBarUtil.StatusBarUtil;
 
-import interfaces.heweather.com.interfacesmodule.view.HeConfig;
-
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
