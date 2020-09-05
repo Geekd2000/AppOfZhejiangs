@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:text="编辑"
             android:layout_marginTop="10dp"
-            android:textColor="@color/colorGray"
+            android:textColor="@color/colorDarkGray"
             android:textSize="12sp"/>
     </LinearLayout>
 </RelativeLayout>
