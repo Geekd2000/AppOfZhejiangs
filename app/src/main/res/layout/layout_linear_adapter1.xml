@@ -28,6 +28,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="标题"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:textColor="@color/colorBlack"
             android:textSize="18dp" />
 
