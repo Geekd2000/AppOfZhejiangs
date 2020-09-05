@@ -25,42 +25,42 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="使用成功，订单完成"
-        android:textSize="20sp"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:textColor="@color/colorLightBlack"/>
+        android:layout_marginTop="10dp"
+        android:text="使用成功，订单完成"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginTop="15dp"
-        android:padding="5dp"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/continue_use"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:padding="5dp"
             android:background="@drawable/bg_btn_order2"
+            android:padding="5dp"
             android:text="继续使用"
             android:textColor="@color/colorLightGreen"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/back_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="30dp"
             android:background="@drawable/bg_btn_order1"
             android:padding="5dp"
-            android:layout_marginLeft="30dp"
             android:text="返回我的"
             android:textColor="@color/colorWhite"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
     </LinearLayout>
 </LinearLayout>

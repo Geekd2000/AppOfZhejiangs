@@ -15,7 +15,7 @@
         android:paddingBottom="10dp"
         android:text="客服信息"
         android:textColor="@color/colorLightGreen"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:textStyle="bold" />
 
     <TextView
@@ -27,7 +27,7 @@
         android:paddingBottom="10dp"
         android:text="客服团队"
         android:textColor="@color/colorLightBlack"
-        android:textSize="18sp" />
+        android:textSize="18dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="项目团队"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <View
         android:layout_width="match_parent"
@@ -55,7 +55,7 @@
         android:paddingBottom="10dp"
         android:text="咨询时间"
         android:textColor="@color/colorLightBlack"
-        android:textSize="18sp" />
+        android:textSize="18dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -65,7 +65,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="09:00-22:00"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <View
         android:layout_width="match_parent"
@@ -85,5 +85,5 @@
         android:background="@drawable/button_circle_shape"
         android:text="知道了"
         android:textColor="@color/colorWhite"
-        android:textSize="16sp" />
+        android:textSize="16dp" />
 </LinearLayout>

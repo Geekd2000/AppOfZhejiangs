@@ -13,7 +13,7 @@
         android:layout_marginTop="20dp"
         android:text="姓名"
         android:textColor="@color/colorLightBlack"
-        android:textSize="18sp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/receipt_phone"
@@ -24,7 +24,7 @@
         android:layout_marginRight="150dp"
         android:text="18357421729"
         android:textColor="@color/colorLightBlack"
-        android:textSize="18sp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/receipt_default"
@@ -37,7 +37,7 @@
         android:paddingRight="5dp"
         android:text="默认"
         android:textColor="#17C780"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <TextView
         android:id="@+id/receipt_address"
@@ -47,7 +47,7 @@
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@id/receipt_default"
         android:text="浙江省杭州市江干区 17栋302"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <View
         android:layout_width="match_parent"
@@ -78,6 +78,6 @@
             android:text="编辑"
             android:layout_marginTop="10dp"
             android:textColor="@color/colorDarkGray"
-            android:textSize="12sp"/>
+            android:textSize="12dp"/>
     </LinearLayout>
 </RelativeLayout>

@@ -50,6 +50,6 @@
         android:background="@drawable/shape_jump"
         android:text="跳过"
         android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
 </RelativeLayout>

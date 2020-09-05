@@ -201,7 +201,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/fg1_display_bg"
+                    android:background="@drawable/fg1_didplay_bg"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -324,7 +324,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/fg1_display_bg"
+                    android:background="@drawable/fg1_didplay_bg"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -336,7 +336,7 @@
                             android:layout_width="0dp"
                             android:layout_height="65dp"
                             android:layout_weight="1"
-                            android:background="@drawable/fg1_display_bg2"
+                            android:background="@drawable/fg1_didplay_bg2"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -360,7 +360,7 @@
                             android:layout_width="0dp"
                             android:layout_height="65dp"
                             android:layout_weight="1"
-                            android:background="@drawable/fg1_display_bg3"
+                            android:background="@drawable/fg1_didplay_bg3"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -384,7 +384,7 @@
                             android:layout_width="0dp"
                             android:layout_height="65dp"
                             android:layout_weight="1"
-                            android:background="@drawable/fg1_display_bg3"
+                            android:background="@drawable/fg1_didplay_bg3"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -408,7 +408,7 @@
                             android:layout_width="0dp"
                             android:layout_height="65dp"
                             android:layout_weight="1"
-                            android:background="@drawable/fg1_display_bg5"
+                            android:background="@drawable/fg1_didplay_bg5"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -437,7 +437,7 @@
                             android:layout_width="0dp"
                             android:layout_height="65dp"
                             android:layout_weight="1"
-                            android:background="@drawable/fg1_display_bg4"
+                            android:background="@drawable/fg1_didplay_bg4"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -461,7 +461,7 @@
                             android:layout_width="0dp"
                             android:layout_height="65dp"
                             android:layout_weight="1"
-                            android:background="@drawable/fg1_display_bg3"
+                            android:background="@drawable/fg1_didplay_bg3"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -485,7 +485,7 @@
                             android:layout_width="0dp"
                             android:layout_height="65dp"
                             android:layout_weight="1"
-                            android:background="@drawable/fg1_display_bg3"
+                            android:background="@drawable/fg1_didplay_bg3"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -569,7 +569,7 @@
                         android:layout_marginTop="10dp"
                         android:drawableRight="@drawable/arrow"
                         android:text="更多"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
                 </RelativeLayout>
 
                 <LinearLayout

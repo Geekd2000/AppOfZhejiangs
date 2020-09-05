@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textColor="@color/colorBlack"
-                android:textSize="18sp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/txt_label"
@@ -47,7 +47,7 @@
                 android:gravity="center"
                 android:padding="2dp"
                 android:textColor="@color/colorWhite"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
         </LinearLayout>
 
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:text="详情"
                 android:textColor="@color/colorLightBlack"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
         </LinearLayout>
     </LinearLayout>

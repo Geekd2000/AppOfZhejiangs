@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:text="游记发布"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
     </androidx.appcompat.widget.Toolbar>
 
     <EditText
@@ -68,7 +68,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="5dp"
         android:text="请选择地点"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <ImageView
         android:id="@+id/image"
@@ -108,7 +108,7 @@
                 android:background="@drawable/button_circle_shape"
                 android:text="发布"
                 android:textColor="@color/colorWhite"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
         </LinearLayout>
 
     </RelativeLayout>

@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:text="标题"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:singleLine="true"
             android:ellipsize="end"/>
 

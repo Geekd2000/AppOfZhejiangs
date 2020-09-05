@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:text="关于诗画浙江"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -51,7 +51,7 @@
                 android:layout_marginTop="5dp"
                 android:text="测试版 1.0"
                 android:textColor="@color/cp_color_gray"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
         </LinearLayout>
 
     </RelativeLayout>
@@ -76,7 +76,7 @@
         android:paddingBottom="10dp"
         android:text="服务协议"
         android:textColor="@color/colorLightBlack"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <View
         android:layout_width="match_parent"
@@ -98,7 +98,7 @@
         android:paddingBottom="10dp"
         android:text="隐私政策"
         android:textColor="@color/colorLightBlack"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <View
         android:layout_width="match_parent"
@@ -120,7 +120,7 @@
         android:paddingBottom="10dp"
         android:text="版权信息"
         android:textColor="@color/colorLightBlack"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <View
         android:layout_width="match_parent"
@@ -142,7 +142,7 @@
         android:paddingBottom="10dp"
         android:text="功能介绍"
         android:textColor="@color/colorLightBlack"
-        android:textSize="14sp" />
+        android:textSize="14dp" />
 
     <View
         android:layout_width="match_parent"

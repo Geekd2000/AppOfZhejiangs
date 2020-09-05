@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:text="商品详情"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:text="西湖游船外事游船票成人票"
                         android:textColor="@color/colorBlack"
-                        android:textSize="24sp"
+                        android:textSize="24dp"
                         android:textStyle="bold" />
 
                     <RelativeLayout
@@ -92,7 +92,7 @@
                             android:gravity="center"
                             android:text="￥"
                             android:textColor="@color/colorRed"
-                            android:textSize="18sp" />
+                            android:textSize="18dp" />
 
                         <TextView
                             android:id="@+id/detail_price"
@@ -103,7 +103,7 @@
                             android:gravity="center"
                             android:text="35"
                             android:textColor="@color/colorRed"
-                            android:textSize="18sp"
+                            android:textSize="18dp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -115,7 +115,7 @@
                             android:gravity="center"
                             android:text="起"
                             android:textColor="@color/colorRed"
-                            android:textSize="18sp" />
+                            android:textSize="18dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
                             android:layout_toLeftOf="@+id/detail_sales"
                             android:text="销量:"
                             android:textColor="@color/colorLightBlack"
-                            android:textSize="16sp" />
+                            android:textSize="16dp" />
 
                         <TextView
                             android:id="@+id/detail_sales"
@@ -135,7 +135,7 @@
                             android:layout_alignParentBottom="true"
                             android:text="66"
                             android:textColor="@color/colorLightBlack"
-                            android:textSize="16sp" />
+                            android:textSize="16dp" />
                     </RelativeLayout>
 
                     <TextView
@@ -147,7 +147,7 @@
                         android:drawablePadding="5dp"
                         android:text="公司"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="14sp" />
+                        android:textSize="14dp" />
 
                 </LinearLayout>
 
@@ -169,7 +169,7 @@
                         android:gravity="center"
                         android:text="小船"
                         android:textColor="@color/colorBlack"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -181,7 +181,7 @@
                         android:gravity="center"
                         android:text="￥"
                         android:textColor="@color/colorRed"
-                        android:textSize="18sp" />
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/detail_price1"
@@ -192,7 +192,7 @@
                         android:gravity="center"
                         android:text="35"
                         android:textColor="@color/colorRed"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -205,7 +205,7 @@
                         android:paddingRight="10dp"
                         android:text="起"
                         android:textColor="@color/colorRed"
-                        android:textSize="18sp" />
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/detail_buy1"
@@ -220,7 +220,7 @@
                         android:paddingBottom="5dp"
                         android:text="购买"
                         android:textColor="@color/colorWhite"
-                        android:textSize="16sp" />
+                        android:textSize="16dp" />
 
                 </RelativeLayout>
 
@@ -241,7 +241,7 @@
                         android:gravity="center"
                         android:text="大船"
                         android:textColor="@color/colorBlack"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -253,7 +253,7 @@
                         android:gravity="center"
                         android:text="￥"
                         android:textColor="@color/colorRed"
-                        android:textSize="18sp" />
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/detail_price2"
@@ -264,7 +264,7 @@
                         android:gravity="center"
                         android:text="55"
                         android:textColor="@color/colorRed"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -277,7 +277,7 @@
                         android:paddingRight="10dp"
                         android:text="起"
                         android:textColor="@color/colorRed"
-                        android:textSize="18sp" />
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/detail_buy2"
@@ -292,7 +292,7 @@
                         android:paddingBottom="5dp"
                         android:text="购买"
                         android:textColor="@color/colorWhite"
-                        android:textSize="16sp" />
+                        android:textSize="16dp" />
 
                 </RelativeLayout>
 
@@ -311,7 +311,7 @@
                         android:paddingRight="15dp"
                         android:text="商品详情"
                         android:textColor="@color/colorLightBlack"
-                        android:textSize="24sp" />
+                        android:textSize="24dp" />
 
                     <TextView
                         android:id="@+id/detail_content1"
@@ -322,7 +322,7 @@
                         android:paddingRight="15dp"
                         android:paddingBottom="5dp"
                         android:textColor="@color/colorLightBlack"
-                        android:textSize="16sp" />
+                        android:textSize="16dp" />
 
                     <ImageView
                         android:id="@+id/detail_image1"
@@ -343,7 +343,7 @@
                         android:paddingRight="15dp"
                         android:paddingBottom="5dp"
                         android:textColor="@color/colorLightBlack"
-                        android:textSize="16sp" />
+                        android:textSize="16dp" />
 
                     <ImageView
                         android:id="@+id/detail_image2"
@@ -371,7 +371,7 @@
                         android:gravity="center"
                         android:text="-购买须知-"
                         android:textColor="@color/colorLightBlack"
-                        android:textSize="24sp" />
+                        android:textSize="24dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -383,7 +383,7 @@
                         android:paddingBottom="5dp"
                         android:text="改退信息"
                         android:textColor="@color/colorLightBlack"
-                        android:textSize="16sp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -392,7 +392,7 @@
                         android:paddingRight="20dp"
                         android:text="@string/attention"
                         android:textColor="@color/colorLightBlack"
-                        android:textSize="16sp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -404,7 +404,7 @@
                         android:paddingBottom="5dp"
                         android:text="重要提示"
                         android:textColor="@color/colorLightBlack"
-                        android:textSize="16sp" />
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -414,7 +414,7 @@
                         android:paddingBottom="10dp"
                         android:text="@string/importantTips"
                         android:textColor="@color/colorLightBlack"
-                        android:textSize="16sp" />
+                        android:textSize="16dp" />
 
                 </LinearLayout>
             </LinearLayout>

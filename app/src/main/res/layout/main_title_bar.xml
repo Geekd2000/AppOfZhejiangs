@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
     </androidx.appcompat.widget.Toolbar>
     <!--其中android:background="@drawable/go_back_selector"为点击回退键时，会变化效果，其实就是一个点击更换个图片而已。-->

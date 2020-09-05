@@ -28,7 +28,7 @@
             android:padding="5dp"
             android:text="@string/tab_main"
             android:textColor="@drawable/tab_menu_text"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/tab_flag"
@@ -42,7 +42,7 @@
             android:padding="5dp"
             android:text="@string/tab_flag"
             android:textColor="@drawable/tab_menu_text"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/tab_shopping"
@@ -56,7 +56,7 @@
             android:padding="5dp"
             android:text="@string/tab_shoppingMall"
             android:textColor="@drawable/tab_menu_text"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/tab_my"
@@ -70,7 +70,7 @@
             android:padding="5dp"
             android:text="@string/tab_my"
             android:textColor="@drawable/tab_menu_text"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
     </LinearLayout>
 
     <View

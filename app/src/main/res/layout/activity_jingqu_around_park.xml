@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:text="景区周边"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -36,7 +36,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/bg_edit_youji"
             android:hint="请输入要搜索的内容"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"/>
 
@@ -46,7 +46,7 @@
             android:layout_weight="1"
             android:layout_height="45dp"
             android:text="搜索"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:background="@drawable/bg_btn_order1"
             android:textColor="@color/colorWhite"/>
 

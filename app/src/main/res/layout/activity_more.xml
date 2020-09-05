@@ -25,7 +25,7 @@
                 android:layout_gravity="center"
                 android:text="更多景区"
                 android:textColor="@color/colorLightBlack"
-                android:textSize="18sp" />
+                android:textSize="18dp" />
         </androidx.appcompat.widget.Toolbar>
 
         <com.scwang.smart.refresh.layout.SmartRefreshLayout

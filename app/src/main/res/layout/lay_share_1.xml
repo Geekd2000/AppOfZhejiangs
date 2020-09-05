@@ -12,5 +12,6 @@
         android:layout_gravity="center"
         android:background="@drawable/button_circle_shape"
         android:textColor="@color/colorWhite"
+        android:textSize="14dp"
         android:text="删除" />
 </LinearLayout>

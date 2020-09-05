@@ -67,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:text="2020-08-06"
+                android:textSize="12dp"
                 android:textColor="#aaa"/>
 
             <TextView
@@ -75,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tourism_strategy_time"
                 android:text="更新"
+                android:textSize="12dp"
                 android:textColor="#aaa"/>
 
             <TextView
@@ -82,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/tourism_strategy_count"
                 android:text="浏览量："
+                android:textSize="12dp"
                 android:textColor="#aaa"/>
 
             <TextView
@@ -90,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="4784"
+                android:textSize="12dp"
                 android:textColor="#aaa"/>
         </RelativeLayout>
 

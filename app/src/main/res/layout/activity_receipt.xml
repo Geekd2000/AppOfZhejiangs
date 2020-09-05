@@ -19,7 +19,7 @@
             android:layout_gravity="center"
             android:text="我的收货地址"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/txt_new"
@@ -29,7 +29,7 @@
             android:layout_marginRight="15dp"
             android:text="添加新地址"
             android:textColor="@color/colorLightGreen"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
     </androidx.appcompat.widget.Toolbar>
 

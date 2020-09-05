@@ -29,7 +29,7 @@
         android:padding="10dp"
         android:text="标题"
         android:textColor="@color/colorLightBlack"
-        android:textSize="16sp" />
+        android:textSize="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
             android:gravity="center"
             android:text="￥"
             android:textColor="@color/colorRed"
-            android:textSize="12sp" />
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/txt_price"
@@ -53,7 +53,7 @@
             android:gravity="center"
             android:text="150"
             android:textColor="@color/colorRed"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
         <TextView
@@ -62,7 +62,7 @@
             android:gravity="center"
             android:text="起"
             android:textColor="@color/colorDarkGray"
-            android:textSize="12sp" />
+            android:textSize="12dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -78,7 +78,7 @@
             android:padding="5dp"
             android:text="销量:"
             android:textColor="@color/colorGray"
-            android:textSize="12sp" />
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/txt_gridAmount"
@@ -88,7 +88,7 @@
             android:padding="5dp"
             android:text="999"
             android:textColor="@color/colorGray"
-            android:textSize="12sp" />
+            android:textSize="12dp" />
     </LinearLayout>
 
     <TextView
@@ -102,5 +102,5 @@
         android:padding="5dp"
         android:text="超级无敌大公司"
         android:textColor="@color/colorGray"
-        android:textSize="12sp" />
+        android:textSize="12dp" />
 </LinearLayout>

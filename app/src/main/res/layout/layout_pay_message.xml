@@ -23,7 +23,7 @@
             android:layout_marginLeft="20dp"
             android:text="订单编号:"
             android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/order_id"
@@ -32,7 +32,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/order_Number"
             android:text="订单编号"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/status"
@@ -42,7 +42,7 @@
             android:layout_marginRight="20dp"
             android:text="已发货"
             android:textColor="#17C780"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
     </RelativeLayout>
 
     <View
@@ -74,7 +74,7 @@
             android:maxLines="1"
             android:text="西湖游船外事船舶成人票"
             android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
             android:layout_toLeftOf="@id/number"
             android:text="x"
             android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/number"
@@ -92,7 +92,7 @@
             android:layout_marginRight="20dp"
             android:text="2"
             android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/iv_message_1"
@@ -102,7 +102,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/iv_picture"
             android:text="小船"
-            android:textSize="12sp" />
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/renminbi"
@@ -114,7 +114,7 @@
             android:layout_toRightOf="@id/iv_picture"
             android:text="￥"
             android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/money1"
@@ -125,7 +125,7 @@
             android:layout_toRightOf="@id/renminbi"
             android:text="35"
             android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
     </RelativeLayout>
 
     <View
@@ -151,7 +151,7 @@
             android:layout_marginLeft="20dp"
             android:text="实付:"
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/RMB"
@@ -162,7 +162,7 @@
             android:layout_toRightOf="@id/shifu1"
             android:text="￥"
             android:textColor="#17C780"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/money2"
@@ -172,6 +172,6 @@
             android:layout_toRightOf="@id/RMB"
             android:text="70"
             android:textColor="#17C780"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
     </RelativeLayout>
 </LinearLayout>

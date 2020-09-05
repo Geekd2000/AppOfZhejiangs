@@ -32,7 +32,7 @@
         android:singleLine="true"
         android:textColor="#000000"
         android:textColorHint="#a3a3a3"
-        android:textSize="14sp"/>
+        android:textSize="14dp"/>
     <!--输入框-->
     <EditText
         android:id="@+id/et_psw"
@@ -52,7 +52,7 @@
         android:singleLine="true"
         android:textColor="#000000"
         android:textColorHint="#a3a3a3"
-        android:textSize="14sp"/>
+        android:textSize="14dp"/>
     <!--按钮-->
     <Button
         android:id="@+id/btn_login"
@@ -65,7 +65,7 @@
         android:background="@drawable/bg_btn_order1"
         android:text="登 录"
         android:textColor="@android:color/white"
-        android:textSize="18sp"/>
+        android:textSize="18dp"/>
     <!--显示tv register , find_psw -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -84,7 +84,7 @@
             android:padding="8dp"
             android:text="立即注册"
             android:textColor="#a3a3a3"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
         <!--layout_weight="1" layout_width="0dp"实现均分效果-->
         <TextView
             android:id="@+id/tv_find_psw"
@@ -95,6 +95,6 @@
             android:padding="8dp"
             android:text="找回密码?"
             android:textColor="#a3a3a3"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
     </LinearLayout>
 </LinearLayout>

@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="20dp"/>
 
         <Button
             android:id="@+id/back_button"

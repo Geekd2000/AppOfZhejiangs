@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:text="填写订单"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -54,7 +54,7 @@
             android:layout_marginLeft="15dp"
             android:text="实付：￥"
             android:textColor="@color/colorRed"
-            android:textSize="20sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/order_shifu"
@@ -64,7 +64,7 @@
             android:layout_toRightOf="@id/shifu"
             android:text="35"
             android:textColor="@color/colorRed"
-            android:textSize="20sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/add_order"
@@ -78,7 +78,7 @@
             android:paddingBottom="12dp"
             android:text="添加订单"
             android:textColor="@color/colorWhite"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
     </RelativeLayout>
 
     <ScrollView
@@ -102,7 +102,7 @@
                 android:layout_marginRight="10dp"
                 android:text="商品名称"
                 android:textColor="@color/colorBlack"
-                android:textSize="24sp"
+                android:textSize="24dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -117,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:text="规格:"
                     android:textColor="@color/colorBlack"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -127,7 +127,7 @@
                     android:layout_marginLeft="5dp"
                     android:text="规格"
                     android:textColor="@color/colorBlack"
-                    android:textSize="24sp"
+                    android:textSize="24dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:text="姓名"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/order_telephone"
@@ -162,7 +162,7 @@
                     android:layout_toRightOf="@id/order_name"
                     android:text="17788994455"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/order_address"
@@ -173,7 +173,7 @@
                     android:maxLines="2"
                     android:text="浙江省杭州市江干区白杨街道"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
                 <ImageView
                     android:layout_width="20dp"
@@ -205,7 +205,7 @@
                     android:layout_centerVertical="true"
                     android:text="使用时间"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/order_playTime"
@@ -216,7 +216,7 @@
                     android:layout_toRightOf="@id/chuxingshijian"
                     android:hint="请选择使用时间"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
                 <ImageView
                     android:layout_width="20dp"
@@ -243,12 +243,12 @@
 
                 <TextView
                     android:id="@+id/goumaishuliang"
-                    android:layout_width="wrap_content"
+                    android:layout_width="270dp"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="购买数量(不可超出商品所选日库存):"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/order_buyCount"
@@ -260,7 +260,7 @@
                     android:layout_toLeftOf="@id/order_add"
                     android:text="1"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
                 <ImageView
                     android:id="@+id/order_add"
@@ -302,7 +302,7 @@
                     android:layout_centerVertical="true"
                     android:text="商品库存:"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/order_kucun"
@@ -313,7 +313,7 @@
                     android:layout_toRightOf="@id/shangpinkucun"
                     android:text="98"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
             </RelativeLayout>
 
@@ -337,7 +337,7 @@
                     android:layout_height="wrap_content"
                     android:text="单价:￥"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/order_danjia"
@@ -346,7 +346,7 @@
                     android:layout_toRightOf="@+id/danjia"
                     android:text="35"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/shuliang"
@@ -355,7 +355,7 @@
                     android:layout_below="@id/danjia"
                     android:text="数量:"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/order_shuliang"
@@ -366,7 +366,7 @@
                     android:layout_toRightOf="@id/shuliang"
                     android:text="1"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/shangpinheji"
@@ -376,7 +376,7 @@
                     android:layout_marginTop="5dp"
                     android:text="商品合计"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/yuan"
@@ -387,7 +387,7 @@
                     android:layout_marginRight="15dp"
                     android:text="元"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/order_heji"
@@ -397,7 +397,7 @@
                     android:layout_toLeftOf="@id/yuan"
                     android:text="35"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/qian"
@@ -407,7 +407,7 @@
                     android:layout_toLeftOf="@id/order_heji"
                     android:text="￥"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 

@@ -29,7 +29,7 @@
             android:gravity="center_vertical"
             android:text="标题"
             android:textColor="@color/colorBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/list_label"
@@ -41,7 +41,7 @@
             android:padding="2dp"
             android:text="网友推荐"
             android:textColor="@color/colorWhite"
-            android:textSize="12sp" />
+            android:textSize="12dp" />
 
         <RelativeLayout
             android:id="@+id/linear_layout2"
@@ -56,7 +56,7 @@
                 android:gravity="center_vertical"
                 android:text="写时间"
                 android:textColor="@color/colorGray"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
                 android:gravity="center_vertical"
                 android:text="浏览量:"
                 android:textColor="@color/colorGray"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/list_amount"
@@ -76,7 +76,7 @@
                 android:gravity="center_vertical"
                 android:text="111"
                 android:textColor="@color/colorGray"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
         </RelativeLayout>
 
     </LinearLayout>

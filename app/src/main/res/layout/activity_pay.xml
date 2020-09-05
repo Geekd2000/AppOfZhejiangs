@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:background="#f0f0f0"
     tools:context=".pay.PayActivity">
 
@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:text="我的订单"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -43,7 +43,7 @@
             android:gravity="center"
             android:text="全部"
             android:textColor="@drawable/bg_txt_color"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/my_order_pending_payment"
@@ -54,7 +54,7 @@
             android:gravity="center"
             android:text="待付款"
             android:textColor="@drawable/bg_txt_color"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/my_order_paid"
@@ -65,7 +65,7 @@
             android:gravity="center"
             android:text="已付款"
             android:textColor="@drawable/bg_txt_color"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/my_order_completed"
@@ -76,7 +76,7 @@
             android:gravity="center"
             android:text="已完成"
             android:textColor="@drawable/bg_txt_color"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
     </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager

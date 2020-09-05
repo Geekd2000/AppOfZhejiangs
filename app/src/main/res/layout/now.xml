@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:textColor="#fff"
-        android:textSize="60sp" />
+        android:textSize="60dp" />
 
     <TextView
         android:id="@+id/weather_info_text"
@@ -20,6 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:textColor="#fff"
-        android:textSize="20sp" />
+        android:textSize="20dp" />
 
 </LinearLayout>

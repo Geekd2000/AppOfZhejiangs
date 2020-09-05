@@ -73,7 +73,7 @@
                     android:layout_marginTop="10dp"
                     android:text="初识杭州 | 传统节日"
                     android:textColor="#000"
-                    android:textSize="22sp"
+                    android:textSize="22dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -82,21 +82,21 @@
                     android:layout_marginTop="10dp"
                     android:text="锣鼓"
                     android:textColor="#fb3939"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="锣鼓又称年锣鼓，在大锣大鼓之外，加上脆鼓、小锣和竹板。年锣鼓在正月初五之内，多为商家所用，另外，年锣鼓还有为其它娱乐活动喧染助兴的功能。杭州人对各式年锣鼓有自己的说法：只闻其声不闻其词的取名为元宵鼓、招财鼓、雨夹雪和七五三；既闻其声又听其词的叫做十番、风云会和丝弦锣鼓；既无节奏又无言词的杭州人统称为乱劈柴。"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="纸鸢"
                     android:textColor="#fb3939"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"

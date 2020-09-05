@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:text="西湖"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -63,7 +63,7 @@
                 android:paddingLeft="10dp"
                 android:text="UZI666"
                 android:textColor="@color/colorDarkGray"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/grid_time"
@@ -73,7 +73,7 @@
                 android:paddingLeft="10dp"
                 android:text="2020-6-6 16:16"
                 android:textColor="@color/colorDarkGray"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
         </LinearLayout>
     </LinearLayout>
@@ -85,7 +85,7 @@
         android:layout_margin="10dp"
         android:text="西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖西湖"
         android:textColor="@color/colorLightBlack"
-        android:textSize="18sp" />
+        android:textSize="18dp" />
 
 
     <RelativeLayout
@@ -108,7 +108,7 @@
                 android:paddingRight="5dp"
                 android:text="拍摄地点"
                 android:textColor="@color/colorLightBlack"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -136,7 +136,7 @@
                     android:paddingRight="5dp"
                     android:text="西湖"
                     android:textColor="@color/colorLightBlack"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <TextView
@@ -149,7 +149,7 @@
                 android:paddingRight="5dp"
                 android:text="拍摄时间： 2020-6-6 16:16"
                 android:textColor="@color/colorLightBlack"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
         </LinearLayout>
     </RelativeLayout>

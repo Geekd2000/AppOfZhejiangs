@@ -19,7 +19,7 @@
             android:layout_gravity="center"
             android:text="设置"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
     </androidx.appcompat.widget.Toolbar>
     <RelativeLayout
@@ -49,14 +49,14 @@
             android:layout_toRightOf="@+id/user_image"
             android:text="昵称"
             android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="修改"
             android:textColor="@color/colorDarkGray"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:drawableRight="@drawable/arrow"/>
@@ -87,7 +87,7 @@
             android:paddingBottom="5dp"
             android:text="设置开关"
             android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
         <Switch
             android:id="@+id/push"
             android:layout_width="wrap_content"
@@ -102,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="退出登录"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:textColor="#ffffff"
         android:background="@drawable/bg_btn_order1"/>
 </RelativeLayout>

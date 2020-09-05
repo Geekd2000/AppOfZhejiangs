@@ -29,7 +29,7 @@
             android:layout_marginTop="5dp"
             android:text="快乐大酒店"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="￥"
                 android:textColor="#f00"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/hotel_price"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="100"
                 android:textColor="#f00"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"
                 android:text="起"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
         </LinearLayout>
 
         <RelativeLayout
@@ -75,14 +75,14 @@
                 android:drawableLeft="@drawable/shangpu"
                 android:drawablePadding="5dp"
                 android:text="全程旅游"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/hotel_count"
                 android:text="销量："
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/hotel_count"
@@ -91,7 +91,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="5dp"
                 android:text="4784"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
         </RelativeLayout>
 
     </RelativeLayout>

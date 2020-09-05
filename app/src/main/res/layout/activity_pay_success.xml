@@ -13,17 +13,17 @@
         android:layout_height="50dp"
         android:background="@color/colorWhite"
         android:elevation="5dp"
-        app:navigationIcon="@drawable/ic_back" >
+        app:navigationIcon="@drawable/ic_back">
 
         <TextView
             android:id="@+id/toUse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
-            android:text="去使用"
             android:layout_marginRight="15dp"
+            android:text="去使用"
             android:textColor="@color/colorLightGreen"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -37,42 +37,42 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="支付成功"
-        android:textSize="20sp"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:textColor="@color/colorLightBlack"/>
+        android:layout_marginTop="10dp"
+        android:text="支付成功"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginTop="15dp"
-        android:padding="5dp"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/continue_buy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:padding="5dp"
             android:background="@drawable/bg_btn_order2"
+            android:padding="5dp"
             android:text="继续购物"
             android:textColor="@color/colorLightGreen"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/back_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="30dp"
             android:background="@drawable/bg_btn_order1"
             android:padding="5dp"
-            android:layout_marginLeft="30dp"
             android:text="返回首页"
             android:textColor="@color/colorWhite"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
     </LinearLayout>
 </LinearLayout>

@@ -18,7 +18,7 @@
         android:ellipsize="end"
         android:text="允许使用您的地理位置"
         android:textColor="@color/colorLightBlack"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:gravity="center"
         android:text="您的地理位置信息将用定位信息"
         android:textColor="@color/colorDarkGray"
-        android:textSize="16sp" />
+        android:textSize="16dp" />
 
     <View
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
             android:gravity="center"
             android:text="取消"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
         <View
             android:layout_width="0.5dp"
@@ -67,6 +67,6 @@
             android:gravity="center"
             android:text="确定"
             android:textColor="@color/colorLightGreen"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
     </LinearLayout>
 </LinearLayout>

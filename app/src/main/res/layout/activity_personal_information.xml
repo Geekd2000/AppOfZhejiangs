@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:text="编辑信息"
             android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/save"
@@ -29,8 +29,8 @@
             android:layout_gravity="end"
             android:layout_marginRight="25dp"
             android:text="保存"
-            android:textColor="@color/colorLightBlack"
-            android:textSize="18sp" />
+            android:textColor="@color/colorLightGreen"
+            android:textSize="16dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -59,7 +59,7 @@
             android:layout_centerVertical="true"
             android:text="头像"
             android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
     </RelativeLayout>
 
     <View
@@ -88,7 +88,7 @@
             android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/nicheng"
@@ -98,7 +98,7 @@
             android:layout_centerVertical="true"
             android:text="设置昵称"
             android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
     </RelativeLayout>
 
     <View
@@ -128,7 +128,7 @@
             android:paddingBottom="10dp"
             android:text="保密"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/xingbie"
@@ -138,7 +138,7 @@
             android:layout_centerVertical="true"
             android:text="性别"
             android:textColor="@color/colorLightBlack"
-            android:textSize="16sp" />
+            android:textSize="16dp" />
     </RelativeLayout>
 
     <View
@@ -161,6 +161,6 @@
         android:paddingBottom="10dp"
         android:text="修改密码"
         android:textColor="@color/colorLightBlack"
-        android:textSize="16sp" />
+        android:textSize="16dp" />
 
 </LinearLayout>
