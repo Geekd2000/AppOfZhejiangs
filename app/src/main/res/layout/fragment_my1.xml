@@ -24,7 +24,7 @@
             android:paddingRight="10dp"
             android:text="定位"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
+            android:textSize="16dp"
             />
 
         <TextView
@@ -34,7 +34,7 @@
             android:gravity="center"
             android:text="首页"
             android:textColor="@color/colorBlack"
-            android:textSize="20sp" />
+            android:textSize="20dp" />
 
     </RelativeLayout>
 
@@ -100,7 +100,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="3dp"
-                            android:text="诗画浙江" />
+                            android:text="诗画浙江"
+                            android:textSize="14dp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -121,7 +122,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="3dp"
-                            android:text="文化遗产" />
+                            android:text="文化遗产"
+                            android:textSize="14dp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -143,7 +145,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="3dp"
-                            android:text="戏剧文化" />
+                            android:text="戏剧文化"
+                            android:textSize="14dp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -164,7 +167,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="3dp"
-                            android:text="工艺美术" />
+                            android:text="工艺美术"
+                            android:textSize="14dp"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -185,7 +189,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="3dp"
-                            android:text="民俗文化" />
+                            android:text="民俗文化"
+                            android:textSize="14dp"/>
                     </LinearLayout>
 
 
@@ -235,6 +240,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginRight="10dp"
                                     android:text="小浙提醒您关注"
+                                    android:textSize="14dp"
                                     android:textColor="#707070" />
 
                                 <ImageView
@@ -284,6 +290,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="浙江很慢，请细细品味"
+                                android:textSize="14dp"
                                 android:textColor="#151515" />
 
                             <TextView
@@ -337,6 +344,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="地域概况"
+                                android:textSize="14dp"
                                 android:textColor="#101318" />
 
                             <TextView
@@ -344,7 +352,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="杭州篇"
                                 android:textColor="#666"
-
                                 android:textSize="12dp" />
                         </LinearLayout>
 
@@ -361,6 +368,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="传统节日"
+                                android:textSize="14dp"
                                 android:textColor="#101318" />
 
                             <TextView
@@ -384,6 +392,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="历史沿革"
+                                android:textSize="14dp"
                                 android:textColor="#101318" />
 
                             <TextView
@@ -407,6 +416,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="最美浙江"
+                                android:textSize="14dp"
                                 android:textColor="#101318" />
 
                             <TextView
@@ -435,6 +445,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="人文"
+                                android:textSize="14dp"
                                 android:textColor="#101318" />
 
                             <TextView
@@ -458,6 +469,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="山水"
+                                android:textSize="14dp"
                                 android:textColor="#101318" />
 
                             <TextView
@@ -481,6 +493,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="古镇"
+                                android:textSize="14dp"
                                 android:textColor="#101318" />
 
                             <TextView
@@ -503,6 +516,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="味道"
+                                android:textSize="14dp"
                                 android:textColor="#101318" />
 
                             <TextView
@@ -590,7 +604,7 @@
                             android:singleLine="true"
                             android:text="西湖一日游"
                             android:textColor="#101318"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
 
                         <LinearLayout
@@ -602,25 +616,25 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="推荐指数："
-                                android:textSize="12sp" />
+                                android:textSize="12dp" />
 
                             <ImageView
-                                android:layout_width="13dp"
-                                android:layout_height="13dp"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
                                 android:layout_marginLeft="-2dp"
                                 android:layout_marginTop="3dp"
                                 android:src="@drawable/hot" />
 
                             <ImageView
-                                android:layout_width="13dp"
-                                android:layout_height="13dp"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
                                 android:layout_marginLeft="2dp"
                                 android:layout_marginTop="3dp"
                                 android:src="@drawable/hot" />
 
                             <ImageView
-                                android:layout_width="13dp"
-                                android:layout_height="13dp"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
                                 android:layout_marginLeft="2dp"
                                 android:layout_marginTop="3dp"
                                 android:src="@drawable/hot" />
@@ -655,7 +669,7 @@
                             android:singleLine="true"
                             android:text="西湖一日游"
                             android:textColor="#101318"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
 
                         <LinearLayout
@@ -667,25 +681,25 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="推荐指数："
-                                android:textSize="12sp" />
+                                android:textSize="12dp" />
 
                             <ImageView
-                                android:layout_width="13dp"
-                                android:layout_height="13dp"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
                                 android:layout_marginLeft="-2dp"
                                 android:layout_marginTop="3dp"
                                 android:src="@drawable/hot" />
 
                             <ImageView
-                                android:layout_width="13dp"
-                                android:layout_height="13dp"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
                                 android:layout_marginLeft="2dp"
                                 android:layout_marginTop="3dp"
                                 android:src="@drawable/hot" />
 
                             <ImageView
-                                android:layout_width="13dp"
-                                android:layout_height="13dp"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
                                 android:layout_marginLeft="2dp"
                                 android:layout_marginTop="3dp"
                                 android:src="@drawable/hot" />
@@ -720,7 +734,7 @@
                             android:singleLine="true"
                             android:text="西湖一日游"
                             android:textColor="#101318"
-                            android:textSize="14sp" />
+                            android:textSize="14dp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -732,25 +746,25 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="推荐指数："
-                                android:textSize="12sp" />
+                                android:textSize="12dp" />
 
                             <ImageView
-                                android:layout_width="13dp"
-                                android:layout_height="13dp"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
                                 android:layout_marginLeft="-2dp"
                                 android:layout_marginTop="3dp"
                                 android:src="@drawable/hot" />
 
                             <ImageView
-                                android:layout_width="13dp"
-                                android:layout_height="13dp"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
                                 android:layout_marginLeft="2dp"
                                 android:layout_marginTop="3dp"
                                 android:src="@drawable/hot" />
 
                             <ImageView
-                                android:layout_width="13dp"
-                                android:layout_height="13dp"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
                                 android:layout_marginLeft="2dp"
                                 android:layout_marginTop="3dp"
                                 android:src="@drawable/hot" />

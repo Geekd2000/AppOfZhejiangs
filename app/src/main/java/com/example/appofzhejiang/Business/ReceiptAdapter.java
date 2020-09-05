@@ -149,7 +149,6 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
     }
 
     public class LinearViewHolder extends RecyclerView.ViewHolder {
-
         private TextView username, phone, address, toleration,update;
         private Button delete;
 
