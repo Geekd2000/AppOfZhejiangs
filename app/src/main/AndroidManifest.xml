@@ -34,7 +34,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".fragment1.culturevideo.CultureVideoActivity"
+        <activity
+            android:name=".fragment1.culturevideo.CultureVideoActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:screenOrientation="portrait"
             android:theme="@style/NoActivityFullscreen">
@@ -112,14 +113,12 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WXNAQ1ipzflk2TtRKfIRd8ZtoFNbnp7q" />
         -->
-        <!--
-<meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="8F1XanrDQSWo9unKTVTs0NkR5ExbB5S1" />
-        -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="G8xi1YFTUNIDP1B6KtbP4Z0zGltZ37A4" />
+            android:value="8F1XanrDQSWo9unKTVTs0NkR5ExbB5S1" />
+        <!--<meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="G8xi1YFTUNIDP1B6KtbP4Z0zGltZ37A4" />-->
 
         <service
             android:name="com.baidu.location.f"
