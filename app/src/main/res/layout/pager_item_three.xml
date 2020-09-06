@@ -4,5 +4,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/guide_img_3">
 
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/button_bg"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:text="立即体验"
+        android:textColor="@color/colorBlack" />
 
 </RelativeLayout>

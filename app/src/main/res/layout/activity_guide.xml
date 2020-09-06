@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="25dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -28,14 +28,9 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
 
-        <ImageView
-            android:id="@+id/point3"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_marginRight="10dp" />
 
         <ImageView
-            android:id="@+id/point4"
+            android:id="@+id/point3"
             android:layout_width="10dp"
             android:layout_height="10dp" />
     </LinearLayout>

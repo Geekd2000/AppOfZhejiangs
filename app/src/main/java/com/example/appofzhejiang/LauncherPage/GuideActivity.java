@@ -25,9 +25,9 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
     private ViewPager mViewPager;
     //容器
     private List<View> mList = new ArrayList<>();
-    private View view1, view2, view3, view4;
+    private View view1, view2, view3;
     //小圆点
-    private ImageView point1, point2, point3, point4;
+    private ImageView point1, point2, point3;
     //跳过
     private Button btn_back;
 
@@ -45,23 +45,20 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
         point1 = (ImageView) findViewById(R.id.point1);
         point2 = (ImageView) findViewById(R.id.point2);
         point3 = (ImageView) findViewById(R.id.point3);
-        point4 = (ImageView) findViewById(R.id.point4);
 
         btn_back = (Button) findViewById(R.id.btn_back);
         btn_back.setOnClickListener(this);
         //设置默认图片
-        setPointImg(true, false, false, false);
+        setPointImg(true, false, false);
         mViewPager = (ViewPager) findViewById(R.id.mViewPager);
         view1 = View.inflate(this, R.layout.pager_item_one, null);
         view2 = View.inflate(this, R.layout.pager_item_two, null);
         view3 = View.inflate(this, R.layout.pager_item_three, null);
-        view4 = View.inflate(this, R.layout.pager_item_four, null);
-        view4.findViewById(R.id.btn_start).setOnClickListener(this);
+        view3.findViewById(R.id.btn_start).setOnClickListener(this);
 
         mList.add(view1);
         mList.add(view2);
         mList.add(view3);
-        mList.add(view4);
 
         //设置适配器
         mViewPager.setAdapter(new GuideAdapter());
@@ -78,19 +75,15 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        setPointImg(true, false, false, false);
+                        setPointImg(true, false, false);
                         btn_back.setVisibility(View.VISIBLE);
                         break;
                     case 1:
-                        setPointImg(false, true, false, false);
+                        setPointImg(false, true, false);
                         btn_back.setVisibility(View.VISIBLE);
                         break;
                     case 2:
-                        setPointImg(false, false, true, false);
-                        btn_back.setVisibility(View.VISIBLE);
-                        break;
-                    case 3:
-                        setPointImg(false, false, false, true);
+                        setPointImg(false, false, true);
                         btn_back.setVisibility(View.GONE);
                         break;
                 }
@@ -141,7 +134,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
     }
 
     //设置小圆点的选中效果
-    private void setPointImg(boolean isCheck1, boolean isCheck2, boolean isCheck3, boolean isCheck4) {
+    private void setPointImg(boolean isCheck1, boolean isCheck2, boolean isCheck3) {
         if (isCheck1) {
             point1.setBackgroundResource(R.drawable.point_on);
         } else {
@@ -158,12 +151,6 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
             point3.setBackgroundResource(R.drawable.point_on);
         } else {
             point3.setBackgroundResource(R.drawable.point_off);
-        }
-
-        if (isCheck4) {
-            point4.setBackgroundResource(R.drawable.point_on);
-        } else {
-            point4.setBackgroundResource(R.drawable.point_off);
         }
     }
 }
