@@ -138,10 +138,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -171,10 +171,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -244,10 +244,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -277,10 +277,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -350,10 +350,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -383,10 +383,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -455,10 +455,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -488,10 +488,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -561,10 +561,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -594,10 +594,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -667,10 +667,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -700,10 +700,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -773,10 +773,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -806,10 +806,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -883,10 +883,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));
@@ -916,10 +916,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                         //登录状态
                         SharedPreferences sp = TicketDetailActivity.this.getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
                         isLoginStatus = sp.getBoolean("isLogin", false);
-                        //用户名
-                        loginUserName = sp.getString("loginUserName", null);
-                        userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                         if (isLoginStatus.equals(true)) {
+                            //用户名
+                            loginUserName = sp.getString("loginUserName", null);
+                            userID = new LoginUtil(loginUserName).getLoginRegisterBean().getUser_id();
                             if (new GetDefaultAddressUtil(String.valueOf(userID)).getAddressBean() == null) {
                                 Toast.makeText(TicketDetailActivity.this, "请先添加默认地址", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TicketDetailActivity.this, AddressActivity.class));

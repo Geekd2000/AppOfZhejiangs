@@ -46,7 +46,7 @@
         <!--下面这句如果你加上觉得好看就加，不好看就不加咯-->
         <!--<item name="android:navigationBarColor">@color/transparent</item>-->
         <!--<item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>-->
-        <item name="android:windowBackground">@drawable/launch</item>
+        <item name="android:windowBackground">@drawable/launchimage</item>
     </style>
     <!--全屏主题-->
     <style name="NoActivityFullscreen" parent="Theme.AppCompat.Light.NoActionBar">

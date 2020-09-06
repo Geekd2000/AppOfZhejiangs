@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="发现"
+            android:text="景点"
             android:textColor="@color/colorBlack"
             android:textSize="20dp" />
 

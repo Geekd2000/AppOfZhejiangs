@@ -249,6 +249,8 @@ public class SubmitOrderActivity extends AppCompatActivity {
                     orderDialog.setGoto("back", new OrderDialog.IOnGotoListener() {
                         @Override
                         public void onGoto(OrderDialog dialog) {
+                            Intent intent = new Intent(SubmitOrderActivity.this, MainActivity.class);
+                            intent.putExtra("numb", 2);
                             SubmitOrderActivity.this.finish();
                         }
                     });

@@ -391,7 +391,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/bg_btn_order1"
-                android:text="返回"
+                android:text="返回我的"
                 android:textSize="14dp"
                 android:textColor="#ffffff" />
         </RelativeLayout>
