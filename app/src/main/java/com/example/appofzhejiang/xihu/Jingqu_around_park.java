@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -111,7 +112,7 @@ public class Jingqu_around_park extends AppCompatActivity {
             @Override
             public void onGetPoiResult(PoiResult result) {
                 if (result == null || result.error == SearchResult.ERRORNO.RESULT_NOT_FOUND) {
-                    Log.e(String.valueOf(getClass()), "onGetPoiResult: blank" );
+                    Toast.makeText(getApplicationContext(),"该搜索无结果", Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (result.error == SearchResult.ERRORNO.NO_ERROR) {

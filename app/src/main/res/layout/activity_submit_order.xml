@@ -158,18 +158,17 @@
                     android:id="@+id/order_telephone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="70dp"
-                    android:layout_toRightOf="@id/order_name"
+                    android:layout_centerHorizontal="true"
                     android:text="17788994455"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/order_address"
-                    android:layout_width="260dp"
+                    android:layout_width="245dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/order_telephone"
-                    android:layout_marginLeft="45dp"
+                    android:layout_marginLeft="50dp"
                     android:maxLines="2"
                     android:text="浙江省杭州市江干区白杨街道"
                     android:textColor="@color/colorLightBlack"
@@ -243,7 +242,7 @@
 
                 <TextView
                     android:id="@+id/goumaishuliang"
-                    android:layout_width="270dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="购买数量(不可超出商品所选日库存):"
@@ -268,7 +267,7 @@
                     android:layout_height="20dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginRight="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/add" />
 

@@ -19,9 +19,8 @@
         android:id="@+id/receipt_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="150dp"
         android:text="18357421729"
         android:textColor="@color/colorLightBlack"
         android:textSize="18dp" />
@@ -41,12 +40,11 @@
 
     <TextView
         android:id="@+id/receipt_address"
-        android:layout_width="245dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/receipt_phone"
-        android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@id/receipt_default"
-        android:text="浙江省杭州市江干区 17栋302"
+        android:layout_centerHorizontal="true"
+        android:text="浙江省杭州市江干区 17栋30"
         android:textSize="14dp" />
 
     <View
