@@ -111,7 +111,7 @@
                 android:background="@drawable/bg_edit_address"
                 android:gravity="right"
                 android:hint="手机号码"
-                android:inputType="number"
+                android:inputType="phone"
                 android:maxLength="11"
                 android:maxLines="1"
                 android:paddingLeft="10dp"

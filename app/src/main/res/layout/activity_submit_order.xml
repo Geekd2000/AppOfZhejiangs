@@ -165,7 +165,7 @@
 
                 <TextView
                     android:id="@+id/order_address"
-                    android:layout_width="245dp"
+                    android:layout_width="230dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/order_telephone"
                     android:layout_marginLeft="50dp"

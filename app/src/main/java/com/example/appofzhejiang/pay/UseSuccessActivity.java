@@ -51,6 +51,7 @@ public class UseSuccessActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(UseSuccessActivity.this, MainActivity.class);
+                intent.putExtra("numb",3);
                 startActivity(intent);
                 UseSuccessActivity.this.finish();
             }

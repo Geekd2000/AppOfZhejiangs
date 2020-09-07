@@ -40,7 +40,7 @@
 
     <TextView
         android:id="@+id/receipt_address"
-        android:layout_width="220dp"
+        android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/receipt_phone"
         android:layout_centerHorizontal="true"
