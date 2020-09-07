@@ -52,8 +52,9 @@
                 android:id="@+id/order_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:text="下单时间"
+                android:gravity="center"
                 android:textSize="16dp" />
         </LinearLayout>
 
@@ -68,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="订单编号:"
+                android:gravity="center"
                 android:textColor="@color/colorLightBlack"
                 android:textSize="16dp" />
 
@@ -75,8 +77,9 @@
                 android:id="@+id/order_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:text="订单编号"
+                android:gravity="center"
                 android:textSize="16dp" />
         </LinearLayout>
 
@@ -110,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/shifu"
                 android:text="￥"
                 android:textColor="#17C780"
@@ -142,7 +145,7 @@
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:layout_toLeftOf="@id/order_use"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/bg_btn_order1"
                 android:text="去付款"
                 android:textSize="14dp"
@@ -367,7 +370,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/shifu1"
                 android:text="￥"
                 android:textColor="#17C780"
