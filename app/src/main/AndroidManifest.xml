@@ -108,14 +108,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
+
 <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="WXNAQ1ipzflk2TtRKfIRd8ZtoFNbnp7q" />
-        -->
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="8F1XanrDQSWo9unKTVTs0NkR5ExbB5S1" />
+
+<!--        <meta-data-->
+<!--            android:name="com.baidu.lbsapi.API_KEY"-->
+<!--            android:value="8F1XanrDQSWo9unKTVTs0NkR5ExbB5S1" />-->
         <!--<meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="G8xi1YFTUNIDP1B6KtbP4Z0zGltZ37A4" />-->
