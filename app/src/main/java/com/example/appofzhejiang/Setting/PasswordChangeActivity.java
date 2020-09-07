@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.appofzhejiang.Login.LoginActivity;
 import com.example.appofzhejiang.Login.MD5Utils;
 import com.example.appofzhejiang.Login.RegisterActivity;
 import com.example.appofzhejiang.MainActivity;
@@ -85,8 +86,8 @@ public class PasswordChangeActivity extends AppCompatActivity {
                     setResult(RESULT_OK, data);
                     //销毁设置界面
                     PasswordChangeActivity.this.finish();
-                    //跳转到主界面，登录成功的状态传递到 MainActivity 中
-                    startActivity(new Intent(PasswordChangeActivity.this, MainActivity.class));
+                    //跳转到主界面，登录成功的状态传递到 LoginActivity 中
+                    startActivity(new Intent(PasswordChangeActivity.this, LoginActivity.class));
                 }else if(result.equals("\"用户名不存在\"")){
                     Toast.makeText(PasswordChangeActivity.this, "用户名不存在", Toast.LENGTH_SHORT).show();
                     return;
