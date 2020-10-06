@@ -39,11 +39,11 @@ public class RecyclerBeanListUtil {
      */
     private void initRecyclerBeanLists() {
         if (RecyclerType.STRATEGY.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002/web/findDestinationByType?type=旅游攻略");
+            sendRequest("http://47.97.10.218:9002/web/findDestinationByType?type=旅游攻略");
         } else if (RecyclerType.NEWS.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002/web/findDestinationByType?type=专题新闻");
+            sendRequest("http://47.97.10.218:9002/web/findDestinationByType?type=专题新闻");
         } else {
-            sendRequest("http://120.26.172.104:9002/web/findAllDestination");
+            sendRequest("http://47.97.10.218:9002/web/findAllDestination");
         }
     }
 

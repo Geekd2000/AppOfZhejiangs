@@ -27,7 +27,7 @@ public class JinquBeanUtil {
      * 初始化TicketLists
      */
     private void initDetailBeanLists() {
-        sendRequest("http://120.26.172.104:9002//wx/productById?product_id="+id);
+        sendRequest("http://47.97.10.218:9002//wx/productById?product_id="+id);
     }
 
     /**

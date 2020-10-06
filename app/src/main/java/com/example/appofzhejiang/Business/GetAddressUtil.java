@@ -26,7 +26,7 @@ public class GetAddressUtil {
      * 初始化AddressBean
      */
     private void initAddressBean() {
-        sendRequest("http://120.26.172.104:9002//wx/getOneAddress?id="+id);
+        sendRequest("http://47.97.10.218:9002//wx/getOneAddress?id="+id);
     }
 
     /**

@@ -26,7 +26,7 @@ public class RecyclerBeanListUtil_2 {
      * 初始化recyclerBeanList1
      */
     private void initRecyclerBeanLists() {
-            sendRequest("http://120.26.172.104:9002/web/findDestinationByType?type=旅游攻略");
+            sendRequest("http://47.97.10.218:9002/web/findDestinationByType?type=旅游攻略");
     }
 
     /**

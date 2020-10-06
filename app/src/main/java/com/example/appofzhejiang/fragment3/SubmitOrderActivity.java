@@ -292,7 +292,7 @@ public class SubmitOrderActivity extends AppCompatActivity {
 
         RequestBody requestBody = RequestBody.create(JSON, params);
         final Request request = new Request.Builder()
-                .url("http://120.26.172.104:9002/wx/insertOrder")
+                .url("http://47.97.10.218:9002/wx/insertOrder")
                 .post(requestBody)
                 .build();
         //处理注册逻辑

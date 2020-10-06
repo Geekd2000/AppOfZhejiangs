@@ -28,12 +28,12 @@ public class RecyclerBeanJingquUtil {
      * 初始化TicketLists
      */
     private void initRecyclerBeanJingquLists(){
-        sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=门票");
+        sendRequest("http://47.97.10.218:9002//wx/productBySalesDown?search=&type=门票");
     }
 
 //    private void initTicketLists() {
 //        if (TicketType.TICKET.equals(this.type)) {
-//            sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=门票");
+//            sendRequest("http://47.97.10.218:9002//wx/productBySalesDown?search=&type=门票");
 //        }
 //    }
 

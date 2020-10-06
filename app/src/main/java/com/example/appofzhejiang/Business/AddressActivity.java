@@ -246,7 +246,7 @@ public class AddressActivity extends AppCompatActivity {
 
         RequestBody requestBody = RequestBody.create(JSON, params);
         final Request request = new Request.Builder()
-                .url("http://120.26.172.104:9002//wx/insertAddress")
+                .url("http://47.97.10.218:9002//wx/insertAddress")
                 .post(requestBody)
                 .build();
         //处理注册逻辑
@@ -276,7 +276,7 @@ public class AddressActivity extends AppCompatActivity {
 
         RequestBody requestBody = RequestBody.create(JSON, params);
         final Request request = new Request.Builder()
-                .url("http://120.26.172.104:9002//wx/updateAddress")
+                .url("http://47.97.10.218:9002//wx/updateAddress")
                 .put(requestBody)
                 .build();
         //处理注册逻辑
@@ -296,7 +296,7 @@ public class AddressActivity extends AppCompatActivity {
 
     //向服务器发送put请求,修改默认地址
     private void runDefaultSet(String id, String user_id) {
-        String url = "http://120.26.172.104:9002//wx/updateDefaultAddress";
+        String url = "http://47.97.10.218:9002//wx/updateDefaultAddress";
         RequestBody formBody = new FormBody.Builder()
                 .add("id", id)
                 .add("user_id", user_id)

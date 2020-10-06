@@ -34,19 +34,19 @@ public class HotelUtil {
      */
     private void initHotelLists() {
         if (TicketType.TICKET.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productByPriceUp?search=&type=门票");
+            sendRequest("http://47.97.10.218:9002//wx/productByPriceUp?search=&type=门票");
         } else if (TicketType.HOTEL.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=酒店");
+            sendRequest("http://47.97.10.218:9002//wx/productBySalesDown?search=&type=酒店");
         } else if (TicketType.TAXI.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=租车");
+            sendRequest("http://47.97.10.218:9002//wx/productBySalesDown?search=&type=租车");
         } else if (TicketType.GUIDER.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=导游");
+            sendRequest("http://47.97.10.218:9002//wx/productBySalesDown?search=&type=导游");
         } else if (TicketType.FARM.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=农家乐");
+            sendRequest("http://47.97.10.218:9002//wx/productBySalesDown?search=&type=农家乐");
         } else if (TicketType.FOOD.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=美食");
+            sendRequest("http://47.97.10.218:9002//wx/productBySalesDown?search=&type=美食");
         } else if (TicketType.PRODUCT.equals(this.type)) {
-            sendRequest("http://120.26.172.104:9002//wx/productBySalesDown?search=&type=特产");
+            sendRequest("http://47.97.10.218:9002//wx/productBySalesDown?search=&type=特产");
         }
     }
 

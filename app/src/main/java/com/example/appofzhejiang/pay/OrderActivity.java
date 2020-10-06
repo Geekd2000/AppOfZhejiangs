@@ -163,7 +163,7 @@ public class OrderActivity extends AppCompatActivity {
 
         RequestBody requestBody = RequestBody.create(JSON, params);
         final Request request = new Request.Builder()
-                .url("http://120.26.172.104:9002/wx/updateOrder")
+                .url("http://47.97.10.218:9002/wx/updateOrder")
                 .put(requestBody)
                 .build();
         //处理注册逻辑
@@ -183,7 +183,7 @@ public class OrderActivity extends AppCompatActivity {
 
     //向服务器发送put请求,处理使用
     private void runUseSet(String order_id, String product_id) {
-        String url = "http://120.26.172.104:9002/wx/destructionOrder";
+        String url = "http://47.97.10.218:9002/wx/destructionOrder";
         RequestBody formBody = new FormBody.Builder()
                 .add("order_id", order_id)
                 .add("product_id", product_id)

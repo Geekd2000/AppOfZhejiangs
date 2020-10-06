@@ -24,8 +24,8 @@ public class RecycleBeanListUtil2_2 {
     }
 
     private void initRecyclerBeanJingquLists() {
-        sendRequest("http://120.26.172.104:9002//wx/searchPoi?search=");
-//        sendRequest("http://120.26.172.104:9002//wx/findPoiById");
+        sendRequest("http://47.97.10.218:9002//wx/searchPoi?search=");
+//        sendRequest("http://47.97.10.218:9002//wx/findPoiById");
     }
 
     private void sendRequest(final String s) {

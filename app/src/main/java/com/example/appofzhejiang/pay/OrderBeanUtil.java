@@ -26,7 +26,7 @@ public class OrderBeanUtil {
      * 初始化OrderBean
      */
     private void initOrderBean() {
-        sendRequest("http://120.26.172.104:9002/wx/findOrderByOrderId?order_id="+order_id);
+        sendRequest("http://47.97.10.218:9002/wx/findOrderByOrderId?order_id="+order_id);
     }
 
     /**

@@ -93,7 +93,7 @@ public class ReceiptAdapter extends RecyclerView.Adapter<ReceiptAdapter.LinearVi
 
     //向服务器发送put请求,修改默认地址
     private void runDelete(String id) {
-        String url = "http://120.26.172.104:9002//wx/deleteAddress";
+        String url = "http://47.97.10.218:9002//wx/deleteAddress";
         RequestBody formBody = new FormBody.Builder()
                 .add("id", id)
                 .build();

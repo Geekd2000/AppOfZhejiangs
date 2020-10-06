@@ -32,13 +32,13 @@ public class OrderBeanListUtil {
      */
     private void initOrderBeanList() {
         if (index == 1) {
-            sendGetRequest("http://120.26.172.104:9002/wx/findAllOrderById?user_id="+user_id);
+            sendGetRequest("http://47.97.10.218:9002/wx/findAllOrderById?user_id="+user_id);
         } else if (index == 2) {
-            sendGetRequest("http://120.26.172.104:9002/wx/findNoPayById?user_id="+user_id);
+            sendGetRequest("http://47.97.10.218:9002/wx/findNoPayById?user_id="+user_id);
         } else if (index == 3) {
-            sendGetRequest("http://120.26.172.104:9002/wx/findPayById?user_id="+user_id);
+            sendGetRequest("http://47.97.10.218:9002/wx/findPayById?user_id="+user_id);
         } else if (index == 4) {
-            sendGetRequest("http://120.26.172.104:9002/wx/findFinOrderById?user_id="+user_id);
+            sendGetRequest("http://47.97.10.218:9002/wx/findFinOrderById?user_id="+user_id);
         }
     }
 

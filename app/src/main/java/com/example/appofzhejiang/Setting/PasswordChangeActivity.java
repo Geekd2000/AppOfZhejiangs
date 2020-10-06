@@ -121,7 +121,7 @@ public class PasswordChangeActivity extends AppCompatActivity {
 
         RequestBody requestBody = RequestBody.create(JSON, jsonObject.toString());
         final Request request = new Request.Builder()
-                .url("http://120.26.172.104:9002//web/updateTel")
+                .url("http://47.97.10.218:9002//web/updateTel")
                 .put(requestBody)
                 .build();
         //处理注册逻辑

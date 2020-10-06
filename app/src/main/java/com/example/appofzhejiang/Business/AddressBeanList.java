@@ -29,7 +29,7 @@ public class AddressBeanList {
      * 初始化AddressBeanList
      */
     private void initReceiptBeanList() {
-        sendRequest("http://120.26.172.104:9002//wx/getAddress?user_id="+user_id);
+        sendRequest("http://47.97.10.218:9002//wx/getAddress?user_id="+user_id);
     }
 
     /**

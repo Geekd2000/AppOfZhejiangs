@@ -34,7 +34,7 @@ public class LoginUtil {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://120.26.172.104:9002//wx/findUser?name="+name)
+                            .url("http://47.97.10.218:9002//wx/findUser?name="+name)
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();

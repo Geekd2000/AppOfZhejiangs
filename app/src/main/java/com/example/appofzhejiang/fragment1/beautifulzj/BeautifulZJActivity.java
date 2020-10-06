@@ -84,7 +84,7 @@ public class BeautifulZJActivity extends AppCompatActivity {
 
     private void initBPList() {
         bpList.clear();
-        bpList = getPictures("http://120.26.172.104:9002/web/findPicture");
+        bpList = getPictures("http://47.97.10.218:9002/web/findPicture");
     }
 
     private List<BeautifulPicture> getPictures(String url) {
@@ -130,7 +130,7 @@ public class BeautifulZJActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        bpList = getPictures("http://120.26.172.104:9002/web/findPicture");
+                        bpList = getPictures("http://47.97.10.218:9002/web/findPicture");
                         adapter.notifyDataSetChanged();
                         swipeRefresh.setRefreshing(false); // 刷新事件结束，并隐藏刷新进度条。
                     }

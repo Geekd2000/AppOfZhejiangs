@@ -25,7 +25,7 @@ public class GetDefaultAddressUtil {
      * 初始化AddressBean
      */
     private void initAddressBean() {
-        sendRequest("http://120.26.172.104:9002//wx/getDefaultAddress?user_id="+user_id);
+        sendRequest("http://47.97.10.218:9002//wx/getDefaultAddress?user_id="+user_id);
     }
 
     /**

@@ -44,19 +44,19 @@ public class CultureVideoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.type = intent.getStringExtra("type");
         if(type == null || "".equals(type.trim())) {
-            path = "http://120.26.172.104:8080/video/video1.flv";
+            path = "http://47.97.10.218:8080/video/video1.flv";
             title = "人文";
         } else if("1".equals(type)) {
-            path = "http://120.26.172.104:8080/video/video1.flv";
+            path = "http://47.97.10.218:8080/video/video1.flv";
             title = "人文";
         } else if("2".equals(type)) {
-            path = "http://120.26.172.104:8080/video/video2.flv";
+            path = "http://47.97.10.218:8080/video/video2.flv";
             title = "山水";
         }else if("3".equals(type)) {
-            path = "http://120.26.172.104:8080/video/video3.flv";
+            path = "http://47.97.10.218:8080/video/video3.flv";
             title = "古镇";
         }else if("4".equals(type)) {
-            path = "http://120.26.172.104:8080/video/video4.flv";
+            path = "http://47.97.10.218:8080/video/video4.flv";
             title = "味道";
         }
     }

@@ -96,7 +96,7 @@ public class PersonalInformationActivity extends AppCompatActivity {
 
         RequestBody requestBody = RequestBody.create(JSON, param);
         final Request request = new Request.Builder()
-                .url("http://120.26.172.104:9002//web/updateUsername")
+                .url("http://47.97.10.218:9002//web/updateUsername")
                 .put(requestBody)
                 .build();
         //处理注册逻辑

@@ -29,7 +29,7 @@ public class UseUtil {
      * 初始化OrderBean
      */
     private void initOrderBean() {
-        sendRequest("http://120.26.172.104:9002/wx/destructionOrder?"+Info);
+        sendRequest("http://47.97.10.218:9002/wx/destructionOrder?"+Info);
     }
 
     /**

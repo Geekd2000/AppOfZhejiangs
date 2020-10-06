@@ -23,7 +23,7 @@ public class JinquBeanUtil2 {
     }
 
     private void initDetailBeanLists() {
-        sendRequest("http://120.26.172.104:9002//wx/findPoiById?place_id="+id);
+        sendRequest("http://47.97.10.218:9002//wx/findPoiById?place_id="+id);
     }
 
     private void sendRequest(final String s) {
